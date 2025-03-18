@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- name="GENERATOR" content="github.com/mmarkdown/mmark Mmark Markdown Processor - mmark.miek.nl" -->
+<rfc version="3" ipr="trust200902" docName="wullink-draft-rpp-requirements-00" submissionType="IETF" category="std" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" indexInclude="true" tocDepth="4">
+
+<front>
+<title abbrev="RPP - Requirements">RESTful Provisioning Protocol (RPP) - Requirements</title><seriesInfo value="wullink-draft-rpp-requirements-00" stream="IETF" status="standard" name="Internet-Draft"></seriesInfo>
+<author initials="M." surname="Wullink" fullname="Maarten Wullink"><organization>SIDN Labs</organization><address><postal><street></street>
+</postal><email>maarten.wullink@sidn.nl</email>
+<uri>https://sidn.nl/</uri>
+</address></author><author initials="P." surname="Kowalik" fullname="Pawel Kowalik"><organization>DENIC</organization><address><postal><street></street>
+</postal><email>pawel.kowalik@denic.de</email>
+<uri>https://denic.de/</uri>
+</address></author><date/>
+<area>Internet</area>
+<workgroup>Network Working Group</workgroup>
+
+<abstract>
+<t></t>
+<t>This document describes the requirement for the development of the RESTful Provisioning Protocol (RPP).</t>
+</abstract>
+
+</front>
+
+<middle>
+
+<section anchor="introduction"><name>Introduction</name>
+<t>This document describes the set of requirements RESTful Provisioning Protocol (RPP) an Application Programming Interface (API) API, for provisioning objects in a shared database, based on the HTTP protocol <xref target="RFC2616"></xref> and the principles of <xref target="REST"></xref>.</t>
+</section>
+
+<section anchor="terminology"><name>Terminology</name>
+<t>In this document the following terminology is used.</t>
+<t>REST - Representational State Transfer (<xref target="REST"></xref>). An architectural style.</t>
+<t>RESTful - A RESTful web service is a web service or API implemented using HTTP and the principles of <xref target="REST"></xref>.</t>
+<t>EPP RFCs - This is a reference to the EPP version 1.0 specifications <xref target="RFC5730"></xref>, <xref target="RFC5731"></xref>, <xref target="RFC5732"></xref> and <xref target="RFC5733"></xref>.</t>
+<t>RESTful Provisioning Protocol or RPP - The protocol described in this document.</t>
+<t>URL - A Uniform Resource Locator as defined in <xref target="RFC3986"></xref>.</t>
+<t>Resource - An object having a type, data, and possible relationship to other resources, identified by a URL.</t>
+<t>RPP client - An HTTP user agent performing an RPP request</t>
+<t>RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.</t>
+</section>
+
+<section anchor="conventions-used-in-this-document"><name>Conventions Used in This Document</name>
+<t>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;,&quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this document are to be interpreted as described in <xref target="RFC2119"></xref>.</t>
+</section>
+
+<section anchor="iana-considerations"><name>IANA Considerations</name>
+<t>TODO</t>
+</section>
+
+<section anchor="internationalization-considerations"><name>Internationalization Considerations</name>
+<t>TODO</t>
+</section>
+
+<section anchor="security-considerations"><name>Security Considerations</name>
+<t>TODO</t>
+</section>
+
+</middle>
+
+<back>
+<references><name>Normative References</name>
+<reference anchor="REST" target="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">
+  <front>
+    <title>Architectural Styles and the Design of Network-based Software Architectures</title>
+    <author fullname="Roy Fielding" initials="R." surname="Fielding">
+      <organization></organization>
+    </author>
+    <date year="2000"></date>
+  </front>
+</reference>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2616.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5730.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5731.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5732.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5733.xml"/>
+</references>
+
+</back>
+
+</rfc>
