@@ -1,16 +1,13 @@
 # RPP - Requirements
 
-This repository contains requirements for the development of the RESTful Provisioning Protocol (RPP).
-
-The [draft](https://github.com/ietf-wg-rpp/rpp-requirements/blob/main/src/draft-rpp-requirements.md) is authored using [mmark](https://mmark.miek.nl/) Markdown.
+Requirements for the development of the [RESTful Provisioning Protocol](https://datatracker.ietf.org/wg/rpp/about/) (RPP)
 
 Contributions in the form of a Pull Request are welcome.
 
-[Plaintext](https://github.com/ietf-wg-rpp/rpp-requirements/draft-rpp-requirements.txt)  
-[HTML](https://github.com/ietf-wg-rpp/rpp-requirements/draft-rpp-requirements.html)  
-[PDF](https://github.com/ietf-wg-rpp/rpp-requirements/draft-rpp-requirements.pdf)  
-[XML](https://github.com/ietf-wg-rpp/rpp-requirements/draft-rpp-requirements.xml)  
-
+[Plaintext](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.txt)  
+[HTML](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.html)  
+[PDF](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.pdf)  
+[XML](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.xml)  
 
 ## Contributing
 
@@ -28,7 +25,7 @@ Requirements:
 
 The document can be compiled using:
 
-```
+```bash
 cd src
 make all
 ```
