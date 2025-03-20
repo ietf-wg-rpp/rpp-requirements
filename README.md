@@ -4,15 +4,15 @@ Requirements for the development of the [RESTful Provisioning Protocol](https://
 
 Contributions in the form of a Pull Request are welcome.
 
-[Plaintext](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.txt)  
-[HTML](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.html)  
-[PDF](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.pdf)  
-[XML](https://github.com/ietf-wg-rpp/rpp-requirements/draft-wullink-rpp-requirements.xml)  
+[Plaintext](https://ietf-wg-rpp.github.io/rpp-requirements/draft-wullink-rpp-requirements.txt)  
+[HTML](https://ietf-wg-rpp.github.io/rpp-requirements/draft-wullink-rpp-requirements.html)  
+[PDF](https://ietf-wg-rpp.github.io/rpp-requirements/draft-wullink-rpp-requirements.pdf)  
+[XML](https://ietf-wg-rpp.github.io/rpp-requirements/draft-wullink-rpp-requirements.xml)  
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/ietf-wg-rpp/rpp-requirements/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://ietf-wg-rpp.github.io/rpp-requirements/blob/main/CONTRIBUTING.md).
 
 Pull requests are very much appreciated.
 
