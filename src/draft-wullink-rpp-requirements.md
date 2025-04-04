@@ -100,15 +100,15 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R3.2** The RPP architecture MUST follow Resource-Oriented Architecture [@!ROI].
 
-//PK: this part is for me questionable
+//PK: this part is for me questionable. Especially with all the requirements R6.X. Full HAEOAS is likely not what we need (however we'd need to formulate a design requirement, which would support this call), but some level of hypermedia does not have to be necessarily wrong, like: links to other resources, signalling of available/permittable operations etc.
 **R3.3.** The RPP specification MUST specify all resource URLs used and therefore the URLs are already known and do not need to be dynamically discoverable, designing for RMM level 3 is not recommended.
 
 **R3.4.** When the semantics of a resource URL and HTTP method do not require a request payload, the use of a request message MUST be optional.
 //PK: it is somehow strange formulated as this optionality would mean that the client might send the payload anyway - then what would have precedence? It was ok when we were approaching direct mapping from EPP, not it seems not to be necessary at all.
 Proposal:
-RPP shall strive for simplicity. Wherever the whole operation can be defined by a resource URL and HTTP methods and where HTTP method does not require message body, RPP MUST NOT use message body.
+RPP SHALL prefer simplicity. Wherever the whole operation can be defined by a resource URL and HTTP method and where HTTP method does not require a message body, RPP MUST NOT use a message body. This approach reduces complexity, improves performance, and aligns with the principles of RESTful design by leveraging the inherent semantics of HTTP methods.
 
-**R3.5.** RPP specifications SHOULD incorporate a machine readible and well established API specification to facilitate documentation, testing, and code generation, and provide implementer-friendly extension descriptions.
+**R3.5.** RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as OpenAPI, RAML, or JSON Schema. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. The choice of technology SHOULD remain open for further advances in the field and implementer's preferences.
 //PK: I would keep it open in the requirements which technology it should be
 
 # Data Model
