@@ -134,8 +134,8 @@ RPP SHOULD support additional information about a successful operation (informat
 - Required parts of the data model
 - Mapping definition
 - Functional subsets for compatibility.
-> //MWU: maybe better describe what a profile is and what it is not.
-> //PK: this would be then already the protocol specification, not a requirement, wouldn't it?
+
+> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.5** The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.
 
