@@ -234,8 +234,7 @@ Solutions may include:
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
 
 **R8.5** Only the string based EPP token defined in [@!RFC5730] MUST be supported, EPP token extensions SHOULD NOT be supported.
-> //MWU: only support string token, all other token alternatives should be based on web based auth schemes?
-
+> //TODO: [Issue #22](https://github.com/ietf-wg-rpp/rpp-requirements/issues/22)
 
 **R8.6** RPP SHOULD support client_id/password authentication to match EPP client authentication.
 
