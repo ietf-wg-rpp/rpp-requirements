@@ -319,7 +319,7 @@ Solutions may include:
 - Contact objects
 - Email addresses
 - Internationalized Domain Names (IDNs)
-> //PK: I think we need to generalise this requirement and move specifics to the section *Requirements for object types*
+> //TODO: [Issue #23](https://github.com/ietf-wg-rpp/rpp-requirements/issues/23)
 
 **R13.2** RPP MUST support Human-readable localized response mesages.
 
