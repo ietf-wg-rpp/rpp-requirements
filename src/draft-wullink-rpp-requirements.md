@@ -181,12 +181,23 @@ RPP SHOULD support additional information about a successful operation (informat
 
 # Discoverability
 
-**R7.1** RPP MAY include a bootstrap mechanism for helping clients to locate RPP available services, possible solutions include:
+**R7.1** RPP MAY include a bootstrap mechanism designed to allow clients to locate the network identifier for the RPP service of a registry operator, e.g. rpp.sidn.nl for the registry operator for the .nl ccTLD.
+
+Solutions may include:
 
 - IANA bootstrap Service Registry
 - DNS TXT records
 
-**R7.2** A discovery document MUST be made available in the well-known directory.
+**R7.2** The RPP server MUST publish a service discovery document in the well-known directory. This document contains required or useful information for a client in order for the client to be able to generate correct RPP requests. The information may contain, but is not limited to:
+
+- Available services,
+- Used Extensions
+- Versions used for services and extensions
+- Environment name (production, test ...)
+- Server datetime
+- Maintenance notices
+- ...
+
 > [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8)
 
 **R7.3** Server provided functionality, such as the set of supported profiles, languages or extensions, MUST discoverable using the discovery document.
