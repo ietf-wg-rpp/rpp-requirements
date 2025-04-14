@@ -79,16 +79,16 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 **R1.1.** A wel defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers. 
 
 **R1.2.** The API MUST provide a clear, intuitive, and self-explanatory interface that facilitates seamless integration into existing software systems. Identifiers used in the API MUST avoid patterns, that could conflict with the syntax or semantics of most popular programming languages.
-//TODO: https://github.com/ietf-wg-rpp/rpp-requirements/issues/3
+> //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3)
 
 **R1.3.** Wherever applicable RPP MUST leverage existing and well adopted  web standards for building and documenting APIs.
-//TODO: https://github.com/ietf-wg-rpp/rpp-requirements/issues/4
+//TODO: [Issue #4](https://github.com/ietf-wg-rpp/rpp-requirements/issues/4)
 
 **R1.4.**
 
 RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730]. RPP status codes MUST remain independent of HTTP status codes.
 
-//TODO: https://github.com/ietf-wg-rpp/rpp-requirements/issues/5
+//TODO: [Issue #5](https://github.com/ietf-wg-rpp/rpp-requirements/issues/5)
 
 **R1.5.**
 RPP MAY include support for providing detailed information about application status codes, for example as descibed in [@!RFC7807]
@@ -151,7 +151,7 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R5.5** A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.
 
-**R5.6** RPP MUST support the use of server profiles to define required components of the data model and/or mapping definitions.
+**R5.6** RPP MUST support the use of server profiles to define required components of the data model and/or mapping definitions (see: R4.4).
 
 **R5.7** RPP SHOULD consider mechanisms for supporting data formats outside of core RPP domain. Especially formats, which lose their properties if transformed, like Verifiable Credentials for contacts which are digitally signed.
 
@@ -228,8 +228,8 @@ Solutions may include:
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
-**R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles.
-//MWU: better describe what a compatibility profiles is
+**R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).
+//TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
 
@@ -277,19 +277,21 @@ Solutions may include:
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
 **R10.5** RPP MUST support extensions adding new status codes.
-//MWU: IANA registry for status/error codes?
+//TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20)
 
 **R10.6** RPP MUST support extensions adding new HTTP headers.
 
 
 **R10.7** RPP SHALL have mechanisms to assure conflict avoidance when extending the protocol, including but not limited to data model, representations, operations, parameters, error codes and signalling. There MUST be a mechanism of conflict-free, non-coordinated extending in private/vendor discresion as well as a coordinated process for core, generic or shared elements. 
 //TODO: [Issue #10](https://github.com/ietf-wg-rpp/rpp-requirements/issues/10)
+> //TODO: [Issue #10](https://github.com/ietf-wg-rpp/rpp-requirements/issues/10)
 
 **R10.8** When a registry for RPP extensions is required, the IANA MUST be used for this function.
 
 
 **R10.9** RPP extensions MUST include support for versioning, the version of the extention supported by the server MUST be included in the discovery document.
 //TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11)
+> //TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11)
 
 # Scalability
 
