@@ -344,7 +344,7 @@ Solutions may include:
 ### Data Representation
 
 **R5.10** Contact information MUST be provided using the JSContact [@!RFC9553] format.
-> //PK: I think we should not have it as MUST requirement. R4.1 is covering to support JSContact as additional format, but can we decide now whether this would be a default?
+> //TODO: [Issue #24](https://github.com/ietf-wg-rpp/rpp-requirements/issues/24)
 
 # New features
 > //MWU: is there a difference between optional features and an extension? i would think so, we can define an optional feature in the core protocol but make it optional. an extension is defined after the completion of the core protocol and is also optional.
