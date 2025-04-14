@@ -228,8 +228,7 @@ Solutions may include:
 # EPP compatibility
 
 **R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain names, hosts, and contacts as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733] mappings for core objects (domain, contact, host).
-> //MWU: this contradicts R6.7 that says a subset of EPP may be supported only?
-> //PK: I guess the key is the word "core" which is not same as "all"
+> //TODO: [Issue #18](https://github.com/ietf-wg-rpp/rpp-requirements/issues/18)
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
