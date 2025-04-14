@@ -114,6 +114,7 @@ RPP SHOULD support additional information about a successful operation (informat
 **R3.2** The RPP architecture MUST follow Resource-Oriented Architecture [@!ROI].
 
 **R3.3.** The RPP specification MUST strive to minimise round trips between client and server. Approaches, where client would need to make multiple requests each time to discover resource URL or server capabilities in order to perform operation SHOULD be used sparingly and be always well justified.
+
 **R3.4.** RPP SHALL prefer simplicity. Wherever the whole operation can be defined by a resource URL and HTTP method and where HTTP method does not require a message body, RPP MUST NOT use a message body. This approach reduces complexity, improves performance, and aligns with the principles of RESTful design by leveraging the inherent semantics of HTTP methods.
 
 **R3.5.** RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as [!@OpenAPI] or [@!RAML]. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. RPP MUST NOT require what API specification technology is to be used. The RPP core documents and extension documents may also choose different API specification solutions, this choice is left to the document authors.
