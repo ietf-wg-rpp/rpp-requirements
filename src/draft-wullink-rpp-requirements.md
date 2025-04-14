@@ -101,7 +101,6 @@ RPP SHOULD support additional information about a successful operation (informat
 **R2.1.** The Hypertext Transfer Protocol (HTTP) [@!RFC9110] MUST be used as the transport mechanism for RPP.  
 
 **R2.2.** RPP SHOULD use the best common practices for designing HTTP based applications, described in [@!BCP56]. There MUST be a clear justification when deviating from this.
-> //PK: if we keep MUST, the second sentence would be moot.
 
 **R2.3.** Consistent, predictable and meaningful URL structures MUST be used for for identifying, accessing object resources and enable request routing.
 
