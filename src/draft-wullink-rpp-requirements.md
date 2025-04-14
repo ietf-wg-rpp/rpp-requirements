@@ -221,7 +221,7 @@ Solutions may include:
 **R7.7** A RPP service MAY choose to only support a subset of EPP functionality, this MUST be discoverable by the client.
 
 **R7.8** A client MUST be able to generate the URL for an object, based on the unique object identifier.
-> //PK: duplicate to R2.3 and R3.3 ?
+> //TODO: [Issue #21](https://github.com/ietf-wg-rpp/rpp-requirements/issues/21)
 
 **R7.9** An RPP response that includes unique object identifiers, MAY also include URL references for these objects.
 
