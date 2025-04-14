@@ -153,7 +153,7 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R5.5** A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.
 
-**R5.6** RPP MUST support the use of server profiles to define required components of the data model and/or mapping definitions.
+**R5.6** RPP MUST support the use of server profiles to define required components of the data model and/or mapping definitions (see: R4.4).
 
 **R5.7** RPP SHOULD consider mechanisms for supporting data formats outside of core RPP domain. Especially formats, which lose their properties if transformed, like Verifiable Credentials for contacts which are digitally signed.
 
@@ -232,8 +232,8 @@ Solutions may include:
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
-**R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles.
-> //MWU: better describe what a compatibility profiles is
+**R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).
+> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
 
