@@ -361,30 +361,6 @@ Solutions may include:
 > //MWU: using a "MAY" right now it is optional feature but not an extension
 The server MAY support generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and MUST be included in the discovery service document.
 
-# Other
-
-The items below have been mentioned on the mailinglist and may need to be added as an requirement.
-
-- Data Omission - what requirements will there be around a registrar's ability to signal that it has collected some data but has not transmitted it to the registry?  
-> //PK: covered in R4.3 ?
-- Registration attribution - will there be requirements for attribution of registration actions (who did what), and will cryptography be used?
-> //PK: extension ?  
-- Registrant verification - will there be requirements to support registrant verification (NIS2)?
-> //PK: this is a typical extension case (new attributes and ops)  
-- Linking - will the protocol support linking to RDAP objects, other RPP objects, etc...  
-- Include identification of legal vs. natural contacts.
-> //PK: do we collect also here requirements for certain object types, or only core protocol?
-- Expanded common models (when compared to EPP), maybe there should be much more attributes then it is in EPP (Vatnumber / Company Number/ properties for Identity papers) Trademark information and more There are a lot of epp extensions in the wild that try to handle this.
-> //PK: same here
-- include also DNS provisioning as potential use-case
-> //PK: this one is beyond current charter
-- possibility to seamlessly compose the API with other registry use-cases to have uniform API layer from the client perspective
-- investigate possible multi-party authorisation schemas. Use case: DNS operator would get authorisation to update DS or NS record through RPP.
-> //PK: covered in R8.4 ?
-- This may refer to roles not yet considered in EPP processes, e.g. a third-party DNSSEC signing authority. For a potential use case, see [the discussion on the DD mailing list on that topic](https://mailarchive.ietf.org/arch/msg/dd/iTf8pEMq5-sismlxfNbrFpzAIKU/), which discusses potential approaches for DNS, some of which would require modelling relationships between parent/child/signer zone authorities in a provisioning protocol.
-- possibility of mobile app or direct browser integration (use case for registries which directly authenticate their domain holders and allow operations on a domain and/or if RPP would be exposed by a registrar)
-> //PK: I would add a chapter Clients. Covered in R.31.x
-
 # IANA Considerations
 
 TODO
