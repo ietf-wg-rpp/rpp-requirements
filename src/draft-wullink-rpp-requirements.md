@@ -281,7 +281,7 @@ Solutions may include:
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
 **R10.5** RPP MUST support extensions adding new status codes.
-> //MWU: IANA registry for status/error codes?
+> //TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20)
 
 **R10.6** RPP MUST support extensions adding new HTTP headers.
 
