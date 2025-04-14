@@ -82,13 +82,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 > //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3)
 
 **R1.3.** Wherever applicable RPP MUST leverage existing and well adopted  web standards for building and documenting APIs.
-//TODO: [Issue #4](https://github.com/ietf-wg-rpp/rpp-requirements/issues/4)
+> //TODO: [Issue #4](https://github.com/ietf-wg-rpp/rpp-requirements/issues/4)
 
 **R1.4.**
 
 RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730]. RPP status codes MUST remain independent of HTTP status codes.
 
-//TODO: [Issue #5](https://github.com/ietf-wg-rpp/rpp-requirements/issues/5)
+> //TODO: [Issue #5](https://github.com/ietf-wg-rpp/rpp-requirements/issues/5)
 
 **R1.5.**
 RPP MAY include support for providing detailed information about application status codes, for example as descibed in [@!RFC7807]
@@ -101,7 +101,7 @@ RPP SHOULD support additional information about a successful operation (informat
 **R2.1.** The Hypertext Transfer Protocol (HTTP) [@!RFC9110] MUST be used as the transport mechanism for RPP.  
 
 **R2.2.** RPP SHOULD use the best common practices for designing HTTP based applications, described in [@!BCP56]. There MUST be a clear justification when deviating from this.
-//PK: if we keep MUST, the second sentence would be moot.
+> //PK: if we keep MUST, the second sentence would be moot.
 
 **R2.3.** Consistent, predictable and meaningful URL structures MUST be used for for identifying, accessing object resources and enable request routing.
 
@@ -133,7 +133,7 @@ RPP SHOULD support additional information about a successful operation (informat
 - Mapping definition
 - Functional subsets for compatibility.
 
-//TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
+> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.5** The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.
 
@@ -194,7 +194,7 @@ Solutions may include:
 - Maintenance notices
 - ...
 
-//TODO: [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8)
+> //TODO: [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8)
 
 **R7.3** Server provided functionality, such as the set of supported profiles, languages or extensions, MUST discoverable using the discovery document.
 
@@ -212,7 +212,7 @@ Solutions may include:
 **R7.5** Versions used by the RPP protocol and used extensions MUST be discoverable by the client.
 
 **R7.6** Notices related to scheduled server maintenance timeslots MAY be included in the discovery document, this could be a human readable, non machine parsable character string.
-//TODO: [Issue #9](https://github.com/ietf-wg-rpp/rpp-requirements/issues/9)
+> //TODO: [Issue #9](https://github.com/ietf-wg-rpp/rpp-requirements/issues/9)
 
 **R7.7** A RPP service MAY choose to only support a subset of EPP functionality, this MUST be discoverable by the client.
 
@@ -224,17 +224,17 @@ Solutions may include:
 # EPP compatibility
 
 **R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain names, hosts, and contacts as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733] mappings for core objects (domain, contact, host).
-//TODO: [Issue #18](https://github.com/ietf-wg-rpp/rpp-requirements/issues/18)
+> //TODO: [Issue #18](https://github.com/ietf-wg-rpp/rpp-requirements/issues/18)
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
 **R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).
-//TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
+> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
 
 **R8.5** Only the string based EPP token defined in [@!RFC5730] MUST be supported, EPP token extensions SHOULD NOT be supported.
-//MWU: only support string token, all other token alternatives should be based on web based auth schemes?
+> //MWU: only support string token, all other token alternatives should be based on web based auth schemes?
 
 
 **R8.6** RPP SHOULD support client_id/password authentication to match EPP client authentication.
@@ -277,20 +277,18 @@ Solutions may include:
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
 **R10.5** RPP MUST support extensions adding new status codes.
-//TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20)
+> //TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20)
 
 **R10.6** RPP MUST support extensions adding new HTTP headers.
 
 
 **R10.7** RPP SHALL have mechanisms to assure conflict avoidance when extending the protocol, including but not limited to data model, representations, operations, parameters, error codes and signalling. There MUST be a mechanism of conflict-free, non-coordinated extending in private/vendor discresion as well as a coordinated process for core, generic or shared elements. 
-//TODO: [Issue #10](https://github.com/ietf-wg-rpp/rpp-requirements/issues/10)
 > //TODO: [Issue #10](https://github.com/ietf-wg-rpp/rpp-requirements/issues/10)
 
 **R10.8** When a registry for RPP extensions is required, the IANA MUST be used for this function.
 
 
 **R10.9** RPP extensions MUST include support for versioning, the version of the extention supported by the server MUST be included in the discovery document.
-//TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11)
 > //TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11)
 
 # Scalability
@@ -308,12 +306,12 @@ Solutions may include:
 # Performance
 
 **R12.1** RPP MUST NOT include a HTTP message body in the request or response when this is not necessary, for example when the required data can be tranmitted using the URL and/or HTTP headers.
-//PK: duplicate to R3.4. ? I propose to merge them rather here, not under R3 
+> //PK: duplicate to R3.4. ? I propose to merge them rather here, not under R3 
 
 **R12.2** RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
 
 **R12.3** RPP MAY support compound object create request having embedded contact/host vs. request serialization (client waiting for contact/host creation to succeed before sending a domain request). Return complete representation (similar to object info in EPP) after compound request completed or return redirect to newly created object location.
-//TODO: [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)
+> //TODO: [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)
 
 # Internationalisation
 
@@ -322,7 +320,7 @@ Solutions may include:
 - Contact objects
 - Email addresses
 - Internationalized Domain Names (IDNs)
-//PK: I think we need to generalise this requirement and move specifics to the section *Requirements for object types*
+> //PK: I think we need to generalise this requirement and move specifics to the section *Requirements for object types*
 
 **R13.2** RPP MUST support Human-readable localized response mesages.
 
@@ -347,14 +345,14 @@ Solutions may include:
 ### Data Representation
 
 **R5.10** Contact information MUST be provided using the JSContact [@!RFC9553] format.
-//PK: I think we should not have it as MUST requirement. R4.1 is covering to support JSContact as additional format, but can we decide now whether this would be a default?
+> //PK: I think we should not have it as MUST requirement. R4.1 is covering to support JSContact as additional format, but can we decide now whether this would be a default?
 
 # New features
-//MWU: is there a difference between optional features and an extension? i would think so, we can define an optional feature in the core protocol but make it optional. an extension is defined after the completion of the core protocol and is also optional.
+> //MWU: is there a difference between optional features and an extension? i would think so, we can define an optional feature in the core protocol but make it optional. an extension is defined after the completion of the core protocol and is also optional.
 
-//PK: would you see it as a part of generic protocol requirements or an extension
+> //PK: would you see it as a part of generic protocol requirements or an extension
 
-//MWU: using a "MAY" right now it is optional feature but not an extension
+> //MWU: using a "MAY" right now it is optional feature but not an extension
 The server MAY support generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and MUST be included in the discovery service document.
 
 # IANA Considerations
