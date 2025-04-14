@@ -134,8 +134,8 @@ RPP SHOULD support additional information about a successful operation (informat
 - Required parts of the data model
 - Mapping definition
 - Functional subsets for compatibility.
-> //MWU: maybe better describe what a profile is and what it is not.
-> //PK: this would be then already the protocol specification, not a requirement, wouldn't it?
+
+> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.5** The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.
 
@@ -228,8 +228,7 @@ Solutions may include:
 # EPP compatibility
 
 **R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain names, hosts, and contacts as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733] mappings for core objects (domain, contact, host).
-> //MWU: this contradicts R6.7 that says a subset of EPP may be supported only?
-> //PK: I guess the key is the word "core" which is not same as "all"
+> //TODO: [Issue #18](https://github.com/ietf-wg-rpp/rpp-requirements/issues/18)
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
