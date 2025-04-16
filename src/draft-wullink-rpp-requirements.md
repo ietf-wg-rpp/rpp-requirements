@@ -369,6 +369,14 @@ TODO
 
 TODO
 
+# Appendix A. Extensions
+
+// List of required extions here
+// see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
+TODO
+
+
+
 {backmatter}
 
 <reference anchor="REST" target="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">
