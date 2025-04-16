@@ -81,13 +81,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 **R1.2.** The API MUST provide a clear, intuitive, and self-explanatory interface that facilitates seamless integration into existing software systems. Identifiers used in the API MUST avoid patterns, that could conflict with the syntax or semantics of most popular programming languages.
 > //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3)
 
-**R1.3.** Wherever applicable RPP MUST leverage existing and well adopted  web standards for building and documenting APIs.
-> //TODO: [Issue #4](https://github.com/ietf-wg-rpp/rpp-requirements/issues/4)
+**R1.3.** Wherever applicable RPP MUST leverage existing best practices and well adopted standards for building and documenting RESTful APIs
 
-**R1.4.**
-
-RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730]. RPP status codes MUST remain independent of HTTP status codes.
-
+**R1.4.** RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730]. RPP status codes MUST remain independent of HTTP status codes.
 > //TODO: [Issue #5](https://github.com/ietf-wg-rpp/rpp-requirements/issues/5)
 
 **R1.5.**
