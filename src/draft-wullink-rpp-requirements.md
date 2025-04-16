@@ -154,6 +154,8 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R5.9** RPP MUST support full update of data objects.
 
+**R.5.10** A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.
+
 # Operations and responses
 
 **R6.1** RPP MUST include support for a client requesting different depth of data representations, depending on the use case:
