@@ -274,7 +274,7 @@ Solutions may include:
 
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
-**R10.5** RPP MUST support extensions that include new status codes not already defined in the core RPP RFCs.
+**R10.5** RPP MUST support extensions that define new status codes not already defined in the core RPP RFCs.
 > //TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20)
 
 **R10.6** RPP MUST support extensions adding new HTTP headers.
@@ -287,7 +287,9 @@ Solutions may include:
 **R10.9** RPP extensions MUST include support for versioning, the version of the extention supported by the server MUST be included in the discovery document.
 > //TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11)
 
-**R10.10** RPP status codes are maintained in an IANA registry for RPP status codes, these include all status codes defined in the core RPP RFCs and by any extension that is also a registered IANA RPP extension.
+//dropped R10.10: see https://github.com/ietf-wg-rpp/rpp-requirements/issues/20
+//**R10.10** RPP status codes are maintained in an IANA registry for RPP status codes, these include all status codes defined in the core RPP RFCs and by any
+//extension that is also a registered IANA RPP extension.
 
 **R10.11** Extension designers or RPP implementers MAY add new status codes, if a newly created status code is generic enough to be useful for the wider RPP community, then the extension designer SHOULD register the new status code in the RPP IANA registry.
 
