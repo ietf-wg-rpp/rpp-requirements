@@ -244,12 +244,11 @@ Solutions may include:
 
 **R9.3** Support for an simplified and quicker object transfer process MAY be included, where approval from the losing registar is to be obtained interactively by the registrant during the transfer process.
 
-**R9.4** The authorisation model MUST support authorizations, beyond current auth-code based authorisation for transfers, the following use cases MAY be supported:
+R.9.4 The RPP MUST include an authorisation model/framework that goes beyond the current EPP password based Authorization Information used for object transfers. The following use cases MAY be supported:
 
-- Object transfers without using an EPP style transfer token
-- DNS providers updating the DNSSEC key material
-- Registrants using OpenID Connect to interactively allow DNS providers to update NS records, directly at theregistry or indirectly through a supporting registar.
-- Object Renewals
+- Object transfers without using an EPP password based Authorization Information
+- DNS operator/DNSSEC signing authority updating the DNSSEC key material
+- Registrants using OpenID Connect can interactively allow DNS operator to update their NS records, directly in the registry database or indirectly using a registar.
 
 **R9.5** RPP MUST employ strong authentication and utilize encrypted transport (HTTPS) to protect sensitive data. 
 
