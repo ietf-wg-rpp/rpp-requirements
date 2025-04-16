@@ -83,8 +83,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R1.3.** Wherever applicable RPP MUST leverage existing best practices and well adopted standards for building and documenting RESTful APIs
 
-**R1.4.** RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730]. RPP status codes MUST remain independent of HTTP status codes.
-> //TODO: [Issue #5](https://github.com/ietf-wg-rpp/rpp-requirements/issues/5)
+**R1.4.** RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730].
 
 **R1.5.**
 RPP MAY include support for providing detailed information about application status codes, for example as descibed in [@!RFC7807]
@@ -100,7 +99,7 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R2.3.** Consistent, predictable and meaningful URL structures MUST be used for for identifying, accessing object resources and enable request routing.
 
-**R2.4.** RPP MUST use the existing HTTP status codes and MAY define application level status codes and map these to HTTP status codes. RPP MUST NOT redefine or overload existing HTTP status code semantics.
+**R2.4.**  RPP MUST use the existing HTTP status codes and MUST define application level status codes and map these to HTTP status codes. RPP MUST NOT redefine existing HTTP status code semantics and when overloading (generic) HTTP status codes with multiple RPP status codes, the provided RPP status code MUST be used by the client to determine the exact nature of the problem.
 
 # REST
 
