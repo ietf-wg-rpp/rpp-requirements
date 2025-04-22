@@ -119,7 +119,7 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R4.2** Commonly used EPP extensions SHOULD be added to the RPP core data model. An example of this is the DNSSEC extension.
 
-*R4.3** RPP MUST allow an extension mechanism that allows clients to signal data omission or redaction, indicating data collected but not transmitted to the registry or redacted.
+**R4.3** RPP MUST allow an extension mechanism that allows clients to signal data omission or redaction, indicating data collected but not transmitted to the registry or redacted.
 
 **R4.4** RPP MUST have mechanisms to define profiles to indicate:
 
@@ -303,7 +303,7 @@ Solutions may include:
 
 # Performance
 
-**R12.1** RPP MUST NOT include a HTTP message body in the request or response when this is not necessary, for example when the required data can be tranmitted using the URL and/or HTTP headers.
+**R12.1** RPP MUST NOT include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.
 > //TODO: [Issue #25](https://github.com/ietf-wg-rpp/rpp-requirements/issues/25)
 
 **R12.2** RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
