@@ -308,8 +308,9 @@ Solutions may include:
 
 **R12.2** RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
 
-**R12.3** RPP MAY support compound object create request having embedded contact/host vs. request serialization (client waiting for contact/host creation to succeed before sending a domain request). Return complete representation (similar to object info in EPP) after compound request completed or return redirect to newly created object location.
-> //TODO: [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)
+# **R12.3** RPP MAY support compound object create request having embedded contact/host vs. request serialization (client waiting for contact/host creation to succeed before 
+# sending a domain request). Return complete representation (similar to object info in EPP) after compound request completed or return redirect to newly created object location.
+# > //TODO: [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)
 
 # Internationalisation
 
@@ -369,7 +370,14 @@ TODO
 
 // List of required extions here
 // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
+
+## A.1 Search API
+
+Allow for advanced search capabilities for object info request.
+
+
 TODO
+
 
 
 
