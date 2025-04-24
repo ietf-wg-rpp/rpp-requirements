@@ -313,14 +313,15 @@ Solutions may include:
 
 # Internationalisation
 
-**R13.1** RPP MUST support internationalization, including but not limited to:
+**R13.1** RPP MUST support internationalization, for object types and messages defined in the core protocol and extensions
 
-- Contact objects
-- Email addresses
-- Internationalized Domain Names (IDNs)
-> //TODO: [Issue #23](https://github.com/ietf-wg-rpp/rpp-requirements/issues/23)
+# internationalization for the object types listed below need to be added to separate sections per object type. 
+# - Contact objects
+# - Email addresses
+# - Internationalized Domain Names (IDNs)
+# > //TODO: [Issue #23](https://github.com/ietf-wg-rpp/rpp-requirements/issues/23)
 
-**R13.2** RPP MUST support Human-readable localized response mesages.
+**R13.2** RPP MUST support human-readable localized response mesages.
 
 # Clients
 
