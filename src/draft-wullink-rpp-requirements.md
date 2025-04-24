@@ -211,7 +211,7 @@ Solutions may include:
 **R7.6** Notices related to scheduled server maintenance timeslots MAY be included in the discovery document, this could be a human readable, non machine parsable character string.
 > //TODO: [Issue #9](https://github.com/ietf-wg-rpp/rpp-requirements/issues/9)
 
-**R7.7** A RPP service MAY choose to only support a subset of EPP functionality, this MUST be discoverable by the client.
+**R7.7** RPP MAY only support a subset of EPP functionality, the supported functionality MUST be discoverable by the client
 
 **R7.8** *Removed*
 > //SEE: [Issue #21](https://github.com/ietf-wg-rpp/rpp-requirements/issues/21)
@@ -220,8 +220,7 @@ Solutions may include:
 
 # EPP compatibility
 
-**R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain names, hosts, and contacts as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733] mappings for core objects (domain, contact, host).
-> //TODO: [Issue #18](https://github.com/ietf-wg-rpp/rpp-requirements/issues/18)
+**R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, and contact objects as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733].
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
