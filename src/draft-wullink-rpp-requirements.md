@@ -306,19 +306,22 @@ Solutions may include:
 
 **R12.2** RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
 
-# **R12.3** RPP MAY support compound object create request having embedded contact/host vs. request serialization (client waiting for contact/host creation to succeed before 
+**R12.3** *Removed*
+<!--RPP MAY support compound object create request having embedded contact/host vs. request serialization (client waiting for contact/host creation to succeed before 
 # sending a domain request). Return complete representation (similar to object info in EPP) after compound request completed or return redirect to newly created object location.
-# > //TODO: [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)
+# > [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)-->
 
 # Internationalisation
 
 **R13.1** RPP MUST support internationalization, for object types and messages defined in the core protocol and extensions
 
+<!--
 # internationalization for the object types listed below need to be added to separate sections per object type. 
 # - Contact objects
 # - Email addresses
 # - Internationalized Domain Names (IDNs)
-# > //TODO: [Issue #23](https://github.com/ietf-wg-rpp/rpp-requirements/issues/23)
+-->
+> //TODO: [Issue #23](https://github.com/ietf-wg-rpp/rpp-requirements/issues/23)
 
 **R13.2** RPP MUST support human-readable localized response mesages.
 
