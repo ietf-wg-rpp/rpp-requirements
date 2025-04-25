@@ -302,8 +302,7 @@ Solutions may include:
 
 # Performance
 
-**R12.1** RPP MUST NOT include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.
-> //TODO: [Issue #25](https://github.com/ietf-wg-rpp/rpp-requirements/issues/25)
+**R12.1** In order to minimise message sizes and needed processing RPP SHOULD be designed not to include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.
 
 **R12.2** RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
 
