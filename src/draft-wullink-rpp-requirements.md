@@ -339,14 +339,19 @@ Solutions may include:
 
 ## Domain Object Type
 
+[//]: # (Editor note: use Dx.x for Domains)
+
 ## Host Object Type
+
+[//]: # (Editor note: use Hx.x for Hosts)
 
 ## Contact Object Type
 
+[//]: # (Editor note: use Cx.x for Contacts)
+
 ### Data Representation
 
-**R5.10** Contact information MUST be provided using the JSContact [@!RFC9553] format.
-> //TODO: [Issue #24](https://github.com/ietf-wg-rpp/rpp-requirements/issues/24)
+**C5.1** RPP SHOULD consider using JSContact [@!RFC9553] format for contact representation.
 
 # New features
 > //MWU: is there a difference between optional features and an extension? i would think so, we can define an optional feature in the core protocol but make it optional. an extension is defined after the completion of the core protocol and is also optional.
