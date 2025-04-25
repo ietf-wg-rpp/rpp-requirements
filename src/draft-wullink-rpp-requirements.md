@@ -359,7 +359,7 @@ Solutions may include:
 
 **C13.2** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
 
-**C13.3** RPP MUST support localised multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.  
+**C13.3** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.  
 
 # New features
 > //MWU: is there a difference between optional features and an extension? i would think so, we can define an optional feature in the core protocol but make it optional. an extension is defined after the completion of the core protocol and is also optional.
