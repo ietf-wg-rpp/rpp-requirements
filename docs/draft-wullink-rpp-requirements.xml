@@ -44,9 +44,9 @@
 
 <section anchor="general"><name>General</name>
 <t><strong>R1.1.</strong> A wel defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers.</t>
-<t><strong>R1.2.</strong> The API MUST provide a clear, intuitive, and self-explanatory interface that facilitates seamless integration into existing software systems. Identifiers used in the API MUST avoid patterns, that could conflict with the syntax or semantics of most popular programming languages.</t>
+<t><strong>R1.2.</strong> RPP MUST provide a clear, clean, easy to use and self-explanatory interface that can easily be integrated into existing software systems.</t>
 <blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/3">Issue #3</eref></t>
-</blockquote><t><strong>R1.3.</strong> Wherever applicable RPP MUST leverage existing best practices and well adopted standards for building and documenting RESTful APIs</t>
+</blockquote><t><strong>R1.3.</strong> Wherever applicable RPP SHOULD leverage existing best practices and well adopted standards for building and documenting RESTful APIs. There MUST be a clear justification when deviating from this.</t>
 <t><strong>R1.4.</strong> RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in <xref target="RFC5730"></xref>.</t>
 <t><strong>R1.5.</strong>
 RPP MAY include support for providing detailed information about application status codes, for example as descibed in <xref target="RFC7807"></xref></t>
@@ -125,15 +125,16 @@ RPP SHOULD support additional information about a successful operation (informat
 <li>IANA bootstrap Service Registry</li>
 <li>DNS TXT records</li>
 </ul>
-<t><strong>R7.2</strong> An RPP server MUST publish a service discovery document in the well-known directory. This document contains required or useful information in a structured machine readable format, for a client to be able to generate valid RPP requests. The information may contain, but is not limited to:</t>
+<t><strong>R7.2</strong> An RPP server MUST publish a service discovery document in the well-known directory, described in <xref target="RFC5785"></xref>. This document contains structured machine readable information that required or useful for the client to be able to generate valid RPP requests. The information may contain, but is not limited to:</t>
 
 <ul spacing="compact">
 <li>Available services,</li>
 <li>Used Extensions</li>
 <li>Versions used for services and extensions</li>
-<li>Environment name (production, test ...)</li>
+<li>Environment name (production, test etc.)</li>
 <li>Server datetime</li>
 <li>Maintenance notices</li>
+<li>Supported profiles</li>
 <li>...</li>
 </ul>
 <blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/8">Issue #8</eref></t>
@@ -172,11 +173,10 @@ RPP SHOULD support additional information about a successful operation (informat
 <t><strong>R9.1</strong> RPP MUST support state-of-the-art authentication and authorization schemes allowing for easy integration in modern HTTP infrastructure.</t>
 <t><strong>R9.2</strong> RPP MUST support modern authentication and authorization standards (OAuth, OpenId Connect)</t>
 <t><strong>R9.3</strong> Support for an simplified and quicker object transfer process MAY be included, where approval from the losing registar is to be obtained interactively by the registrant during the transfer process.</t>
-<t><strong>R9.4</strong> The RPP MUST include an authorisation model/framework that goes beyond the current EPP password based Authorization Information used for object transfers. The following use cases MAY be supported:</t>
+<t><strong>R9.4</strong> RPP MUST include an authorisation model/framework that goes beyond the current EPP password based Authorization Information (AuthInfo) used for object transfers. The following use cases MAY be supported:</t>
 
 <ul spacing="compact">
 <li>Object transfers without using an EPP password based Authorization Information</li>
-<li>DNS operator/DNSSEC signing authority updating the DNSSEC key material</li>
 <li>Registrants using OpenID Connect can interactively allow DNS operator to update their NS records, directly in the registry database or indirectly using a registar.</li>
 </ul>
 <t><strong>R9.5</strong> RPP MUST employ strong authentication and utilize encrypted transport (HTTPS) to protect sensitive data.</t>
@@ -215,38 +215,16 @@ RPP SHOULD support additional information about a successful operation (informat
 </section>
 
 <section anchor="performance"><name>Performance</name>
-<t><strong>R12.1</strong> RPP MUST NOT include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.</t>
-<blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/25">Issue #25</eref></t>
-</blockquote><t><strong>R12.2</strong> RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.</t>
-</section>
-
-<section anchor="r12-3-rpp-may-support-compound-object-create-request-having-embedded-contact-host-vs-request-serialization-client-waiting-for-contact-host-creation-to-succeed-before"><name><strong>R12.3</strong> RPP MAY support compound object create request having embedded contact/host vs. request serialization (client waiting for contact/host creation to succeed before</name>
-</section>
-
-<section anchor="sending-a-domain-request-return-complete-representation-similar-to-object-info-in-epp-after-compound-request-completed-or-return-redirect-to-newly-created-object-location"><name>sending a domain request). Return complete representation (similar to object info in EPP) after compound request completed or return redirect to newly created object location.</name>
-</section>
-
-<section anchor="todo-issue-12-https-github-com-ietf-wg-rpp-rpp-requirements-issues-12"><name>&gt; //TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/12">Issue #12</eref></name>
+<t><strong>R12.1</strong> In order to minimise message sizes and needed processing RPP SHOULD be designed not to include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.</t>
+<t><strong>R12.2</strong> RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.</t>
+<t><strong>R12.3</strong> <em>Removed</em>
+</t>
 </section>
 
 <section anchor="internationalisation"><name>Internationalisation</name>
 <t><strong>R13.1</strong> RPP MUST support internationalization, for object types and messages defined in the core protocol and extensions</t>
-</section>
-
-<section anchor="internationalization-for-the-object-types-listed-below-need-to-be-added-to-separate-sections-per-object-type"><name>internationalization for the object types listed below need to be added to separate sections per object type.</name>
-</section>
-
-<section anchor="contact-objects"><name>- Contact objects</name>
-</section>
-
-<section anchor="email-addresses"><name>- Email addresses</name>
-</section>
-
-<section anchor="internationalized-domain-names-idns"><name>- Internationalized Domain Names (IDNs)</name>
-</section>
-
-<section anchor="todo-issue-23-https-github-com-ietf-wg-rpp-rpp-requirements-issues-23"><name>&gt; //TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/23">Issue #23</eref></name>
-<t><strong>R13.2</strong> RPP MUST support human-readable localized response mesages.</t>
+<blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/23">Issue #23</eref></t>
+</blockquote><t><strong>R13.2</strong> RPP MUST support human-readable localized response mesages.</t>
 </section>
 
 <section anchor="clients"><name>Clients</name>
@@ -267,9 +245,8 @@ RPP SHOULD support additional information about a successful operation (informat
 <section anchor="contact-object-type"><name>Contact Object Type</name>
 
 <section anchor="data-representation-1"><name>Data Representation</name>
-<t><strong>R5.10</strong> Contact information MUST be provided using the JSContact <xref target="RFC9553"></xref> format.</t>
-<blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/24">Issue #24</eref></t>
-</blockquote></section>
+<t><strong>C5.1</strong> RPP SHOULD consider using JSContact <xref target="RFC9553"></xref> format for contact representation.</t>
+</section>
 </section>
 </section>
 
@@ -295,11 +272,9 @@ The server MAY support generating a representation of a historical overview for 
 <section anchor="appendix-a-extensions"><name>Appendix A. Extensions</name>
 <t>// List of required extions here
 // see: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/19">https://github.com/ietf-wg-rpp/rpp-requirements/issues/19</eref></t>
-
-<section anchor="a-1-search-api"><name>A.1 Search API</name>
-<t>Allow for advanced search capabilities for object info request.</t>
+<t><strong>A.1</strong> An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.</t>
+<t><strong>A.2</strong> An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.</t>
 <t>TODO</t>
-</section>
 </section>
 
 </middle>
@@ -331,6 +306,7 @@ The server MAY support generating a representation of a historical overview for 
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5731.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5732.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5733.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7807.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9553.xml"/>
