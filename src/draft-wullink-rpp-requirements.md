@@ -181,14 +181,15 @@ Solutions may include:
 - IANA bootstrap Service Registry
 - DNS TXT records
 
-**R7.2** An RPP server MUST publish a service discovery document in the well-known directory. This document contains required or useful information in a structured machine readable format, for a client to be able to generate valid RPP requests. The information may contain, but is not limited to:
+**R7.2** An RPP server MUST publish a service discovery document in the well-known directory, described in [@!RFC5785]. This document contains structured machine readable information that required or useful for the client to be able to generate valid RPP requests. The information may contain, but is not limited to:
 
 - Available services,
 - Used Extensions
 - Versions used for services and extensions
-- Environment name (production, test ...)
+- Environment name (production, test etc.)
 - Server datetime
 - Maintenance notices
+- Supported profiles
 - ...
 
 > //TODO: [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8)
