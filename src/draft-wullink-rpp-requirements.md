@@ -241,10 +241,9 @@ Solutions may include:
 
 **R9.3** Support for an simplified and quicker object transfer process MAY be included, where approval from the losing registar is to be obtained interactively by the registrant during the transfer process.
 
-**R9.4** The RPP MUST include an authorisation model/framework that goes beyond the current EPP password based Authorization Information used for object transfers. The following use cases MAY be supported:
+**R9.4** RPP MUST include an authorisation model/framework that goes beyond the current EPP password based Authorization (AuthInfo) used for object transfers. The following use cases MAY be supported:
 
 - Object transfers without using an EPP password based Authorization Information
-- DNS operator/DNSSEC signing authority updating the DNSSEC key material
 - Registrants using OpenID Connect can interactively allow DNS operator to update their NS records, directly in the registry database or indirectly using a registar.
 
 **R9.5** RPP MUST employ strong authentication and utilize encrypted transport (HTTPS) to protect sensitive data. 
@@ -378,14 +377,12 @@ TODO
 // List of required extions here
 // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
 
-## A.1 Search API
+**A.1** An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.
 
-Allow for advanced search capabilities for object info request.
+**A.2** An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.
 
 
 TODO
-
-
 
 
 {backmatter}
