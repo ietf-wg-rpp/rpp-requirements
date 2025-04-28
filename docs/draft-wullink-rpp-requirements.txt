@@ -79,15 +79,17 @@ Table of Contents
    17. Clients . . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    18. Requirements for object types . . . . . . . . . . . . . . . .  12
      18.1.  Domain Object Type . . . . . . . . . . . . . . . . . . .  12
+       18.1.1.  Internationalisation . . . . . . . . . . . . . . . .  12
      18.2.  Host Object Type . . . . . . . . . . . . . . . . . . . .  12
      18.3.  Contact Object Type  . . . . . . . . . . . . . . . . . .  12
        18.3.1.  Data Representation  . . . . . . . . . . . . . . . .  12
-   19. New features  . . . . . . . . . . . . . . . . . . . . . . . .  12
+       18.3.2.  Internationalisation . . . . . . . . . . . . . . . .  12
+   19. New features  . . . . . . . . . . . . . . . . . . . . . . . .  13
    20. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  13
    21. Internationalization Considerations . . . . . . . . . . . . .  13
    22. Security Considerations . . . . . . . . . . . . . . . . . . .  13
    23. Appendix A.  Extensions . . . . . . . . . . . . . . . . . . .  13
-   24. Normative References  . . . . . . . . . . . . . . . . . . . .  13
+   24. Normative References  . . . . . . . . . . . . . . . . . . . .  14
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
@@ -104,8 +106,6 @@ Table of Contents
 
    REST - Representational State Transfer ([REST]).  An architectural
    style.
-
-
 
 
 
@@ -608,8 +608,8 @@ Internet-Draft             RPP - Requirements                 April 2025
    *R13.1* RPP MUST support internationalization, for object types and
    messages defined in the core protocol and extensions
 
-   |  //TODO: Issue #23 (https://github.com/ietf-wg-rpp/rpp-
-   |  requirements/issues/23)
+   *R13.2* RPP MUST support human-readable localized response mesages.
+
 
 
 
@@ -617,8 +617,6 @@ Wullink & Kowalik        Expires 30 October 2025               [Page 11]
 
 Internet-Draft             RPP - Requirements                 April 2025
 
-
-   *R13.2* RPP MUST support human-readable localized response mesages.
 
 17.  Clients
 
@@ -641,6 +639,12 @@ Internet-Draft             RPP - Requirements                 April 2025
 
 18.1.  Domain Object Type
 
+18.1.1.  Internationalisation
+
+   *D13.1* RPP MUST support Internationalized Domain Names (IDNs) - both
+   UTF-8 as well as Punycode representation of a domain name MUST be
+   supported, however one of them MAY be chose as primary for object URL
+
 18.2.  Host Object Type
 
 18.3.  Contact Object Type
@@ -649,6 +653,30 @@ Internet-Draft             RPP - Requirements                 April 2025
 
    *C5.1* RPP SHOULD consider using JSContact [RFC9553] format for
    contact representation.
+
+18.3.2.  Internationalisation
+
+   *C13.1* RPP MUST support internationalization (character encoding)
+   for Contact objects in the following areas:
+
+   -  name
+   -  address data
+   -  any other contact-related data containing human provided or
+      readible text
+
+   *C13.2* RPP MUST support internationalised Email addresses [RFC6530]
+   in Contact objects.
+
+
+
+Wullink & Kowalik        Expires 30 October 2025               [Page 12]
+
+Internet-Draft             RPP - Requirements                 April 2025
+
+
+   *C13.3* RPP MUST support multiple localised expressions of the same
+   data, e.g. fields mentioned in C13.1 having both international and
+   localised variants.
 
 19.  New features
 
@@ -666,13 +694,6 @@ Internet-Draft             RPP - Requirements                 April 2025
    |  the object (create, update ...).  The historical time window is
    |  determined by server policy and MUST be included in the discovery
    |  service document.
-
-
-
-Wullink & Kowalik        Expires 30 October 2025               [Page 12]
-
-Internet-Draft             RPP - Requirements                 April 2025
-
 
 20.  IANA Considerations
 
@@ -701,6 +722,14 @@ Internet-Draft             RPP - Requirements                 April 2025
    DNS operator to update the DNSSEC key material for a domain object,
    without the need for the registrar to be involved in this process.
 
+
+
+
+Wullink & Kowalik        Expires 30 October 2025               [Page 13]
+
+Internet-Draft             RPP - Requirements                 April 2025
+
+
    TODO
 
 24.  Normative References
@@ -720,15 +749,6 @@ Internet-Draft             RPP - Requirements                 April 2025
               Network-based Software Architectures", 2000,
               <http://www.ics.uci.edu/~fielding/pubs/dissertation/
               rest_arch_style.htm>.
-
-
-
-
-
-Wullink & Kowalik        Expires 30 October 2025               [Page 13]
-
-Internet-Draft             RPP - Requirements                 April 2025
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -757,10 +777,23 @@ Internet-Draft             RPP - Requirements                 April 2025
               Contact Mapping", STD 69, RFC 5733, DOI 10.17487/RFC5733,
               August 2009, <https://www.rfc-editor.org/info/rfc5733>.
 
+
+
+
+
+Wullink & Kowalik        Expires 30 October 2025               [Page 14]
+
+Internet-Draft             RPP - Requirements                 April 2025
+
+
    [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
               Uniform Resource Identifiers (URIs)", RFC 5785,
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
+
+   [RFC6530]  Klensin, J. and Y. Ko, "Overview and Framework for
+              Internationalized Email", RFC 6530, DOI 10.17487/RFC6530,
+              February 2012, <https://www.rfc-editor.org/info/rfc6530>.
 
    [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
               APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
@@ -775,16 +808,6 @@ Internet-Draft             RPP - Requirements                 April 2025
               Representation of Contact Data", RFC 9553,
               DOI 10.17487/RFC9553, May 2024,
               <https://www.rfc-editor.org/info/rfc9553>.
-
-
-
-
-
-
-Wullink & Kowalik        Expires 30 October 2025               [Page 14]
-
-Internet-Draft             RPP - Requirements                 April 2025
-
 
    [RICHARDSON]
               Fowler, M., "Richardson Maturity Model", 2010,
@@ -807,29 +830,6 @@ Authors' Addresses
    DENIC
    Email: pawel.kowalik@denic.de
    URI:   https://denic.de/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

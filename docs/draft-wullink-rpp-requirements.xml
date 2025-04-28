@@ -223,8 +223,7 @@ RPP SHOULD support additional information about a successful operation (informat
 
 <section anchor="internationalisation"><name>Internationalisation</name>
 <t><strong>R13.1</strong> RPP MUST support internationalization, for object types and messages defined in the core protocol and extensions</t>
-<blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/23">Issue #23</eref></t>
-</blockquote><t><strong>R13.2</strong> RPP MUST support human-readable localized response mesages.</t>
+<t><strong>R13.2</strong> RPP MUST support human-readable localized response mesages.</t>
 </section>
 
 <section anchor="clients"><name>Clients</name>
@@ -237,6 +236,10 @@ RPP SHOULD support additional information about a successful operation (informat
 <section anchor="requirements-for-object-types"><name>Requirements for object types</name>
 
 <section anchor="domain-object-type"><name>Domain Object Type</name>
+
+<section anchor="internationalisation-1"><name>Internationalisation</name>
+<t><strong>D13.1</strong> RPP MUST support Internationalized Domain Names (IDNs) - both UTF-8 as well as Punycode representation of a domain name MUST be supported, however one of them MAY be chose as primary for object URL</t>
+</section>
 </section>
 
 <section anchor="host-object-type"><name>Host Object Type</name>
@@ -246,6 +249,18 @@ RPP SHOULD support additional information about a successful operation (informat
 
 <section anchor="data-representation-1"><name>Data Representation</name>
 <t><strong>C5.1</strong> RPP SHOULD consider using JSContact <xref target="RFC9553"></xref> format for contact representation.</t>
+</section>
+
+<section anchor="internationalisation-2"><name>Internationalisation</name>
+<t><strong>C13.1</strong> RPP MUST support internationalization (character encoding) for Contact objects in the following areas:</t>
+
+<ul spacing="compact">
+<li>name</li>
+<li>address data</li>
+<li>any other contact-related data containing human provided or readible text</li>
+</ul>
+<t><strong>C13.2</strong> RPP MUST support internationalised Email addresses <xref target="RFC6530"></xref> in Contact objects.</t>
+<t><strong>C13.3</strong> RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.</t>
 </section>
 </section>
 </section>
@@ -307,6 +322,7 @@ The server MAY support generating a representation of a historical overview for 
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5732.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5733.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6530.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7807.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9553.xml"/>

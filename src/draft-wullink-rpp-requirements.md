@@ -181,7 +181,7 @@ Solutions may include:
 - IANA bootstrap Service Registry
 - DNS TXT records
 
-**R7.2** An RPP server MUST publish a service discovery document in the well-known directory, described in [@!RFC5785]. This document contains structured machine readable information that required or useful for the client to be able to generate valid RPP requests. The information may contain, but is not limited to:
+**R7.2** An RPP server MUST publish a service discovery document in the well-known directory, described in [@!RFC5785]. This document contains structured machine readable information that is required or useful for the client to be able to generate valid RPP requests. The information may contain, but is not limited to:
 
 - Available services,
 - Used Extensions

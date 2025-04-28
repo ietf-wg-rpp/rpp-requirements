@@ -1356,6 +1356,11 @@ li > p:last-of-type:only-child {
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.1">
                 <p id="section-toc.1-1.18.2.1.1"><a href="#section-18.1" class="auto internal xref">18.1</a>.  <a href="#name-domain-object-type" class="internal xref">Domain Object Type</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.1.2.1">
+                    <p id="section-toc.1-1.18.2.1.2.1.1"><a href="#section-18.1.1" class="auto internal xref">18.1.1</a>.  <a href="#name-internationalisation-2" class="internal xref">Internationalisation</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.2">
                 <p id="section-toc.1-1.18.2.2.1"><a href="#section-18.2" class="auto internal xref">18.2</a>.  <a href="#name-host-object-type" class="internal xref">Host Object Type</a></p>
@@ -1365,6 +1370,9 @@ li > p:last-of-type:only-child {
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.3.2.1">
                     <p id="section-toc.1-1.18.2.3.2.1.1"><a href="#section-18.3.1" class="auto internal xref">18.3.1</a>.  <a href="#name-data-representation-2" class="internal xref">Data Representation</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18.2.3.2.2">
+                    <p id="section-toc.1-1.18.2.3.2.2.1"><a href="#section-18.3.2" class="auto internal xref">18.3.2</a>.  <a href="#name-internationalisation-3" class="internal xref">Internationalisation</a></p>
 </li>
                 </ul>
 </li>
@@ -1697,10 +1705,7 @@ RPP SHOULD support additional information about a successful operation (informat
 <a href="#section-16" class="section-number selfRef">16. </a><a href="#name-internationalisation" class="section-name selfRef">Internationalisation</a>
       </h2>
 <p id="section-16-1"><strong>R13.1</strong> RPP MUST support internationalization, for object types and messages defined in the core protocol and extensions<a href="#section-16-1" class="pilcrow">¶</a></p>
-<blockquote id="section-16-2">
-        <p id="section-16-2.1">//TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/23">Issue #23</a><a href="#section-16-2.1" class="pilcrow">¶</a></p>
-</blockquote>
-<p id="section-16-3"><strong>R13.2</strong> RPP MUST support human-readable localized response mesages.<a href="#section-16-3" class="pilcrow">¶</a></p>
+<p id="section-16-2"><strong>R13.2</strong> RPP MUST support human-readable localized response mesages.<a href="#section-16-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="clients">
@@ -1723,7 +1728,15 @@ RPP SHOULD support additional information about a successful operation (informat
 <section id="section-18.1">
         <h3 id="name-domain-object-type">
 <a href="#section-18.1" class="section-number selfRef">18.1. </a><a href="#name-domain-object-type" class="section-name selfRef">Domain Object Type</a>
-      </h3>
+        </h3>
+<div id="internationalisation-1">
+<section id="section-18.1.1">
+          <h4 id="name-internationalisation-2">
+<a href="#section-18.1.1" class="section-number selfRef">18.1.1. </a><a href="#name-internationalisation-2" class="section-name selfRef">Internationalisation</a>
+          </h4>
+<p id="section-18.1.1-1"><strong>D13.1</strong> RPP MUST support Internationalized Domain Names (IDNs) - both UTF-8 as well as Punycode representation of a domain name MUST be supported, however one of them MAY be chose as primary for object URL<a href="#section-18.1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="host-object-type">
@@ -1744,6 +1757,24 @@ RPP SHOULD support additional information about a successful operation (informat
 <a href="#section-18.3.1" class="section-number selfRef">18.3.1. </a><a href="#name-data-representation-2" class="section-name selfRef">Data Representation</a>
           </h4>
 <p id="section-18.3.1-1"><strong>C5.1</strong> RPP SHOULD consider using JSContact <span>[<a href="#RFC9553" class="cite xref">RFC9553</a>]</span> format for contact representation.<a href="#section-18.3.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="internationalisation-2">
+<section id="section-18.3.2">
+          <h4 id="name-internationalisation-3">
+<a href="#section-18.3.2" class="section-number selfRef">18.3.2. </a><a href="#name-internationalisation-3" class="section-name selfRef">Internationalisation</a>
+          </h4>
+<p id="section-18.3.2-1"><strong>C13.1</strong> RPP MUST support internationalization (character encoding) for Contact objects in the following areas:<a href="#section-18.3.2-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-18.3.2-2.1">name<a href="#section-18.3.2-2.1" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="section-18.3.2-2.2">address data<a href="#section-18.3.2-2.2" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="section-18.3.2-2.3">any other contact-related data containing human provided or readible text<a href="#section-18.3.2-2.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+<p id="section-18.3.2-3"><strong>C13.2</strong> RPP MUST support internationalised Email addresses <span>[<a href="#RFC6530" class="cite xref">RFC6530</a>]</span> in Contact objects.<a href="#section-18.3.2-3" class="pilcrow">¶</a></p>
+<p id="section-18.3.2-4"><strong>C13.3</strong> RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.<a href="#section-18.3.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1847,6 +1878,10 @@ The server MAY support generating a representation of a historical overview for 
 <dt id="RFC5785">[RFC5785]</dt>
       <dd>
 <span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">E. Hammer-Lahav</span>, <span class="refTitle">"Defining Well-Known Uniform Resource Identifiers (URIs)"</span>, <span class="seriesInfo">RFC 5785</span>, <span class="seriesInfo">DOI 10.17487/RFC5785</span>, <time datetime="2010-04" class="refDate">April 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5785">https://www.rfc-editor.org/info/rfc5785</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6530">[RFC6530]</dt>
+      <dd>
+<span class="refAuthor">Klensin, J.</span> and <span class="refAuthor">Y. Ko</span>, <span class="refTitle">"Overview and Framework for Internationalized Email"</span>, <span class="seriesInfo">RFC 6530</span>, <span class="seriesInfo">DOI 10.17487/RFC6530</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6530">https://www.rfc-editor.org/info/rfc6530</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7807">[RFC7807]</dt>
       <dd>
