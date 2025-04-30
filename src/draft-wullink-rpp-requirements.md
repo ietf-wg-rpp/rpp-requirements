@@ -76,7 +76,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 # General
 
-**R1.1.** A wel defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers. 
+**R1.1.** A well defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers. 
 
 **R1.2.** RPP MUST provide a clear, clean, easy to use and self-explanatory interface that can easily be integrated into existing software systems.
 > //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3)
