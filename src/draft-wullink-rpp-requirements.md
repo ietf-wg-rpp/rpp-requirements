@@ -207,8 +207,6 @@ Solutions may include:
 
 **R7.5** Versioning schema MUST carry information about breaking vs. non-breaking changes and allow clients to decide whether it is able to interact with the server. The versioning scheme SHOULD be like the scheme used for HTTP where minor version changes do not break compatibility.
 
-**R7.5** Versions used by the RPP protocol and used extensions MUST be discoverable by the client.
-
 **R7.6** Notices related to scheduled server maintenance timeslots MAY be included in the discovery document, this could be a human readable, non machine parsable character string.
 > //TODO: [Issue #9](https://github.com/ietf-wg-rpp/rpp-requirements/issues/9)
 
@@ -218,6 +216,8 @@ Solutions may include:
 > //SEE: [Issue #21](https://github.com/ietf-wg-rpp/rpp-requirements/issues/21)
 
 **R7.9** An RPP response that includes unique object identifiers, MAY also include URL references for these objects.
+
+**R7.10** Versions used by the RPP protocol and used extensions MUST be discoverable by the client.
 
 # EPP compatibility
 
@@ -445,14 +445,14 @@ TODO
 #### Discoverability
 
 * Rewritten R7.2: Significantly expanded the requirement for the discovery document (`/.well-known`), detailing mandatory structured machine-readable content (services, extensions, versions, etc.).
-* Expanded R7.4 & R7.5: Old API version discoverability expanded into R7.4 (MUST support versioning for protocol, objects, representations, etc.) and two requirements numbered R7.5 (Schema MUST show breaking changes; versions MUST be discoverable). *Note: Duplicate numbering R7.5 exists in the new version.*
+* Expanded R7.4, R7.5 & R7.10: Old API version discoverability expanded into R7.4 (MUST support versioning for protocol, objects, representations, etc.), R7.5 (Schema MUST show breaking changes) and &.10 (versions MUST be discoverable).
 * Removed Requirement R7.8: Explicitly removed (linked to Issue #21).
 * New Requirement R7.9: Added requirement: Response with unique object IDs MAY include URL references.
 
 #### EPP compatibility
 
 * New Requirement R8.3: Added requirement: RPP-to-EPP mapping definitions MAY be defined in compatibility profiles (references R4.4).
-* Removed Requirement: Requirement allowing common EPP extensions in core (MAY) removed (superseded by R4.2).
+* Removed Moved: Requirement about including common EPP extensions in core moved (superseded by R4.2).
 * New Requirement R8.4: Added requirement: RPP MUST include an *extension framework* for EPP extension equivalents not in core (references R4.2).
 * Rewritten R8.5: Replaced old EPP token requirement with R8.5 (MUST support EPP password-based Authorization Information per [@!RFC5731]/[@!RFC5733]).
 * New Requirement R8.6: Added requirement: RPP SHOULD support client_id/password authentication similar to EPP.
