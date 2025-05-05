@@ -9,7 +9,7 @@ TocDepth = 4
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-wullink-rpp-requirements-00"
+value = "draft-wullink-rpp-requirements-01"
 stream = "IETF"
 status = "standard"
 
@@ -382,7 +382,7 @@ TODO
 
 # Changes History
 
-## -00 to -01
+## Version -00 to -01
 
 ### Overall Structural Changes
 
@@ -515,8 +515,8 @@ TODO
 
 # Appendix A. Extensions
 
-// List of required extions here
-// see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
+> // List of required extensions here
+> // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
 
 **A.1** An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- name="GENERATOR" content="github.com/mmarkdown/mmark Mmark Markdown Processor - mmark.miek.nl" -->
-<rfc version="3" ipr="trust200902" docName="draft-wullink-rpp-requirements-00" submissionType="IETF" category="std" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" indexInclude="true" tocDepth="4">
+<rfc version="3" ipr="trust200902" docName="draft-wullink-rpp-requirements-01" submissionType="IETF" category="std" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" indexInclude="true" tocDepth="4">
 
 <front>
-<title abbrev="RPP - Requirements">RESTful Provisioning Protocol (RPP) - Requirements</title><seriesInfo value="draft-wullink-rpp-requirements-00" stream="IETF" status="standard" name="Internet-Draft"></seriesInfo>
+<title abbrev="RPP - Requirements">RESTful Provisioning Protocol (RPP) - Requirements</title><seriesInfo value="draft-wullink-rpp-requirements-01" stream="IETF" status="standard" name="Internet-Draft"></seriesInfo>
 <author initials="M." surname="Wullink" fullname="Maarten Wullink"><organization>SIDN Labs</organization><address><postal><street></street>
 </postal><email>maarten.wullink@sidn.nl</email>
 <uri>https://sidn.nl/</uri>
@@ -43,7 +43,7 @@
 </section>
 
 <section anchor="general"><name>General</name>
-<t><strong>R1.1.</strong> A wel defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers.</t>
+<t><strong>R1.1.</strong> A well defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers.</t>
 <t><strong>R1.2.</strong> RPP MUST provide a clear, clean, easy to use and self-explanatory interface that can easily be integrated into existing software systems.</t>
 <blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/3">Issue #3</eref></t>
 </blockquote><t><strong>R1.3.</strong> Wherever applicable RPP SHOULD leverage existing best practices and well adopted standards for building and documenting RESTful APIs. There MUST be a clear justification when deviating from this.</t>
@@ -125,7 +125,7 @@ RPP SHOULD support additional information about a successful operation (informat
 <li>IANA bootstrap Service Registry</li>
 <li>DNS TXT records</li>
 </ul>
-<t><strong>R7.2</strong> An RPP server MUST publish a service discovery document in the well-known directory, described in <xref target="RFC5785"></xref>. This document contains structured machine readable information that required or useful for the client to be able to generate valid RPP requests. The information may contain, but is not limited to:</t>
+<t><strong>R7.2</strong> An RPP server MUST publish a service discovery document in the well-known directory, described in <xref target="RFC5785"></xref>. This document contains structured machine readable information that is required or useful for the client to be able to generate valid RPP requests. The information may contain, but is not limited to:</t>
 
 <ul spacing="compact">
 <li>Available services,</li>
@@ -150,13 +150,13 @@ RPP SHOULD support additional information about a successful operation (informat
 <li>Extensions</li>
 </ul>
 <t><strong>R7.5</strong> Versioning schema MUST carry information about breaking vs. non-breaking changes and allow clients to decide whether it is able to interact with the server. The versioning scheme SHOULD be like the scheme used for HTTP where minor version changes do not break compatibility.</t>
-<t><strong>R7.5</strong> Versions used by the RPP protocol and used extensions MUST be discoverable by the client.</t>
 <t><strong>R7.6</strong> Notices related to scheduled server maintenance timeslots MAY be included in the discovery document, this could be a human readable, non machine parsable character string.</t>
 <blockquote><t>//TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/9">Issue #9</eref></t>
 </blockquote><t><strong>R7.7</strong> RPP MAY only support a subset of EPP functionality, the supported functionality MUST be discoverable by the client</t>
 <t><strong>R7.8</strong> <em>Removed</em></t>
 <blockquote><t>//SEE: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/21">Issue #21</eref></t>
 </blockquote><t><strong>R7.9</strong> An RPP response that includes unique object identifiers, MAY also include URL references for these objects.</t>
+<t><strong>R7.10</strong> Versions used by the RPP protocol and used extensions MUST be discoverable by the client.</t>
 </section>
 
 <section anchor="epp-compatibility"><name>EPP compatibility</name>
@@ -281,13 +281,202 @@ The server MAY support generating a representation of a historical overview for 
 </section>
 
 <section anchor="security-considerations"><name>Security Considerations</name>
-<t>TODO</t>
+</section>
+
+<section anchor="changes-history"><name>Changes History</name>
+
+<section anchor="version-00-to-01"><name>Version -00 to -01</name>
+
+<section anchor="overall-structural-changes"><name>Overall Structural Changes</name>
+
+<ul>
+<li>Requirement Numbering: All requirements have been assigned a structured numbering format (e.g., Rx.x, Dx.x, Cx.x, Hx.x).</li>
+<li><t>New Sections Added:</t>
+
+<ul spacing="compact">
+<li><tt>Operations and responses</tt></li>
+<li><tt>Clients</tt></li>
+<li><tt>Internationalisation</tt></li>
+<li><tt>Requirements for object types</tt> (with subsections for Domain, Host, Contact)</li>
+<li><tt>Appendix A. Extensions</tt></li>
+</ul></li>
+<li><t>Section Removed: The old <tt>Other</tt> section, which contained a list of discussion points, was removed and requirements placed in relevant sections or appendix.</t>
+</li>
+</ul>
+</section>
+
+<section anchor="major-changes-by-section-references-as-per-01"><name>Major Changes by Section (References as per -01)</name>
+
+<section anchor="general-1"><name>General</name>
+
+<ul spacing="compact">
+<li>Modified R1.2: Removed the explicit requirement for language bindings.</li>
+<li>Replaced Requirement (R1.3): Replaced the specific requirement to leverage HTTP, JSON, OpenAPI with a broader R1.3 (SHOULD leverage RESTful best practices, MUST justify deviation).</li>
+<li>New Requirement R1.4: Added requirement: RPP MUST support application-level status codes (MAY reuse EPP codes).</li>
+<li>New Requirement R1.5: Added requirement: RPP MAY support detailed status information (e.g., <xref target="RFC7807"></xref>).</li>
+<li>New Requirement R1.6: Added requirement: RPP SHOULD support informational/warning messages on success.</li>
+</ul>
+</section>
+
+<section anchor="http-1"><name>HTTP</name>
+
+<ul spacing="compact">
+<li>Modified R2.2: Added requirement: Deviation from HTTP best practices (<xref target="BCP56"></xref>) MUST be justified.</li>
+<li>Rewritten R2.4: Significantly rewrote the status code requirement. Now MUST use existing HTTP codes AND define application-level codes, clarifying mapping and overload handling.</li>
+</ul>
+</section>
+
+<section anchor="rest-1"><name>REST</name>
+
+<ul spacing="compact">
+<li>Modified R3.1: Removed the negative recommendation against Richardson Maturity Model (RMM) Level 3.</li>
+<li>New Requirement R3.2: Added requirement: RPP MUST follow Resource-Oriented Architecture <xref target="ROI"></xref>.</li>
+<li>New Requirement R3.3: Added requirement: RPP MUST strive to minimize client-server round trips.</li>
+<li>Merged Requirement R3.4: Old requirement &quot;When the semantics... MUST be optional&quot; merged into R12.1.</li>
+<li>Modified R3.5: Broadened API specification recommendation (SHOULD) to include <xref target="RAML"></xref>; added constraint: RPP MUST NOT mandate a specific API specification technology.</li>
+</ul>
+</section>
+
+<section anchor="data-model-1"><name>Data Model</name>
+
+<ul spacing="compact">
+<li>Modified R4.2: Changed normative keyword from MAY to SHOULD regarding adding common EPP extensions (like DNSSEC) to the core data model.</li>
+<li>Rewritten R4.3: Replaced old data omission requirement (SHOULD) with R4.3 (MUST allow <em>extension mechanism</em> for omission/redaction).</li>
+<li>New Requirement R4.5: Added requirement: RPP architecture MUST include loose coupling for non-breaking version changes.</li>
+<li>Rewritten R4.6: Replaced old text about server choice on validation strictness with R4.6 (MUST default to ignoring unknown properties, MUST provide mechanism for client to request strict handling).</li>
+</ul>
+</section>
+
+<section anchor="data-representation-2"><name>Data Representation</name>
+
+<ul spacing="compact">
+<li>Split Requirement (R5.1, R5.2): Old requirement (MUST use JSON default, MAY support others) split into R5.1 (MUST use JSON default) and R5.2 (MUST be possible to extend RPP for other formats).</li>
+<li>Rewritten R5.4: Replaced &quot;server MAY support multiple media types&quot; with R5.4 (MUST define default media type, SHALL be extensible for others).</li>
+<li>Removed Requirement (Old R5.6): Requirement related to server profiles for data models/mappings explicitly removed (linked to Issue #11).</li>
+<li>Modified R5.8: Changed partial update support from MAY to MUST. Removed specific mention of HTTP PATCH / JSON Merge Patch.</li>
+<li>New Requirement R5.9: Added requirement: RPP MUST support full update of data objects.</li>
+<li>New Requirement R5.10: Added requirement: Response with object ID MUST include object URL reference.</li>
+<li>Removed Requirement: Requirement to use JSContact for contacts moved to C5.1.</li>
+</ul>
+</section>
+
+<section anchor="operations-and-responses-1"><name>Operations and responses</name>
+
+<ul spacing="compact">
+<li>New Requirement R6.1: Added requirement: RPP MUST support client requests for different data representation depths (minimal, full, full+dereferenced).</li>
+<li>New Requirement R6.2: Added requirement: RPP MAY return different representations in different contexts.</li>
+<li>New Requirement R6.3: Added requirement: Response data MUST only contain object data; transactional info MUST be in HTTP headers.</li>
+</ul>
+</section>
+
+<section anchor="discoverability-1"><name>Discoverability</name>
+
+<ul spacing="compact">
+<li>Rewritten R7.2: Significantly expanded the requirement for the discovery document (<tt>/.well-known</tt>), detailing mandatory structured machine-readable content (services, extensions, versions, etc.).</li>
+<li>Expanded R7.4, R7.5 &amp; R7.10: Old API version discoverability expanded into R7.4 (MUST support versioning for protocol, objects, representations, etc.), R7.5 (Schema MUST show breaking changes) and &amp;.10 (versions MUST be discoverable).</li>
+<li>Removed Requirement R7.8: Explicitly removed (linked to Issue #21).</li>
+<li>New Requirement R7.9: Added requirement: Response with unique object IDs MAY include URL references.</li>
+</ul>
+</section>
+
+<section anchor="epp-compatibility-1"><name>EPP compatibility</name>
+
+<ul spacing="compact">
+<li>New Requirement R8.3: Added requirement: RPP-to-EPP mapping definitions MAY be defined in compatibility profiles (references R4.4).</li>
+<li>Removed Moved: Requirement about including common EPP extensions in core moved (superseded by R4.2).</li>
+<li>New Requirement R8.4: Added requirement: RPP MUST include an <em>extension framework</em> for EPP extension equivalents not in core (references R4.2).</li>
+<li>Rewritten R8.5: Replaced old EPP token requirement with R8.5 (MUST support EPP password-based Authorization Information per <xref target="RFC5731"></xref>/<xref target="RFC5733"></xref>).</li>
+<li>New Requirement R8.6: Added requirement: RPP SHOULD support client_id/password authentication similar to EPP.</li>
+</ul>
+</section>
+
+<section anchor="security-1"><name>Security</name>
+
+<ul spacing="compact">
+<li>Rewritten R9.4: Significantly rewrote and expanded the authorization model requirement (MUST go beyond AuthInfo), detailing potential use cases (transfers without AuthInfo, DNS operator updates via OIDC).</li>
+<li>New Requirement R9.8: Added requirement: RPP MUST allow multiple user accounts per registrar, MAY delegate user management.</li>
+<li>New Requirement R9.9: Added requirement: RPP MUST support a granular authorization matrix (permissions per user).</li>
+<li>New Requirement R9.10: Added requirement: RPP MUST allow credential updates and enforce password strength/lifetime.</li>
+</ul>
+</section>
+
+<section anchor="extensibility-1"><name>Extensibility</name>
+
+<ul spacing="compact">
+<li>Removed Requirement: Removed &quot;SHOULD aim for easy and natural extensibility to richer models&quot;.</li>
+<li>New Requirement R10.3: Added requirement: RPP SHOULD promote standardization of common extension attributes.</li>
+<li>Removed Requirement: Removed explicit prohibition of EPP-style command-response extensions.</li>
+<li>New Requirement R10.5: Added requirement: RPP MUST support extensions defining new status codes.</li>
+<li>New Requirement R10.6: Added requirement: RPP MUST support extensions adding new HTTP headers.</li>
+<li>New Requirement R10.7: Added requirement: RPP SHALL have conflict avoidance mechanisms for extensions (private and coordinated).</li>
+<li>Removed Requirement: Removed requirement for JSON namespace concept.</li>
+<li>New Requirement R10.9: Added requirement: RPP extensions MUST support versioning, discoverable via discovery document.</li>
+<li>Removed Requirement R10.10: Requirement for IANA registry of RPP status codes explicitly dropped (linked to Issue #20).</li>
+<li>New Requirement R10.11: Added requirement: Extension designers MAY add status codes, SHOULD register generic ones with IANA.</li>
+</ul>
+</section>
+
+<section anchor="scalability-1"><name>Scalability</name>
+
+<ul spacing="compact">
+<li>Modified R11.3: Refined load balancing requirement (MUST support at URL level, MUST be possible without body processing).</li>
+<li>Rewritten R11.5: Expanded async processing clause into R11.5 (MUST support async for multi-object/intensive/manual ops, specifying response mechanism).</li>
+</ul>
+</section>
+
+<section anchor="performance-1"><name>Performance</name>
+
+<ul spacing="compact">
+<li>Rewritten R12.1: Changed requirement from MUST allow optional body to SHOULD be designed not to include body when not needed (references merge from old R3.4).</li>
+<li>Modified R12.2: Added constraint: RPP MUST NOT mandate bulk/listing/filtering features where they negatively impact scalability/performance.</li>
+<li>Removed Requirement R12.3: Requirement allowing compound object creation explicitly removed (linked to Issue #12).</li>
+</ul>
+</section>
+
+<section anchor="internationalisation-3"><name>Internationalisation</name>
+
+<ul spacing="compact">
+<li>New Requirement R13.1: Added requirement: RPP MUST support internationalization for core/extension objects and messages.</li>
+<li>New Requirement R13.2: Added requirement: RPP MUST support human-readable localized response messages. (Moved from old Representation section).</li>
+</ul>
+</section>
+
+<section anchor="clients-1"><name>Clients</name>
+
+<ul spacing="compact">
+<li>New Requirement R14.1: Added requirement: RPP MUST support server applications as clients.</li>
+<li>New Requirement R14.2: Added requirement: RPP MUST support CLI/desktop tool interaction.</li>
+<li>New Requirement R14.3: Added requirement: RPP SHOULD support web browsers (e.g., SPAs) directly.</li>
+<li>New Requirement R14.4: Added requirement: RPP SHOULD support mobile applications directly.</li>
+</ul>
+</section>
+
+<section anchor="requirements-for-object-types-1"><name>Requirements for object types</name>
+
+<ul spacing="compact">
+<li>New Requirement D13.1 (Domain): Added requirement: RPP MUST support IDNs (UTF-8 and Punycode). (Moved from old Representation section).</li>
+<li>New Requirement C5.1 (Contact): Added requirement: RPP SHOULD consider using JSContact <xref target="RFC9553"></xref> for contacts. (Moved from old Data Representation section).</li>
+<li>New Requirement C13.1 (Contact): Added requirement: RPP MUST support i18n for Contact text fields (name, address, etc.).</li>
+<li>New Requirement C13.2 (Contact): Added requirement: RPP MUST support internationalised Email addresses <xref target="RFC6530"></xref>.</li>
+<li>New Requirement C13.3 (Contact): Added requirement: RPP MUST support multiple localized expressions of contact data.</li>
+</ul>
 </section>
 
 <section anchor="appendix-a-extensions"><name>Appendix A. Extensions</name>
-<t>// List of required extions here
+
+<ul spacing="compact">
+<li>New Requirement A.1: Added requirement: An extension for a Search API.</li>
+<li>New Requirement A.2: Added requirement: An extension allowing DNS operators to update DNSSEC key material.</li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+<section anchor="appendix-a-extensions-1"><name>Appendix A. Extensions</name>
+<blockquote><t>// List of required extensions here
 // see: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/19">https://github.com/ietf-wg-rpp/rpp-requirements/issues/19</eref></t>
-<t><strong>A.1</strong> An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.</t>
+</blockquote><t><strong>A.1</strong> An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.</t>
 <t><strong>A.2</strong> An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.</t>
 <t>TODO</t>
 </section>
