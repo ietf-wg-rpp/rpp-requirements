@@ -79,7 +79,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 **R1.1.** A well defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers. 
 
 **R1.2.** RPP MUST provide a clear, clean, easy to use and self-explanatory interface that can easily be integrated into existing software systems.
-A> //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3)
+<!-- A> //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3) -->
 
 **R1.3.** Wherever applicable RPP SHOULD leverage existing best practices and well adopted standards for building and documenting RESTful APIs. There MUST be a clear justification when deviating from this.
 
@@ -121,17 +121,21 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R4.3** RPP MUST allow an extension mechanism that allows clients to signal data omission or redaction, indicating data collected but not transmitted to the registry or redacted.
 
+A> TODO: [Issue #34](https://github.com/ietf-wg-rpp/rpp-requirements/issues/34)
+
 **R4.4** RPP MUST have mechanisms to define profiles to indicate:
 
 - Required parts of the data model
 - Mapping definition
 - Functional subsets for compatibility.
 
-A> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
+A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.5** The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.
 
 **R4.6** A RPP server and client MUST in default ignore unknown properties of representations however there MUST be a mechanism for a client to signal that a strict handling is wished where unknown fields are treated as error.
+
+A> TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36)
 
 # Data Representation
 
@@ -141,12 +145,15 @@ A> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15
 
 **R5.3** Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.
 
+A> TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36)
+
 **R5.4** RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.
 
 **R5.5** A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.
-
-//removed: see https://github.com/ietf-wg-rpp/rpp-requirements/issues/11
-//**R5.6** RPP MUST support the use of server profiles to define required components of the data model and/or mapping definitions (see: R4.4).
+ 
+**R5.6**  *Removed*
+<!-- see https://github.com/ietf-wg-rpp/rpp-requirements/issues/11
+RPP MUST support the use of server profiles to define required components of the data model and/or mapping definitions (see: R4.4). -->
 
 **R5.7** RPP SHOULD consider mechanisms for supporting data formats outside of core RPP domain. Especially formats, which lose their properties if transformed, like Verifiable Credentials for contacts which are digitally signed.
 
@@ -172,6 +179,8 @@ A> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15
 
 **R6.3** The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.
 
+A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
+
 # Discoverability
 
 **R7.1** RPP MAY include a bootstrap mechanism designed to allow clients to locate the network identifier for the RPP service of a registry operator, e.g. rpp.sidn.nl for the registry operator for the .nl ccTLD.
@@ -190,9 +199,8 @@ Solutions may include:
 - Server datetime
 - Maintenance notices
 - Supported profiles
-- ...
 
-A> //TODO: [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8)
+<!-- A> //TODO: [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8) -->
 
 **R7.3** Server provided functionality, such as the set of supported profiles, languages or extensions, MUST discoverable using the discovery document.
 
@@ -208,12 +216,12 @@ A> //TODO: [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8)
 **R7.5** Versioning schema MUST carry information about breaking vs. non-breaking changes and allow clients to decide whether it is able to interact with the server. The versioning scheme SHOULD be like the scheme used for HTTP where minor version changes do not break compatibility.
 
 **R7.6** Notices related to scheduled server maintenance timeslots MAY be included in the discovery document, this could be a human readable, non machine parsable character string.
-A> //TODO: [Issue #9](https://github.com/ietf-wg-rpp/rpp-requirements/issues/9)
+<!-- A> //TODO: [Issue #9](https://github.com/ietf-wg-rpp/rpp-requirements/issues/9) -->
 
 **R7.7** RPP MAY only support a subset of EPP functionality, the supported functionality MUST be discoverable by the client
 
 **R7.8** *Removed*
-A> //SEE: [Issue #21](https://github.com/ietf-wg-rpp/rpp-requirements/issues/21)
+<!-- A> //SEE: [Issue #21](https://github.com/ietf-wg-rpp/rpp-requirements/issues/21) -->
 
 **R7.9** An RPP response that includes unique object identifiers, MAY also include URL references for these objects.
 
@@ -225,8 +233,9 @@ A> //SEE: [Issue #21](https://github.com/ietf-wg-rpp/rpp-requirements/issues/21)
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
-**R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).
-A> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
+**R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).  
+
+A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
 
@@ -269,22 +278,26 @@ A> //TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15
 
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
+A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
+
 **R10.5** RPP MUST support extensions that define new status codes not already defined in the core RPP RFCs.
-A> //TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20)
+<!-- A> //TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20) -->
 
 **R10.6** RPP MUST support extensions adding new HTTP headers.
 
 **R10.7** RPP SHALL have mechanisms to assure conflict avoidance when extending the protocol, including but not limited to data model, representations, operations, parameters, error codes and signalling. There MUST be a mechanism of conflict-free, non-coordinated extending in private/vendor discresion as well as a coordinated process for core, generic or shared elements. 
-A> //TODO: [Issue #10](https://github.com/ietf-wg-rpp/rpp-requirements/issues/10)
+<!-- A> //TODO: [Issue #10](https://github.com/ietf-wg-rpp/rpp-requirements/issues/10) -->
 
 **R10.8** When a public registry for RPP extensions is required, then IANA MUST be used for this function.
 
 **R10.9** RPP extensions MUST include support for versioning, the version of the extention supported by the server MUST be included in the discovery document.
-A> //TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11)
+<!-- A> //TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11) -->
 
+**R10.10** *Removed*
+<!--
 //dropped R10.10: see https://github.com/ietf-wg-rpp/rpp-requirements/issues/20
 //**R10.10** RPP status codes are maintained in an IANA registry for RPP status codes, these include all status codes defined in the core RPP RFCs and by any
-//extension that is also a registered IANA RPP extension.
+//extension that is also a registered IANA RPP extension. -->
 
 **R10.11** Extension designers or RPP implementers MAY add new status codes, if a newly created status code is generic enough to be useful for the wider RPP community, then the extension designer SHOULD register the new status code in the RPP IANA registry.
 
@@ -293,6 +306,8 @@ A> //TODO: [Issue #11](https://github.com/ietf-wg-rpp/rpp-requirements/issues/11
 **R11.1** RPP MUST be stateless and MUST NOT maintain application state on the server required for processing future RPP requests. Every client request needs to provide all the information required for the server to be able to successfully process the request. The client MAY maintain application session state, for example by using a JWT token.
 
 **R11.2** RPP MUST support cacheability of responses, if applicable to the operation semantics and MUST not include  transaction related identifiers and values.
+
+A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **R11.3** RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing  HTTP body.
 
@@ -527,16 +542,19 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 # Extensions
 
+<!--
 A> // List of required extensions here
 A> // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
-
+-->
 **A.1** An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.
 
 **A.2** An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.
 
 **A.3** An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.
 
-TODO
+A> TODO: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57)
+
+A> TODO: This list is far from being finished
 
 <reference anchor="REST" target="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">
   <front>
