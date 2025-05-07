@@ -121,6 +121,8 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R4.3** RPP MUST allow an extension mechanism that allows clients to signal data omission or redaction, indicating data collected but not transmitted to the registry or redacted.
 
+A> TODO: [Issue #34](https://github.com/ietf-wg-rpp/rpp-requirements/issues/34)
+
 **R4.4** RPP MUST have mechanisms to define profiles to indicate:
 
 - Required parts of the data model
@@ -133,6 +135,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.6** A RPP server and client MUST in default ignore unknown properties of representations however there MUST be a mechanism for a client to signal that a strict handling is wished where unknown fields are treated as error.
 
+A> TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36)
+
 # Data Representation
 
 **R5.1** RPP MUST use JSON as the default data format.
@@ -140,6 +144,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 **R5.2** It MUST be possible to extended RPP to include support other data formats (e.g. XML, YAML).
 
 **R5.3** Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.
+
+A> TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36)
 
 **R5.4** RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.
 
@@ -172,6 +178,8 @@ RPP MUST support the use of server profiles to define required components of the
 - Responses to PUT/POST/PATCH requests
 
 **R6.3** The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.
+
+A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
 # Discoverability
 
@@ -226,6 +234,7 @@ Solutions may include:
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
 **R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).  
+
 A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
@@ -269,6 +278,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
+A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
+
 **R10.5** RPP MUST support extensions that define new status codes not already defined in the core RPP RFCs.
 <!-- A> //TODO: [Issue #20](https://github.com/ietf-wg-rpp/rpp-requirements/issues/20) -->
 
@@ -295,6 +306,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 **R11.1** RPP MUST be stateless and MUST NOT maintain application state on the server required for processing future RPP requests. Every client request needs to provide all the information required for the server to be able to successfully process the request. The client MAY maintain application session state, for example by using a JWT token.
 
 **R11.2** RPP MUST support cacheability of responses, if applicable to the operation semantics and MUST not include  transaction related identifiers and values.
+
+A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **R11.3** RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing  HTTP body.
 
@@ -539,7 +552,9 @@ A> // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
 
 **A.3** An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.
 
-TODO
+A> TODO: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57)
+
+A> TODO: This list is far from being finished
 
 <reference anchor="REST" target="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">
   <front>

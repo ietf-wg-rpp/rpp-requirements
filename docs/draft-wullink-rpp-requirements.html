@@ -10,26 +10,26 @@
 <meta content="
        This document describes the requirement for the development of the RESTful Provisioning Protocol (RPP). 
     " name="description">
-<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="xml2rfc 3.22.0" name="generator">
 <meta content="draft-wullink-rpp-requirements-01" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.26.0
+  xml2rfc 3.22.0
     Python 3.10.12
     ConfigArgParse 1.7
-    google-i18n-address 3.1.1
+    google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.5
-    lxml 5.3.0
-    platformdirs 4.3.6
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
     pycountry 24.6.1
-    pydyf 0.9.0
-    PyYAML 6.0.2
+    pydyf 0.10.0
+    PyYAML 6.0.1
     requests 2.32.3
-    setuptools 75.8.0
+    setuptools 71.0.3
     wcwidth 0.2.13
     weasyprint 61.2
 -->
-<link href="draft-wullink-rpp-requirements.xml" rel="alternate" type="application/rfc+xml">
+<link href="../docs/draft-wullink-rpp-requirements.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -404,7 +404,7 @@ hr {
 /* Fix PDF info block run off issue */
 @media print {
   #identifiers dd {
-    max-width: 100%;
+    float: none;
   }
 }
 #identifiers .authors .author {
@@ -1160,7 +1160,7 @@ section .olCompact {
 tt, code {
   background-color: transparent;
 }
-p tt, p code, li tt, li code, dt tt, dt code {
+p tt, p code, li tt, li code {
   background-color: #f8f8f8;
 }
 /* Tweak the pre margin -- 0px doesn't come out well */
@@ -1478,20 +1478,26 @@ RPP SHOULD support additional information about a successful operation (informat
 <p id="section-7-1"><strong>R4.1</strong> The base data model structures MUST be data format agnostic. It MUST be possible to map the base data model to multiple data formats such as JSON, XML or YAML.<a href="#section-7-1" class="pilcrow">¶</a></p>
 <p id="section-7-2"><strong>R4.2</strong> Commonly used EPP extensions SHOULD be added to the RPP core data model. An example of this is the DNSSEC extension.<a href="#section-7-2" class="pilcrow">¶</a></p>
 <p id="section-7-3"><strong>R4.3</strong> RPP MUST allow an extension mechanism that allows clients to signal data omission or redaction, indicating data collected but not transmitted to the registry or redacted.<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4"><strong>R4.4</strong> RPP MUST have mechanisms to define profiles to indicate:<a href="#section-7-4" class="pilcrow">¶</a></p>
+<aside id="section-7-4">
+        <p id="section-7-4.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/34">Issue #34</a><a href="#section-7-4.1" class="pilcrow">¶</a></p>
+</aside>
+<p id="section-7-5"><strong>R4.4</strong> RPP MUST have mechanisms to define profiles to indicate:<a href="#section-7-5" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-7-5.1">Required parts of the data model<a href="#section-7-5.1" class="pilcrow">¶</a>
+<li class="compact" id="section-7-6.1">Required parts of the data model<a href="#section-7-6.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="section-7-5.2">Mapping definition<a href="#section-7-5.2" class="pilcrow">¶</a>
+        <li class="compact" id="section-7-6.2">Mapping definition<a href="#section-7-6.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="section-7-5.3">Functional subsets for compatibility.<a href="#section-7-5.3" class="pilcrow">¶</a>
+        <li class="compact" id="section-7-6.3">Functional subsets for compatibility.<a href="#section-7-6.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<aside id="section-7-6">
-        <p id="section-7-6.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">Issue #15</a><a href="#section-7-6.1" class="pilcrow">¶</a></p>
+<aside id="section-7-7">
+        <p id="section-7-7.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">Issue #15</a><a href="#section-7-7.1" class="pilcrow">¶</a></p>
 </aside>
-<p id="section-7-7"><strong>R4.5</strong> The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.<a href="#section-7-7" class="pilcrow">¶</a></p>
-<p id="section-7-8"><strong>R4.6</strong> A RPP server and client MUST in default ignore unknown properties of representations however there MUST be a mechanism for a client to signal that a strict handling is wished where unknown fields are treated as error.<a href="#section-7-8" class="pilcrow">¶</a></p>
+<p id="section-7-8"><strong>R4.5</strong> The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.<a href="#section-7-8" class="pilcrow">¶</a></p>
+<p id="section-7-9"><strong>R4.6</strong> A RPP server and client MUST in default ignore unknown properties of representations however there MUST be a mechanism for a client to signal that a strict handling is wished where unknown fields are treated as error.<a href="#section-7-9" class="pilcrow">¶</a></p>
+<aside id="section-7-10">
+        <p id="section-7-10.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/36">Issue #36</a><a href="#section-7-10.1" class="pilcrow">¶</a></p>
+</aside>
 </section>
 </div>
 <div id="data-representation">
@@ -1502,13 +1508,16 @@ RPP SHOULD support additional information about a successful operation (informat
 <p id="section-8-1"><strong>R5.1</strong> RPP MUST use JSON as the default data format.<a href="#section-8-1" class="pilcrow">¶</a></p>
 <p id="section-8-2"><strong>R5.2</strong> It MUST be possible to extended RPP to include support other data formats (e.g. XML, YAML).<a href="#section-8-2" class="pilcrow">¶</a></p>
 <p id="section-8-3"><strong>R5.3</strong> Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.<a href="#section-8-3" class="pilcrow">¶</a></p>
-<p id="section-8-4"><strong>R5.4</strong> RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.<a href="#section-8-4" class="pilcrow">¶</a></p>
-<p id="section-8-5"><strong>R5.5</strong> A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.<a href="#section-8-5" class="pilcrow">¶</a></p>
-<p id="section-8-6"><strong>R5.6</strong>  <em>Removed</em><a href="#section-8-6" class="pilcrow">¶</a></p>
-<p id="section-8-7"><strong>R5.7</strong> RPP SHOULD consider mechanisms for supporting data formats outside of core RPP domain. Especially formats, which lose their properties if transformed, like Verifiable Credentials for contacts which are digitally signed.<a href="#section-8-7" class="pilcrow">¶</a></p>
-<p id="section-8-8"><strong>R5.8</strong> RPP MUST support partial update of data objects.<a href="#section-8-8" class="pilcrow">¶</a></p>
-<p id="section-8-9"><strong>R5.9</strong> RPP MUST support full update of data objects.<a href="#section-8-9" class="pilcrow">¶</a></p>
-<p id="section-8-10"><strong>R.5.10</strong> A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.<a href="#section-8-10" class="pilcrow">¶</a></p>
+<aside id="section-8-4">
+        <p id="section-8-4.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/36">Issue #36</a><a href="#section-8-4.1" class="pilcrow">¶</a></p>
+</aside>
+<p id="section-8-5"><strong>R5.4</strong> RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.<a href="#section-8-5" class="pilcrow">¶</a></p>
+<p id="section-8-6"><strong>R5.5</strong> A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.<a href="#section-8-6" class="pilcrow">¶</a></p>
+<p id="section-8-7"><strong>R5.6</strong>  <em>Removed</em><a href="#section-8-7" class="pilcrow">¶</a></p>
+<p id="section-8-8"><strong>R5.7</strong> RPP SHOULD consider mechanisms for supporting data formats outside of core RPP domain. Especially formats, which lose their properties if transformed, like Verifiable Credentials for contacts which are digitally signed.<a href="#section-8-8" class="pilcrow">¶</a></p>
+<p id="section-8-9"><strong>R5.8</strong> RPP MUST support partial update of data objects.<a href="#section-8-9" class="pilcrow">¶</a></p>
+<p id="section-8-10"><strong>R5.9</strong> RPP MUST support full update of data objects.<a href="#section-8-10" class="pilcrow">¶</a></p>
+<p id="section-8-11"><strong>R.5.10</strong> A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.<a href="#section-8-11" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="operations-and-responses">
@@ -1535,6 +1544,9 @@ RPP SHOULD support additional information about a successful operation (informat
 </li>
       </ul>
 <p id="section-9-5"><strong>R6.3</strong> The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.<a href="#section-9-5" class="pilcrow">¶</a></p>
+<aside id="section-9-6">
+        <p id="section-9-6.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/56">Issue #56</a><a href="#section-9-6.1" class="pilcrow">¶</a></p>
+</aside>
 </section>
 </div>
 <div id="discoverability">
@@ -1598,11 +1610,13 @@ RPP SHOULD support additional information about a successful operation (informat
       </h2>
 <p id="section-11-1"><strong>R8.1</strong> RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, and contact objects as defined in <span>[<a href="#RFC5731" class="cite xref">RFC5731</a>]</span>, <span>[<a href="#RFC5732" class="cite xref">RFC5732</a>]</span> and <span>[<a href="#RFC5733" class="cite xref">RFC5733</a>]</span>.<a href="#section-11-1" class="pilcrow">¶</a></p>
 <p id="section-11-2"><strong>R8.2</strong> The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible.<a href="#section-11-2" class="pilcrow">¶</a></p>
-<p id="section-11-3"><strong>R8.3</strong> Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).<br>
-A&gt; TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">Issue #15</a><a href="#section-11-3" class="pilcrow">¶</a></p>
-<p id="section-11-4"><strong>R8.4</strong> RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)<a href="#section-11-4" class="pilcrow">¶</a></p>
-<p id="section-11-5"><strong>R8.5</strong> EPP password based Authorization Information defined in <span>[<a href="#RFC5731" class="cite xref">RFC5731</a>]</span> and <span>[<a href="#RFC5733" class="cite xref">RFC5733</a>]</span> MUST be supported in RPP.<a href="#section-11-5" class="pilcrow">¶</a></p>
-<p id="section-11-6"><strong>R8.6</strong> RPP SHOULD support client_id/password authentication to match EPP client authentication.<a href="#section-11-6" class="pilcrow">¶</a></p>
+<p id="section-11-3"><strong>R8.3</strong> Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).<a href="#section-11-3" class="pilcrow">¶</a></p>
+<aside id="section-11-4">
+        <p id="section-11-4.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">Issue #15</a><a href="#section-11-4.1" class="pilcrow">¶</a></p>
+</aside>
+<p id="section-11-5"><strong>R8.4</strong> RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)<a href="#section-11-5" class="pilcrow">¶</a></p>
+<p id="section-11-6"><strong>R8.5</strong> EPP password based Authorization Information defined in <span>[<a href="#RFC5731" class="cite xref">RFC5731</a>]</span> and <span>[<a href="#RFC5733" class="cite xref">RFC5733</a>]</span> MUST be supported in RPP.<a href="#section-11-6" class="pilcrow">¶</a></p>
+<p id="section-11-7"><strong>R8.6</strong> RPP SHOULD support client_id/password authentication to match EPP client authentication.<a href="#section-11-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security">
@@ -1637,13 +1651,16 @@ A&gt; TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">
 <p id="section-13-2"><strong>R10.2</strong> RPP MUST allow for flexibility in extending the data model e.g. adding new objects or a new attribute to an existing object MUST be possible.<a href="#section-13-2" class="pilcrow">¶</a></p>
 <p id="section-13-3"><strong>R10.3</strong> RPP SHOULD promote standardisation of commonly used extension attributes.<a href="#section-13-3" class="pilcrow">¶</a></p>
 <p id="section-13-4"><strong>R10.4</strong> Extensions for new operations on existing resources MUST be supported.<a href="#section-13-4" class="pilcrow">¶</a></p>
-<p id="section-13-5"><strong>R10.5</strong> RPP MUST support extensions that define new status codes not already defined in the core RPP RFCs.<a href="#section-13-5" class="pilcrow">¶</a></p>
-<p id="section-13-6"><strong>R10.6</strong> RPP MUST support extensions adding new HTTP headers.<a href="#section-13-6" class="pilcrow">¶</a></p>
-<p id="section-13-7"><strong>R10.7</strong> RPP SHALL have mechanisms to assure conflict avoidance when extending the protocol, including but not limited to data model, representations, operations, parameters, error codes and signalling. There MUST be a mechanism of conflict-free, non-coordinated extending in private/vendor discresion as well as a coordinated process for core, generic or shared elements.<a href="#section-13-7" class="pilcrow">¶</a></p>
-<p id="section-13-8"><strong>R10.8</strong> When a public registry for RPP extensions is required, then IANA MUST be used for this function.<a href="#section-13-8" class="pilcrow">¶</a></p>
-<p id="section-13-9"><strong>R10.9</strong> RPP extensions MUST include support for versioning, the version of the extention supported by the server MUST be included in the discovery document.<a href="#section-13-9" class="pilcrow">¶</a></p>
-<p id="section-13-10"><strong>R10.10</strong> <em>Removed</em><a href="#section-13-10" class="pilcrow">¶</a></p>
-<p id="section-13-11"><strong>R10.11</strong> Extension designers or RPP implementers MAY add new status codes, if a newly created status code is generic enough to be useful for the wider RPP community, then the extension designer SHOULD register the new status code in the RPP IANA registry.<a href="#section-13-11" class="pilcrow">¶</a></p>
+<aside id="section-13-5">
+        <p id="section-13-5.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/47">Issue #47</a><a href="#section-13-5.1" class="pilcrow">¶</a></p>
+</aside>
+<p id="section-13-6"><strong>R10.5</strong> RPP MUST support extensions that define new status codes not already defined in the core RPP RFCs.<a href="#section-13-6" class="pilcrow">¶</a></p>
+<p id="section-13-7"><strong>R10.6</strong> RPP MUST support extensions adding new HTTP headers.<a href="#section-13-7" class="pilcrow">¶</a></p>
+<p id="section-13-8"><strong>R10.7</strong> RPP SHALL have mechanisms to assure conflict avoidance when extending the protocol, including but not limited to data model, representations, operations, parameters, error codes and signalling. There MUST be a mechanism of conflict-free, non-coordinated extending in private/vendor discresion as well as a coordinated process for core, generic or shared elements.<a href="#section-13-8" class="pilcrow">¶</a></p>
+<p id="section-13-9"><strong>R10.8</strong> When a public registry for RPP extensions is required, then IANA MUST be used for this function.<a href="#section-13-9" class="pilcrow">¶</a></p>
+<p id="section-13-10"><strong>R10.9</strong> RPP extensions MUST include support for versioning, the version of the extention supported by the server MUST be included in the discovery document.<a href="#section-13-10" class="pilcrow">¶</a></p>
+<p id="section-13-11"><strong>R10.10</strong> <em>Removed</em><a href="#section-13-11" class="pilcrow">¶</a></p>
+<p id="section-13-12"><strong>R10.11</strong> Extension designers or RPP implementers MAY add new status codes, if a newly created status code is generic enough to be useful for the wider RPP community, then the extension designer SHOULD register the new status code in the RPP IANA registry.<a href="#section-13-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="scalability">
@@ -1653,9 +1670,12 @@ A&gt; TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">
       </h2>
 <p id="section-14-1"><strong>R11.1</strong> RPP MUST be stateless and MUST NOT maintain application state on the server required for processing future RPP requests. Every client request needs to provide all the information required for the server to be able to successfully process the request. The client MAY maintain application session state, for example by using a JWT token.<a href="#section-14-1" class="pilcrow">¶</a></p>
 <p id="section-14-2"><strong>R11.2</strong> RPP MUST support cacheability of responses, if applicable to the operation semantics and MUST not include  transaction related identifiers and values.<a href="#section-14-2" class="pilcrow">¶</a></p>
-<p id="section-14-3"><strong>R11.3</strong> RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing  HTTP body.<a href="#section-14-3" class="pilcrow">¶</a></p>
-<p id="section-14-4"><strong>R11.4</strong> Every request message MUST at most contain a single object for the server to operate on, with the exception of operations that are explicitely defined as a bulk operation.<a href="#section-14-4" class="pilcrow">¶</a></p>
-<p id="section-14-5"><strong>R11.5</strong> RPP MUST support asynchronous processing for operations on multiple objects, otherwise resource intensive or involving manual steps. The client request results in a confirmation of receipt and a means for retrieving the final completed processing result at a later time.<a href="#section-14-5" class="pilcrow">¶</a></p>
+<aside id="section-14-3">
+        <p id="section-14-3.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/50">Issue #50</a><a href="#section-14-3.1" class="pilcrow">¶</a></p>
+</aside>
+<p id="section-14-4"><strong>R11.3</strong> RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing  HTTP body.<a href="#section-14-4" class="pilcrow">¶</a></p>
+<p id="section-14-5"><strong>R11.4</strong> Every request message MUST at most contain a single object for the server to operate on, with the exception of operations that are explicitely defined as a bulk operation.<a href="#section-14-5" class="pilcrow">¶</a></p>
+<p id="section-14-6"><strong>R11.5</strong> RPP MUST support asynchronous processing for operations on multiple objects, otherwise resource intensive or involving manual steps. The client request results in a confirmation of receipt and a means for retrieving the final completed processing result at a later time.<a href="#section-14-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="performance">
@@ -2187,7 +2207,10 @@ A&gt; TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">
 <p id="appendix-A-1"><strong>A.1</strong> An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2"><strong>A.2</strong> An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <p id="appendix-A-3"><strong>A.3</strong> An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">TODO<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<aside id="appendix-A-4">
+        <p id="appendix-A-4.1">TODO: <a href="https://github.com/ietf-wg-rpp/rpp-requirements/issues/57">Issue #57</a><a href="#appendix-A-4.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-4.2">TODO: This list is far from being finished<a href="#appendix-A-4.2" class="pilcrow">¶</a></p>
+</aside>
 </section>
 </div>
 <div id="authors-addresses">
