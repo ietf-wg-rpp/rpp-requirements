@@ -9,7 +9,7 @@ TocDepth = 4
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-wullink-rpp-requirements-01"
+value = "draft-ietf-rpp-requirements-00"
 stream = "IETF"
 status = "standard"
 

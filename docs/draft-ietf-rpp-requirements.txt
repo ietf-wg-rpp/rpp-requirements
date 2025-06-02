@@ -5,12 +5,12 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 8 November 2025                                           DENIC
-                                                              7 May 2025
+Expires: 4 December 2025                                           DENIC
+                                                             2 June 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
-                   draft-wullink-rpp-requirements-01
+                     draft-ietf-rpp-requirements-00
 
 Abstract
 
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 November 2025.
+   This Internet-Draft will expire on 4 December 2025.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 1]
+Wullink & Kowalik        Expires 4 December 2025                [Page 1]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
 Table of Contents
@@ -89,7 +89,7 @@ Table of Contents
    21. Changes History . . . . . . . . . . . . . . . . . . . . . . .  13
    22. Normative References  . . . . . . . . . . . . . . . . . . . .  17
    Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  19
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 2]
+Wullink & Kowalik        Expires 4 December 2025                [Page 2]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    RESTful - A RESTful web service is a web service or API implemented
@@ -165,9 +165,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 3]
+Wullink & Kowalik        Expires 4 December 2025                [Page 3]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    *R1.6* RPP SHOULD support additional information about a successful
@@ -221,9 +221,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 4]
+Wullink & Kowalik        Expires 4 December 2025                [Page 4]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
 7.  Data Model
@@ -277,9 +277,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 5]
+Wullink & Kowalik        Expires 4 December 2025                [Page 5]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
       |  TODO: Issue #36 (https://github.com/ietf-wg-rpp/rpp-
@@ -333,9 +333,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 6]
+Wullink & Kowalik        Expires 4 December 2025                [Page 6]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
 10.  Discoverability
@@ -389,9 +389,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 7]
+Wullink & Kowalik        Expires 4 December 2025                [Page 7]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    *R7.7* RPP MAY only support a subset of EPP functionality, the
@@ -445,9 +445,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 8]
+Wullink & Kowalik        Expires 4 December 2025                [Page 8]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    *R9.4* RPP MUST include an authorisation model/framework that goes
@@ -501,9 +501,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025                [Page 9]
+Wullink & Kowalik        Expires 4 December 2025                [Page 9]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    *R10.4* Extensions for new operations on existing resources MUST be
@@ -557,9 +557,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 10]
+Wullink & Kowalik        Expires 4 December 2025               [Page 10]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    *R11.3* RPP MUST support load balancing at the level of request
@@ -613,9 +613,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 11]
+Wullink & Kowalik        Expires 4 December 2025               [Page 11]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    *R14.4* RPP SHOULD support mobile applications as clients, also here
@@ -669,9 +669,9 @@ Internet-Draft             RPP - Requirements                   May 2025
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 12]
+Wullink & Kowalik        Expires 4 December 2025               [Page 12]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
 21.  Changes History
@@ -725,9 +725,9 @@ HTTP
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 13]
+Wullink & Kowalik        Expires 4 December 2025               [Page 13]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
 REST
@@ -781,9 +781,9 @@ Data Representation
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 14]
+Wullink & Kowalik        Expires 4 December 2025               [Page 14]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    -  Removed Requirement: Requirement to use JSContact for contacts
@@ -837,9 +837,9 @@ Security
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 15]
+Wullink & Kowalik        Expires 4 December 2025               [Page 15]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    -  Rewritten R9.4: Significantly rewrote and expanded the
@@ -893,9 +893,9 @@ Performance
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 16]
+Wullink & Kowalik        Expires 4 December 2025               [Page 16]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
    -  Modified R12.2: Added constraint: RPP MUST NOT mandate
@@ -949,18 +949,15 @@ Appendix A.  Extensions
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 17]
+Wullink & Kowalik        Expires 4 December 2025               [Page 17]
 
-Internet-Draft             RPP - Requirements                   May 2025
+Internet-Draft             RPP - Requirements                  June 2025
 
 
-   [BCP56]    Best Current Practice 56,
-              <https://www.rfc-editor.org/info/bcp56>.
-              At the time of writing, this BCP comprises the following:
+   [BCP56]    Nottingham, M., "Building Protocols with HTTP", BCP 56,
+              RFC 9205, June 2022.
 
-              Nottingham, M., "Building Protocols with HTTP", BCP 56,
-              RFC 9205, DOI 10.17487/RFC9205, June 2022,
-              <https://www.rfc-editor.org/info/rfc9205>.
+              <https://www.rfc-editor.org/info/bcp56>
 
    [RAML]     raml.org, "RESTful API Modeling Language", 2025,
               <https://raml.org/>.
@@ -1002,17 +999,16 @@ Internet-Draft             RPP - Requirements                   May 2025
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
 
-
-
-
-Wullink & Kowalik        Expires 8 November 2025               [Page 18]
-
-Internet-Draft             RPP - Requirements                   May 2025
-
-
    [RFC6530]  Klensin, J. and Y. Ko, "Overview and Framework for
               Internationalized Email", RFC 6530, DOI 10.17487/RFC6530,
               February 2012, <https://www.rfc-editor.org/info/rfc6530>.
+
+
+
+Wullink & Kowalik        Expires 4 December 2025               [Page 18]
+
+Internet-Draft             RPP - Requirements                  June 2025
+
 
    [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
               APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
@@ -1059,14 +1055,16 @@ Appendix A.  Extensions
       |  
       |  TODO: This list is far from being finished
 
-
-
-Wullink & Kowalik        Expires 8 November 2025               [Page 19]
-
-Internet-Draft             RPP - Requirements                   May 2025
-
-
 Authors' Addresses
+
+
+
+
+
+Wullink & Kowalik        Expires 4 December 2025               [Page 19]
+
+Internet-Draft             RPP - Requirements                  June 2025
+
 
    Maarten Wullink
    SIDN Labs
@@ -1117,4 +1115,6 @@ Authors' Addresses
 
 
 
-Wullink & Kowalik        Expires 8 November 2025               [Page 20]
+
+
+Wullink & Kowalik        Expires 4 December 2025               [Page 20]
