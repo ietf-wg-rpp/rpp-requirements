@@ -387,6 +387,11 @@ A> TODO: TBC if anything needed here. There is a security section.
 # Changes History
 
 {toc="exclude"}
+## Version draft-ietf-rpp-requirements-00 to -01
+
+* terminology for EPP defined to refer to STD69
+
+{toc="exclude"}
 ## Version -00 to -01
 
 {numbered="false"}
