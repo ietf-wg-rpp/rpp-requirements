@@ -58,7 +58,7 @@ REST - Representational State Transfer ([@!REST]). An architectural style.
 
 RESTful - A RESTful web service is a web service or API implemented using HTTP and the principles of [@!REST].
 
-EPP RFCs - This is a reference to the EPP version 1.0 specifications [@!RFC5730], [@!RFC5731], [@!RFC5732] and [@!RFC5733].
+EPP - unless explicitly used in a more specific context this term is a reference to the EPP version 1.0 specifications [@!STD69].
 
 RESTful Provisioning Protocol or RPP - The protocol described in this document.
 
