@@ -76,20 +76,21 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 # General
 
-**R1.1.** A well defined architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers. 
+**R1.1.** An architecture MUST be defined for RPP, including a description of the responsibilities of the definded protocol layers. 
+<!-- "well-defined" is subjective -->
 
-**R1.2.** RPP MUST provide a clear, clean, easy to use and self-explanatory interface that can easily be integrated into existing software systems.
-<!-- A> //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3) -->
+**R1.2** *REMOVED*
+<!-- R1.2 is way to vague and subjective -->
 
 **R1.3.** Wherever applicable RPP SHOULD leverage existing best practices and well adopted standards for building and documenting RESTful APIs. There MUST be a clear justification when deviating from this.
 
 **R1.4.** RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730].
 
 **R1.5.**
-RPP MAY include support for providing detailed information about application status codes, for example as descibed in [@!RFC7807]
+RPP MUST include support for providing detailed information about application status codes, for example as described in [@!RFC7807]
 
 **R1.6**
-RPP SHOULD support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
+RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
 
 # HTTP
 
@@ -97,7 +98,7 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R2.2.** RPP SHOULD use the best common practices for designing HTTP based applications, described in [@!BCP56]. There MUST be a clear justification when deviating from this.
 
-**R2.3.** Consistent, predictable and meaningful URL structures MUST be used for for identifying, accessing object resources and enable request routing.
+**R2.3.** Consistent, predictable and meaningful URL structures MUST be used for identifying, accessing object resources and enable request routing.
 
 **R2.4.**  RPP MUST use the existing HTTP status codes and MUST define application level status codes and map these to HTTP status codes. RPP MUST NOT redefine existing HTTP status code semantics and when overloading (generic) HTTP status codes with multiple RPP status codes, the provided RPP status code MUST be used by the client to determine the exact nature of the problem.
 
@@ -107,7 +108,7 @@ RPP SHOULD support additional information about a successful operation (informat
 
 **R3.2** The RPP architecture MUST follow Resource-Oriented Architecture [@!ROI].
 
-**R3.3.** The RPP specification MUST strive to minimise round trips between client and server. Approaches, where client would need to make multiple requests each time to discover resource URL or server capabilities in order to perform operation SHOULD be used sparingly and be always well justified.
+**R3.3.** The RPP specification MUST strive to minimize round trips between client and server. Approaches, where client would need to make multiple requests each time to discover resource URL or server capabilities in order to perform operation SHOULD be used sparingly and be always well justified.
 
 **R3.4.** *Merged with R12.1*
 
@@ -115,9 +116,11 @@ RPP SHOULD support additional information about a successful operation (informat
 
 # Data Model
 
-**R4.1** The base data model structures MUST be data format agnostic. It MUST be possible to map the base data model to multiple data formats such as JSON, XML or YAML.
+**R4.1** The base data format MUST be JSON.
+<!-- anything other than JSON is out of charter -->
 
 **R4.2** Commonly used EPP extensions SHOULD be added to the RPP core data model. An example of this is the DNSSEC extension.
+A> What is meant by "core" here? Do things like domains, contacts, etc... get their own namespace?
 
 **R4.3** RPP MUST allow an extension mechanism that allows clients to signal data omission or redaction, indicating data collected but not transmitted to the registry or redacted.
 
@@ -141,13 +144,15 @@ A> TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36)
 
 **R5.1** RPP MUST use JSON as the default data format.
 
-**R5.2** It MUST be possible to extended RPP to include support other data formats (e.g. XML, YAML).
+**R5.2** *REMOVED*
+<!-- anything other than JSON is out of charter -->
 
 **R5.3** Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.
 
 A> TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36)
 
-**R5.4** RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.
+**R5.4** RPP MUST define a default media type.
+<!-- SHALL is equivalent to MUST and therefore "other" media types are out of charter. -->
 
 **R5.5** A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.
  
@@ -188,7 +193,7 @@ A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 Solutions may include:
 
 - IANA bootstrap Service Registry
-- DNS TXT records
+- DNS SVCB or HTTP records <!-- DNS TXT will unlikely pass IETF consensus -->
 
 **R7.2** An RPP server MUST publish a service discovery document in the well-known directory, described in [@!RFC5785]. This document contains structured machine readable information that is required or useful for the client to be able to generate valid RPP requests. The information may contain, but is not limited to:
 
@@ -233,11 +238,12 @@ Solutions may include:
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible. 
 
-**R8.3** Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).  
+**R8.3** Compatibility definitions for an RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).  
 
 A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
+<!-- again, what is in the "core" -->
 
 **R8.5** EPP password based Authorization Information defined in [@!RFC5731] and [@!RFC5733] MUST be supported in RPP.
 
@@ -245,11 +251,12 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 # Security
 
-**R9.1** RPP MUST support state-of-the-art authentication and authorization schemes allowing for easy integration in modern HTTP infrastructure.
+**R9.1** *REMOVED*
+<!-- R9.1 is too subjective -->
 
 **R9.2** RPP MUST support modern authentication and authorization standards (OAuth, OpenId Connect)
 
-**R9.3** Support for an simplified and quicker object transfer process MAY be included, where approval from the losing registar is to be obtained interactively by the registrant during the transfer process.
+**R9.3** Support for a simplified and quicker object transfer process MAY be included, where approval from the losing registar is to be obtained interactively by the registrant during the transfer process.
 
 **R9.4** RPP MUST include an authorisation model/framework that goes beyond the current EPP password based Authorization Information (AuthInfo) used for object transfers. The following use cases MAY be supported:
 
@@ -264,9 +271,10 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.8** RPP MUST allowing for multiple user accounts linked to a single registrar, registar user management MAY be delegated to an administrator account linked to a registrar, allowing for self service account management by the registar.
 
-**R9.9** RPP MUST support a granalar authorization matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.
+**R9.9** RPP MUST support a granular authorization matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.
 
 **R9.10** RPP MUST allow users to update their credentials and enforce strong passwords and limited lifetime for passwords and other tokens.
+<!-- is part of the protocol or out-of-band ? -->
 
 # Extensibility
 
@@ -274,7 +282,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R10.2** RPP MUST allow for flexibility in extending the data model e.g. adding new objects or a new attribute to an existing object MUST be possible.
 
-**R10.3** RPP SHOULD promote standardisation of commonly used extension attributes.
+**R10.3** RPP SHOULD promote standardization of commonly used extension attributes.
 
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
@@ -311,13 +319,13 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **R11.3** RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing  HTTP body.
 
-**R11.4** Every request message MUST at most contain a single object for the server to operate on, with the exception of operations that are explicitely defined as a bulk operation.
+**R11.4** Every request message MUST at most contain a single object for the server to operate on, except for operations that are explicitly defined as a bulk operation.
 
 **R11.5** RPP MUST support asynchronous processing for operations on multiple objects, otherwise resource intensive or involving manual steps. The client request results in a confirmation of receipt and a means for retrieving the final completed processing result at a later time.
 
 # Performance
 
-**R12.1** In order to minimise message sizes and needed processing RPP SHOULD be designed not to include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.
+**R12.1** In order to minimize message sizes and needed processing RPP SHOULD be designed not to include an HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.
 
 **R12.2** RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
 
@@ -329,9 +337,9 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 # Internationalisation
 
-**R13.1** RPP MUST support internationalization, for object types and messages defined in the core protocol and extensions
+**R13.1** RPP MUST support internationalisation, for object types and messages defined in the core protocol and extensions
 
-**R13.2** RPP MUST support human-readable localized response mesages.
+**R13.2** RPP MUST support human-readable localized response messages.
 
 # Clients
 
@@ -339,7 +347,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **R14.2** RPP MUST support interaction from command-line tools or desktop applications capable of sending HTTP requests. Whese can be generic clients such as `curl` or `Postman` but also specialized RPP command line tools or scripts.
 
-**R14.3** RPP SHOULD support web browsers as clients, such as SPA (single page applications) without any proxy backend between webbrowser and the RPP server.
+**R14.3** RPP SHOULD support browser-based clients, such as SPA (single page applications) without any proxy backend between web browser and the RPP server.
 
 **R14.4** RPP SHOULD support mobile applications as clients, also here through direct integration without any proxy backend.
 
@@ -367,15 +375,15 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ### Internationalisation
 
-**C13.1** RPP MUST support internationalization (character encoding) for Contact objects in the following areas:
+**C13.1** RPP MUST support internationalisation (character encoding) for Contact objects in the following areas:
 
 - name
 - address data
-- any other contact-related data containing human provided or readible text
+- any other contact-related data containing human provided or readable text
 
 **C13.2** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
 
-**C13.3** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.  
+**C13.3** RPP MUST support multiple localized expressions of the same data, e.g. fields mentioned in C13.1 having both international and localized variants.  
 
 # IANA Considerations
 
