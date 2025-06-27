@@ -86,10 +86,10 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 **R1.4.** RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730].
 
 **R1.5.**
-RPP MAY include support for providing detailed information about application status codes, for example as described in [@!RFC7807]
+RPP MUST include support for providing detailed information about application status codes, for example as described in [@!RFC7807]
 
 **R1.6**
-RPP SHOULD support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
+RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
 
 # HTTP
 
