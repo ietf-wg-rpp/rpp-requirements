@@ -386,7 +386,6 @@ A> TODO: TBC if anything needed here. There is a security section.
 {removeInRFC="true"}
 # Changes History
 
-{toc="exclude"}
 ## Version -00 to -01
 
 * R1.5 has been changed to MUST instead of MAY.
@@ -395,7 +394,7 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 ## Version -01 to -00 (WG)
 
-* The document has been adopted by the working group, the version number has been reset van -01 to -00.
+* The document has been adopted by the working group, the version number has been reset from -01 to -00.
 
 ## Version -00 to -01
 
