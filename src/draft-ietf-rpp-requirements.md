@@ -9,7 +9,7 @@ TocDepth = 4
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-rpp-requirements-00"
+value = "draft-ietf-rpp-requirements-01"
 stream = "IETF"
 status = "standard"
 
@@ -387,6 +387,16 @@ A> TODO: TBC if anything needed here. There is a security section.
 # Changes History
 
 {toc="exclude"}
+## Version -00 to -01
+
+* R1.5 has been changed to MUST instead of MAY.
+* R1.6 has been changed to MUST instead of SHOULD.
+* Updated the entire text to make consistent use of the British spelling style. 
+
+## Version -01 to -00 (WG)
+
+* The document has been adopted by the working group, the version number has been reset van -01 to -00.
+
 ## Version -00 to -01
 
 {numbered="false"}
