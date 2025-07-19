@@ -227,7 +227,7 @@ Solutions may include:
 
 # EPP compatibility
 
-**R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, and contact objects as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733].
+**R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, and contact objects as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733]. This does not mean that the RPP protocol MUST be a 1:1 mapping of EPP. RPP MAY choose not to support some EPP features or data attributes, if these are not relevant or have limited usage in EPP
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible.
 
