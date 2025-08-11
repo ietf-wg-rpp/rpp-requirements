@@ -245,7 +245,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.1** RPP MUST support state-of-the-art authentication and authorisation schemes allowing for easy integration in modern HTTP infrastructure.
 
-**R9.2** RPP MUST support modern authentication and authorisation standards (OAuth, OpenId Connect)
+**R9.2** RPP MUST support robust authentication and authorization mechanisms, such as OAuth 2.0 and OpenID Connect, to ensure that only authorized clients and users can access or modify resources.
 
 **R9.3** Support for a simplified and quicker object transfer process MAY be included, where approval from the losing registrar is to be obtained interactively by the registrant during the transfer process.
 
@@ -254,7 +254,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 - Object transfers without using an EPP password based Authorisation Information
 - Registrants using OpenID Connect can interactively allow DNS operator to update their NS records, directly in the registry database or indirectly using a registrar.
 
-**R9.5** RPP MUST employ strong authentication and utilise encrypted transport (HTTPS) to protect sensitive data.
+**R9.5** All RPP communications MUST use HTTPS (TLS) to protect data in transit from eavesdropping and man-in-the-middle attacks.
 
 **R9.6** Security mechanisms SHOULD be flexible to allow operators to choose appropriate methods and support federated authentication scenarios.
 
@@ -265,6 +265,18 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 **R9.9** RPP MUST support a granular authorisation matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.
 
 **R9.10** RPP MUST allow users to update their credentials and enforce strong passwords and limited lifetime for passwords and other tokens.
+
+**R9.11** RPP must support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.
+
+**R9.12** RPP servers SHOULD implement rate limiting and throttling to mitigate denial-of-service (DoS) attacks and abuse.
+
+**R9.13** Security-relevant events (such as failed authentication attempts, access to sensitive resources, or configuration changes) SHOULD be logged and monitored. Logs MUST NOT contain sensitive data such as passwords or full tokens.
+
+**R9.14** RPP MUST support secure credentials management, ensuring that credentials are protected against replay and theft, and have limited lifetimes.
+
+**R9.15** Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.
+
+**R9.16** There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
 
 # Extensibility
 
@@ -381,10 +393,37 @@ A> TODO: TBC if anything needed here
 
 # Security Considerations
 
-A> TODO: TBC if anything needed here. There is a security section.
+This document defines requirements for the RESTful Provisioning Protocol (RPP), many of which are directly related to security. The following considerations highlight key security aspects that must be addressed in the design and implementation of RPP. Implementations MUST follow best practices, described in [@!RFC9205], for RESTful API development to ensure secure, robust, and interoperable deployments.
+
+- **Confidentiality:** All communications between RPP clients and servers MUST be protected using strong transport security, such as HTTPS (TLS), to prevent eavesdropping and man-in-the-middle attacks. Sensitive data, including authentication credentials and personal information, MUST NOT be transmitted in clear text.
+
+- **Authentication and Authorization:** RPP MUST support robust authentication and authorization mechanisms, such as OAuth 2.0 and OpenID Connect, to ensure that only authorized clients and users can access or modify resources. Both client and server authentication are required before exchanging sensitive information, and authorization checks MUST be enforced for all operations.
+
+- **Least Privilege and Access Control:** The protocol MUST support fine-grained access control, enforcing the principle of least privilege so that clients and users have only the permissions necessary for their tasks.
+
+- **Input Validation and Data Integrity:** All input data MUST be validated and sanitized to prevent injection attacks and ensure data integrity. Mechanisms SHOULD be in place to detect and prevent data tampering.
+
+- **Replay and Injection Attacks:** The protocol SHOULD include mechanisms to prevent replay attacks, such as unique transaction identifiers, timestamps, or nonces. Implementations MUST be protected against common web vulnerabilities, including injection attacks, cross-site scripting (XSS), and cross-site request forgery (CSRF).
+
+- **Logging and Monitoring:** Security-relevant events, such as failed authentication attempts and access to sensitive resources, SHOULD be logged and monitored. Logs MUST NOT contain sensitive data such as passwords or full tokens, and access to logs MUST be restricted.
+
+- **Denial of Service (DoS):** RPP servers SHOULD implement rate limiting and throttling to mitigate denial-of-service attacks and abuse.
+
+- **Session and Credential Management:** Client credentials MUST be protected against theft and replay, and have limited lifetimes. Mechanisms MUST exist to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
+
+- **Extension Security:** Any protocol extensions MUST be subject to the same security review and requirements as the core protocol, and MUST NOT introduce vulnerabilities.
+
+- **Privacy:** RPP MUST support privacy-by-design principles, including data minimization, redaction, and pseudonymisation. Personal data MUST only be accessible to authorized parties and handled according to applicable data protection laws. When using external digital identity schemes, RPP MUST NOT store or persist registrant personal data obtained from such schemes, but only a unique identifier or reference.
+
+- **Service Discovery and Policy Disclosure:** Information about data collection, retention, and privacy policies MUST be included in the service discovery document, enabling clients to understand how personal and sensitive data is handled by the registry operator.
 
 {removeInRFC="true"}
 # Changes History
+
+## Version -01 to -02
+
+* The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.
+* Added additional security requirements.
 
 ## Version -00 to -01
 
