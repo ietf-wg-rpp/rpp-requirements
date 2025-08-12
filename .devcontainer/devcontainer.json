@@ -12,11 +12,13 @@
     // Add the IDs of extensions you want installed when the container is created.
     "extensions": [
         "redhat.vscode-xml",
-        "eamodio.gitlens",
-        "donjayamanne.githistory",
         "asciidoctor.asciidoctor-vscode",
         "Gruntfuggly.todo-tree",
-        "ms-azuretools.vscode-docker"
+        "george-alisson.html-preview-vscode",
+        "DavidAnson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        "GitHub.vscode-pull-request-github",
+        "github.vscode-github-actions"
     ],
 
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
