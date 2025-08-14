@@ -436,6 +436,10 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 ## Version -00 to -01
 
+* Added requirements for Host Object Type
+
+## Version -00 to -01
+
 * Added Privacy Considerations section
 * R1.5 has been changed to MUST instead of MAY.
 * R1.6 has been changed to MUST instead of SHOULD.
