@@ -70,6 +70,10 @@ RPP client - An HTTP user agent performing an RPP request
 
 RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.
 
+Thin registry - A registry model in which the registry stores and serves only the minimal data necessary for delegation and identification of an object (for example, domain name, registrar identifier, status, and nameserver delegation). Registrant and contact data are maintained by the registrar and are not held by the registry.
+
+Thick registry - A registry model in which the registry stores and serves the complete data set for an object, including registrant, administrative, and technical contact information, and other relevant attributes required for provisioning.
+
 # Conventions Used in This Document
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!RFC2119].
@@ -89,13 +93,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R1.6** RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
 
-**R1.7** RPP MUST support both "thin" and "thick" registry models, enabling deployment in environments where either only minimal data (thin) or full object data (thick) is managed and served by the registry.
-
-In a **thin registry model**, the registry stores and serves only a minimal set of data for each object, typically limited to information necessary for delegation and identification (such as domain name, registrar ID, and status), while registrant and contact data are maintained by the registrar and not held by the registry.
-
-In a **thick registry model**, the registry stores and serves the complete set of data for each object, including all associated registrant, administrative, and technical contact information, as well as other relevant attributes.
-
-The protocol design MUST allow for flexibility in the amount and type of data stored and returned by the server, according to the chosen registry model. This includes supporting mechanisms for indicating which data elements are available or omitted, and ensuring that clients can reliably determine the presence or absence of specific data fields based on the registry’s operational model.
+**R1.7** RPP MUST support both "thin" and "thick" registry models, and MUST allow for flexibility in the amount and type of data stored and returned by the server, according to the chosen registry model. This includes supporting mechanisms for indicating which data elements are available or omitted, and ensuring that clients can reliably determine the presence or absence of specific data fields based on the registry’s operational model.
 
 # HTTP
 
