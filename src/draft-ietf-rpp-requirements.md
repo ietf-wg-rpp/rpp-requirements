@@ -135,6 +135,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.6** A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”
 
+**R4.7** RPP MUST define a generic data model for representing DNS data, such as DNS records (A, AAAA, CNAME, MX, etc.) and their attributes.
+
 # Data Representation
 
 **R5.1** RPP MUST use JSON as the default data format.
@@ -353,7 +355,43 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Host Object Type
 
-[//]: # (Editor note: use Hx.x for Hosts)
+The RPP host object type is mapped to the EPP equivalent and MUST support all operations defined by [@!RFC5732]
+
+**H1.1** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (R4.7).
+
+**H1.2** Host names MUST be valid FQDNs.
+
+**H1.3** RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
+
+**H1.4** RPP requires that host names be MUST compared case-insensitively per DNS rules. Servers SHOULD canonicalise for storage and representation consistently, the server canonicalisation rules SHOULD be disclosed in the discovery document.
+
+**H1.5** RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy; such policy MUST be discoverable.
+
+**H1.6** RPP MUST support zero or more IP addresses (IPv4 and IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy and MUST be discoverable.
+
+**H1.7** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include a “linked-by” counter attribute.
+
+**H1.8** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server*Prohibited, pending*) and define their mapping to RPP responses and HTTP status codes.
+
+### Operations
+
+**H2.1** RPP MUST support operations (commands) for Host objects as defined in [@!RFC5732], with partial update semantics available to allow for efficient updates.
+
+**H2.2** RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results, the limit MUST be discoverable.
+
+**H2.3** Only the sponsoring client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.
+
+**H2.4** RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.
+
+### Data Representation
+
+**H3.1** RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.
+
+**H3.2** The JSON representation MUST include: canonical host name, lists of IPv4 and IPv6 addresses, sponsoring client, statuses, creation/update timestamps, and server-managed identifiers.
+
+**H3.3** The representation SHOULD include link relations to related objects, for example: self, and parent domain for in-bailiwick hosts.
+
+**H3.4** Validation errors MUST be returned using problem details ([@!RFC7807]) with JSON pointer(s) for invalid host name and address elements.
 
 ## Contact Object Type
 
