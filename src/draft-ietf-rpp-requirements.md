@@ -274,6 +274,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.14** There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
 
+**R9.15** RPP must support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.
+
 # Extensibility
 
 **R10.1** The protocol MUST be extensible to accommodate new functionalities, data elements, and operations beyond the initial scope.
@@ -394,8 +396,6 @@ The security section of this document defines the security related requirements 
 Other operational security considerations include:
 
 - **Logging and Monitoring:** Security-relevant events, such as failed authentication attempts and access to sensitive resources, SHOULD be logged and monitored. Logs MUST NOT contain sensitive data such as passwords or full tokens, and access to logs MUST be restricted.
-
-- **Denial of Service (DoS):** RPP servers SHOULD implement rate limiting and throttling to mitigate denial-of-service attacks and abuse.
 
 - **Credential Management:** Client credentials MUST be protected against theft and replay, and have limited lifetimes. Mechanisms MUST exist to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
 
