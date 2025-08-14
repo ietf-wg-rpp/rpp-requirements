@@ -434,7 +434,7 @@ A> TODO: TBC if anything needed here. There is a security section.
 {removeInRFC="true"}
 # Changes History
 
-## Version -00 to -01
+## Version -01 to -02
 
 * Added requirements for Host Object Type
 
