@@ -390,6 +390,10 @@ A> TODO: TBC if anything needed here. There is a security section.
 {removeInRFC="true"}
 # Changes History
 
+## Version -01 to -02
+
+* Added requirement for support of both thick and thin registry models (R1.7)
+
 ## Version -00 to -01
 
 * R1.5 has been changed to MUST instead of MAY.
