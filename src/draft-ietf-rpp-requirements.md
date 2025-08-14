@@ -357,23 +357,57 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Contact Object Type
 
-[//]: # (Editor note: use Cx.x for Contacts)
+The RPP contact object type is mapped to the EPP equivalent and unless otherwise specified the same rules and semantics apply.
+
+**C1.1** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
+
+**C1.2** When RPP is used with thick registries, full contact data MAY be returned, for thin registries only the contact identifier MUST be returned.
+
+**C1.3** RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.
+
+**C1.4** RPP MAY OPTIONALLY support the contact transfer command from EPP.
+
+**C1.5** When digital identity schemes are used, RPP MUST NOT persist personal data from the identity provider and SHOULD store only a stable identifier/reference sufficient for future verification (see Privacy Considerations).
+
+**C1.6** RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include a “linked-by” counter attribute.
+
+**C1.7** RPP SHOULD consider renaming the EPP contact object type to "entity" to better align with the RDAP data model, defined in [@!RFC9083].
+
+### Operations
+
+**C2.1** The RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in [@!RFC5733], with the possible exception of Transfer command and include support for partial update semantics available to allow for efficient updates.
+
+**C2.2** RPP MAY support searching and listing contacts filtered by name (exact/prefix), and sponsoring client, with pagination, the server MAY use a maximum limit on results.
+
+**C2.3** Status management: Functional equivalents for EPP contact statuses (e.g., ok, linked, client/serverUpdateProhibited, client/serverDeleteProhibited, pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP responses.
+
+**C2.4** RPP MUST prevent creation of contacts with duplicate ids within a registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.
 
 ### Data Representation
 
-**C5.1** RPP SHOULD consider using JSContact [@!RFC9553] format for contact representation.
+**C3.1** RPP SHOULD consider using JSContact [@!RFC9553] format for contact representation.
+
+**C3.2** RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in [@!RFC5733].
+
+**C3.3** RPP MUST support returning contact representations at varying depths (see R6.1).
+
+**C3.4** Validation errors MUST be returned using problem details ([@!RFC7807]) with JSON Pointers to offending fields.
 
 ### Internationalisation
 
-**C13.1** RPP MUST support internationalisation (character encoding) for Contact objects in the following areas:
+**C4.1** RPP MUST support internationalisation (character encoding) for contact objects in the following areas:
 
 - name
 - address data
 - any other contact-related data containing human provided or readable text
 
-**C13.2** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
+**C4.2** RPP MUST support both the localized and internationalized version of the EPP postalInfo element from [@!RFC5733].
 
-**C13.3** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.
+**C4.3** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
+
+**C4.4** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.
+
+**C4.5** All future RPP contact object extensions MUST be able to handle internationalisation and localisation requirements.
 
 # IANA Considerations
 
@@ -395,6 +429,10 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 {removeInRFC="true"}
 # Changes History
+
+## Version -01 to -02
+
+* Added requirements for the contact object type
 
 ## Version -00 to -01
 
