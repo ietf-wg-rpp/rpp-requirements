@@ -361,7 +361,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **D1.7** RPP domain objects MUST support EPP password-based Authorisation Information (authInfo) for transfer operations (see R8.5).
 
-**D1.8** RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server*Prohibited, pending*). and define their mapping to RPP responses and HTTP status codes.
+**D1.8** RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server\*Prohibited, pending\*). and define their mapping to RPP responses and HTTP status codes.
 
 **D1.9** RPP MUST include an expiry timestamp for domains; server behaviour at and after expiry (auto‑renew, redemption) MUST be specified and discoverable.
 
