@@ -393,12 +393,7 @@ A> TODO: TBC if anything needed here
 
 The security section of this document defines the security related requirements for RPP, these requirements MUST be addressed in the design and implementation of RPP. Implementations MUST follow best practices, described in [@!RFC9205] for HTTP API design.
 
-Other operational security considerations include:
-
-- **Logging and Monitoring:** Security-relevant events, such as failed authentication attempts and access to sensitive resources, SHOULD be logged and monitored. Logs MUST NOT contain sensitive data such as passwords or full tokens, and access to logs MUST be restricted.
-
-- **Credential Management:** Client credentials MUST be protected against theft and replay, and have limited lifetimes. Mechanisms MUST exist to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
-
+RRP core specifications MUST include appropriate Security Considerations sections, specifying implementation and operational security requirements for both RPP clients and servers.
 
 {removeInRFC="true"}
 # Changes History
