@@ -355,7 +355,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Host Object Type
 
-The RPP host object type is mapped to the EPP equivalent and MUST support all operations defined by [@!RFC5732]
+The RPP host object type is mapped to the EPP equivalent and unless otherwise specified the same rules and semantics apply.
 
 **H1.1** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (R4.7).
 
@@ -365,9 +365,9 @@ The RPP host object type is mapped to the EPP equivalent and MUST support all op
 
 **H1.4** RPP requires that host names be MUST compared case-insensitively per DNS rules. Servers SHOULD canonicalise for storage and representation consistently, the server canonicalisation rules SHOULD be disclosed in the discovery document.
 
-**H1.5** RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy; such policy MUST be discoverable.
+**H1.5** RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy.
 
-**H1.6** RPP MUST support zero or more IP addresses (IPv4 and IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy and MUST be discoverable.
+**H1.6** RPP MUST support zero or more IP addresses (IPv4 and IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
 
 **H1.7** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include a “linked-by” counter attribute.
 
@@ -377,7 +377,7 @@ The RPP host object type is mapped to the EPP equivalent and MUST support all op
 
 **H2.1** RPP MUST support operations (commands) for Host objects as defined in [@!RFC5732], with partial update semantics available to allow for efficient updates.
 
-**H2.2** RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results, the limit MUST be discoverable.
+**H2.2** RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results.
 
 **H2.3** Only the sponsoring client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.
 
