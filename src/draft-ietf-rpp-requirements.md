@@ -347,9 +347,55 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 [//]: # (Editor note: use Dx.x for Domains)
 
-### Internationalisation
+**D1.1** RPP MUST map the EPP domain attribute model defined in the EPP RFCs to the generic RPP data model.
 
-**D13.1** RPP MUST support Internationalised Domain Names (IDNs) - both UTF-8 as well as Punycode representation of a domain name MUST be supported, however one of them MAY be chosen as primary for object URL
+**D1.2** RPP MUST only accept valid domain names, which MUST be valid FQDNs.
+
+**D1.3** RPP MUST support internationalized domain names (IDN) and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
+
+**D1.4** RPP MUST compare domain names case-insensitively per DNS rules. Servers SHOULD canonicalise for storage and representation consistently, the server canonicalisation rules SHOULD be disclosed in the discovery document.
+
+**D1.5** RPP MUST support domains that have zero or more linked hosts.
+
+**D1.6** RPP MUST support domains that have linkage to registrant, administrative, technical, and (optionally) billing contacts. In thin registries, only identifiers MAY be stored; in thick registries, contact data MAY be included per (privacy) policy.
+
+**D1.7** RPP domain objects MUST support EPP password-based Authorisation Information (authInfo) for transfer operations (see R8.5).
+
+**D1.8** RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server*Prohibited, pending*). and define their mapping to RPP responses and HTTP status codes.
+
+**D1.9** RPP MUST include an expiry timestamp for domains; server behaviour at and after expiry (auto‑renew, redemption) MUST be specified and discoverable.
+
+**D1.10** RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include a “linked-by” counter attribute.
+
+**D1.11** RPP domain object validation failures MUST be reported with problem details ([@!RFC7807]) including JSON Pointers to offending fields.
+
+### Operations
+
+**D2.1** The RPP domain object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the domain object in [@!RFC5731].
+RPP MUST support operations (commands) for Domain objects as defined in [@!RFC5731], with partial update semantics available to allow for efficient updates.
+
+<!-- already adding RGP here although we need to confirm this with Tiger team !-->
+**D2.2** RPP MUST support the Domain Registry Grace Period Mapping as defined by [@!RFC3915], the restore report MAY be ignored or included in the initial restore request, making this a 1-step process vs the 2-step process in EPP.
+
+**D2.3** RPP MAY support searching and listing domains filtered by name (exact/prefix), and sponsoring client, with pagination, the server MAY use a maximum limit on results, the limit MUST be discoverable.
+
+**D2.4** Only the sponsoring client (or an authorised server administrator) MAY modify or delete a domain object; servers MUST enforce authorisation.
+
+**D2.5** RPP MUST prevent creation of duplicate domain objects within a registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.
+
+### Data Representation
+
+**D3.1** RPP MUST support returning domain representations at varying depths (see R6.1).
+
+**D3.2** The JSON representation MUST include the canonical domain name and any U‑label/A‑label when IDN is used by the server.
+
+**D3.3** The RPP domain object representation MUST include link relations to related objects, for example: self, hosts and contacts.
+
+**D3.4** RPP collection responses SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination; server-enforced limits MUST be discoverable.
+
+**D3.5** Validation errors MUST be returned using problem details ([@!RFC7807]) with field‑level pointers for invalid name, nameserver, contact, period, or DNSSEC elements.
+
+**D3.6** The representation MUST adapt to the registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.
 
 ## Host Object Type
 
