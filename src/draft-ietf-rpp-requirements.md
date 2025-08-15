@@ -353,7 +353,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **D1.3** RPP MUST support internationalized domain names (IDN) and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
 
-**D1.4** RPP MUST compare domain names case-insensitively per DNS rules. Servers SHOULD canonicalise for storage and representation consistently, the server canonicalisation rules SHOULD be disclosed in the discovery document.
+**D1.4** RPP MUST treat domain names case-insensitively in requests and responses by both clients and servers. 
 
 **D1.5** RPP MUST support domains that have zero or more linked hosts.
 
