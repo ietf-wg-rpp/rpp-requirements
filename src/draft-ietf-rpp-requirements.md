@@ -357,7 +357,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Contact Object Type
 
-The RPP contact object type is mapped to the EPP equivalent and unless otherwise specified the same rules and semantics apply.
+**C1.1** The RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the sponsoring client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorization information.
 
 **C1.1** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
 **C1.x** RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model
