@@ -363,7 +363,7 @@ The RPP host object type is mapped to the EPP equivalent and unless otherwise sp
 
 **H1.3** RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
 
-**H1.4** RPP requires that host names be MUST compared case-insensitively per DNS rules. Servers SHOULD canonicalise for storage and representation consistently, the server canonicalisation rules SHOULD be disclosed in the discovery document.
+**H1.4** RPP MUST treat host names case-insensitively in requests and responses by both clients and servers.
 
 **H1.5** RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy.
 
