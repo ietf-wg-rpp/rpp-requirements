@@ -363,9 +363,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **D1.8** RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server<command>Prohibited, pending<command>). and define their mapping to RPP responses and HTTP status codes.
 
-**D1.9** RPP MUST include an expiry timestamp for domains; server behaviour at and after expiry (auto‑renew, redemption) MUST be specified and discoverable.
-
-**D1.10** RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include a “linked-by” counter attribute.
+**D1.9** RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include an attribute with information about linked objects.
 
 **D1.11** RPP domain object validation failures MUST be reported with problem details ([@!RFC7807]) including JSON Pointers to offending fields.
 
