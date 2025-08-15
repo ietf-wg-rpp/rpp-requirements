@@ -91,6 +91,8 @@ RPP MUST include support for providing detailed information about application st
 **R1.6**
 RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
 
+**R1.7.** Validation errors MUST be returned using problem details ([@!RFC7807]) with JSON pointer(s) for invalid properties.
+
 # HTTP
 
 **R2.1.** The Hypertext Transfer Protocol (HTTP) [@!RFC9110] MUST be used as the transport mechanism for RPP.
@@ -369,7 +371,7 @@ The RPP host object type is mapped to the EPP equivalent and unless otherwise sp
 
 **H1.6** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
 
-**H1.7** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include a “linked-by” counter attribute.
+**H1.7** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects
 
 **H1.8** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes.
 
@@ -387,11 +389,11 @@ The RPP host object type is mapped to the EPP equivalent and unless otherwise sp
 
 **H3.1** RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.
 
-**H3.2** The JSON representation MUST include: canonical host name, lists of IPv4 and IPv6 addresses, sponsoring client, statuses, creation/update timestamps, and server-managed identifiers.
+**H3.2** The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.
 
 **H3.3** The representation SHOULD include link relations to related objects, for example: self, and parent domain for in-bailiwick hosts.
 
-**H3.4** Validation errors MUST be returned using problem details ([@!RFC7807]) with JSON pointer(s) for invalid host name and address elements.
+
 
 ## Contact Object Type
 
