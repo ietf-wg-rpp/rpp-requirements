@@ -371,7 +371,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ### Operations
 
-**D2.1** The RPP domain object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the domain object in [@!RFC5731].
+**D2.1** RPP MUST provide operations to check, create, read, update, transfer, renew and delete domain name objects as defined in [@!RFC5731].
 RPP MUST support operations (commands) for Domain objects as defined in [@!RFC5731], with partial update semantics available to allow for efficient updates.
 
 <!-- already adding RGP here although we need to confirm this with Tiger team !-->
