@@ -371,7 +371,7 @@ The RPP host object type is mapped to the EPP equivalent and unless otherwise sp
 
 **H1.7** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include a “linked-by” counter attribute.
 
-**H1.8** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server*Prohibited, pending*) and define their mapping to RPP responses and HTTP status codes.
+**H1.8** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes.
 
 ### Operations
 
