@@ -367,7 +367,7 @@ The RPP host object type is mapped to the EPP equivalent and unless otherwise sp
 
 **H1.5** RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy.
 
-**H1.6** RPP MUST support zero or more IP addresses (IPv4 and IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
+**H1.6** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
 
 **H1.7** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include a “linked-by” counter attribute.
 
