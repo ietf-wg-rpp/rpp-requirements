@@ -357,23 +357,23 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Host Object Type
 
-The RPP host object data model MUST include, at a minimum: the fully qualified host name, all associated IP addresses, the Repository Object ID (roid), the object status, the current sponsoring client identifier, the creating client identifier, the creation timestamp, the last updating client identifier, the last update timestamp, and the last transfer timestamp.
+**H1.1** The RPP host object data model MUST include, at a minimum: the fully qualified host name, all associated IP addresses, the Repository Object ID (roid), the object status, the current sponsoring client identifier, the creating client identifier, the creation timestamp, the last updating client identifier, the last update timestamp, and the last transfer timestamp.
 
-**H1.1** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (R4.7).
+**H1.2** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (R4.7).
 
-**H1.2** Host names MUST be valid FQDNs.
+**H1.3** Host names MUST be valid FQDNs.
 
-**H1.3** RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
+**H1.4** RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
 
-**H1.4** RPP MUST treat host names case-insensitively in requests and responses by both clients and servers.
+**H1.5** RPP MUST treat host names case-insensitively in requests and responses by both clients and servers.
 
-**H1.5** RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy.
+**H1.6** RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy.
 
-**H1.6** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
+**H1.7** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
 
-**H1.7** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects
+**H1.8** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects
 
-**H1.8** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes.
+**H1.9** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes.
 
 ### Operations
 
