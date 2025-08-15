@@ -359,19 +359,19 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **C1.1** The RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the sponsoring client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorization information.
 
-**C1.1** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
-**C1.x** RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model
-**C1.2** When RPP is used with thick registries, full contact data MAY be returned, for thin registries only the contact identifier MUST be returned.
+**C1.2** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
+**C1.3** RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model
+**C1.4** When RPP is used with thick registries, full contact data MAY be returned, for thin registries only the contact identifier MUST be returned.
 
-**C1.3** RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.
+**C1.5** RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.
 
-**C1.4** RPP MAY OPTIONALLY support the contact transfer command from EPP.
+**C1.6** RPP MAY OPTIONALLY support the contact transfer command from EPP.
 
-**C1.5** When digital identity schemes are used, RPP MUST NOT persist personal data from the identity provider and SHOULD store only a stable identifier/reference sufficient for future verification (see Privacy Considerations).
+**C1.7** When digital identity schemes are used, RPP MUST NOT persist personal data from the identity provider and SHOULD store only a stable identifier/reference sufficient for future verification (see Privacy Considerations).
 
-**C1.6** RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include a “linked-by” counter attribute.
+**C1.8** RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include a “linked-by” counter attribute.
 
-**C1.7** RPP SHOULD consider renaming the EPP contact object type to "entity" to better align with the RDAP data model, defined in [@!RFC9083].
+**C1.9** RPP SHOULD consider renaming the EPP contact object type to "entity" to better align with the RDAP data model, defined in [@!RFC9083].
 
 ### Operations
 
