@@ -69,7 +69,8 @@ Table of Contents
    17. Clients
    18. Requirements for object types
      18.1.  Domain Object Type
-       18.1.1.  Internationalisation
+       18.1.1.  Operations
+       18.1.2.  Data Representation
      18.2.  Host Object Type
      18.3.  Contact Object Type
        18.3.1.  Data Representation
@@ -78,9 +79,10 @@ Table of Contents
    20. Security Considerations
    21. Privacy Considerations
    22. Changes History
-     22.1.  Version -00 to -01
-     22.2.  Version -01 to -00 (WG)
-     22.3.  Version -00 to -01
+     22.1.  Version -01 to -02
+     22.2.  Version -00 to -01
+     22.3.  Version -01 to -00 (WG)
+     22.4.  Version -00 to -01
        Overall Structural Changes
        Major Changes by Section (References as per -01)
          General
@@ -279,9 +281,12 @@ Table of Contents
 
    *R5.9* RPP MUST support full update of data objects.
 
-   *R.5.10* A generated RPP response representation that includes an
+   *R5.10* A generated RPP response representation that includes an
    object identifier (for example a contact handle) MUST also include a
    URL reference to the location of the object representation.
+
+   *R5.11* RPP MUST support representation of a collections of
+   resources.
 
 9.  Operations and responses
 
@@ -303,6 +308,10 @@ Table of Contents
    *R6.3* The data representation in a RPP response MUST only contain
    data related to the object, transactional information MUST be
    represented as one or more separate HTTP headers.
+
+   *R6.4* RPP MUST support search for resource collections and SHOULD
+   support filtering (e.g., by name prefix, status, registrar) and
+   pagination.
 
       |  TODO: Issue #56 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/56)
@@ -557,12 +566,79 @@ Table of Contents
 
 18.1.  Domain Object Type
 
-18.1.1.  Internationalisation
+   *D1.1* The RPP domain object data model MUST include, at a minimum
+   the attributes defined in RFC5731: the fully qualified domain name,
+   repository object identifier, object status, the current sponsoring
+   client identifier, creating registrar client ID, creation timestamp,
+   last update client ID, last update timestamp, expiration timestamp,
+   last transfer timestamp, name servers, subordinate hosts, the
+   registrant, and other associated contacts.
 
-   *D13.1* RPP MUST support Internationalised Domain Names (IDNs) - both
-   UTF-8 as well as Punycode representation of a domain name MUST be
-   supported, however one of them MAY be chosen as primary for object
-   URL
+   *D1.2* RPP MUST only accept valid domain names, which MUST be valid
+   FQDNs.
+
+   *D1.3* RPP MUST support internationalized domain names (IDN) and
+   accept A-labels and U-labels, also know as IDNA2008 and defined in
+   [RFC5890].
+
+   *D1.4* RPP MUST treat domain names case-insensitively in requests and
+   responses by both clients and servers.
+
+   *D1.5* RPP MUST support domains that have zero or more linked hosts.
+
+   *D1.6* RPP MUST support domains that have linkage to registrant,
+   administrative, technical, and (optionally) billing contacts.  In
+   thin registries, only identifiers MAY be stored; in thick registries,
+   contact data MAY be included per (privacy) policy.
+
+   *D1.7* RPP domain objects MUST support EPP password-based
+   Authorisation Information (authInfo) for transfer operations (see
+   R8.5).
+
+   *D1.8* RPP MUST provide functional equivalents for EPP domain status
+   values (e.g., ok, inactive, client/server<command>Prohibited,
+   pending<command>). and define their mapping to RPP responses and HTTP
+   status codes.
+
+   *D1.9* RPP MUST enforce referential integrity. the parent domain name
+   for a subordinate host object MUST not be deleted.  RPP MUST return a
+   conflict error when deletion is disallowed and the domain
+   representation MAY include an attribute with information about linked
+   objects.
+
+18.1.1.  Operations
+
+   *D2.1* RPP MUST provide operations to check, create, read, update,
+   transfer, renew and delete domain name objects as defined in
+   [RFC5731].
+
+   *D2.2* RPP MUST support the Domain Registry Grace Period Mapping as
+   defined by [RFC3915], the restore report MAY be ignored or included
+   in the initial restore request, making this a 1-step process vs the
+   2-step process in EPP.
+
+   *D2.3* RPP MAY support searching and listing domains filtered by name
+   (exact/prefix), and sponsoring client.
+
+   *D2.4* Only the sponsoring client (or an authorised server
+   administrator) MAY modify or delete a domain object; servers MUST
+   enforce authorisation.
+
+   *D2.5* RPP MUST prevent creation of duplicate domain objects within a
+   registry namespace (TLD) and return a HTTP 409 (Conflict) status on
+   collision.
+
+18.1.2.  Data Representation
+
+   *D3.1* The JSON representation MUST include the canonical domain name
+   and any U-label/A-label when IDN is used by the server.
+
+   *D3.2* The RPP domain object representation MUST include link
+   relations to related objects, for example: self, hosts and contacts.
+
+   *D3.3* The representation MUST adapt to the registry model.  In thin
+   mode, only identifiers (e.g., contact IDs) MUST be returned; in thick
+   mode, full contact data MUST be returned.
 
 18.2.  Host Object Type
 
@@ -630,7 +706,11 @@ Table of Contents
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -00 to -01
+22.1.  Version -01 to -02
+
+   -  Added requirements for Domain Object Type
+
+22.2.  Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -638,12 +718,12 @@ Table of Contents
    -  Updated the entire text to make consistent use of the British
       spelling style.
 
-22.2.  Version -01 to -00 (WG)
+22.3.  Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.3.  Version -00 to -01
+22.4.  Version -00 to -01
 
 Overall Structural Changes
 
@@ -896,6 +976,11 @@ Appendix A.  Extensions
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+   [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
+              the Extensible Provisioning Protocol (EPP)", RFC 3915,
+              DOI 10.17487/RFC3915, September 2004,
+              <https://www.rfc-editor.org/info/rfc3915>.
+
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
@@ -922,6 +1007,11 @@ Appendix A.  Extensions
               Uniform Resource Identifiers (URIs)", RFC 5785,
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
+
+   [RFC5890]  Klensin, J., "Internationalized Domain Names for
+              Applications (IDNA): Definitions and Document Framework",
+              RFC 5890, DOI 10.17487/RFC5890, August 2010,
+              <https://www.rfc-editor.org/info/rfc5890>.
 
    [RFC6530]  Klensin, J. and Y. Ko, "Overview and Framework for
               Internationalized Email", RFC 6530, DOI 10.17487/RFC6530,
