@@ -599,7 +599,7 @@ Table of Contents
 
    *D1.8* RPP MUST provide functional equivalents for EPP domain status
    values (e.g., ok, inactive, client/server<command>Prohibited,
-   pending<command>). and define their mapping to RPP responses and HTTP
+   pending<command>) and define their mapping to RPP responses and HTTP
    status codes.  The protocol MUST define which statuses can be set by
    the server and which can be set by the sponsoring client.
 
