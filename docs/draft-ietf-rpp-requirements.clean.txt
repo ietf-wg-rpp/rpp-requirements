@@ -584,7 +584,9 @@ Table of Contents
    *D1.4* RPP MUST treat domain names case-insensitively in requests and
    responses by both clients and servers.
 
-   *D1.5* RPP MUST support domains that have zero or more linked hosts.
+   *D1.5* The RPP domain object data model MUST allow for the
+   association of zero, one or more host objects to serve as name
+   servers for the domain.
 
    *D1.6* RPP MUST support domains that have linkage to registrant,
    administrative, technical, and (optionally) billing contacts.  In
@@ -598,7 +600,8 @@ Table of Contents
    *D1.8* RPP MUST provide functional equivalents for EPP domain status
    values (e.g., ok, inactive, client/server<command>Prohibited,
    pending<command>). and define their mapping to RPP responses and HTTP
-   status codes.
+   status codes.  The protocol MUST define which statuses can be set by
+   the server and which can be set by the sponsoring client.
 
    *D1.9* RPP MUST enforce referential integrity. the parent domain name
    for a subordinate host object MUST not be deleted.  RPP MUST return a
@@ -612,21 +615,35 @@ Table of Contents
    transfer, renew and delete domain name objects as defined in
    [RFC5731].
 
-   *D2.2* RPP MUST support the Domain Registry Grace Period Mapping as
+   *D2.2* When creating or renewing a domain object, RPP MUST allow a
+   client to specify a registration period.  The protocol MUST provide a
+   mechanism for the server to confirm the resulting registration
+   expiration date in the response.
+
+   *D2.3* RPP MUST support the Domain Registry Grace Period Mapping as
    defined by [RFC3915], the restore report MAY be ignored or included
    in the initial restore request, making this a 1-step process vs the
    2-step process in EPP.
 
-   *D2.3* RPP MAY support searching and listing domains filtered by name
+   *D2.4* RPP MAY support searching and listing domains filtered by name
    (exact/prefix), and sponsoring client.
 
-   *D2.4* Only the sponsoring client (or an authorised server
+   *D2.5* Only the sponsoring client (or an authorised server
    administrator) MAY modify or delete a domain object; servers MUST
    enforce authorisation.
 
-   *D2.5* RPP MUST prevent creation of duplicate domain objects within a
+   *D2.6* RPP MUST prevent creation of duplicate domain objects within a
    registry namespace (TLD) and return a HTTP 409 (Conflict) status on
    collision.
+
+   *D2.7* The transfer of a domain object MUST also result in the
+   transfer of any subordinate host objects (ns.foo.example when
+   foo.example is transferred).
+
+   *D2.8* The RPP domain transfer operation MUST allow for an implicit
+   renewal.  If a transfer results in an extension of the registration
+   period, the response to the successful transfer MUST include the new
+   expiration date of the domain object.
 
 18.1.2.  Data Representation
 
