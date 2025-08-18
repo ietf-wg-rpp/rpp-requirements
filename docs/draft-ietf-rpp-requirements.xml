@@ -293,11 +293,19 @@ RPP MUST support additional information about a successful operation (informatio
 </aside>
 </section>
 
+<section anchor="privacy-considerations"><name>Privacy Considerations</name>
+<t><strong>DP.1</strong> The protocol MUST provide mechanisms to support the implementation of data privacy principles, such as those found in modern data protection frameworks (e.g., GDPR). These mechanisms MUST support, at a minimum, the principles of data minimisation and purpose limitation.</t>
+<t><strong>DP.2</strong> To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it is authorised to access (See also R4.3 and R6.1).</t>
+<t><strong>DP.3</strong> The protocol's operations and data models MUST be sufficiently flexible to allow an operator to implement workflows for exercising data subject rights, such as access, rectification, and erasure of personal data, in a manner consistent with the operational and policy constraints of the provisioning environment.</t>
+<t><strong>DP.4</strong> The protocol MUST provide services to identify data collection policies and privacy practices. Information about data collection, retention, and privacy policies MUST be included in the service discovery document, enabling clients to understand how personal and sensitive data is handled.</t>
+</section>
+
 <section anchor="changes-history" removeInRFC="true"><name>Changes History</name>
 
 <section anchor="version-00-to-01"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
+<li>Added Privacy Considerations section</li>
 <li>R1.5 has been changed to MUST instead of MAY.</li>
 <li>R1.6 has been changed to MUST instead of SHOULD.</li>
 <li>Updated the entire text to make consistent use of the British spelling style.</li>
