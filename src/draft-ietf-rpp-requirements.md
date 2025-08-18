@@ -391,7 +391,7 @@ A> TODO: TBC if anything needed here
 
 # Security Considerations
 
-The security section of this document defines the security related requirements for RPP, these requirements MUST be addressed in the design and implementation of RPP. Implementations MUST follow best practices, described in [@!RFC9205] for HTTP API design.
+The security section of this document defines the security related requirements for RPP, these requirements MUST be addressed in the design and implementation of RPP. Implementations MUST follow best practices, described in [@!BCP56] for HTTP API design.
 
 RRP core specifications MUST include appropriate Security Considerations sections, specifying implementation and operational security requirements for both RPP clients and servers.
 

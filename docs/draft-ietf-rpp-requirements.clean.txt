@@ -78,9 +78,10 @@ Table of Contents
    20. Security Considerations
    21. Privacy Considerations
    22. Changes History
-     22.1.  Version -00 to -01
-     22.2.  Version -01 to -00 (WG)
-     22.3.  Version -00 to -01
+     22.1.  Version -01 to -02
+     22.2.  Version -00 to -01
+     22.3.  Version -01 to -00 (WG)
+     22.4.  Version -00 to -01
        Overall Structural Changes
        Major Changes by Section (References as per -01)
          General
@@ -398,8 +399,9 @@ Table of Contents
    authorisation schemes allowing for easy integration in modern HTTP
    infrastructure.
 
-   *R9.2* RPP MUST support modern authentication and authorisation
-   standards (OAuth, OpenId Connect)
+   *R9.2* RPP MUST support robust authentication and authorization
+   mechanisms, such as OAuth 2.0 and OpenID Connect, to ensure that only
+   authorized clients and users can access or modify resources.
 
    *R9.3* Support for a simplified and quicker object transfer process
    MAY be included, where approval from the losing registrar is to be
@@ -416,8 +418,8 @@ Table of Contents
       operator to update their NS records, directly in the registry
       database or indirectly using a registrar.
 
-   *R9.5* RPP MUST employ strong authentication and utilise encrypted
-   transport (HTTPS) to protect sensitive data.
+   *R9.5* All RPP communications MUST use HTTPS (TLS) to protect data in
+   transit from eavesdropping and man-in-the-middle attacks.
 
    *R9.6* Security mechanisms SHOULD be flexible to allow operators to
    choose appropriate methods and support federated authentication
@@ -439,6 +441,25 @@ Table of Contents
 
    *R9.10* RPP MUST allow users to update their credentials and enforce
    strong passwords and limited lifetime for passwords and other tokens.
+
+   *R9.11* RPP must support the Least Privilege Principle, to allow
+   server operators to ensure that clients have only the permissions
+   necessary.
+
+   *R9.12* RPP MUST support secure credentials management, ensuring that
+   credentials are protected against replay and theft, and have limited
+   lifetimes.
+
+   *R9.13* Any protocol extensions MUST be subject to the same security
+   review and requirements as the core protocol.
+
+   *R9.14* There MUST be mechanisms to revoke or deprecate credentials,
+   tokens, or permissions when no longer needed or if compromised.
+
+   *R9.15* RPP must support mechanisms to prevent Denial-of-Service
+   attacks, whether from malicious actors or misbehaving clients.  These
+   mechanisms can include rate limiting and throttling of requests with
+   related protocol signalling.
 
 13.  Extensibility
 
@@ -596,8 +617,14 @@ Table of Contents
 
 20.  Security Considerations
 
-      |  TODO: TBC if anything needed here.  There is a security
-      |  section.
+   The security section of this document defines the security related
+   requirements for RPP, these requirements MUST be addressed in the
+   design and implementation of RPP.  Implementations MUST follow best
+   practices, described in [BCP56] for HTTP API design.
+
+   RRP core specifications MUST include appropriate Security
+   Considerations sections, specifying implementation and operational
+   security requirements for both RPP clients and servers.
 
 21.  Privacy Considerations
 
@@ -630,7 +657,14 @@ Table of Contents
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -00 to -01
+22.1.  Version -01 to -02
+
+   -  The security considerations section has been restructured and
+      expanded to provide more detailed guidance on security best
+      practices for RPP implementations.
+   -  Added additional security requirements.
+
+22.2.  Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -638,12 +672,12 @@ Table of Contents
    -  Updated the entire text to make consistent use of the British
       spelling style.
 
-22.2.  Version -01 to -00 (WG)
+22.3.  Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.3.  Version -00 to -01
+22.4.  Version -00 to -01
 
 Overall Structural Changes
 
