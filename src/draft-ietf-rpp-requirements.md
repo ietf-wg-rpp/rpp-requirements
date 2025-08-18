@@ -395,6 +395,16 @@ The security section of this document defines the security related requirements 
 
 RRP core specifications MUST include appropriate Security Considerations sections, specifying implementation and operational security requirements for both RPP clients and servers.
 
+# Privacy Considerations
+
+**DP.1** The protocol MUST provide mechanisms to support the implementation of data privacy principles, such as those found in modern data protection frameworks (e.g., GDPR). These mechanisms MUST support, at a minimum, the principles of data minimisation and purpose limitation.
+
+**DP.2** To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it is authorised to access (See also R4.3 and R6.1).
+
+**DP.3** The protocol's operations and data models MUST be sufficiently flexible to allow an operator to implement workflows for exercising data subject rights, such as access, rectification, and erasure of personal data, in a manner consistent with the operational and policy constraints of the provisioning environment.
+
+**DP.4** The protocol MUST provide services to identify data collection policies and privacy practices. Information about data collection, retention, and privacy policies MUST be included in the service discovery document, enabling clients to understand how personal and sensitive data is handled.
+
 {removeInRFC="true"}
 # Changes History
 
@@ -405,9 +415,10 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 ## Version -00 to -01
 
+* Added Privacy Considerations section
 * R1.5 has been changed to MUST instead of MAY.
 * R1.6 has been changed to MUST instead of SHOULD.
-* Updated the entire text to make consistent use of the British spelling style. 
+* Updated the entire text to make consistent use of the British spelling style.
 
 ## Version -01 to -00 (WG)
 
