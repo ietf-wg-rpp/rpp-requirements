@@ -72,15 +72,17 @@ Table of Contents
        18.1.1.  Internationalisation
      18.2.  Host Object Type
      18.3.  Contact Object Type
-       18.3.1.  Data Representation
-       18.3.2.  Internationalisation
+       18.3.1.  Operations
+       18.3.2.  Data Representation
+       18.3.3.  Internationalisation
    19. IANA Considerations
    20. Security Considerations
    21. Privacy Considerations
    22. Changes History
-     22.1.  Version -00 to -01
-     22.2.  Version -01 to -00 (WG)
-     22.3.  Version -00 to -01
+     22.1.  Version -01 to -02
+     22.2.  Version -00 to -01
+     22.3.  Version -01 to -00 (WG)
+     22.4.  Version -00 to -01
        Overall Structural Changes
        Major Changes by Section (References as per -01)
          General
@@ -568,27 +570,108 @@ Table of Contents
 
 18.3.  Contact Object Type
 
-18.3.1.  Data Representation
+   *C1.1* The RPP contact object data model MUST include, at a minimum
+   an equivalent of RFC5733 contact data model: a unique identifier,
+   repository object ID, current status, name, organisation, full postal
+   address, voice and fax numbers, email addresses,the sponsoring client
+   identifier, the creating client identifier, creation timestamp, the
+   last updating client identifier, last update timestamp, last transfer
+   timestamp, and authorisation information.
 
-   *C5.1* RPP SHOULD consider using JSContact [RFC9553] format for
+   *C1.2* RPP MUST support server-generated opaque IDs, support for
+   client-supplied IDs is OPTIONAL.
+
+   *C1.3* RPP SHOULD support an explicit indication of entity type
+   (person or organisation) in the contact model.
+
+   *C1.4* When RPP is used with thick registries, full contact data MAY
+   be returned, for thin registries only the contact identifier MUST be
+   returned.
+
+   *C1.5* RPP MUST support disclosure and privacy preferences equivalent
+   to EPP “disclose”.
+
+   *C1.6* RPP MAY support the contact transfer command from EPP.
+
+   *C1.7* When digital identity schemes are used, RPP MUST allow not to
+   persist personal data from the identity provider and SHOULD store
+   only a stable identifier/reference sufficient for future verification
+   (see Privacy Considerations).
+
+   *C1.8* RPP MUST enforce referential integrity.  A contact MUST not be
+   deleted when it is referenced by other objects.  RPP MUST return a
+   conflict error when deletion is disallowed and the contact
+   representation MAY include an attribute with information about linked
+   objects.
+
+   *C1.9* RPP SHOULD consider renaming the EPP contact object type to
+   "entity" to better align with the RDAP data model, defined in
+   [RFC9083].
+
+18.3.1.  Operations
+
+   *C2.1* The RPP contact object type is mapped to the EPP equivalent
+   and MUST support all operations (commands) defined for the contact
+   object in [RFC5733], such as check, create, read, update, and delete
+   with the possible exception of transfer command, and include support
+   for partial update semantics available to allow for efficient
+   updates.
+
+   *C2.2* RPP MAY support searching and listing contacts filtered by
+   name (exact/prefix), and sponsoring client, with pagination, the
+   server MAY use a maximum limit on results.
+
+   *C2.3* Functional equivalents for EPP contact statuses (e.g., ok,
+   linked, client/serverUpdateProhibited, client/serverDeleteProhibited,
+   pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP
+   responses.  The protocol MUST define which statuses can be set by the
+   server and which can be set by the sponsoring client.
+
+   *C2.4* RPP MUST prevent creation of contacts with duplicate ids
+   within registry namespace (TLD) and return a HTTP 409 (Conflict)
+   status on collision.
+
+   *C2.5* The protocol MUST provide an operation to retrieve full
+   contact representation.  An authorisation mechanism MUST ensure that
+   sensitive data, such as authorisation information, is only returned
+   to the current sponsoring client.
+
+   *C2.6* The protocol MUST provide an operation to retrieve an
+   appropriate contact representation to non-sponsoring clients.  The
+   representation MAY vary depending if the authorisation information is
+   provided - depending on server policy.
+
+18.3.2.  Data Representation
+
+   *C3.1* RPP SHOULD consider using JSContact [RFC9553] format for
    contact representation.
 
-18.3.2.  Internationalisation
+   *C3.2* RPP MUST support contact attribute disclosure preferences per
+   field (or field group) and this MUST be mapped to the EPP disclosure
+   preferences described in [RFC5733].
 
-   *C13.1* RPP MUST support internationalisation (character encoding)
-   for Contact objects in the following areas:
+18.3.3.  Internationalisation
+
+   *C4.1* RPP MUST support internationalisation (character encoding) for
+   contact objects in the following areas:
 
    -  name
    -  address data
    -  any other contact-related data containing human provided or
       readable text
 
-   *C13.2* RPP MUST support internationalised Email addresses [RFC6530]
+   *C4.2* RPP MUST support both the localized and internationalized
+   version of the EPP postalInfo element from [RFC5733].
+
+   *C4.3* RPP MUST support internationalised Email addresses [RFC6530]
    in Contact objects.
 
-   *C13.3* RPP MUST support multiple localised expressions of the same
-   data, e.g. fields mentioned in C13.1 having both international and
+   *C4.4* RPP MUST support multiple localised expressions of the same
+   data, e.g. fields mentioned in C4.1 having both international and
    localised variants.
+
+   *C4.5* All future RPP contact object extensions MUST be able to
+   handle internationalisation and localisation requirements.
 
 19.  IANA Considerations
 
@@ -630,7 +713,11 @@ Table of Contents
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -00 to -01
+22.1.  Version -01 to -02
+
+   -  Added requirements for the contact object type
+
+22.2.  Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -638,12 +725,12 @@ Table of Contents
    -  Updated the entire text to make consistent use of the British
       spelling style.
 
-22.2.  Version -01 to -00 (WG)
+22.3.  Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.3.  Version -00 to -01
+22.4.  Version -00 to -01
 
 Overall Structural Changes
 
@@ -930,6 +1017,11 @@ Appendix A.  Extensions
    [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
               APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
               <https://www.rfc-editor.org/info/rfc7807>.
+
+   [RFC9083]  Hollenbeck, S. and A. Newton, "JSON Responses for the
+              Registration Data Access Protocol (RDAP)", STD 95,
+              RFC 9083, DOI 10.17487/RFC9083, June 2021,
+              <https://www.rfc-editor.org/info/rfc9083>.
 
    [RFC9110]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "HTTP Semantics", STD 97, RFC 9110,
