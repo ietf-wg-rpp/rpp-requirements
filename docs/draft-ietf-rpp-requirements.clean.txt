@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 February 2026                                          DENIC
-                                                          18 August 2025
+Expires: 23 February 2026                                          DENIC
+                                                          22 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 February 2026.
+   This Internet-Draft will expire on 23 February 2026.
 
 Copyright Notice
 
@@ -607,12 +607,10 @@ Table of Contents
    MUST support, at a minimum, the principles of data minimisation and
    purpose limitation.
 
-   *DP.2* To support data minimisation, the protocol MUST allow clients
-   to provide and manage only the data that is strictly necessary for a
-   specific purpose.  The protocol MUST also allow for different
-   representations of an object, so that a client can request a
-   representation containing only the data it is authorised to access
-   (See also R4.3 and R6.1).
+   *DP.2* The protocol MUST allow for different representations of an
+   object, so that a client can request a representation containing only
+   the data it needs and server can return the data a client is
+   authorised to access (See also R4.3 and R6.1).
 
    *DP.3* The protocol's operations and data models MUST be sufficiently
    flexible to allow an operator to implement workflows for exercising
