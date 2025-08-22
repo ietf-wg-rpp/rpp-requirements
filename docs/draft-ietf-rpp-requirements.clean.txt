@@ -607,10 +607,13 @@ Table of Contents
    MUST support, at a minimum, the principles of data minimisation and
    purpose limitation.
 
-   *DP.2* The protocol MUST allow for different representations of an
-   object, so that a client can request a representation containing only
-   the data it needs and server can return the data a client is
-   authorised to access (See also R4.3 and R6.1).
+   *DP.2* To support data minimisation, the protocol MUST allow clients
+   to provide and manage only the data that is strictly necessary for a
+   specific purpose.  The protocol MUST also allow for different
+   representations of an object, so that a client can request a
+   representation containing only the data it needs and server can
+   return the data a client is authorised to access (See also R4.3 and
+   R6.1).
 
    *DP.3* The protocol's operations and data models MUST be sufficiently
    flexible to allow an operator to implement workflows for exercising
