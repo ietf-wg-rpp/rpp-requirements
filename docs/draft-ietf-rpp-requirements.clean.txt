@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 February 2026                                          DENIC
-                                                          18 August 2025
+Expires: 23 February 2026                                          DENIC
+                                                          22 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 February 2026.
+   This Internet-Draft will expire on 23 February 2026.
 
 Copyright Notice
 
@@ -399,9 +399,9 @@ Table of Contents
    authorisation schemes allowing for easy integration in modern HTTP
    infrastructure.
 
-   *R9.2* RPP MUST support robust authentication and authorization
+   *R9.2* RPP MUST support robust authentication and authorisation
    mechanisms, such as OAuth 2.0 and OpenID Connect, to ensure that only
-   authorized clients and users can access or modify resources.
+   authorised clients and users can access or modify resources.
 
    *R9.3* Support for a simplified and quicker object transfer process
    MAY be included, where approval from the losing registrar is to be
