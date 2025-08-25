@@ -135,6 +135,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.6** A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”
 
+**R4.7** RPP MUST support linking of objects of the same or different types, with flexible cardinality (one-to-one, one-to-many, many-to-many). The links MUST also support to have attributes of their own (e.g., a link between a domain and a contact object with a different contact role).
+
 # Data Representation
 
 **R5.1** RPP MUST use JSON as the default data format.
@@ -162,6 +164,8 @@ RPP MUST support the use of server profiles to define required components of the
 **R5.10** A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.
 
 **R5.11** RPP MUST support representation of a collections of resources.
+
+**R5.12** The representation of the links (see R4.7) MUST be expressed using the RPP server's internal identifiers. The RPP SHOULD also consider using URIs and/or [@!RFC6570] URI templates for uniform addressing of link targets, both internal and external to the RPP server.
 
 # Operations and responses
 
