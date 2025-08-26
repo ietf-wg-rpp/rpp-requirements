@@ -135,6 +135,12 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.6** A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”
 
+**R4.7** *Pending review in PR #107* 
+
+**R4.8** RPP MUST allow a client to reference a shared object (e.g., a host or contact) sponsored by a different client, while ensuring the sponsoring client retains full administrative control over the shared object.
+
+A> NOTE: derived from [@?RFC3375] 3.4.3 [5]
+
 # Data Representation
 
 **R5.1** RPP MUST use JSON as the default data format.
@@ -178,6 +184,22 @@ RPP MUST support the use of server profiles to define required components of the
 **R6.3** The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.
 
 A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
+
+**R6.4** RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.
+
+A> NOTE: derived from [@?RFC3375] 3.1 [7]
+
+**R6.5** RPP MUST provide services for the client to assure a re-tried transaction is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
+
+A> NOTE: derived from [@?RFC3375] 3.1 [8]
+
+**R6.6** The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.
+
+A> NOTE: derived from [@?RFC3375] 7.1 [3]
+
+**R6.7** For every request that results in a change to a repository object, the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
+
+A> NOTE: derived from [@?RFC3375] 3.3 [1]
 
 # Discoverability
 
@@ -324,6 +346,10 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
  RPP MAY support compound object create request having embedded contact/host vs. request serialisation (client waiting for contact/host creation to succeed before sending a domain request). Return complete representation (similar to object info in EPP) after compound request completed or return redirect to newly created object location.
 [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)
  -->
+
+ **R12.4** The protocol MUST be usable in both high volume and low volume operating environments.
+
+A> NOTE: derived from [@?RFC3375] 5. [1]
 
 # Internationalisation
 
