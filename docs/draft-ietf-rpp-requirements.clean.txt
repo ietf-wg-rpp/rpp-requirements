@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 February 2026                                          DENIC
-                                                          18 August 2025
+Expires: 27 February 2026                                          DENIC
+                                                          26 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 February 2026.
+   This Internet-Draft will expire on 27 February 2026.
 
 Copyright Notice
 
@@ -592,7 +592,15 @@ Table of Contents
 
 19.  IANA Considerations
 
-      |  TODO: TBC if anything needed here
+   This document has several requirements for the RESTful Provisioning
+   Protocol (RPP) that create considerations for IANA.  Future
+   architecture and design documents may identify additional needs for
+   IANA registries.
+
+   Therefore, the core RPP specifications MUST include "IANA
+   Considerations" sections that formally request the creation of any
+   necessary IANA registries.  These sections MUST also provide the
+   initial registration of values defined within those core documents.
 
 20.  Security Considerations
 
