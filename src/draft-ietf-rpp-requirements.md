@@ -371,19 +371,21 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 **H1.7** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
 
-**H1.8** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects
-
 **H1.9** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes.
 
 ### Operations
 
-**H2.1** RPP MUST support operations (commands) for Host objects as defined in [@!RFC5732], with partial update semantics available to allow for efficient updates.
+**H2.1** RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in [@!RFC5732], with partial update semantics available to allow for efficient updates. Transfer operation of subordinate host object MUST be implicit with the transfer operation of parent domain name.  
 
 **H2.2** RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results.
 
 **H2.3** Only the sponsoring client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.
 
-**H2.4** RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.
+**H2.4** RPP MUST assure that in-bailiwick host objects are created and managed by the same sponsoting client as the parent domain name.
+
+**H2.5** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in [@!I-D.ietf-regext-epp-delete-bcp].
+
+**H2.6** RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.
 
 ### Data Representation
 
@@ -392,8 +394,6 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 **H3.2** The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.
 
 **H3.3** The representation SHOULD include link relations to related objects, for example: self, and parent domain for in-bailiwick hosts.
-
-
 
 ## Contact Object Type
 
@@ -690,4 +690,24 @@ A> TODO: This list is far from being finished
     </author>
     <date year="2025"/>
   </front>
+</reference>
+
+<reference anchor="I-D.ietf-regext-epp-delete-bcp" target="https://datatracker.ietf.org/doc/html/draft-ietf-regext-epp-delete-bcp-10">
+  <front>
+  <title>Best Practices for Deletion of Domain and Host Objects in the Extensible Provisioning Protocol (EPP)</title>
+  <author initials="S." surname="Hollenbeck" fullname="Scott Hollenbeck">
+  <organization>Verisign Labs</organization>
+  </author>
+  <author initials="W." surname="Carroll" fullname="William Carroll">
+  <organization>Verisign</organization>
+  </author>
+  <author initials="G." surname="Akiwate" fullname="Gautam Akiwate">
+  <organization>Stanford University</organization>
+  </author>
+  <date month="March" day="13" year="2025"/>
+  <abstract>
+  <t> The Extensible Provisioning Protocol (EPP) includes commands for clients to delete domain and host objects, both of which are used to publish information in the Domain Name System (DNS). EPP also includes guidance for deletions that is intended to avoid DNS resolution disruptions and maintain data consistency. However, operational relationships between objects can make that guidance difficult to implement. Some EPP clients have developed operational practices to delete those objects that have unintended impacts on DNS resolution and security. This document describes best current practices and proposes new potential practices to delete domain and host objects that reduce the risk of DNS resolution failure and maintain client-server data consistency. </t>
+  </abstract>
+  </front>
+  <seriesInfo name="Internet-Draft" value="draft-ietf-regext-epp-delete-bcp-10"/>
 </reference>

@@ -609,12 +609,6 @@ Table of Contents
    unique within the host.  Maximum counts and any disallowed ranges
    (e.g., [RFC1918]) are server policy.
 
-   *H1.8* RPP MUST enforce referential integrity.  A host referenced by
-   any domain (linked) MUST NOT be deleted.  Servers MUST return a
-   conflict error when deletion is disallowed and the host
-   representation MAY include an attribute with information about linked
-   objects
-
    *H1.9* RPP MUST provide functional equivalents for EPP host status
    values (e.g., ok, linked, client/server<command>Prohibited,
    pending<command>) and define their mapping to RPP responses and HTTP
@@ -622,9 +616,11 @@ Table of Contents
 
 18.3.1.  Operations
 
-   *H2.1* RPP MUST support operations (commands) for Host objects as
-   defined in [RFC5732], with partial update semantics available to
-   allow for efficient updates.
+   *H2.1* RPP MUST RPP MUST provide operations to check, create, read,
+   update and delete host objects as defined in [RFC5732], with partial
+   update semantics available to allow for efficient updates.  Transfer
+   operation of subordinate host object MUST be implicit with the
+   transfer operation of parent domain name.
 
    *H2.2* RPP SHOULD support searching and listing hosts filtered by
    name (exact/prefix), IP address, and sponsoring client, with
@@ -634,7 +630,18 @@ Table of Contents
    administrator) MAY modify or delete a host; servers MUST enforce
    authorisation.
 
-   *H2.4* RPP MUST prevent creation of duplicate hosts within a registry
+   *H2.4* RPP MUST assure that in-bailiwick host objects are created and
+   managed by the same sponsoting client as the parent domain name.
+
+   *H2.5* RPP MUST enforce referential integrity.  A host referenced by
+   any domain (linked) MUST NOT be deleted.  Servers MUST return a
+   conflict error when deletion is disallowed and the host
+   representation MAY include an attribute with information about linked
+   objects.  RPP MUST allow for safe deletion of referenced hosts - with
+   grace period, restore and prior removal of references as recommended
+   in [I-D.ietf-regext-epp-delete-bcp].
+
+   *H2.6* RPP MUST prevent creation of duplicate hosts within a registry
    namespace (TLD) and return a conflict on collision.
 
 18.3.2.  Data Representation
@@ -968,6 +975,14 @@ Appendix A.  Extensions
               Nottingham, M., "Building Protocols with HTTP", BCP 56,
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
               <https://www.rfc-editor.org/info/rfc9205>.
+
+   [I-D.ietf-regext-epp-delete-bcp]
+              Hollenbeck, S., Carroll, W., and G. Akiwate, "Best
+              Practices for Deletion of Domain and Host Objects in the
+              Extensible Provisioning Protocol (EPP)", Work in Progress,
+              Internet-Draft, draft-ietf-regext-epp-delete-bcp-10, 13
+              March 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-regext-epp-delete-bcp-10>.
 
    [RAML]     raml.org, "RESTful API Modeling Language", 2025,
               <https://raml.org/>.
