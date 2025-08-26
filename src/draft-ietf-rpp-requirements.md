@@ -91,8 +91,6 @@ RPP MUST include support for providing detailed information about application st
 **R1.6**
 RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
 
-**R1.7.** Validation errors MUST be returned using problem details ([@!RFC7807]) with JSON pointer(s) for invalid properties.
-
 # HTTP
 
 **R2.1.** The Hypertext Transfer Protocol (HTTP) [@!RFC9110] MUST be used as the transport mechanism for RPP.
@@ -136,8 +134,6 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 **R4.5** The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.
 
 **R4.6** A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”
-
-**R4.7** RPP MUST define a generic data model for representing DNS data, such as DNS records (A, AAAA, CNAME, MX, etc.) and their attributes.
 
 # Data Representation
 
@@ -346,6 +342,10 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 **R14.4** RPP SHOULD support mobile applications as clients, also here through direct integration without any proxy backend.
 
 # Requirements for object types
+
+## Common
+
+**O1.1** RPP MUST define a single, structured data model for representing DNS resource records. This model MUST be used consistently for all object types that require DNS representation (e.g., Host, Domain). The model MUST support common DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, like TTL. The model SHOULD be designed to be extensible for future, experimental or less common record types.
 
 ## Domain Object Type
 

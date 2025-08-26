@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 February 2026                                          DENIC
-                                                          18 August 2025
+Expires: 27 February 2026                                          DENIC
+                                                          26 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 February 2026.
+   This Internet-Draft will expire on 27 February 2026.
 
 Copyright Notice
 
@@ -68,19 +68,23 @@ Table of Contents
    16. Internationalisation
    17. Clients
    18. Requirements for object types
-     18.1.  Domain Object Type
-       18.1.1.  Internationalisation
-     18.2.  Host Object Type
-     18.3.  Contact Object Type
-       18.3.1.  Data Representation
-       18.3.2.  Internationalisation
+     18.1.  Common
+     18.2.  Domain Object Type
+       18.2.1.  Internationalisation
+     18.3.  Host Object Type
+       18.3.1.  Operations
+       18.3.2.  Data Representation
+     18.4.  Contact Object Type
+       18.4.1.  Data Representation
+       18.4.2.  Internationalisation
    19. IANA Considerations
    20. Security Considerations
    21. Privacy Considerations
    22. Changes History
-     22.1.  Version -00 to -01
-     22.2.  Version -01 to -00 (WG)
-     22.3.  Version -00 to -01
+     22.1.  Version -01 to -02
+     22.2.  Version -00 to -01
+     22.3.  Version -01 to -00 (WG)
+     22.4.  Version -00 to -01
        Overall Structural Changes
        Major Changes by Section (References as per -01)
          General
@@ -555,25 +559,102 @@ Table of Contents
 
 18.  Requirements for object types
 
-18.1.  Domain Object Type
+18.1.  Common
 
-18.1.1.  Internationalisation
+   *O1.1* RPP MUST define a single, structured data model for
+   representing DNS resource records.  This model MUST be used
+   consistently for all object types that require DNS representation
+   (e.g., Host, Domain).  The model MUST support common DNS record types
+   (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard
+   attributes, like TTL.  The model SHOULD be designed to be extensible
+   for future, experimental or less common record types.
+
+18.2.  Domain Object Type
+
+18.2.1.  Internationalisation
 
    *D13.1* RPP MUST support Internationalised Domain Names (IDNs) - both
    UTF-8 as well as Punycode representation of a domain name MUST be
    supported, however one of them MAY be chosen as primary for object
    URL
 
-18.2.  Host Object Type
+18.3.  Host Object Type
 
-18.3.  Contact Object Type
+   *H1.1* The RPP host object data model MUST include, at a minimum: the
+   fully qualified host name, all associated IP addresses, the
+   Repository Object ID (roid), the object status, the current
+   sponsoring client identifier, the creating client identifier, the
+   creation timestamp, the last updating client identifier, the last
+   update timestamp, and the last transfer timestamp.
 
-18.3.1.  Data Representation
+   *H1.2* RPP MUST map the EPP host attribute model to the generic JSON
+   DNS model defined by RPP (R4.7).
+
+   *H1.3* Host names MUST be valid FQDNs.
+
+   *H1.4* RPP MUST support internationalized domain names (IDN) for host
+   names and accept A-labels and U-labels, also know as IDNA2008 and
+   defined in [RFC5890].
+
+   *H1.5* RPP MUST treat host names case-insensitively in requests and
+   responses by both clients and servers.
+
+   *H1.6* RPP MUST support both in-bailiwick and out-of-bailiwick hosts.
+   For in-bailiwick hosts, glue IP addresses MAY be required by server
+   policy.
+
+   *H1.7* RPP MUST support zero or more IP addresses (IPv4 or IPv6) for
+   host objects.  Addresses MUST be syntactically valid, normalised, and
+   unique within the host.  Maximum counts and any disallowed ranges
+   (e.g., [RFC1918]) are server policy.
+
+   *H1.8* RPP MUST enforce referential integrity.  A host referenced by
+   any domain (linked) MUST NOT be deleted.  Servers MUST return a
+   conflict error when deletion is disallowed and the host
+   representation MAY include an attribute with information about linked
+   objects
+
+   *H1.9* RPP MUST provide functional equivalents for EPP host status
+   values (e.g., ok, linked, client/server<command>Prohibited,
+   pending<command>) and define their mapping to RPP responses and HTTP
+   status codes.
+
+18.3.1.  Operations
+
+   *H2.1* RPP MUST support operations (commands) for Host objects as
+   defined in [RFC5732], with partial update semantics available to
+   allow for efficient updates.
+
+   *H2.2* RPP SHOULD support searching and listing hosts filtered by
+   name (exact/prefix), IP address, and sponsoring client, with
+   pagination, the server MAY use a maximum limit on results.
+
+   *H2.3* Only the sponsoring client (or an authorised server
+   administrator) MAY modify or delete a host; servers MUST enforce
+   authorisation.
+
+   *H2.4* RPP MUST prevent creation of duplicate hosts within a registry
+   namespace (TLD) and return a conflict on collision.
+
+18.3.2.  Data Representation
+
+   *H3.1* RPP MUST support a JSON representation for both Host objects
+   and for Host attributes as defined in the EPP RFCs.
+
+   *H3.2* The JSON representation MUST include the canonical host name
+   and any U-label/A-label when IDN is used.
+
+   *H3.3* The representation SHOULD include link relations to related
+   objects, for example: self, and parent domain for in-bailiwick hosts.
+
+18.4.  Contact Object Type
+
+18.4.1.  Data Representation
 
    *C5.1* RPP SHOULD consider using JSContact [RFC9553] format for
    contact representation.
 
-18.3.2.  Internationalisation
+18.4.2.  Internationalisation
 
    *C13.1* RPP MUST support internationalisation (character encoding)
    for Contact objects in the following areas:
@@ -630,7 +711,11 @@ Table of Contents
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -00 to -01
+22.1.  Version -01 to -02
+
+   -  Added requirements for Host Object Type
+
+22.2.  Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -638,12 +723,12 @@ Table of Contents
    -  Updated the entire text to make consistent use of the British
       spelling style.
 
-22.2.  Version -01 to -00 (WG)
+22.3.  Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.3.  Version -00 to -01
+22.4.  Version -00 to -01
 
 Overall Structural Changes
 
@@ -891,6 +976,11 @@ Appendix A.  Extensions
               <http://www.ics.uci.edu/~fielding/pubs/dissertation/
               rest_arch_style.htm>.
 
+   [RFC1918]  Rekhter, Y., Moskowitz, B., Karrenberg, D., de Groot, G.
+              J., and E. Lear, "Address Allocation for Private
+              Internets", BCP 5, RFC 1918, DOI 10.17487/RFC1918,
+              February 1996, <https://www.rfc-editor.org/info/rfc1918>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -922,6 +1012,11 @@ Appendix A.  Extensions
               Uniform Resource Identifiers (URIs)", RFC 5785,
               DOI 10.17487/RFC5785, April 2010,
               <https://www.rfc-editor.org/info/rfc5785>.
+
+   [RFC5890]  Klensin, J., "Internationalized Domain Names for
+              Applications (IDNA): Definitions and Document Framework",
+              RFC 5890, DOI 10.17487/RFC5890, August 2010,
+              <https://www.rfc-editor.org/info/rfc5890>.
 
    [RFC6530]  Klensin, J. and Y. Ko, "Overview and Framework for
               Internationalized Email", RFC 6530, DOI 10.17487/RFC6530,
