@@ -373,7 +373,7 @@ A> NOTE: derived from [@?RFC3375] 5. [1]
 
 A> NOTE: *O1.x Requirements are defined in PR [#100](https://github.com/ietf-wg-rpp/rpp-requirements/pull/100)
 
-### Object Transfers
+### Object Transfers {#obj_transfers}
 
 For the purposes of these requirements, the following terms are used:
 
@@ -464,6 +464,10 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 {removeInRFC="true"}
 # Changes History
+
+## Version -01 to -02
+
+* Added relevant and not yet covered requirements from RFC3375 (R6.4-R6.7, R12.4, (#obj_transfers))
 
 ## Version -00 to -01
 
