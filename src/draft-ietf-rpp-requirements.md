@@ -85,11 +85,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R1.4.** RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730].
 
-**R1.5.**
-RPP MUST include support for providing detailed information about application status codes, for example as described in [@!RFC7807]
+**R1.5** The RPP MUST return all errors using the problem details standard defined in [@!RFC7807]. When an error is specific to one or more data elements in the request, the response MUST include JSON pointer(s) to those elements.
 
-**R1.6**
-RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
+**R1.6** RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
 
 # HTTP
 

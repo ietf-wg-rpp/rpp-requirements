@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 February 2026                                          DENIC
-                                                          18 August 2025
+Expires: 27 February 2026                                          DENIC
+                                                          26 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 February 2026.
+   This Internet-Draft will expire on 27 February 2026.
 
 Copyright Notice
 
@@ -161,8 +161,10 @@ Table of Contents
    *R1.4.* RPP MUST include support for application level status codes,
    and MAY reuse the EPP status codes defined in [RFC5730].
 
-   *R1.5.* RPP MUST include support for providing detailed information
-   about application status codes, for example as described in [RFC7807]
+   *R1.5* The RPP MUST return all errors using the problem details
+   standard defined in [RFC7807].  When an error is specific to one or
+   more data elements in the request, the response MUST include JSON
+   pointer(s) to those elements.
 
    *R1.6* RPP MUST support additional information about a successful
    operation (information or warning) to convey additional information
