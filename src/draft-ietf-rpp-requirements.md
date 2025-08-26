@@ -369,6 +369,49 @@ A> NOTE: derived from [@?RFC3375] 5. [1]
 
 # Requirements for object types
 
+## Common
+
+A> NOTE: *O1.x Requirements are defined in PR [#100](https://github.com/ietf-wg-rpp/rpp-requirements/pull/100)
+
+### Object Transfers
+
+For the purposes of these requirements, the following terms are used:
+
+- Sponsoring Client: The client that currently has sponsorship of the object.
+- Gaining Client: The client seeking to gain sponsorship of the object.
+- Initiating Client: The client that starts the transfer request.
+
+**O2.1** The RPP MUST support two types of object transfer operations:
+
+- Pull Transfer: Initiated by the Gaining Client.
+- Push Transfer: Initiated by the Sponsoring Client, who designates a Gaining Client.
+
+A> NOTE: derived from [@?RFC3375] 3.4.5 [4]
+
+**O2.2** A Gaining Client MUST provide valid authorization information to initiate a Pull Transfer request.
+
+A> NOTE: derived from [@?RFC3375] 3.4.5 [5]
+
+**O2.3** For Pull Transfers, the RPP MUST provide operations for the Sponsoring Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the Sponsoring Client.
+
+A> NOTE: derived from [@?RFC3375] 3.4.5 [7]
+
+**O2.4** For Push Transfers, the RPP MUST provide operations for the Gaining Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the designated Gaining Client.
+
+A> NOTE: derived from [@?RFC3375] 3.4.5 [7], but for push transfers
+
+**O2.5** The RPP MUST provide an operation for the Initiating Client to cancel its own pending transfer request. The RPP MUST reject any cancellation attempts not initiated by the Initiating Client.
+
+A> NOTE: derived from [@?RFC3375] 3.4.5 [6]
+
+**O2.6** The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client, the Gaining Client, and the Initiating Client.
+
+A> NOTE: derived from [@?RFC3375] 3.4.5 [8]
+
+**O2.7** The response to a successful object transfer MUST include a representation of the transferred object and a list of any associated objects that were also transferred.
+
+A> NOTE: derived from [@?RFC3375] 3.4.5 [2]
+
 ## Domain Object Type
 
 [//]: # (Editor note: use Dx.x for Domains)
