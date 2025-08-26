@@ -357,7 +357,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Host Object Type
 
-**H1.1** The RPP host object data model MUST include, at a minimum: the fully qualified host name, all associated IP addresses, the Repository Object ID (roid), the object status, the current sponsoring client identifier, the creating client identifier, the creation timestamp, the last updating client identifier, the last update timestamp, and the last transfer timestamp.
+**H1.1** The RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses, repository object identifier, object status, current sponsoring client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.
 
 **H1.2** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (R4.7).
 
