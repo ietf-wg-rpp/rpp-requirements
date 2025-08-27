@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 23 February 2026                                          DENIC
-                                                          22 August 2025
+Expires: 26 February 2026                                          DENIC
+                                                          25 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 February 2026.
+   This Internet-Draft will expire on 26 February 2026.
 
 Copyright Notice
 
@@ -249,6 +249,12 @@ Table of Contents
    unknown properties are treated as an error.  The mode is up to client
    and server policy with mode signalling.”
 
+   *R4.7* RPP MUST support linking of objects of the same or different
+   types, with flexible cardinality (one-to-one, one-to-many, many-to-
+   many).  The links MUST also support to have attributes of their own
+   (e.g., a link between a domain and a contact object with a different
+   contact role).
+
 8.  Data Representation
 
    *R5.1* RPP MUST use JSON as the default data format.
@@ -287,6 +293,12 @@ Table of Contents
 
    *R5.11* RPP MUST support representation of a collections of
    resources.
+
+   *R5.12* The representation of the links (see R4.7) MUST be expressed
+   using the RPP server's internal identifiers.  The RPP SHOULD also
+   consider using URIs and/or [RFC6570] URI templates for uniform
+   addressing of link targets, both internal and external to the RPP
+   server.
 
 9.  Operations and responses
 
@@ -1035,6 +1047,11 @@ Appendix A.  Extensions
    [RFC6530]  Klensin, J. and Y. Ko, "Overview and Framework for
               Internationalized Email", RFC 6530, DOI 10.17487/RFC6530,
               February 2012, <https://www.rfc-editor.org/info/rfc6530>.
+
+   [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
+              and D. Orchard, "URI Template", RFC 6570,
+              DOI 10.17487/RFC6570, March 2012,
+              <https://www.rfc-editor.org/info/rfc6570>.
 
    [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
               APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
