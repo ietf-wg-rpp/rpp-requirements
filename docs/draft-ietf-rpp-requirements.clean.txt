@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 February 2026                                          DENIC
-                                                          18 August 2025
+Expires: 28 February 2026                                          DENIC
+                                                          27 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 February 2026.
+   This Internet-Draft will expire on 28 February 2026.
 
 Copyright Notice
 
@@ -101,6 +101,8 @@ Table of Contents
          Appendix A.  Extensions
    23. Normative References
    Appendix A.  Extensions
+     A.1.  Essential extensions
+     A.2.  Optional extensions
    Authors' Addresses
 
 1.  Introduction
@@ -952,16 +954,34 @@ Appendix A.  Extensions
 
 Appendix A.  Extensions
 
-   *A.1* An extension for a Search API to allow for searching for
+A.1.  Essential extensions
+
+      |  TODO: These lists are far from being complete -> input from
+      |  Tiger Team on EPP Extensibility will fill these lists
+
+   The following list of extensions is considered essential for the
+   completeness of RPP as provisioning protocol for domain names.  The
+   core RPP protocol and its extensibility framework MUST enable
+   creation of those extensions.
+
+   *A1.1* An extension for a Search API to allow for searching for
    objects in the registry database.  Includes advanced search
    capabilities for object info request.
 
-   *A.2* An extension that allows a DNS operator to update the DNSSEC
+   *A1.2* An extension that allows a DNS operator to update the DNSSEC
    key material for a domain object.  This extension MAY be used by the
    DNS operator to update the DNSSEC key material for a domain object,
    without the need for the registrar to be involved in this process.
 
-   *A.3* An extension that allows generating a representation of a
+A.2.  Optional extensions
+
+   The following list of extensions is considered as possible need for
+   certain deployments of RPP, however other solutions outside of RPP
+   would be possible.  Therefore RPP and its extensibility framework MAY
+   enable creation of those extensions, however it is not a MUST
+   criteria.
+
+   *A2.1* An extension that allows generating a representation of a
    historical overview for an object, e.g. show all events linked to the
    object (create, update ...).  The historical time window is
    determined by server policy and ist included in the discovery service
@@ -969,8 +989,6 @@ Appendix A.  Extensions
 
       |  TODO: Issue #57 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/57)
-      |  
-      |  TODO: This list is far from being finished
 
 Authors' Addresses
 
