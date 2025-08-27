@@ -968,9 +968,7 @@ A.1.  Essential extensions
    core RPP protocol and its extensibility framework MUST enable
    creation of those extensions.
 
-   *A1.1* An extension for a Search API to allow for searching for
-   objects in the registry database.  Includes advanced search
-   capabilities for object info request.
+   *A1.2* _Moved to Appendix A.2 as A2.2_
 
    *A1.2* An extension that allows a DNS operator to update the DNSSEC
    key material for a domain object.  This extension MAY be used by the
@@ -993,6 +991,10 @@ A.2.  Optional extensions
 
       |  TODO: Issue #57 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/57)
+
+   *A2.2* An extension for a Search API to allow for searching for
+   objects in the registry database.  Includes advanced search
+   capabilities for object info request.
 
 Authors' Addresses
 
