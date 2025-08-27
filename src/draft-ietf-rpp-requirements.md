@@ -78,8 +78,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R1.1.** A well defined architecture MUST be defined for RPP, including a description of the responsibilities of the defined protocol layers.
 
-**R1.2.** RPP MUST provide a clear, clean, easy to use and self-explanatory interface that can easily be integrated into existing software systems.
-<!-- A> //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3) -->
+**R1.2.** *Removed*
 
 **R1.3.** Wherever applicable RPP SHOULD leverage existing best practices and well adopted standards for building and documenting RESTful APIs. There MUST be a clear justification when deviating from this.
 
@@ -396,6 +395,11 @@ A> TODO: TBC if anything needed here. There is a security section.
 {removeInRFC="true"}
 # Changes History
 
+## Version -01 to -02
+
+* R1.2 removed
+* added essential and optional extensions sections in (#appendix_extensions)
+
 ## Version -00 to -01
 
 * Added Privacy Considerations section
@@ -559,7 +563,7 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 {backmatter}
 
-# Extensions
+# Extensions {#appendix_extensions}
 
 <!--
 A> // List of required extensions here
