@@ -635,6 +635,9 @@ Table of Contents
 
 22.1.  Version -01 to -02
 
+   -  Added requirement for JSON pointer in RFC7807 responses.  Added
+      clarity to R1.5.
+
 22.2.  Version -00 to -01
 
    -  Added Privacy Considerations section

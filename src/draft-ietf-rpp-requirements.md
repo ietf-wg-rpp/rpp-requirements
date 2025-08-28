@@ -396,6 +396,8 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 ## Version -01 to -02
 
+* Added requirement for JSON pointer in RFC7807 responses. Added clarity to R1.5.
+
 ## Version -00 to -01
 
 * Added Privacy Considerations section
