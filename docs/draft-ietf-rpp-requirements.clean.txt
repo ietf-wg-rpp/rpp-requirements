@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 February 2026                                          DENIC
-                                                          18 August 2025
+Expires: 1 March 2026                                              DENIC
+                                                          28 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 February 2026.
+   This Internet-Draft will expire on 1 March 2026.
 
 Copyright Notice
 
@@ -78,9 +78,10 @@ Table of Contents
    20. Security Considerations
    21. Privacy Considerations
    22. Changes History
-     22.1.  Version -00 to -01
-     22.2.  Version -01 to -00 (WG)
-     22.3.  Version -00 to -01
+     22.1.  Version -01 to -02
+     22.2.  Version -00 to -01
+     22.3.  Version -01 to -00 (WG)
+     22.4.  Version -00 to -01
        Overall Structural Changes
        Major Changes by Section (References as per -01)
          General
@@ -630,7 +631,9 @@ Table of Contents
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -00 to -01
+22.1.  Version -01 to -02
+
+22.2.  Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -638,12 +641,12 @@ Table of Contents
    -  Updated the entire text to make consistent use of the British
       spelling style.
 
-22.2.  Version -01 to -00 (WG)
+22.3.  Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.3.  Version -00 to -01
+22.4.  Version -00 to -01
 
 Overall Structural Changes
 
