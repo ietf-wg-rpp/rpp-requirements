@@ -400,6 +400,8 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 ## Version -01 to -02
 
+* Added generic IANA considerations
+
 ## Version -00 to -01
 
 * Added Privacy Considerations section

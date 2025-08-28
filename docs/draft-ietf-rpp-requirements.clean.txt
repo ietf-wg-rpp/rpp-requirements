@@ -641,6 +641,8 @@ Table of Contents
 
 22.1.  Version -01 to -02
 
+   -  Added generic IANA considerations
+
 22.2.  Version -00 to -01
 
    -  Added Privacy Considerations section
