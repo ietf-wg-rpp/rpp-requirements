@@ -575,7 +575,15 @@ Table of Contents
 
 19.  IANA Considerations
 
-      |  TODO: TBC if anything needed here
+   This document has several requirements for the RESTful Provisioning
+   Protocol (RPP) that create considerations for IANA.  Future
+   architecture and design documents may identify additional needs for
+   IANA registries.
+
+   Therefore, the core RPP specifications MUST include "IANA
+   Considerations" sections that formally request the creation of any
+   necessary IANA registries.  These sections MUST also provide the
+   initial registration of values defined within those core documents.
 
 20.  Security Considerations
 
@@ -614,6 +622,8 @@ Table of Contents
    This section is to be removed before publishing as an RFC.
 
 22.1.  Version -01 to -02
+
+   -  Added generic IANA considerations
 
 22.2.  Version -00 to -01
 

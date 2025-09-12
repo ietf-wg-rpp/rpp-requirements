@@ -377,7 +377,9 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 # IANA Considerations
 
-A> TODO: TBC if anything needed here
+This document has several requirements for the RESTful Provisioning Protocol (RPP) that create considerations for IANA. Future architecture and design documents may identify additional needs for IANA registries.
+
+Therefore, the core RPP specifications MUST include "IANA Considerations" sections that formally request the creation of any necessary IANA registries. These sections MUST also provide the initial registration of values defined within those core documents.
 
 # Security Considerations
 
@@ -397,6 +399,8 @@ A> TODO: TBC if anything needed here. There is a security section.
 # Changes History
 
 ## Version -01 to -02
+
+* Added generic IANA considerations
 
 ## Version -00 to -01
 
