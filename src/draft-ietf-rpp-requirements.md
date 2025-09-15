@@ -440,9 +440,9 @@ A> TODO: These lists are far from being complete -> input from Tiger Team on EPP
 The following list of extensions is considered essential for the completeness of RPP as provisioning protocol for domain names.
 The core RPP protocol and its extensibility framework MUST enable creation of those extensions.
 
-**A1.2** *Moved to (#appendix_extensions_optional) as A2.2*
+**A.1** *Moved to (#appendix_extensions_optional) as A2.2*
 
-**A1.2** An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.
+**A1.1** An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.
 
 ## Optional extensions {#appendix_extensions_optional}
 

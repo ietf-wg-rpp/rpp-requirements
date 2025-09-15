@@ -749,9 +749,9 @@ A.1.  Essential extensions
    core RPP protocol and its extensibility framework MUST enable
    creation of those extensions.
 
-   *A1.2* _Moved to Appendix A.2 as A2.2_
+   *A.1* _Moved to Appendix A.2 as A2.2_
 
-   *A1.2* An extension that allows a DNS operator to update the DNSSEC
+   *A1.1* An extension that allows a DNS operator to update the DNSSEC
    key material for a domain object.  This extension MAY be used by the
    DNS operator to update the DNSSEC key material for a domain object,
    without the need for the registrar to be involved in this process.
