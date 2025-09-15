@@ -78,8 +78,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R1.1.** A well defined architecture MUST be defined for RPP, including a description of the responsibilities of the defined protocol layers.
 
-**R1.2.** RPP MUST provide a clear, clean, easy to use and self-explanatory interface that can easily be integrated into existing software systems.
-<!-- A> //TODO: [Issue #3](https://github.com/ietf-wg-rpp/rpp-requirements/issues/3) -->
+**R1.2.** *Removed*
 
 **R1.3.** Wherever applicable RPP SHOULD leverage existing best practices and well adopted standards for building and documenting RESTful APIs. There MUST be a clear justification when deviating from this.
 
@@ -400,6 +399,8 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 ## Version -01 to -02
 
+* R1.2 removed
+* added essential and optional extensions sections in (#appendix_extensions)
 * Added generic IANA considerations
 
 ## Version -00 to -01
@@ -426,21 +427,33 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 {backmatter}
 
-# Extensions
+# Extensions {#appendix_extensions}
 
 <!--
 A> // List of required extensions here
 A> // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
 -->
-**A.1** An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.
+## Essential extensions
 
-**A.2** An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.
+A> TODO: These lists are far from being complete -> input from Tiger Team on EPP Extensibility will fill these lists
 
-**A.3** An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.
+The following list of extensions is considered essential for the completeness of RPP as provisioning protocol for domain names.
+The core RPP protocol and its extensibility framework MUST enable creation of those extensions.
+
+**A.1** *Moved to (#appendix_extensions_optional) as A2.2*
+
+**A1.1** An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.
+
+## Optional extensions {#appendix_extensions_optional}
+
+The following list of extensions is considered as possible need for certain deployments of RPP, however other solutions outside of RPP would be possible. Therefore RPP and its extensibility framework MAY enable creation of those extensions, however it is not a MUST criteria.
+
+**A2.1** An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.
 
 A> TODO: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57)
 
-A> TODO: This list is far from being finished
+**A2.2** An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.
+
 
 <reference anchor="REST" target="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">
   <front>
