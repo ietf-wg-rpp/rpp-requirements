@@ -67,9 +67,11 @@ URL - A Uniform Resource Locator as defined in [@!RFC3986].
 
 Resource - An object having a type, data, and possible relationship to other resources, identified by a URL.
 
-RPP client - An HTTP user agent performing an RPP request 
+RPP client - An HTTP user agent performing an RPP request.
 
 RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.
+
+Sponsoring Client - The RPP client that currently has sponsorship of the object.
 
 # Conventions Used in This Document
 
@@ -189,7 +191,7 @@ A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
 A> NOTE: derived from [@?RFC3375] 3.1 [7]
 
-**R6.5** RPP MUST provide services for the client to assure a re-tried transaction is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
+**R6.5** RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
 
 A> NOTE: derived from [@?RFC3375] 3.1 [8]
 
@@ -197,7 +199,7 @@ A> NOTE: derived from [@?RFC3375] 3.1 [8]
 
 A> NOTE: derived from [@?RFC3375] 7.1 [3]
 
-**R6.7** For every request that results in a change to a repository object, the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
+**R6.7** For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
 
 A> NOTE: derived from [@?RFC3375] 3.3 [1]
 
@@ -245,7 +247,7 @@ Solutions may include:
 
 **R7.9** An RPP response that includes unique object identifiers, MAY also include URL references for these objects.
 
-**R7.10** Versions used by the RPP protocol and used extensions MUST be discoverable by the client.
+**R7.10** Versions used by the RPP and used extensions MUST be discoverable by the client.
 
 # EPP compatibility
 
@@ -375,9 +377,8 @@ A> NOTE: *O1.x Requirements are defined in PR [#100](https://github.com/ietf-wg-
 
 ### Object Transfers {#obj_transfers}
 
-For the purposes of these requirements, the following terms are used:
+For the purposes of requirements related to transfers, the following specific terms are used:
 
-- Sponsoring Client: The client that currently has sponsorship of the object.
 - Gaining Client: The client seeking to gain sponsorship of the object.
 - Initiating Client: The client that starts the transfer request.
 
@@ -404,7 +405,7 @@ A> NOTE: derived from [@?RFC3375] 3.4.5 [7], but for push transfers
 
 A> NOTE: derived from [@?RFC3375] 3.4.5 [6]
 
-**O2.6** The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client, the Gaining Client, and the Initiating Client.
+**O2.6** The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client and the Gaining Client.
 
 A> NOTE: derived from [@?RFC3375] 3.4.5 [8]
 
@@ -509,7 +510,7 @@ A> // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
 A> TODO: These lists are far from being complete -> input from Tiger Team on EPP Extensibility will fill these lists
 
 The following list of extensions is considered essential for the completeness of RPP as provisioning protocol for domain names.
-The core RPP protocol and its extensibility framework MUST enable creation of those extensions.
+The core RPP and its extensibility framework MUST enable creation of those extensions.
 
 **A.1** *Moved to (#appendix_extensions_optional) as A2.2*
 
