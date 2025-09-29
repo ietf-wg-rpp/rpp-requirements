@@ -179,6 +179,13 @@ RPP MUST support the use of server profiles to define required components of the
 
 A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
+**R6.4** RPP MUST support a mechanism for clients to receive messages for asynchronous events and other notifications, this MUST include a Poll mechanism as described in EPP RFC [@!5730]. RPP MAY include additional improvements for handling asynchronous events and notifications, such as:
+
+- Allowing clients to subscribe to specific types of events.
+- Allowing clients to recieve multiple events or messages in a single request.
+- Allowing clients to use multiple concurrent readers.
+- Support for streaming events or messages to clients.
+
 # Discoverability
 
 **R7.1** RPP MAY include a bootstrap mechanism designed to allow clients to locate the network identifier for the RPP service of a registry operator, e.g. rpp.sidn.nl for the registry operator for the .nl ccTLD.
@@ -385,6 +392,10 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 {removeInRFC="true"}
 # Changes History
+
+## Version -01 to -02
+
+* Added R6.4 to include requirements for handling assynchronous events and notifications.
 
 ## Version -00 to -01
 
