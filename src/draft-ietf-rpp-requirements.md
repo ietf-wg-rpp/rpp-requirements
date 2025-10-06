@@ -179,12 +179,12 @@ RPP MUST support the use of server profiles to define required components of the
 
 A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
-**R6.4** RPP MUST support a mechanism for clients to receive messages for asynchronous events and other notifications, this MUST include a Poll mechanism as described in EPP RFC [@!5730]. RPP MAY include additional improvements for handling asynchronous events and notifications, such as:
+**R6.4** RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC [@!5730], allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:
 
-- Allowing clients to subscribe to specific types of events.
-- Allowing clients to recieve multiple events or messages in a single request.
+- Allowing clients to subscribe to specific types of service messages.
+- Allowing clients to receive multiple service messages in a single request.
 - Allowing clients to use multiple concurrent readers.
-- Support for streaming events or messages to clients.
+- Support for streaming service messages to clients.
 
 # Discoverability
 
@@ -395,7 +395,7 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 ## Version -01 to -02
 
-* Added R6.4 to include requirements for handling assynchronous events and notifications.
+* Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.
 
 ## Version -00 to -01
 
