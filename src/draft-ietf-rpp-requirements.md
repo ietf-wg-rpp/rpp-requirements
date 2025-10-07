@@ -367,23 +367,59 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Contact Object Type
 
-[//]: # (Editor note: use Cx.x for Contacts)
+**C1.1** The RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the sponsoring client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.
+
+**C1.2** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
+
+**C1.3** RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.
+
+**C1.4** When RPP is used with thick registries, full contact data MAY be returned, for thin registries only the contact identifier MUST be returned.
+
+**C1.5** RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.
+
+**C1.6** RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).
+
+**C1.7** RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.
+
+**C1.8** RPP SHOULD consider renaming the EPP contact object type to "entity" to better align with the RDAP data model, defined in [@!RFC9083].
+
+### Operations
+
+**C2.1** The RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in [@!RFC5733], such as check, create, read, update, and delete with the possible exception of transfer command, and include support for partial update semantics available to allow for efficient updates.
+
+**C2.2** RPP MAY support the contact transfer command from EPP.
+
+**C2.3** RPP MAY support searching and listing contacts filtered by name (exact/prefix), and sponsoring client, with pagination, the server MAY use a maximum limit on results.
+
+**C2.4** Functional equivalents for EPP contact statuses (e.g., ok, linked, client/serverUpdateProhibited, client/serverDeleteProhibited, pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP responses. The protocol MUST define which statuses can be set by the server and which can be set by the sponsoring client.
+
+**C2.5** RPP MUST prevent creation of contacts with duplicate ids within registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.
+
+**C2.6** The protocol MUST provide an operation to retrieve full contact representation. An authorisation mechanism MUST ensure that sensitive data, such as authorisation information, is only returned to the current sponsoring client.
+
+**C2.7** The protocol MUST provide an operation to retrieve an appropriate contact representation to non-sponsoring clients. The representation MAY vary depending if the authorisation information is provided - depending on server policy.
 
 ### Data Representation
 
-**C5.1** RPP SHOULD consider using JSContact [@!RFC9553] format for contact representation.
+**C3.1** RPP SHOULD consider using JSContact [@!RFC9553] format for contact representation.
+
+**C3.2** RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in [@!RFC5733].
 
 ### Internationalisation
 
-**C13.1** RPP MUST support internationalisation (character encoding) for Contact objects in the following areas:
+**C4.1** RPP MUST support internationalisation (character encoding) for contact objects in the following areas:
 
 - name
 - address data
 - any other contact-related data containing human provided or readable text
 
-**C13.2** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
+**C4.2** RPP MUST support both the localized and internationalized version of the EPP postalInfo element from [@!RFC5733].
 
-**C13.3** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.
+**C4.3** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
+
+**C4.4** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.
+
+**C4.5** All future RPP contact object extensions MUST be able to handle internationalisation and localisation requirements.
 
 # IANA Considerations
 
@@ -412,6 +448,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 ## Version -01 to -02
 
+* Added requirements for the contact object type
 * The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.
 * Added additional security requirements.
 * R1.2 removed

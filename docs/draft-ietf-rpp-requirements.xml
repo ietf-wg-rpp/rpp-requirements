@@ -266,21 +266,42 @@ RPP MUST support additional information about a successful operation (informatio
 </section>
 
 <section anchor="contact-object-type"><name>Contact Object Type</name>
+<t><strong>C1.1</strong> The RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the sponsoring client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.</t>
+<t><strong>C1.2</strong> RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.</t>
+<t><strong>C1.3</strong> RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.</t>
+<t><strong>C1.4</strong> When RPP is used with thick registries, full contact data MAY be returned, for thin registries only the contact identifier MUST be returned.</t>
+<t><strong>C1.5</strong> RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.</t>
+<t><strong>C1.6</strong> RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).</t>
+<t><strong>C1.7</strong> RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.</t>
+<t><strong>C1.8</strong> RPP SHOULD consider renaming the EPP contact object type to &quot;entity&quot; to better align with the RDAP data model, defined in <xref target="RFC9083"></xref>.</t>
+
+<section anchor="operations"><name>Operations</name>
+<t><strong>C2.1</strong> The RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in <xref target="RFC5733"></xref>, such as check, create, read, update, and delete with the possible exception of transfer command, and include support for partial update semantics available to allow for efficient updates.</t>
+<t><strong>C2.2</strong> RPP MAY support the contact transfer command from EPP.</t>
+<t><strong>C2.3</strong> RPP MAY support searching and listing contacts filtered by name (exact/prefix), and sponsoring client, with pagination, the server MAY use a maximum limit on results.</t>
+<t><strong>C2.4</strong> Functional equivalents for EPP contact statuses (e.g., ok, linked, client/serverUpdateProhibited, client/serverDeleteProhibited, pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP responses. The protocol MUST define which statuses can be set by the server and which can be set by the sponsoring client.</t>
+<t><strong>C2.5</strong> RPP MUST prevent creation of contacts with duplicate ids within registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.</t>
+<t><strong>C2.6</strong> The protocol MUST provide an operation to retrieve full contact representation. An authorisation mechanism MUST ensure that sensitive data, such as authorisation information, is only returned to the current sponsoring client.</t>
+<t><strong>C2.7</strong> The protocol MUST provide an operation to retrieve an appropriate contact representation to non-sponsoring clients. The representation MAY vary depending if the authorisation information is provided - depending on server policy.</t>
+</section>
 
 <section anchor="data-representation-1"><name>Data Representation</name>
-<t><strong>C5.1</strong> RPP SHOULD consider using JSContact <xref target="RFC9553"></xref> format for contact representation.</t>
+<t><strong>C3.1</strong> RPP SHOULD consider using JSContact <xref target="RFC9553"></xref> format for contact representation.</t>
+<t><strong>C3.2</strong> RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in <xref target="RFC5733"></xref>.</t>
 </section>
 
 <section anchor="internationalisation-2"><name>Internationalisation</name>
-<t><strong>C13.1</strong> RPP MUST support internationalisation (character encoding) for Contact objects in the following areas:</t>
+<t><strong>C4.1</strong> RPP MUST support internationalisation (character encoding) for contact objects in the following areas:</t>
 
 <ul spacing="compact">
 <li>name</li>
 <li>address data</li>
 <li>any other contact-related data containing human provided or readable text</li>
 </ul>
-<t><strong>C13.2</strong> RPP MUST support internationalised Email addresses <xref target="RFC6530"></xref> in Contact objects.</t>
-<t><strong>C13.3</strong> RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.</t>
+<t><strong>C4.2</strong> RPP MUST support both the localized and internationalized version of the EPP postalInfo element from <xref target="RFC5733"></xref>.</t>
+<t><strong>C4.3</strong> RPP MUST support internationalised Email addresses <xref target="RFC6530"></xref> in Contact objects.</t>
+<t><strong>C4.4</strong> RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.</t>
+<t><strong>C4.5</strong> All future RPP contact object extensions MUST be able to handle internationalisation and localisation requirements.</t>
 </section>
 </section>
 </section>
@@ -307,6 +328,7 @@ RPP MUST support additional information about a successful operation (informatio
 <section anchor="version-01-to-02"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
+<li>Added requirements for the contact object type</li>
 <li>The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.</li>
 <li>Added additional security requirements.</li>
 <li>R1.2 removed</li>
@@ -379,6 +401,7 @@ RPP MUST support additional information about a successful operation (informatio
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6530.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7807.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9083.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9553.xml"/>
 <reference anchor="RICHARDSON" target="https://martinfowler.com/articles/richardsonMaturityModel.html">
