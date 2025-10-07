@@ -10,24 +10,23 @@
 <meta content="
        This document describes the requirement for the development of the RESTful Provisioning Protocol (RPP). 
     " name="description">
-<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="xml2rfc 3.30.0" name="generator">
 <meta content="draft-ietf-rpp-requirements-01" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.26.0
+  xml2rfc 3.30.0
     Python 3.10.12
-    ConfigArgParse 1.7
+    ConfigArgParse 1.7.1
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.5
-    lxml 5.3.0
-    platformdirs 4.3.6
+    Jinja2 3.1.6
+    lxml 6.0.0
+    platformdirs 4.3.8
     pycountry 24.6.1
-    pydyf 0.9.0
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 75.8.0
+    requests 2.32.4
+    setuptools 80.9.0
     wcwidth 0.2.13
-    weasyprint 61.2
+    weasyprint 65.0
 -->
 <link href="draft-ietf-rpp-requirements.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -160,6 +159,12 @@ div {
 }
 svg {
   display: block;
+}
+@media print {
+  svg {
+    max-height: 850px;
+    max-width: 660px;
+  }
 }
 svg[font-family~="serif" i], svg [font-family~="serif" i] {
   font-family: var(--font-serif);
@@ -1183,6 +1188,7 @@ dl > dd > dl {
 /* This should match the element list in writer.text.TextWriter.render_dl() */
 dd > div.artwork:first-child,
 dd > aside:first-child,
+dd > blockquote:first-child,
 dd > figure:first-child,
 dd > ol:first-child,
 dd > div.sourcecode:first-child,
@@ -1211,11 +1217,11 @@ li > p:last-of-type:only-child {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">RPP - Requirements</td>
-<td class="right">June 2025</td>
+<td class="right">August 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wullink &amp; Kowalik</td>
-<td class="center">Expires 1 January 2026</td>
+<td class="center">Expires 19 February 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1228,12 +1234,12 @@ li > p:last-of-type:only-child {
 <dd class="internet-draft">draft-ietf-rpp-requirements-01</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-06-30" class="published">30 June 2025</time>
+<time datetime="2025-08-18" class="published">18 August 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-01">1 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-02-19">19 February 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1271,7 +1277,7 @@ li > p:last-of-type:only-child {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 1 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 February 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1385,70 +1391,73 @@ li > p:last-of-type:only-child {
             <p id="section-toc.1-1.20.1"><a href="#section-20" class="auto internal xref">20</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21">
-            <p id="section-toc.1-1.21.1"><a href="#section-21" class="auto internal xref">21</a>. <a href="#name-changes-history" class="internal xref">Changes History</a></p>
+            <p id="section-toc.1-1.21.1"><a href="#section-21" class="auto internal xref">21</a>. <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22">
+            <p id="section-toc.1-1.22.1"><a href="#section-22" class="auto internal xref">22</a>. <a href="#name-changes-history" class="internal xref">Changes History</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.1">
-                <p id="section-toc.1-1.21.2.1.1"><a href="#section-21.1" class="auto internal xref">21.1</a>.  <a href="#name-version-00-to-01" class="internal xref">Version -00 to -01</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.1">
+                <p id="section-toc.1-1.22.2.1.1"><a href="#section-22.1" class="auto internal xref">22.1</a>.  <a href="#name-version-00-to-01" class="internal xref">Version -00 to -01</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.2">
-                <p id="section-toc.1-1.21.2.2.1"><a href="#section-21.2" class="auto internal xref">21.2</a>.  <a href="#name-version-01-to-00-wg" class="internal xref">Version -01 to -00 (WG)</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.2">
+                <p id="section-toc.1-1.22.2.2.1"><a href="#section-22.2" class="auto internal xref">22.2</a>.  <a href="#name-version-01-to-00-wg" class="internal xref">Version -01 to -00 (WG)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3">
-                <p id="section-toc.1-1.21.2.3.1"><a href="#section-21.3" class="auto internal xref">21.3</a>.  <a href="#name-version-00-to-01-2" class="internal xref">Version -00 to -01</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3">
+                <p id="section-toc.1-1.22.2.3.1"><a href="#section-22.3" class="auto internal xref">22.3</a>.  <a href="#name-version-00-to-01-2" class="internal xref">Version -00 to -01</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.1">
-                    <p id="section-toc.1-1.21.2.3.2.1.1"><a href="#section-21.3.1" class="auto internal xref"></a><a href="#name-overall-structural-changes" class="internal xref">Overall Structural Changes</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.1">
+                    <p id="section-toc.1-1.22.2.3.2.1.1"><a href="#section-22.3.1" class="auto internal xref"></a><a href="#name-overall-structural-changes" class="internal xref">Overall Structural Changes</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2">
-                    <p id="section-toc.1-1.21.2.3.2.2.1"><a href="#section-21.3.2" class="auto internal xref"></a><a href="#name-major-changes-by-section-re" class="internal xref">Major Changes by Section (References as per -01)</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2">
+                    <p id="section-toc.1-1.22.2.3.2.2.1"><a href="#section-22.3.2" class="auto internal xref"></a><a href="#name-major-changes-by-section-re" class="internal xref">Major Changes by Section (References as per -01)</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.1">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.1.1"><a href="#section-21.3.2.1" class="auto internal xref"></a><a href="#name-general-2" class="internal xref">General</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.1">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.1.1"><a href="#section-22.3.2.1" class="auto internal xref"></a><a href="#name-general-2" class="internal xref">General</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.2">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.2.1"><a href="#section-21.3.2.2" class="auto internal xref"></a><a href="#name-http-2" class="internal xref">HTTP</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.2">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.2.1"><a href="#section-22.3.2.2" class="auto internal xref"></a><a href="#name-http-2" class="internal xref">HTTP</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.3">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.3.1"><a href="#section-21.3.2.3" class="auto internal xref"></a><a href="#name-rest-2" class="internal xref">REST</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.3">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.3.1"><a href="#section-22.3.2.3" class="auto internal xref"></a><a href="#name-rest-2" class="internal xref">REST</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.4">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.4.1"><a href="#section-21.3.2.4" class="auto internal xref"></a><a href="#name-data-model-2" class="internal xref">Data Model</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.4">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.4.1"><a href="#section-22.3.2.4" class="auto internal xref"></a><a href="#name-data-model-2" class="internal xref">Data Model</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.5">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.5.1"><a href="#section-21.3.2.5" class="auto internal xref"></a><a href="#name-data-representation-3" class="internal xref">Data Representation</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.5">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.5.1"><a href="#section-22.3.2.5" class="auto internal xref"></a><a href="#name-data-representation-3" class="internal xref">Data Representation</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.6">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.6.1"><a href="#section-21.3.2.6" class="auto internal xref"></a><a href="#name-operations-and-responses-2" class="internal xref">Operations and responses</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.6">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.6.1"><a href="#section-22.3.2.6" class="auto internal xref"></a><a href="#name-operations-and-responses-2" class="internal xref">Operations and responses</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.7">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.7.1"><a href="#section-21.3.2.7" class="auto internal xref"></a><a href="#name-discoverability-2" class="internal xref">Discoverability</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.7">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.7.1"><a href="#section-22.3.2.7" class="auto internal xref"></a><a href="#name-discoverability-2" class="internal xref">Discoverability</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.8">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.8.1"><a href="#section-21.3.2.8" class="auto internal xref"></a><a href="#name-epp-compatibility-2" class="internal xref">EPP compatibility</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.8">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.8.1"><a href="#section-22.3.2.8" class="auto internal xref"></a><a href="#name-epp-compatibility-2" class="internal xref">EPP compatibility</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.9">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.9.1"><a href="#section-21.3.2.9" class="auto internal xref"></a><a href="#name-security-2" class="internal xref">Security</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.9">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.9.1"><a href="#section-22.3.2.9" class="auto internal xref"></a><a href="#name-security-2" class="internal xref">Security</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.10">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.10.1"><a href="#section-21.3.2.10" class="auto internal xref"></a><a href="#name-extensibility-2" class="internal xref">Extensibility</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.10">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.10.1"><a href="#section-22.3.2.10" class="auto internal xref"></a><a href="#name-extensibility-2" class="internal xref">Extensibility</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.11">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.11.1"><a href="#section-21.3.2.11" class="auto internal xref"></a><a href="#name-scalability-2" class="internal xref">Scalability</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.11">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.11.1"><a href="#section-22.3.2.11" class="auto internal xref"></a><a href="#name-scalability-2" class="internal xref">Scalability</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.12">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.12.1"><a href="#section-21.3.2.12" class="auto internal xref"></a><a href="#name-performance-2" class="internal xref">Performance</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.12">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.12.1"><a href="#section-22.3.2.12" class="auto internal xref"></a><a href="#name-performance-2" class="internal xref">Performance</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.13">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.13.1"><a href="#section-21.3.2.13" class="auto internal xref"></a><a href="#name-internationalisation-4" class="internal xref">Internationalisation</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.13">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.13.1"><a href="#section-22.3.2.13" class="auto internal xref"></a><a href="#name-internationalisation-4" class="internal xref">Internationalisation</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.14">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.14.1"><a href="#section-21.3.2.14" class="auto internal xref"></a><a href="#name-clients-2" class="internal xref">Clients</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.14">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.14.1"><a href="#section-22.3.2.14" class="auto internal xref"></a><a href="#name-clients-2" class="internal xref">Clients</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.15">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.15.1"><a href="#section-21.3.2.15" class="auto internal xref"></a><a href="#name-requirements-for-object-type" class="internal xref">Requirements for object types</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.15">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.15.1"><a href="#section-22.3.2.15" class="auto internal xref"></a><a href="#name-requirements-for-object-type" class="internal xref">Requirements for object types</a></p>
 </li>
-                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.21.2.3.2.2.2.16">
-                        <p id="section-toc.1-1.21.2.3.2.2.2.16.1"><a href="#section-21.3.2.16" class="auto internal xref"></a><a href="#name-appendix-a-extensions" class="internal xref">Appendix A. Extensions</a></p>
+                      <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22.2.3.2.2.2.16">
+                        <p id="section-toc.1-1.22.2.3.2.2.2.16.1"><a href="#section-22.3.2.16" class="auto internal xref"></a><a href="#name-appendix-a-extensions" class="internal xref">Appendix A. Extensions</a></p>
 </li>
                     </ul>
 </li>
@@ -1456,14 +1465,14 @@ li > p:last-of-type:only-child {
 </li>
             </ul>
 </li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.22">
-            <p id="section-toc.1-1.22.1"><a href="#section-22" class="auto internal xref">22</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
-</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23">
-            <p id="section-toc.1-1.23.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-extensions" class="internal xref">Extensions</a></p>
+            <p id="section-toc.1-1.23.1"><a href="#section-23" class="auto internal xref">23</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24">
-            <p id="section-toc.1-1.24.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.24.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-extensions" class="internal xref">Extensions</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25">
+            <p id="section-toc.1-1.25.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1856,356 +1865,369 @@ RPP MUST support additional information about a successful operation (informatio
 </aside>
 </section>
 </div>
-<div id="changes-history">
+<div id="privacy-considerations">
 <section id="section-21">
-      <h2 id="name-changes-history">
-<a href="#section-21" class="section-number selfRef">21. </a><a href="#name-changes-history" class="section-name selfRef">Changes History</a>
+      <h2 id="name-privacy-considerations">
+<a href="#section-21" class="section-number selfRef">21. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
-<p id="section-21-1">This section is to be removed before publishing as an RFC.<a href="#section-21-1" class="pilcrow">¶</a></p>
+<p id="section-21-1"><strong>DP.1</strong> The protocol MUST provide mechanisms to support the implementation of data privacy principles, such as those found in modern data protection frameworks (e.g., GDPR). These mechanisms MUST support, at a minimum, the principles of data minimisation and purpose limitation.<a href="#section-21-1" class="pilcrow">¶</a></p>
+<p id="section-21-2"><strong>DP.2</strong> To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it is authorised to access (See also R4.3 and R6.1).<a href="#section-21-2" class="pilcrow">¶</a></p>
+<p id="section-21-3"><strong>DP.3</strong> The protocol's operations and data models MUST be sufficiently flexible to allow an operator to implement workflows for exercising data subject rights, such as access, rectification, and erasure of personal data, in a manner consistent with the operational and policy constraints of the provisioning environment.<a href="#section-21-3" class="pilcrow">¶</a></p>
+<p id="section-21-4"><strong>DP.4</strong> The protocol MUST provide services to identify data collection policies and privacy practices. Information about data collection, retention, and privacy policies MUST be included in the service discovery document, enabling clients to understand how personal and sensitive data is handled.<a href="#section-21-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="changes-history">
+<section id="section-22">
+      <h2 id="name-changes-history">
+<a href="#section-22" class="section-number selfRef">22. </a><a href="#name-changes-history" class="section-name selfRef">Changes History</a>
+      </h2>
+<p id="section-22-1">This section is to be removed before publishing as an RFC.<a href="#section-22-1" class="pilcrow">¶</a></p>
 <div id="version-00-to-01">
-<section id="section-21.1">
+<section id="section-22.1">
         <h3 id="name-version-00-to-01">
-<a href="#section-21.1" class="section-number selfRef">21.1. </a><a href="#name-version-00-to-01" class="section-name selfRef">Version -00 to -01</a>
+<a href="#section-22.1" class="section-number selfRef">22.1. </a><a href="#name-version-00-to-01" class="section-name selfRef">Version -00 to -01</a>
         </h3>
 <ul class="compact">
-<li class="compact" id="section-21.1-1.1">R1.5 has been changed to MUST instead of MAY.<a href="#section-21.1-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.1-1.1">Added Privacy Considerations section<a href="#section-22.1-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-21.1-1.2">R1.6 has been changed to MUST instead of SHOULD.<a href="#section-21.1-1.2" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.2">R1.5 has been changed to MUST instead of MAY.<a href="#section-22.1-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-21.1-1.3">Updated the entire text to make consistent use of the British spelling style.<a href="#section-21.1-1.3" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.3">R1.6 has been changed to MUST instead of SHOULD.<a href="#section-22.1-1.3" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.4">Updated the entire text to make consistent use of the British spelling style.<a href="#section-22.1-1.4" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="version-01-to-00-wg">
-<section id="section-21.2">
+<section id="section-22.2">
         <h3 id="name-version-01-to-00-wg">
-<a href="#section-21.2" class="section-number selfRef">21.2. </a><a href="#name-version-01-to-00-wg" class="section-name selfRef">Version -01 to -00 (WG)</a>
+<a href="#section-22.2" class="section-number selfRef">22.2. </a><a href="#name-version-01-to-00-wg" class="section-name selfRef">Version -01 to -00 (WG)</a>
         </h3>
 <ul class="compact">
-<li class="compact" id="section-21.2-1.1">The document has been adopted by the working group, the version number has been reset from -01 to -00.<a href="#section-21.2-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.2-1.1">The document has been adopted by the working group, the version number has been reset from -01 to -00.<a href="#section-22.2-1.1" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
 </div>
 <div id="version-00-to-01-1">
-<section id="section-21.3">
+<section id="section-22.3">
         <h3 id="name-version-00-to-01-2">
-<a href="#section-21.3" class="section-number selfRef">21.3. </a><a href="#name-version-00-to-01-2" class="section-name selfRef">Version -00 to -01</a>
+<a href="#section-22.3" class="section-number selfRef">22.3. </a><a href="#name-version-00-to-01-2" class="section-name selfRef">Version -00 to -01</a>
         </h3>
 <div id="overall-structural-changes">
-<section id="section-21.3.1">
+<section id="section-22.3.1">
           <h4 id="name-overall-structural-changes">
 <a href="#name-overall-structural-changes" class="section-name selfRef">Overall Structural Changes</a>
           </h4>
 <ul class="normal">
-<li class="normal" id="section-21.3.1-1.1">Requirement Numbering: All requirements have been assigned a structured numbering format (e.g., Rx.x, Dx.x, Cx.x, Hx.x).<a href="#section-21.3.1-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-22.3.1-1.1">Requirement Numbering: All requirements have been assigned a structured numbering format (e.g., Rx.x, Dx.x, Cx.x, Hx.x).<a href="#section-22.3.1-1.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-21.3.1-1.2">
-              <p id="section-21.3.1-1.2.1">New Sections Added:<a href="#section-21.3.1-1.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-22.3.1-1.2">
+              <p id="section-22.3.1-1.2.1">New Sections Added:<a href="#section-22.3.1-1.2.1" class="pilcrow">¶</a></p>
 <ul class="compact normal">
-<li class="compact normal" id="section-21.3.1-1.2.2.1">
-                  <code>Operations and responses</code><a href="#section-21.3.1-1.2.2.1" class="pilcrow">¶</a>
+<li class="compact normal" id="section-22.3.1-1.2.2.1">
+                  <code>Operations and responses</code><a href="#section-22.3.1-1.2.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="compact normal" id="section-21.3.1-1.2.2.2">
-                  <code>Clients</code><a href="#section-21.3.1-1.2.2.2" class="pilcrow">¶</a>
+                <li class="compact normal" id="section-22.3.1-1.2.2.2">
+                  <code>Clients</code><a href="#section-22.3.1-1.2.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="compact normal" id="section-21.3.1-1.2.2.3">
-                  <code>Internationalisation</code><a href="#section-21.3.1-1.2.2.3" class="pilcrow">¶</a>
+                <li class="compact normal" id="section-22.3.1-1.2.2.3">
+                  <code>Internationalisation</code><a href="#section-22.3.1-1.2.2.3" class="pilcrow">¶</a>
 </li>
-                <li class="compact normal" id="section-21.3.1-1.2.2.4">
-                  <code>Requirements for object types</code> (with subsections for Domain, Host, Contact)<a href="#section-21.3.1-1.2.2.4" class="pilcrow">¶</a>
+                <li class="compact normal" id="section-22.3.1-1.2.2.4">
+                  <code>Requirements for object types</code> (with subsections for Domain, Host, Contact)<a href="#section-22.3.1-1.2.2.4" class="pilcrow">¶</a>
 </li>
-                <li class="compact normal" id="section-21.3.1-1.2.2.5">
-                  <code>Appendix A. Extensions</code><a href="#section-21.3.1-1.2.2.5" class="pilcrow">¶</a>
+                <li class="compact normal" id="section-22.3.1-1.2.2.5">
+                  <code>Appendix A. Extensions</code><a href="#section-22.3.1-1.2.2.5" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="normal" id="section-21.3.1-1.3">
-              <p id="section-21.3.1-1.3.1">Section Removed: The old <code>Other</code> section, which contained a list of discussion points, was removed and requirements placed in relevant sections or appendix.<a href="#section-21.3.1-1.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-22.3.1-1.3">
+              <p id="section-22.3.1-1.3.1">Section Removed: The old <code>Other</code> section, which contained a list of discussion points, was removed and requirements placed in relevant sections or appendix.<a href="#section-22.3.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
 </div>
 <div id="major-changes-by-section-references-as-per-01">
-<section id="section-21.3.2">
+<section id="section-22.3.2">
           <h4 id="name-major-changes-by-section-re">
 <a href="#name-major-changes-by-section-re" class="section-name selfRef">Major Changes by Section (References as per -01)</a>
           </h4>
 <div id="general-1">
-<section id="section-21.3.2.1">
+<section id="section-22.3.2.1">
             <h5 id="name-general-2">
 <a href="#name-general-2" class="section-name selfRef">General</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.1-1.1">Modified R1.2: Removed the explicit requirement for language bindings.<a href="#section-21.3.2.1-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.1-1.1">Modified R1.2: Removed the explicit requirement for language bindings.<a href="#section-22.3.2.1-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.1-1.2">Replaced Requirement (R1.3): Replaced the specific requirement to leverage HTTP, JSON, OpenAPI with a broader R1.3 (SHOULD leverage RESTful best practices, MUST justify deviation).<a href="#section-21.3.2.1-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.1-1.2">Replaced Requirement (R1.3): Replaced the specific requirement to leverage HTTP, JSON, OpenAPI with a broader R1.3 (SHOULD leverage RESTful best practices, MUST justify deviation).<a href="#section-22.3.2.1-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.1-1.3">New Requirement R1.4: Added requirement: RPP MUST support application-level status codes (MAY reuse EPP codes).<a href="#section-21.3.2.1-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.1-1.3">New Requirement R1.4: Added requirement: RPP MUST support application-level status codes (MAY reuse EPP codes).<a href="#section-22.3.2.1-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.1-1.4">New Requirement R1.5: Added requirement: RPP MAY support detailed status information (e.g., <span>[<a href="#RFC7807" class="cite xref">RFC7807</a>]</span>).<a href="#section-21.3.2.1-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.1-1.4">New Requirement R1.5: Added requirement: RPP MAY support detailed status information (e.g., <span>[<a href="#RFC7807" class="cite xref">RFC7807</a>]</span>).<a href="#section-22.3.2.1-1.4" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.1-1.5">New Requirement R1.6: Added requirement: RPP SHOULD support informational/warning messages on success.<a href="#section-21.3.2.1-1.5" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.1-1.5">New Requirement R1.6: Added requirement: RPP SHOULD support informational/warning messages on success.<a href="#section-22.3.2.1-1.5" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="http-1">
-<section id="section-21.3.2.2">
+<section id="section-22.3.2.2">
             <h5 id="name-http-2">
 <a href="#name-http-2" class="section-name selfRef">HTTP</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.2-1.1">Modified R2.2: Added requirement: Deviation from HTTP best practices (<span>[<a href="#BCP56" class="cite xref">BCP56</a>]</span>) MUST be justified.<a href="#section-21.3.2.2-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.2-1.1">Modified R2.2: Added requirement: Deviation from HTTP best practices (<span>[<a href="#BCP56" class="cite xref">BCP56</a>]</span>) MUST be justified.<a href="#section-22.3.2.2-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.2-1.2">Rewritten R2.4: Significantly rewrote the status code requirement. Now MUST use existing HTTP codes AND define application-level codes, clarifying mapping and overload handling.<a href="#section-21.3.2.2-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.2-1.2">Rewritten R2.4: Significantly rewrote the status code requirement. Now MUST use existing HTTP codes AND define application-level codes, clarifying mapping and overload handling.<a href="#section-22.3.2.2-1.2" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="rest-1">
-<section id="section-21.3.2.3">
+<section id="section-22.3.2.3">
             <h5 id="name-rest-2">
 <a href="#name-rest-2" class="section-name selfRef">REST</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.3-1.1">Modified R3.1: Removed the negative recommendation against Richardson Maturity Model (RMM) Level 3.<a href="#section-21.3.2.3-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.3-1.1">Modified R3.1: Removed the negative recommendation against Richardson Maturity Model (RMM) Level 3.<a href="#section-22.3.2.3-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.3-1.2">New Requirement R3.2: Added requirement: RPP MUST follow Resource-Oriented Architecture <span>[<a href="#ROI" class="cite xref">ROI</a>]</span>.<a href="#section-21.3.2.3-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.3-1.2">New Requirement R3.2: Added requirement: RPP MUST follow Resource-Oriented Architecture <span>[<a href="#ROI" class="cite xref">ROI</a>]</span>.<a href="#section-22.3.2.3-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.3-1.3">New Requirement R3.3: Added requirement: RPP MUST strive to minimise client-server round trips.<a href="#section-21.3.2.3-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.3-1.3">New Requirement R3.3: Added requirement: RPP MUST strive to minimise client-server round trips.<a href="#section-22.3.2.3-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.3-1.4">Merged Requirement R3.4: Old requirement "When the semantics... MUST be optional" merged into R12.1.<a href="#section-21.3.2.3-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.3-1.4">Merged Requirement R3.4: Old requirement "When the semantics... MUST be optional" merged into R12.1.<a href="#section-22.3.2.3-1.4" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.3-1.5">Modified R3.5: Broadened API specification recommendation (SHOULD) to include <span>[<a href="#RAML" class="cite xref">RAML</a>]</span>; added constraint: RPP MUST NOT mandate a specific API specification technology.<a href="#section-21.3.2.3-1.5" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.3-1.5">Modified R3.5: Broadened API specification recommendation (SHOULD) to include <span>[<a href="#RAML" class="cite xref">RAML</a>]</span>; added constraint: RPP MUST NOT mandate a specific API specification technology.<a href="#section-22.3.2.3-1.5" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="data-model-1">
-<section id="section-21.3.2.4">
+<section id="section-22.3.2.4">
             <h5 id="name-data-model-2">
 <a href="#name-data-model-2" class="section-name selfRef">Data Model</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.4-1.1">Modified R4.2: Changed normative keyword from MAY to SHOULD regarding adding common EPP extensions (like DNSSEC) to the core data model.<a href="#section-21.3.2.4-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.4-1.1">Modified R4.2: Changed normative keyword from MAY to SHOULD regarding adding common EPP extensions (like DNSSEC) to the core data model.<a href="#section-22.3.2.4-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.4-1.2">Rewritten R4.3: Replaced old data omission requirement (SHOULD) with R4.3 (MUST allow <em>extension mechanism</em> for omission/redaction).<a href="#section-21.3.2.4-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.4-1.2">Rewritten R4.3: Replaced old data omission requirement (SHOULD) with R4.3 (MUST allow <em>extension mechanism</em> for omission/redaction).<a href="#section-22.3.2.4-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.4-1.3">New Requirement R4.5: Added requirement: RPP architecture MUST include loose coupling for non-breaking version changes.<a href="#section-21.3.2.4-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.4-1.3">New Requirement R4.5: Added requirement: RPP architecture MUST include loose coupling for non-breaking version changes.<a href="#section-22.3.2.4-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.4-1.4">Rewritten R4.6: Replaced old text about server choice on validation strictness with R4.6 (MUST default to ignoring unknown properties, MUST provide mechanism for client to request strict handling).<a href="#section-21.3.2.4-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.4-1.4">Rewritten R4.6: Replaced old text about server choice on validation strictness with R4.6 (MUST default to ignoring unknown properties, MUST provide mechanism for client to request strict handling).<a href="#section-22.3.2.4-1.4" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="data-representation-2">
-<section id="section-21.3.2.5">
+<section id="section-22.3.2.5">
             <h5 id="name-data-representation-3">
 <a href="#name-data-representation-3" class="section-name selfRef">Data Representation</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.5-1.1">Split Requirement (R5.1, R5.2): Old requirement (MUST use JSON default, MAY support others) split into R5.1 (MUST use JSON default) and R5.2 (MUST be possible to extend RPP for other formats).<a href="#section-21.3.2.5-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.5-1.1">Split Requirement (R5.1, R5.2): Old requirement (MUST use JSON default, MAY support others) split into R5.1 (MUST use JSON default) and R5.2 (MUST be possible to extend RPP for other formats).<a href="#section-22.3.2.5-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.5-1.2">Rewritten R5.4: Replaced "server MAY support multiple media types" with R5.4 (MUST define default media type, SHALL be extensible for others).<a href="#section-21.3.2.5-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.5-1.2">Rewritten R5.4: Replaced "server MAY support multiple media types" with R5.4 (MUST define default media type, SHALL be extensible for others).<a href="#section-22.3.2.5-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.5-1.3">Removed Requirement (Old R5.6): Requirement related to server profiles for data models/mappings explicitly removed (linked to Issue #11).<a href="#section-21.3.2.5-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.5-1.3">Removed Requirement (Old R5.6): Requirement related to server profiles for data models/mappings explicitly removed (linked to Issue #11).<a href="#section-22.3.2.5-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.5-1.4">Modified R5.8: Changed partial update support from MAY to MUST. Removed specific mention of HTTP PATCH / JSON Merge Patch.<a href="#section-21.3.2.5-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.5-1.4">Modified R5.8: Changed partial update support from MAY to MUST. Removed specific mention of HTTP PATCH / JSON Merge Patch.<a href="#section-22.3.2.5-1.4" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.5-1.5">New Requirement R5.9: Added requirement: RPP MUST support full update of data objects.<a href="#section-21.3.2.5-1.5" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.5-1.5">New Requirement R5.9: Added requirement: RPP MUST support full update of data objects.<a href="#section-22.3.2.5-1.5" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.5-1.6">New Requirement R5.10: Added requirement: Response with object ID MUST include object URL reference.<a href="#section-21.3.2.5-1.6" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.5-1.6">New Requirement R5.10: Added requirement: Response with object ID MUST include object URL reference.<a href="#section-22.3.2.5-1.6" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.5-1.7">Removed Requirement: Requirement to use JSContact for contacts moved to C5.1.<a href="#section-21.3.2.5-1.7" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.5-1.7">Removed Requirement: Requirement to use JSContact for contacts moved to C5.1.<a href="#section-22.3.2.5-1.7" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="operations-and-responses-1">
-<section id="section-21.3.2.6">
+<section id="section-22.3.2.6">
             <h5 id="name-operations-and-responses-2">
 <a href="#name-operations-and-responses-2" class="section-name selfRef">Operations and responses</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.6-1.1">New Requirement R6.1: Added requirement: RPP MUST support client requests for different data representation depths (minimal, full, full+dereferenced).<a href="#section-21.3.2.6-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.6-1.1">New Requirement R6.1: Added requirement: RPP MUST support client requests for different data representation depths (minimal, full, full+dereferenced).<a href="#section-22.3.2.6-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.6-1.2">New Requirement R6.2: Added requirement: RPP MAY return different representations in different contexts.<a href="#section-21.3.2.6-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.6-1.2">New Requirement R6.2: Added requirement: RPP MAY return different representations in different contexts.<a href="#section-22.3.2.6-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.6-1.3">New Requirement R6.3: Added requirement: Response data MUST only contain object data; transactional info MUST be in HTTP headers.<a href="#section-21.3.2.6-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.6-1.3">New Requirement R6.3: Added requirement: Response data MUST only contain object data; transactional info MUST be in HTTP headers.<a href="#section-22.3.2.6-1.3" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="discoverability-1">
-<section id="section-21.3.2.7">
+<section id="section-22.3.2.7">
             <h5 id="name-discoverability-2">
 <a href="#name-discoverability-2" class="section-name selfRef">Discoverability</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.7-1.1">Rewritten R7.2: Significantly expanded the requirement for the discovery document (<code>/.well-known</code>), detailing mandatory structured machine-readable content (services, extensions, versions, etc.).<a href="#section-21.3.2.7-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.7-1.1">Rewritten R7.2: Significantly expanded the requirement for the discovery document (<code>/.well-known</code>), detailing mandatory structured machine-readable content (services, extensions, versions, etc.).<a href="#section-22.3.2.7-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.7-1.2">Expanded R7.4, R7.5 &amp; R7.10: Old API version discoverability expanded into R7.4 (MUST support versioning for protocol, objects, representations, etc.), R7.5 (Schema MUST show breaking changes) and &amp;.10 (versions MUST be discoverable).<a href="#section-21.3.2.7-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.7-1.2">Expanded R7.4, R7.5 &amp; R7.10: Old API version discoverability expanded into R7.4 (MUST support versioning for protocol, objects, representations, etc.), R7.5 (Schema MUST show breaking changes) and &amp;.10 (versions MUST be discoverable).<a href="#section-22.3.2.7-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.7-1.3">Removed Requirement R7.8: Explicitly removed (linked to Issue #21).<a href="#section-21.3.2.7-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.7-1.3">Removed Requirement R7.8: Explicitly removed (linked to Issue #21).<a href="#section-22.3.2.7-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.7-1.4">New Requirement R7.9: Added requirement: Response with unique object IDs MAY include URL references.<a href="#section-21.3.2.7-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.7-1.4">New Requirement R7.9: Added requirement: Response with unique object IDs MAY include URL references.<a href="#section-22.3.2.7-1.4" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="epp-compatibility-1">
-<section id="section-21.3.2.8">
+<section id="section-22.3.2.8">
             <h5 id="name-epp-compatibility-2">
 <a href="#name-epp-compatibility-2" class="section-name selfRef">EPP compatibility</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.8-1.1">New Requirement R8.3: Added requirement: RPP-to-EPP mapping definitions MAY be defined in compatibility profiles (references R4.4).<a href="#section-21.3.2.8-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.8-1.1">New Requirement R8.3: Added requirement: RPP-to-EPP mapping definitions MAY be defined in compatibility profiles (references R4.4).<a href="#section-22.3.2.8-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.8-1.2">Removed Moved: Requirement about including common EPP extensions in core moved (superseded by R4.2).<a href="#section-21.3.2.8-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.8-1.2">Removed Moved: Requirement about including common EPP extensions in core moved (superseded by R4.2).<a href="#section-22.3.2.8-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.8-1.3">New Requirement R8.4: Added requirement: RPP MUST include an <em>extension framework</em> for EPP extension equivalents not in core (references R4.2).<a href="#section-21.3.2.8-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.8-1.3">New Requirement R8.4: Added requirement: RPP MUST include an <em>extension framework</em> for EPP extension equivalents not in core (references R4.2).<a href="#section-22.3.2.8-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.8-1.4">Rewritten R8.5: Replaced old EPP token requirement with R8.5 (MUST support EPP password-based Authorisation Information per <span>[<a href="#RFC5731" class="cite xref">RFC5731</a>]</span>/<span>[<a href="#RFC5733" class="cite xref">RFC5733</a>]</span>).<a href="#section-21.3.2.8-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.8-1.4">Rewritten R8.5: Replaced old EPP token requirement with R8.5 (MUST support EPP password-based Authorisation Information per <span>[<a href="#RFC5731" class="cite xref">RFC5731</a>]</span>/<span>[<a href="#RFC5733" class="cite xref">RFC5733</a>]</span>).<a href="#section-22.3.2.8-1.4" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.8-1.5">New Requirement R8.6: Added requirement: RPP SHOULD support client_id/password authentication similar to EPP.<a href="#section-21.3.2.8-1.5" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.8-1.5">New Requirement R8.6: Added requirement: RPP SHOULD support client_id/password authentication similar to EPP.<a href="#section-22.3.2.8-1.5" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="security-1">
-<section id="section-21.3.2.9">
+<section id="section-22.3.2.9">
             <h5 id="name-security-2">
 <a href="#name-security-2" class="section-name selfRef">Security</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.9-1.1">Rewritten R9.4: Significantly rewrote and expanded the authorisation model requirement (MUST go beyond AuthInfo), detailing potential use cases (transfers without AuthInfo, DNS operator updates via OIDC).<a href="#section-21.3.2.9-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.9-1.1">Rewritten R9.4: Significantly rewrote and expanded the authorisation model requirement (MUST go beyond AuthInfo), detailing potential use cases (transfers without AuthInfo, DNS operator updates via OIDC).<a href="#section-22.3.2.9-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.9-1.2">New Requirement R9.8: Added requirement: RPP MUST allow multiple user accounts per registrar, MAY delegate user management.<a href="#section-21.3.2.9-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.9-1.2">New Requirement R9.8: Added requirement: RPP MUST allow multiple user accounts per registrar, MAY delegate user management.<a href="#section-22.3.2.9-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.9-1.3">New Requirement R9.9: Added requirement: RPP MUST support a granular authorisation matrix (permissions per user).<a href="#section-21.3.2.9-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.9-1.3">New Requirement R9.9: Added requirement: RPP MUST support a granular authorisation matrix (permissions per user).<a href="#section-22.3.2.9-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.9-1.4">New Requirement R9.10: Added requirement: RPP MUST allow credential updates and enforce password strength/lifetime.<a href="#section-21.3.2.9-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.9-1.4">New Requirement R9.10: Added requirement: RPP MUST allow credential updates and enforce password strength/lifetime.<a href="#section-22.3.2.9-1.4" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="extensibility-1">
-<section id="section-21.3.2.10">
+<section id="section-22.3.2.10">
             <h5 id="name-extensibility-2">
 <a href="#name-extensibility-2" class="section-name selfRef">Extensibility</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.10-1.1">Removed Requirement: Removed "SHOULD aim for easy and natural extensibility to richer models".<a href="#section-21.3.2.10-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.10-1.1">Removed Requirement: Removed "SHOULD aim for easy and natural extensibility to richer models".<a href="#section-22.3.2.10-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.2">New Requirement R10.3: Added requirement: RPP SHOULD promote standardisation of common extension attributes.<a href="#section-21.3.2.10-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.2">New Requirement R10.3: Added requirement: RPP SHOULD promote standardisation of common extension attributes.<a href="#section-22.3.2.10-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.3">Removed Requirement: Removed explicit prohibition of EPP-style command-response extensions.<a href="#section-21.3.2.10-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.3">Removed Requirement: Removed explicit prohibition of EPP-style command-response extensions.<a href="#section-22.3.2.10-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.4">New Requirement R10.5: Added requirement: RPP MUST support extensions defining new status codes.<a href="#section-21.3.2.10-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.4">New Requirement R10.5: Added requirement: RPP MUST support extensions defining new status codes.<a href="#section-22.3.2.10-1.4" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.5">New Requirement R10.6: Added requirement: RPP MUST support extensions adding new HTTP headers.<a href="#section-21.3.2.10-1.5" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.5">New Requirement R10.6: Added requirement: RPP MUST support extensions adding new HTTP headers.<a href="#section-22.3.2.10-1.5" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.6">New Requirement R10.7: Added requirement: RPP SHALL have conflict avoidance mechanisms for extensions (private and coordinated).<a href="#section-21.3.2.10-1.6" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.6">New Requirement R10.7: Added requirement: RPP SHALL have conflict avoidance mechanisms for extensions (private and coordinated).<a href="#section-22.3.2.10-1.6" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.7">Removed Requirement: Removed requirement for JSON namespace concept.<a href="#section-21.3.2.10-1.7" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.7">Removed Requirement: Removed requirement for JSON namespace concept.<a href="#section-22.3.2.10-1.7" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.8">New Requirement R10.9: Added requirement: RPP extensions MUST support versioning, discoverable via discovery document.<a href="#section-21.3.2.10-1.8" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.8">New Requirement R10.9: Added requirement: RPP extensions MUST support versioning, discoverable via discovery document.<a href="#section-22.3.2.10-1.8" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.9">Removed Requirement R10.10: Requirement for IANA registry of RPP status codes explicitly dropped (linked to Issue #20).<a href="#section-21.3.2.10-1.9" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.9">Removed Requirement R10.10: Requirement for IANA registry of RPP status codes explicitly dropped (linked to Issue #20).<a href="#section-22.3.2.10-1.9" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.10-1.10">New Requirement R10.11: Added requirement: Extension designers MAY add status codes, SHOULD register generic ones with IANA.<a href="#section-21.3.2.10-1.10" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.10-1.10">New Requirement R10.11: Added requirement: Extension designers MAY add status codes, SHOULD register generic ones with IANA.<a href="#section-22.3.2.10-1.10" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="scalability-1">
-<section id="section-21.3.2.11">
+<section id="section-22.3.2.11">
             <h5 id="name-scalability-2">
 <a href="#name-scalability-2" class="section-name selfRef">Scalability</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.11-1.1">Modified R11.3: Refined load balancing requirement (MUST support at URL level, MUST be possible without body processing).<a href="#section-21.3.2.11-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.11-1.1">Modified R11.3: Refined load balancing requirement (MUST support at URL level, MUST be possible without body processing).<a href="#section-22.3.2.11-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.11-1.2">Rewritten R11.5: Expanded async processing clause into R11.5 (MUST support async for multi-object/intensive/manual ops, specifying response mechanism).<a href="#section-21.3.2.11-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.11-1.2">Rewritten R11.5: Expanded async processing clause into R11.5 (MUST support async for multi-object/intensive/manual ops, specifying response mechanism).<a href="#section-22.3.2.11-1.2" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="performance-1">
-<section id="section-21.3.2.12">
+<section id="section-22.3.2.12">
             <h5 id="name-performance-2">
 <a href="#name-performance-2" class="section-name selfRef">Performance</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.12-1.1">Rewritten R12.1: Changed requirement from MUST allow optional body to SHOULD be designed not to include body when not needed (references merge from old R3.4).<a href="#section-21.3.2.12-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.12-1.1">Rewritten R12.1: Changed requirement from MUST allow optional body to SHOULD be designed not to include body when not needed (references merge from old R3.4).<a href="#section-22.3.2.12-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.12-1.2">Modified R12.2: Added constraint: RPP MUST NOT mandate bulk/listing/filtering features where they negatively impact scalability/performance.<a href="#section-21.3.2.12-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.12-1.2">Modified R12.2: Added constraint: RPP MUST NOT mandate bulk/listing/filtering features where they negatively impact scalability/performance.<a href="#section-22.3.2.12-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.12-1.3">Removed Requirement R12.3: Requirement allowing compound object creation explicitly removed (linked to Issue #12).<a href="#section-21.3.2.12-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.12-1.3">Removed Requirement R12.3: Requirement allowing compound object creation explicitly removed (linked to Issue #12).<a href="#section-22.3.2.12-1.3" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="internationalisation-3">
-<section id="section-21.3.2.13">
+<section id="section-22.3.2.13">
             <h5 id="name-internationalisation-4">
 <a href="#name-internationalisation-4" class="section-name selfRef">Internationalisation</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.13-1.1">New Requirement R13.1: Added requirement: RPP MUST support internationalisation for core/extension objects and messages.<a href="#section-21.3.2.13-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.13-1.1">New Requirement R13.1: Added requirement: RPP MUST support internationalisation for core/extension objects and messages.<a href="#section-22.3.2.13-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.13-1.2">New Requirement R13.2: Added requirement: RPP MUST support human-readable localised response messages. (Moved from old Representation section).<a href="#section-21.3.2.13-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.13-1.2">New Requirement R13.2: Added requirement: RPP MUST support human-readable localised response messages. (Moved from old Representation section).<a href="#section-22.3.2.13-1.2" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="clients-1">
-<section id="section-21.3.2.14">
+<section id="section-22.3.2.14">
             <h5 id="name-clients-2">
 <a href="#name-clients-2" class="section-name selfRef">Clients</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.14-1.1">New Requirement R14.1: Added requirement: RPP MUST support server applications as clients.<a href="#section-21.3.2.14-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.14-1.1">New Requirement R14.1: Added requirement: RPP MUST support server applications as clients.<a href="#section-22.3.2.14-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.14-1.2">New Requirement R14.2: Added requirement: RPP MUST support CLI/desktop tool interaction.<a href="#section-21.3.2.14-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.14-1.2">New Requirement R14.2: Added requirement: RPP MUST support CLI/desktop tool interaction.<a href="#section-22.3.2.14-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.14-1.3">New Requirement R14.3: Added requirement: RPP SHOULD support web browsers (e.g., SPAs) directly.<a href="#section-21.3.2.14-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.14-1.3">New Requirement R14.3: Added requirement: RPP SHOULD support web browsers (e.g., SPAs) directly.<a href="#section-22.3.2.14-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.14-1.4">New Requirement R14.4: Added requirement: RPP SHOULD support mobile applications directly.<a href="#section-21.3.2.14-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.14-1.4">New Requirement R14.4: Added requirement: RPP SHOULD support mobile applications directly.<a href="#section-22.3.2.14-1.4" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="requirements-for-object-types-1">
-<section id="section-21.3.2.15">
+<section id="section-22.3.2.15">
             <h5 id="name-requirements-for-object-type">
 <a href="#name-requirements-for-object-type" class="section-name selfRef">Requirements for object types</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.15-1.1">New Requirement D13.1 (Domain): Added requirement: RPP MUST support IDNs (UTF-8 and Punycode). (Moved from old Representation section).<a href="#section-21.3.2.15-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.15-1.1">New Requirement D13.1 (Domain): Added requirement: RPP MUST support IDNs (UTF-8 and Punycode). (Moved from old Representation section).<a href="#section-22.3.2.15-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.15-1.2">New Requirement C5.1 (Contact): Added requirement: RPP SHOULD consider using JSContact <span>[<a href="#RFC9553" class="cite xref">RFC9553</a>]</span> for contacts. (Moved from old Data Representation section).<a href="#section-21.3.2.15-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.15-1.2">New Requirement C5.1 (Contact): Added requirement: RPP SHOULD consider using JSContact <span>[<a href="#RFC9553" class="cite xref">RFC9553</a>]</span> for contacts. (Moved from old Data Representation section).<a href="#section-22.3.2.15-1.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.15-1.3">New Requirement C13.1 (Contact): Added requirement: RPP MUST support i18n for Contact text fields (name, address, etc.).<a href="#section-21.3.2.15-1.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.15-1.3">New Requirement C13.1 (Contact): Added requirement: RPP MUST support i18n for Contact text fields (name, address, etc.).<a href="#section-22.3.2.15-1.3" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.15-1.4">New Requirement C13.2 (Contact): Added requirement: RPP MUST support internationalised Email addresses <span>[<a href="#RFC6530" class="cite xref">RFC6530</a>]</span>.<a href="#section-21.3.2.15-1.4" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.15-1.4">New Requirement C13.2 (Contact): Added requirement: RPP MUST support internationalised Email addresses <span>[<a href="#RFC6530" class="cite xref">RFC6530</a>]</span>.<a href="#section-22.3.2.15-1.4" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.15-1.5">New Requirement C13.3 (Contact): Added requirement: RPP MUST support multiple localised expressions of contact data.<a href="#section-21.3.2.15-1.5" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.15-1.5">New Requirement C13.3 (Contact): Added requirement: RPP MUST support multiple localised expressions of contact data.<a href="#section-22.3.2.15-1.5" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
 </div>
 <div id="appendix-a-extensions">
-<section id="section-21.3.2.16">
+<section id="section-22.3.2.16">
             <h5 id="name-appendix-a-extensions">
 <a href="#name-appendix-a-extensions" class="section-name selfRef">Appendix A. Extensions</a>
             </h5>
 <ul class="compact">
-<li class="compact" id="section-21.3.2.16-1.1">New Requirement A.1: Added requirement: An extension for a Search API.<a href="#section-21.3.2.16-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.3.2.16-1.1">New Requirement A.1: Added requirement: An extension for a Search API.<a href="#section-22.3.2.16-1.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-21.3.2.16-1.2">New Requirement A.2: Added requirement: An extension allowing DNS operators to update DNSSEC key material.<a href="#section-21.3.2.16-1.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-22.3.2.16-1.2">New Requirement A.2: Added requirement: An extension allowing DNS operators to update DNSSEC key material.<a href="#section-22.3.2.16-1.2" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
@@ -2216,9 +2238,9 @@ RPP MUST support additional information about a successful operation (informatio
 </div>
 </section>
 </div>
-<section id="section-22">
+<section id="section-23">
       <h2 id="name-normative-references">
-<a href="#section-22" class="section-number selfRef">22. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-23" class="section-number selfRef">23. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="BCP56">[BCP56]</dt>
