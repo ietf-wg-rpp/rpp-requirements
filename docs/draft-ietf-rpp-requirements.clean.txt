@@ -489,6 +489,10 @@ Table of Contents
    for the wider RPP community, then the extension designer SHOULD
    register the new status code in the RPP IANA registry.
 
+   *R10.12* Data model for DNS (see R4.7) MUST be extensible to future
+   DNS record types as well as future ways of delegation over DNS (e.g.
+   DELEG).
+
 14.  Scalability
 
    *R11.1* RPP MUST be stateless and MUST NOT maintain application state
@@ -722,6 +726,7 @@ Table of Contents
 22.1.  Version -01 to -02
 
    -  Added requirements for Host Object Type
+   -  Added R10.12 on future ways of delegation
 
 22.2.  Version -00 to -01
 

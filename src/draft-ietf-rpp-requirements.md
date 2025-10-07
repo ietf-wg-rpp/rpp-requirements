@@ -299,6 +299,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R10.11** Extension designers or RPP implementers MAY add new status codes, if a newly created status code is generic enough to be useful for the wider RPP community, then the extension designer SHOULD register the new status code in the RPP IANA registry.
 
+**R10.12** Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
+
 # Scalability
 
 **R11.1** RPP MUST be stateless and MUST NOT maintain application state on the server required for processing future RPP requests. Every client request needs to provide all the information required for the server to be able to successfully process the request. The client MAY maintain application session state, for example by using a JWT token.
@@ -439,6 +441,7 @@ A> TODO: TBC if anything needed here. There is a security section.
 ## Version -01 to -02
 
 * Added requirements for Host Object Type
+* Added R10.12 on future ways of delegation
 
 ## Version -00 to -01
 
