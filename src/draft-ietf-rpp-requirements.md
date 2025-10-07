@@ -269,7 +269,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.1** RPP MUST support state-of-the-art authentication and authorisation schemes allowing for easy integration in modern HTTP infrastructure.
 
-**R9.2** RPP MUST support modern authentication and authorisation standards (OAuth, OpenId Connect)
+**R9.2** RPP MUST support robust authentication and authorisation mechanisms, such as OAuth 2.0 and OpenID Connect, to ensure that only authorised clients and users can access or modify resources.
 
 **R9.3** Support for a simplified and quicker object transfer process MAY be included, where approval from the losing registrar is to be obtained interactively by the registrant during the transfer process.
 
@@ -278,7 +278,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 - Object transfers without using an EPP password based Authorisation Information
 - Registrants using OpenID Connect can interactively allow DNS operator to update their NS records, directly in the registry database or indirectly using a registrar.
 
-**R9.5** RPP MUST employ strong authentication and utilise encrypted transport (HTTPS) to protect sensitive data.
+**R9.5** All RPP communications MUST use HTTPS (TLS) to protect data in transit from eavesdropping and man-in-the-middle attacks.
 
 **R9.6** Security mechanisms SHOULD be flexible to allow operators to choose appropriate methods and support federated authentication scenarios.
 
@@ -289,6 +289,16 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 **R9.9** RPP MUST support a granular authorisation matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.
 
 **R9.10** RPP MUST allow users to update their credentials and enforce strong passwords and limited lifetime for passwords and other tokens.
+
+**R9.11** RPP must support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.
+
+**R9.12** RPP MUST support secure credentials management, ensuring that credentials are protected against replay and theft, and have limited lifetimes.
+
+**R9.13** Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.
+
+**R9.14** There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
+
+**R9.15** RPP must support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.
 
 # Extensibility
 
@@ -427,23 +437,59 @@ A> NOTE: derived from [@?RFC3375] 3.4.5 [2]
 
 ## Contact Object Type
 
-[//]: # (Editor note: use Cx.x for Contacts)
+**C1.1** The RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the sponsoring client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.
+
+**C1.2** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
+
+**C1.3** RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.
+
+**C1.4** When RPP is used with thick registries, full contact data MAY be returned, for thin registries only the contact identifier MUST be returned.
+
+**C1.5** RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.
+
+**C1.6** RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).
+
+**C1.7** RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.
+
+**C1.8** RPP SHOULD consider renaming the EPP contact object type to "entity" to better align with the RDAP data model, defined in [@!RFC9083].
+
+### Operations
+
+**C2.1** The RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in [@!RFC5733], such as check, create, read, update, and delete with the possible exception of transfer command, and include support for partial update semantics available to allow for efficient updates.
+
+**C2.2** RPP MAY support the contact transfer command from EPP.
+
+**C2.3** RPP MAY support searching and listing contacts filtered by name (exact/prefix), and sponsoring client, with pagination, the server MAY use a maximum limit on results.
+
+**C2.4** Functional equivalents for EPP contact statuses (e.g., ok, linked, client/serverUpdateProhibited, client/serverDeleteProhibited, pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP responses. The protocol MUST define which statuses can be set by the server and which can be set by the sponsoring client.
+
+**C2.5** RPP MUST prevent creation of contacts with duplicate ids within registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.
+
+**C2.6** The protocol MUST provide an operation to retrieve full contact representation. An authorisation mechanism MUST ensure that sensitive data, such as authorisation information, is only returned to the current sponsoring client.
+
+**C2.7** The protocol MUST provide an operation to retrieve an appropriate contact representation to non-sponsoring clients. The representation MAY vary depending if the authorisation information is provided - depending on server policy.
 
 ### Data Representation
 
-**C5.1** RPP SHOULD consider using JSContact [@!RFC9553] format for contact representation.
+**C3.1** RPP SHOULD consider using JSContact [@!RFC9553] format for contact representation.
+
+**C3.2** RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in [@!RFC5733].
 
 ### Internationalisation
 
-**C13.1** RPP MUST support internationalisation (character encoding) for Contact objects in the following areas:
+**C4.1** RPP MUST support internationalisation (character encoding) for contact objects in the following areas:
 
 - name
 - address data
 - any other contact-related data containing human provided or readable text
 
-**C13.2** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
+**C4.2** RPP MUST support both the localized and internationalized version of the EPP postalInfo element from [@!RFC5733].
 
-**C13.3** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C13.1 having both international and localised variants.
+**C4.3** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
+
+**C4.4** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.
+
+**C4.5** All future RPP contact object extensions MUST be able to handle internationalisation and localisation requirements.
 
 # IANA Considerations
 
@@ -453,7 +499,9 @@ Therefore, the core RPP specifications MUST include "IANA Considerations" sectio
 
 # Security Considerations
 
-A> TODO: TBC if anything needed here. There is a security section.
+The security section of this document defines the security related requirements for RPP, these requirements MUST be addressed in the design and implementation of RPP. Implementations MUST follow best practices, described in [@!BCP56] for HTTP API design.
+
+RRP core specifications MUST include appropriate Security Considerations sections, specifying implementation and operational security requirements for both RPP clients and servers.
 
 # Privacy Considerations
 
@@ -471,6 +519,9 @@ A> TODO: TBC if anything needed here. There is a security section.
 ## Version -01 to -02
 
 * Added relevant and not yet covered requirements from RFC3375 (R6.4-R6.7, R12.4, (#obj_transfers))
+* Added requirements for the contact object type
+* The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.
+* Added additional security requirements.
 * R1.2 removed
 * added essential and optional extensions sections in (#appendix_extensions)
 * Added generic IANA considerations
