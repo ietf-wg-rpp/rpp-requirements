@@ -245,7 +245,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.1** RPP MUST support state-of-the-art authentication and authorisation schemes allowing for easy integration in modern HTTP infrastructure.
 
-**R9.2** RPP MUST support modern authentication and authorisation standards (OAuth, OpenId Connect)
+**R9.2** RPP MUST support robust authentication and authorisation mechanisms, such as OAuth 2.0 and OpenID Connect, to ensure that only authorised clients and users can access or modify resources.
 
 **R9.3** Support for a simplified and quicker object transfer process MAY be included, where approval from the losing registrar is to be obtained interactively by the registrant during the transfer process.
 
@@ -254,7 +254,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 - Object transfers without using an EPP password based Authorisation Information
 - Registrants using OpenID Connect can interactively allow DNS operator to update their NS records, directly in the registry database or indirectly using a registrar.
 
-**R9.5** RPP MUST employ strong authentication and utilise encrypted transport (HTTPS) to protect sensitive data.
+**R9.5** All RPP communications MUST use HTTPS (TLS) to protect data in transit from eavesdropping and man-in-the-middle attacks.
 
 **R9.6** Security mechanisms SHOULD be flexible to allow operators to choose appropriate methods and support federated authentication scenarios.
 
@@ -265,6 +265,16 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 **R9.9** RPP MUST support a granular authorisation matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.
 
 **R9.10** RPP MUST allow users to update their credentials and enforce strong passwords and limited lifetime for passwords and other tokens.
+
+**R9.11** RPP must support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.
+
+**R9.12** RPP MUST support secure credentials management, ensuring that credentials are protected against replay and theft, and have limited lifetimes.
+
+**R9.13** Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.
+
+**R9.14** There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
+
+**R9.15** RPP must support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.
 
 # Extensibility
 
@@ -383,7 +393,9 @@ Therefore, the core RPP specifications MUST include "IANA Considerations" sectio
 
 # Security Considerations
 
-A> TODO: TBC if anything needed here. There is a security section.
+The security section of this document defines the security related requirements for RPP, these requirements MUST be addressed in the design and implementation of RPP. Implementations MUST follow best practices, described in [@!BCP56] for HTTP API design.
+
+RRP core specifications MUST include appropriate Security Considerations sections, specifying implementation and operational security requirements for both RPP clients and servers.
 
 # Privacy Considerations
 
@@ -400,6 +412,8 @@ A> TODO: TBC if anything needed here. There is a security section.
 
 ## Version -01 to -02
 
+* The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.
+* Added additional security requirements.
 * R1.2 removed
 * added essential and optional extensions sections in (#appendix_extensions)
 * Added generic IANA considerations
