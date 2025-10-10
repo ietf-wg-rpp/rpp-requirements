@@ -67,9 +67,11 @@ URL - A Uniform Resource Locator as defined in [@!RFC3986].
 
 Resource - An object having a type, data, and possible relationship to other resources, identified by a URL.
 
-RPP client - An HTTP user agent performing an RPP request 
+RPP client - An HTTP user agent performing an RPP request.
 
 RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.
+
+Sponsoring Client - The RPP client that currently has sponsorship of the object.
 
 # Conventions Used in This Document
 
@@ -135,6 +137,10 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.6** A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”
 
+**R4.7** *Pending review in PR #107* 
+
+**R4.8** RPP MUST allow a client to reference a shared object (e.g., a host or contact) sponsored by a different client, while ensuring the sponsoring client retains full administrative control over the shared object.
+
 # Data Representation
 
 **R5.1** RPP MUST use JSON as the default data format.
@@ -186,6 +192,14 @@ A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 - Allowing clients to use multiple concurrent readers.
 - Support for streaming service messages to clients.
 
+**R6.5** RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.
+
+**R6.6** RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
+
+**R6.7** The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.
+
+**R6.8** For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
+
 # Discoverability
 
 **R7.1** RPP MAY include a bootstrap mechanism designed to allow clients to locate the network identifier for the RPP service of a registry operator, e.g. rpp.sidn.nl for the registry operator for the .nl ccTLD.
@@ -230,7 +244,7 @@ Solutions may include:
 
 **R7.9** An RPP response that includes unique object identifiers, MAY also include URL references for these objects.
 
-**R7.10** Versions used by the RPP protocol and used extensions MUST be discoverable by the client.
+**R7.10** Versions used by the RPP and used extensions MUST be discoverable by the client.
 
 # EPP compatibility
 
@@ -342,6 +356,8 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 [Issue #12](https://github.com/ietf-wg-rpp/rpp-requirements/issues/12)
  -->
 
+ **R12.4** The protocol MUST be usable in both high volume and low volume operating environments.
+
 # Internationalisation
 
 **R13.1** RPP MUST support internationalisation, for object types and messages defined in the core protocol and extensions
@@ -359,6 +375,34 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 **R14.4** RPP SHOULD support mobile applications as clients, also here through direct integration without any proxy backend.
 
 # Requirements for object types
+
+## Common
+
+A> NOTE: *O1.x Requirements are defined in PR [#100](https://github.com/ietf-wg-rpp/rpp-requirements/pull/100)
+
+### Object Transfers {#obj_transfers}
+
+For the purposes of requirements related to transfers, the following specific terms are used:
+
+- Gaining Client: The client seeking to gain sponsorship of the object.
+- Initiating Client: The client that starts the transfer request.
+
+**O2.1** The RPP MUST support two types of object transfer operations:
+
+- Pull Transfer: Initiated by the Gaining Client.
+- Push Transfer: Initiated by the Sponsoring Client, who designates a Gaining Client.
+
+**O2.2** A Gaining Client MUST provide valid authorization information to initiate a Pull Transfer request.
+
+**O2.3** For Pull Transfers, the RPP MUST provide operations for the Sponsoring Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the Sponsoring Client.
+
+**O2.4** For Push Transfers, the RPP MUST provide operations for the Gaining Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the designated Gaining Client.
+
+**O2.5** The RPP MUST provide an operation for the Initiating Client to cancel its own pending transfer request. The RPP MUST reject any cancellation attempts not initiated by the Initiating Client.
+
+**O2.6** The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client and the Gaining Client.
+
+**O2.7** The response to a successful object transfer MUST include a representation of the transferred object and a list of any associated objects that were also transferred.
 
 ## Domain Object Type
 
@@ -455,6 +499,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 ## Version -01 to -02
 
+* Added relevant and not yet covered requirements from [@?RFC3375] (R6.5-R6.8, R12.4, (#obj_transfers))
 * Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.
 * Added requirements for the contact object type
 * The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.
@@ -498,7 +543,7 @@ A> // see: https://github.com/ietf-wg-rpp/rpp-requirements/issues/19
 A> TODO: These lists are far from being complete -> input from Tiger Team on EPP Extensibility will fill these lists
 
 The following list of extensions is considered essential for the completeness of RPP as provisioning protocol for domain names.
-The core RPP protocol and its extensibility framework MUST enable creation of those extensions.
+The core RPP and its extensibility framework MUST enable creation of those extensions.
 
 **A.1** *Moved to (#appendix_extensions_optional) as A2.2*
 
