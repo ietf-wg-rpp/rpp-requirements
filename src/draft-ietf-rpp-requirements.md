@@ -137,7 +137,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.6** A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”
 
-**R4.7** *Pending review in PR #107* 
+**R4.7** RPP MUST support linking of objects of the same or different types, with flexible cardinality (one-to-one, one-to-many, many-to-many). The links MUST also support to have attributes of their own (e.g., a link between a domain and a contact object with a different contact role).
 
 **R4.8** RPP MUST allow a client to reference a shared object (e.g., a host or contact) sponsored by a different client, while ensuring the sponsoring client retains full administrative control over the shared object.
 
@@ -165,7 +165,11 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R5.9** RPP MUST support full update of data objects.
 
-**R.5.10** A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.
+**R5.10** A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.
+
+**R5.11** RPP MUST support representation of a collections of resources.
+
+**R5.12** The representation of the links (see R4.7) MUST be expressed using the RPP server's internal identifiers. The RPP SHOULD also consider using URIs and/or [@!RFC6570] URI templates for uniform addressing of link targets, both internal and external to the RPP server.
 
 # Operations and responses
 
@@ -182,6 +186,8 @@ RPP MUST support the use of server profiles to define required components of the
 - Responses to PUT/POST/PATCH requests
 
 **R6.3** The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.
+
+**R6.4** RPP MUST support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination.
 
 A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
@@ -408,9 +414,50 @@ For the purposes of requirements related to transfers, the following specific te
 
 [//]: # (Editor note: use Dx.x for Domains)
 
-### Internationalisation
+**D1.1** The RPP domain object data model MUST include, at a minimum, the attributes defined in RFC5731: the fully qualified domain name, repository object identifier, object status, the current sponsoring client identifier, creating registrar client ID, creation timestamp, last update client ID, last update timestamp, expiration timestamp, last transfer timestamp, name servers, subordinate hosts, the registrant, and other associated contacts.
 
-**D13.1** RPP MUST support Internationalised Domain Names (IDNs) - both UTF-8 as well as Punycode representation of a domain name MUST be supported, however one of them MAY be chosen as primary for object URL
+**D1.2** RPP MUST only accept valid domain names, which MUST be valid FQDNs.
+
+**D1.3** RPP MUST support internationalized domain names (IDN) and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
+
+**D1.4** RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of [@!RFC5890] when processing domain names in requests and responses by both clients and servers.
+
+**D1.5** The RPP domain object data model MUST allow for the association of zero, one or more objects representing the DNS configuration of the domain including name servers. These may be defined by a reference to separate repository objects (equivalent of EPP host objects) or aggregate object (equivalent of EPP host attribute).
+
+**D1.6** RPP MUST support domains that have linkage to at minimum registrant, administrative, technical, and billing contacts. In thin registries, only identifiers MAY be stored; in thick registries, contact data MAY be included per (privacy) policy. The list of contact link types MUST be extensible.
+
+**D1.7** RPP domain objects MUST support EPP password-based Authorisation Information (authInfo) for transfer operations (see R8.5).
+
+**D1.8** RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes. The protocol MUST define which statuses can be set by the server and which can be set by the sponsoring client.
+
+**D1.9** RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include an attribute with information about linked objects.
+
+### Operations
+
+**D2.1** RPP MUST provide operations to check, create, read, update, transfer, renew and delete domain name objects as defined in [@!RFC5731].
+
+**D2.2** When creating or renewing a domain object, RPP MUST allow a client to specify a registration period. The protocol MUST provide a mechanism for the server to confirm the resulting registration expiration date in the response.
+
+<!-- already adding RGP here although we need to confirm this with Tiger team !-->
+**D2.3** RPP MUST support the Domain Registry Grace Period Mapping as defined by [@!RFC3915], the restore report MAY be ignored or included in the initial restore request, making this a 1-step process vs the 2-step process in EPP.
+
+**D2.4** RPP MAY support searching and listing domains filtered by name (exact/prefix), and sponsoring client.
+
+**D2.5** Only the sponsoring client (or an authorised server administrator) MAY modify or delete a domain object; servers MUST enforce authorisation.
+
+**D2.6** RPP MUST prevent creation of duplicate domain objects within a registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.
+
+**D2.7** The transfer of a domain object MUST also result in the transfer of any subordinate host objects (ns.foo.example when foo.example is transferred).
+
+**D2.8** The RPP domain transfer operation MUST allow for an implicit renewal. If a transfer results in an extension of the registration period, the response to the successful transfer MUST include the new expiration date of the domain object.
+
+### Data Representation
+
+**D3.1** The JSON representation MUST include the canonical domain name and any U‑label/A‑label when IDN is used by the server.
+
+**D3.2** The RPP domain object representation MUST include link relations to related objects, for example: self, hosts and contacts.
+
+**D3.3** The representation MUST adapt to the registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.
 
 ## Host Object Type
 
@@ -499,6 +546,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 ## Version -01 to -02
 
+* Added requirements for Domain Object Type
 * Added relevant and not yet covered requirements from [@?RFC3375] (R6.5-R6.8, R12.4, (#obj_transfers))
 * Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.
 * Added requirements for the contact object type
