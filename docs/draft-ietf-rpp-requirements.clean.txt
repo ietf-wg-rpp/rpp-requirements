@@ -691,8 +691,11 @@ Table of Contents
    and responses by both clients and servers.
 
    *D1.5* The RPP domain object data model MUST allow for the
-   association of zero, one or more host objects to serve as name
-   servers for the domain.
+   association of zero, one or more objects representing the DNS
+   configuration of the domain including name servers.  These may be
+   defined by a reference to separate repository objects (equivalent of
+   EPP host objects) or aggregate object (equivalent of EPP host
+   attribute).
 
    *D1.6* RPP MUST support domains that have linkage to at minimum
    registrant, administrative, technical, and billing contacts.  In thin

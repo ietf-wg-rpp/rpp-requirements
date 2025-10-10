@@ -422,7 +422,7 @@ For the purposes of requirements related to transfers, the following specific te
 
 **D1.4** RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of [@!RFC5890] when processing domain names in requests and responses by both clients and servers.
 
-**D1.5** The RPP domain object data model MUST allow for the association of zero, one or more host objects to serve as name servers for the domain.
+**D1.5** The RPP domain object data model MUST allow for the association of zero, one or more objects representing the DNS configuration of the domain including name servers. These may be defined by a reference to separate repository objects (equivalent of EPP host objects) or aggregate object (equivalent of EPP host attribute).
 
 **D1.6** RPP MUST support domains that have linkage to at minimum registrant, administrative, technical, and billing contacts. In thin registries, only identifiers MAY be stored; in thick registries, contact data MAY be included per (privacy) policy. The list of contact link types MUST be extensible.
 
