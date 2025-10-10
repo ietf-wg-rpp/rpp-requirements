@@ -93,7 +93,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R1.6** RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
 
-**R1.7** RPP MUST support both Thin and Thick registry models, and MUST allow for flexibility in the amount and type of data stored and returned by the server, according to the chosen registry model. This includes supporting mechanisms for indicating which data elements are available or omitted, and ensuring that clients can reliably determine the presence or absence of specific data fields based on the registry’s operational model.
+**R1.7** RPP MUST support both Thin and Thick registry models, and MUST allow for flexibility in how much data and what type of data is stored and returned by the server, according to the chosen registry model. This includes supporting mechanisms for indicating which data elements are available or omitted, and ensuring that clients can reliably determine the presence or absence of specific data fields based on the registry’s operational model.
 
 # HTTP
 
