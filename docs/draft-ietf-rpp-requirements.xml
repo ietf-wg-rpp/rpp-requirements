@@ -125,6 +125,14 @@ RPP MUST support additional information about a successful operation (informatio
 
 <aside><t>TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/56">Issue #56</eref></t>
 </aside>
+<t><strong>R6.4</strong> RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC <xref target="RFC5730"></xref>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:</t>
+
+<ul spacing="compact">
+<li>Allowing clients to subscribe to specific types of service messages.</li>
+<li>Allowing clients to receive multiple service messages in a single request.</li>
+<li>Allowing clients to use multiple concurrent readers.</li>
+<li>Support for streaming service messages to clients.</li>
+</ul>
 </section>
 
 <section anchor="discoverability"><name>Discoverability</name>
@@ -328,6 +336,7 @@ RPP MUST support additional information about a successful operation (informatio
 <section anchor="version-01-to-02"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
+<li>Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.</li>
 <li>Added requirements for the contact object type</li>
 <li>The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.</li>
 <li>Added additional security requirements.</li>
