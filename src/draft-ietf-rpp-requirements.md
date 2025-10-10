@@ -141,8 +141,6 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.8** RPP MUST allow a client to reference a shared object (e.g., a host or contact) sponsored by a different client, while ensuring the sponsoring client retains full administrative control over the shared object.
 
-A> NOTE: derived from [@?RFC3375] 3.4.3 [5]
-
 # Data Representation
 
 **R5.1** RPP MUST use JSON as the default data format.
@@ -196,19 +194,11 @@ A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
 **R6.5** RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.
 
-A> NOTE: derived from [@?RFC3375] 3.1 [7]
-
 **R6.6** RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
-
-A> NOTE: derived from [@?RFC3375] 3.1 [8]
 
 **R6.7** The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.
 
-A> NOTE: derived from [@?RFC3375] 7.1 [3]
-
 **R6.8** For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
-
-A> NOTE: derived from [@?RFC3375] 3.3 [1]
 
 # Discoverability
 
@@ -368,8 +358,6 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
  **R12.4** The protocol MUST be usable in both high volume and low volume operating environments.
 
-A> NOTE: derived from [@?RFC3375] 5. [1]
-
 # Internationalisation
 
 **R13.1** RPP MUST support internationalisation, for object types and messages defined in the core protocol and extensions
@@ -404,31 +392,17 @@ For the purposes of requirements related to transfers, the following specific te
 - Pull Transfer: Initiated by the Gaining Client.
 - Push Transfer: Initiated by the Sponsoring Client, who designates a Gaining Client.
 
-A> NOTE: derived from [@?RFC3375] 3.4.5 [4]
-
 **O2.2** A Gaining Client MUST provide valid authorization information to initiate a Pull Transfer request.
-
-A> NOTE: derived from [@?RFC3375] 3.4.5 [5]
 
 **O2.3** For Pull Transfers, the RPP MUST provide operations for the Sponsoring Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the Sponsoring Client.
 
-A> NOTE: derived from [@?RFC3375] 3.4.5 [7]
-
 **O2.4** For Push Transfers, the RPP MUST provide operations for the Gaining Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the designated Gaining Client.
-
-A> NOTE: derived from [@?RFC3375] 3.4.5 [7], but for push transfers
 
 **O2.5** The RPP MUST provide an operation for the Initiating Client to cancel its own pending transfer request. The RPP MUST reject any cancellation attempts not initiated by the Initiating Client.
 
-A> NOTE: derived from [@?RFC3375] 3.4.5 [6]
-
 **O2.6** The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client and the Gaining Client.
 
-A> NOTE: derived from [@?RFC3375] 3.4.5 [8]
-
 **O2.7** The response to a successful object transfer MUST include a representation of the transferred object and a list of any associated objects that were also transferred.
-
-A> NOTE: derived from [@?RFC3375] 3.4.5 [2]
 
 ## Domain Object Type
 
@@ -525,7 +499,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 ## Version -01 to -02
 
-* Added relevant and not yet covered requirements from RFC3375 (R6.4-R6.7, R12.4, (#obj_transfers))
+* Added relevant and not yet covered requirements from [@?RFC3375] (R6.5-R6.8, R12.4, (#obj_transfers))
 * Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.
 * Added requirements for the contact object type
 * The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.

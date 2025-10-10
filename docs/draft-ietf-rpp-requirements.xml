@@ -90,9 +90,6 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R4.6</strong> A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”</t>
 <t><strong>R4.7</strong> <em>Pending review in PR #107</em></t>
 <t><strong>R4.8</strong> RPP MUST allow a client to reference a shared object (e.g., a host or contact) sponsored by a different client, while ensuring the sponsoring client retains full administrative control over the shared object.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.3 [5]</t>
-</aside>
 </section>
 
 <section anchor="data-representation"><name>Data Representation</name>
@@ -140,21 +137,9 @@ RPP MUST support additional information about a successful operation (informatio
 <li>Support for streaming service messages to clients.</li>
 </ul>
 <t><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.1 [7]</t>
-</aside>
 <t><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.1 [8]</t>
-</aside>
 <t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 7.1 [3]</t>
-</aside>
 <t><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.3 [1]</t>
-</aside>
 </section>
 
 <section anchor="discoverability"><name>Discoverability</name>
@@ -270,9 +255,6 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R12.3</strong> <em>Removed</em>
 </t>
 <t><strong>R12.4</strong> The protocol MUST be usable in both high volume and low volume operating environments.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 5. [1]</t>
-</aside>
 </section>
 
 <section anchor="internationalisation"><name>Internationalisation</name>
@@ -307,33 +289,12 @@ RPP MUST support additional information about a successful operation (informatio
 <li>Pull Transfer: Initiated by the Gaining Client.</li>
 <li>Push Transfer: Initiated by the Sponsoring Client, who designates a Gaining Client.</li>
 </ul>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.5 [4]</t>
-</aside>
 <t><strong>O2.2</strong> A Gaining Client MUST provide valid authorization information to initiate a Pull Transfer request.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.5 [5]</t>
-</aside>
 <t><strong>O2.3</strong> For Pull Transfers, the RPP MUST provide operations for the Sponsoring Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the Sponsoring Client.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.5 [7]</t>
-</aside>
 <t><strong>O2.4</strong> For Push Transfers, the RPP MUST provide operations for the Gaining Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the designated Gaining Client.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.5 [7], but for push transfers</t>
-</aside>
 <t><strong>O2.5</strong> The RPP MUST provide an operation for the Initiating Client to cancel its own pending transfer request. The RPP MUST reject any cancellation attempts not initiated by the Initiating Client.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.5 [6]</t>
-</aside>
 <t><strong>O2.6</strong> The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client and the Gaining Client.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.5 [8]</t>
-</aside>
 <t><strong>O2.7</strong> The response to a successful object transfer MUST include a representation of the transferred object and a list of any associated objects that were also transferred.</t>
-
-<aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.4.5 [2]</t>
-</aside>
 </section>
 </section>
 
@@ -410,7 +371,7 @@ RPP MUST support additional information about a successful operation (informatio
 <section anchor="version-01-to-02"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
-<li>Added relevant and not yet covered requirements from RFC3375 (R6.4-R6.7, R12.4, <xref target="obj_transfers"></xref>)</li>
+<li>Added relevant and not yet covered requirements from <xref target="RFC3375"></xref> (R6.5-R6.8, R12.4, <xref target="obj_transfers"></xref>)</li>
 <li>Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.</li>
 <li>Added requirements for the contact object type</li>
 <li>The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.</li>
