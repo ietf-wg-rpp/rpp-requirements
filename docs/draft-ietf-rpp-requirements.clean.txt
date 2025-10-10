@@ -68,14 +68,16 @@ Table of Contents
    16. Internationalisation
    17. Clients
    18. Requirements for object types
-     18.1.  Domain Object Type
-       18.1.1.  Operations
-       18.1.2.  Data Representation
-     18.2.  Host Object Type
-     18.3.  Contact Object Type
-       18.3.1.  Operations
-       18.3.2.  Data Representation
-       18.3.3.  Internationalisation
+     18.1.  Common
+       18.1.1.  Object Transfers
+     18.2.  Domain Object Type
+       18.2.1.  Operations
+       18.2.2.  Data Representation
+     18.3.  Host Object Type
+     18.4.  Contact Object Type
+       18.4.1.  Operations
+       18.4.2.  Data Representation
+       18.4.3.  Internationalisation
    19. IANA Considerations
    20. Security Considerations
    21. Privacy Considerations
@@ -84,7 +86,9 @@ Table of Contents
      22.2.  Version -00 to -01
      22.3.  Version -01 to -00 (WG)
      22.4.  Version -00 to -01
-   23. Normative References
+   23. References
+     23.1.  Normative References
+     23.2.  Informative References
    Appendix A.  Extensions
      A.1.  Essential extensions
      A.2.  Optional extensions
@@ -119,10 +123,13 @@ Table of Contents
    Resource - An object having a type, data, and possible relationship
    to other resources, identified by a URL.
 
-   RPP client - An HTTP user agent performing an RPP request
+   RPP client - An HTTP user agent performing an RPP request.
 
    RPP server - An HTTP server responsible for processing requests and
    returning results in any supported media type.
+
+   Sponsoring Client - The RPP client that currently has sponsorship of
+   the object.
 
 3.  Conventions Used in This Document
 
@@ -238,6 +245,11 @@ Table of Contents
    (e.g., a link between a domain and a contact object with a different
    contact role).
 
+   *R4.8* RPP MUST allow a client to reference a shared object (e.g., a
+   host or contact) sponsored by a different client, while ensuring the
+   sponsoring client retains full administrative control over the shared
+   object.
+
 8.  Data Representation
 
    *R5.1* RPP MUST use JSON as the default data format.
@@ -311,6 +323,36 @@ Table of Contents
       |  TODO: Issue #56 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/56)
 
+   *R6.4* RPP MUST support a functional equivalent of the EPP Poll
+   command described in EPP RFC [RFC5730], allowing for clients
+   discovering and retrieving service messages available on the server.
+   The RPP equivalent MAY contain additional options or features for
+   discovering and retrieving service messages, such as:
+
+   -  Allowing clients to subscribe to specific types of service
+      messages.
+   -  Allowing clients to receive multiple service messages in a single
+      request.
+   -  Allowing clients to use multiple concurrent readers.
+   -  Support for streaming service messages to clients.
+
+   *R6.5* RPP operations that modify repository state MUST be atomic.  A
+   single request MUST either succeed completely or fail completely,
+   leaving the repository in its original state.
+
+   *R6.6* RPP MUST provide services for the client to assure a re-tried
+   operation changing resource state is executed only once if a request
+   has been terminated or timed out before complete response has been
+   received by the client (idempotency).
+
+   *R6.7* The protocol specification MUST define the expected server
+   state for a request that times or terminates out before a response is
+   fully sent out the the client.
+
+   *R6.8* For every request the server MUST generate a permanent,
+   server-unique transaction identifier.  This identifier MUST be
+   returned to the client in the response.
+
 10.  Discoverability
 
    *R7.1* RPP MAY include a bootstrap mechanism designed to allow
@@ -368,7 +410,7 @@ Table of Contents
    *R7.9* An RPP response that includes unique object identifiers, MAY
    also include URL references for these objects.
 
-   *R7.10* Versions used by the RPP protocol and used extensions MUST be
+   *R7.10* Versions used by the RPP and used extensions MUST be
    discoverable by the client.
 
 11.  EPP compatibility
@@ -553,6 +595,9 @@ Table of Contents
 
    *R12.3* _Removed_
 
+   *R12.4* The protocol MUST be usable in both high volume and low
+   volume operating environments.
+
 16.  Internationalisation
 
    *R13.1* RPP MUST support internationalisation, for object types and
@@ -579,7 +624,52 @@ Table of Contents
 
 18.  Requirements for object types
 
-18.1.  Domain Object Type
+18.1.  Common
+
+      |  NOTE: *O1.x Requirements are defined in PR #100
+      |  (https://github.com/ietf-wg-rpp/rpp-requirements/pull/100)
+
+18.1.1.  Object Transfers
+
+   For the purposes of requirements related to transfers, the following
+   specific terms are used:
+
+   -  Gaining Client: The client seeking to gain sponsorship of the
+      object.
+   -  Initiating Client: The client that starts the transfer request.
+
+   *O2.1* The RPP MUST support two types of object transfer operations:
+
+   -  Pull Transfer: Initiated by the Gaining Client.
+   -  Push Transfer: Initiated by the Sponsoring Client, who designates
+      a Gaining Client.
+
+   *O2.2* A Gaining Client MUST provide valid authorization information
+   to initiate a Pull Transfer request.
+
+   *O2.3* For Pull Transfers, the RPP MUST provide operations for the
+   Sponsoring Client to explicitly approve or reject a pending transfer
+   request.  The RPP MUST reject any approval or rejection attempts not
+   initiated by the Sponsoring Client.
+
+   *O2.4* For Push Transfers, the RPP MUST provide operations for the
+   Gaining Client to explicitly approve or reject a pending transfer
+   request.  The RPP MUST reject any approval or rejection attempts not
+   initiated by the designated Gaining Client.
+
+   *O2.5* The RPP MUST provide an operation for the Initiating Client to
+   cancel its own pending transfer request.  The RPP MUST reject any
+   cancellation attempts not initiated by the Initiating Client.
+
+   *O2.6* The RPP MUST provide an operation to query the status of a
+   pending or recently completed transfer request.  This operation MUST
+   be accessible to the Sponsoring Client and the Gaining Client.
+
+   *O2.7* The response to a successful object transfer MUST include a
+   representation of the transferred object and a list of any associated
+   objects that were also transferred.
+
+18.2.  Domain Object Type
 
    *D1.1* The RPP domain object data model MUST include, at a minimum,
    the attributes defined in RFC5731: the fully qualified domain name,
@@ -626,7 +716,7 @@ Table of Contents
    representation MAY include an attribute with information about linked
    objects.
 
-18.1.1.  Operations
+18.2.1.  Operations
 
    *D2.1* RPP MUST provide operations to check, create, read, update,
    transfer, renew and delete domain name objects as defined in
@@ -662,7 +752,7 @@ Table of Contents
    period, the response to the successful transfer MUST include the new
    expiration date of the domain object.
 
-18.1.2.  Data Representation
+18.2.2.  Data Representation
 
    *D3.1* The JSON representation MUST include the canonical domain name
    and any U-label/A-label when IDN is used by the server.
@@ -674,9 +764,9 @@ Table of Contents
    mode, only identifiers (e.g., contact IDs) MUST be returned; in thick
    mode, full contact data MUST be returned.
 
-18.2.  Host Object Type
+18.3.  Host Object Type
 
-18.3.  Contact Object Type
+18.4.  Contact Object Type
 
    *C1.1* The RPP contact object data model MUST include, at a minimum
    an equivalent of RFC5733 contact data model: a unique identifier,
@@ -715,7 +805,7 @@ Table of Contents
    "entity" to better align with the RDAP data model, defined in
    [RFC9083].
 
-18.3.1.  Operations
+18.4.1.  Operations
 
    *C2.1* The RPP contact object type is mapped to the EPP equivalent
    and MUST support all operations (commands) defined for the contact
@@ -750,7 +840,7 @@ Table of Contents
    representation MAY vary depending if the authorisation information is
    provided - depending on server policy.
 
-18.3.2.  Data Representation
+18.4.2.  Data Representation
 
    *C3.1* RPP SHOULD consider using JSContact [RFC9553] format for
    contact representation.
@@ -759,7 +849,7 @@ Table of Contents
    field (or field group) and this MUST be mapped to the EPP disclosure
    preferences described in [RFC5733].
 
-18.3.3.  Internationalisation
+18.4.3.  Internationalisation
 
    *C4.1* RPP MUST support internationalisation (character encoding) for
    contact objects in the following areas:
@@ -840,6 +930,10 @@ Table of Contents
 22.1.  Version -01 to -02
 
    -  Added requirements for Domain Object Type
+   -  Added relevant and not yet covered requirements from [RFC3375]
+      (R6.5-R6.8, R12.4, Section 18.1.1)
+   -  Added R6.4 RPP MUST include a functional equivalent of the EPP
+      Poll command.
    -  Added requirements for the contact object type
    -  The security considerations section has been restructured and
       expanded to provide more detailed guidance on security best
@@ -881,7 +975,9 @@ Table of Contents
    -  Added mandatory support for internationalisation (i18n) and
       specified considering JSContact for contact objects.
 
-23.  Normative References
+23.  References
+
+23.1.  Normative References
 
    [BCP56]    Best Current Practice 56,
               <https://www.rfc-editor.org/info/bcp56>.
@@ -978,6 +1074,12 @@ Table of Contents
               4", 2007, <https://www.oreilly.com/library/view/restful-
               web-services/9780596529260/ch04.html>.
 
+23.2.  Informative References
+
+   [RFC3375]  Hollenbeck, S., "Generic Registry-Registrar Protocol
+              Requirements", RFC 3375, DOI 10.17487/RFC3375, September
+              2002, <https://www.rfc-editor.org/info/rfc3375>.
+
 Appendix A.  Extensions
 
 A.1.  Essential extensions
@@ -987,8 +1089,8 @@ A.1.  Essential extensions
 
    The following list of extensions is considered essential for the
    completeness of RPP as provisioning protocol for domain names.  The
-   core RPP protocol and its extensibility framework MUST enable
-   creation of those extensions.
+   core RPP and its extensibility framework MUST enable creation of
+   those extensions.
 
    *A.1* _Moved to Appendix A.2 as A2.2_
 

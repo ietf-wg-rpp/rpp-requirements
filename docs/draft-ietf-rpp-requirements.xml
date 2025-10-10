@@ -34,8 +34,9 @@
 <t>RESTful Provisioning Protocol or RPP - The protocol described in this document.</t>
 <t>URL - A Uniform Resource Locator as defined in <xref target="RFC3986"></xref>.</t>
 <t>Resource - An object having a type, data, and possible relationship to other resources, identified by a URL.</t>
-<t>RPP client - An HTTP user agent performing an RPP request</t>
+<t>RPP client - An HTTP user agent performing an RPP request.</t>
 <t>RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.</t>
+<t>Sponsoring Client - The RPP client that currently has sponsorship of the object.</t>
 </section>
 
 <section anchor="conventions-used-in-this-document"><name>Conventions Used in This Document</name>
@@ -88,6 +89,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R4.5</strong> The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.</t>
 <t><strong>R4.6</strong> A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”</t>
 <t><strong>R4.7</strong> RPP MUST support linking of objects of the same or different types, with flexible cardinality (one-to-one, one-to-many, many-to-many). The links MUST also support to have attributes of their own (e.g., a link between a domain and a contact object with a different contact role).</t>
+<t><strong>R4.8</strong> RPP MUST allow a client to reference a shared object (e.g., a host or contact) sponsored by a different client, while ensuring the sponsoring client retains full administrative control over the shared object.</t>
 </section>
 
 <section anchor="data-representation"><name>Data Representation</name>
@@ -129,6 +131,18 @@ RPP MUST support additional information about a successful operation (informatio
 
 <aside><t>TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/56">Issue #56</eref></t>
 </aside>
+<t><strong>R6.4</strong> RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC <xref target="RFC5730"></xref>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:</t>
+
+<ul spacing="compact">
+<li>Allowing clients to subscribe to specific types of service messages.</li>
+<li>Allowing clients to receive multiple service messages in a single request.</li>
+<li>Allowing clients to use multiple concurrent readers.</li>
+<li>Support for streaming service messages to clients.</li>
+</ul>
+<t><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
+<t><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
+<t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
+<t><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
 </section>
 
 <section anchor="discoverability"><name>Discoverability</name>
@@ -168,7 +182,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R7.8</strong> <em>Removed</em>
 </t>
 <t><strong>R7.9</strong> An RPP response that includes unique object identifiers, MAY also include URL references for these objects.</t>
-<t><strong>R7.10</strong> Versions used by the RPP protocol and used extensions MUST be discoverable by the client.</t>
+<t><strong>R7.10</strong> Versions used by the RPP and used extensions MUST be discoverable by the client.</t>
 </section>
 
 <section anchor="epp-compatibility"><name>EPP compatibility</name>
@@ -243,6 +257,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R12.2</strong> RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.</t>
 <t><strong>R12.3</strong> <em>Removed</em>
 </t>
+<t><strong>R12.4</strong> The protocol MUST be usable in both high volume and low volume operating environments.</t>
 </section>
 
 <section anchor="internationalisation"><name>Internationalisation</name>
@@ -258,6 +273,33 @@ RPP MUST support additional information about a successful operation (informatio
 </section>
 
 <section anchor="requirements-for-object-types"><name>Requirements for object types</name>
+
+<section anchor="common"><name>Common</name>
+
+<aside><t>NOTE: *O1.x Requirements are defined in PR <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/pull/100">#100</eref></t>
+</aside>
+
+<section anchor="obj_transfers"><name>Object Transfers</name>
+<t>For the purposes of requirements related to transfers, the following specific terms are used:</t>
+
+<ul spacing="compact">
+<li>Gaining Client: The client seeking to gain sponsorship of the object.</li>
+<li>Initiating Client: The client that starts the transfer request.</li>
+</ul>
+<t><strong>O2.1</strong> The RPP MUST support two types of object transfer operations:</t>
+
+<ul spacing="compact">
+<li>Pull Transfer: Initiated by the Gaining Client.</li>
+<li>Push Transfer: Initiated by the Sponsoring Client, who designates a Gaining Client.</li>
+</ul>
+<t><strong>O2.2</strong> A Gaining Client MUST provide valid authorization information to initiate a Pull Transfer request.</t>
+<t><strong>O2.3</strong> For Pull Transfers, the RPP MUST provide operations for the Sponsoring Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the Sponsoring Client.</t>
+<t><strong>O2.4</strong> For Push Transfers, the RPP MUST provide operations for the Gaining Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the designated Gaining Client.</t>
+<t><strong>O2.5</strong> The RPP MUST provide an operation for the Initiating Client to cancel its own pending transfer request. The RPP MUST reject any cancellation attempts not initiated by the Initiating Client.</t>
+<t><strong>O2.6</strong> The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client and the Gaining Client.</t>
+<t><strong>O2.7</strong> The response to a successful object transfer MUST include a representation of the transferred object and a list of any associated objects that were also transferred.</t>
+</section>
+</section>
 
 <section anchor="domain-object-type"><name>Domain Object Type</name>
 <t><strong>D1.1</strong> The RPP domain object data model MUST include, at a minimum, the attributes defined in RFC5731: the fully qualified domain name, repository object identifier, object status, the current sponsoring client identifier, creating registrar client ID, creation timestamp, last update client ID, last update timestamp, expiration timestamp, last transfer timestamp, name servers, subordinate hosts, the registrant, and other associated contacts.</t>
@@ -355,6 +397,8 @@ RPP MUST support additional information about a successful operation (informatio
 
 <ul spacing="compact">
 <li>Added requirements for Domain Object Type</li>
+<li>Added relevant and not yet covered requirements from <xref target="RFC3375"></xref> (R6.5-R6.8, R12.4, <xref target="obj_transfers"></xref>)</li>
+<li>Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.</li>
 <li>Added requirements for the contact object type</li>
 <li>The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.</li>
 <li>Added additional security requirements.</li>
@@ -399,6 +443,7 @@ RPP MUST support additional information about a successful operation (informatio
 </middle>
 
 <back>
+<references><name>References</name>
 <references><name>Normative References</name>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.BCP.56.xml"/>
 <reference anchor="RAML" target="https://raml.org/">
@@ -456,6 +501,10 @@ RPP MUST support additional information about a successful operation (informatio
   </front>
 </reference>
 </references>
+<references><name>Informative References</name>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3375.xml"/>
+</references>
+</references>
 
 <section anchor="appendix_extensions"><name>Extensions</name>
 
@@ -464,7 +513,7 @@ RPP MUST support additional information about a successful operation (informatio
 <aside><t>TODO: These lists are far from being complete -&gt; input from Tiger Team on EPP Extensibility will fill these lists</t>
 </aside>
 <t>The following list of extensions is considered essential for the completeness of RPP as provisioning protocol for domain names.
-The core RPP protocol and its extensibility framework MUST enable creation of those extensions.</t>
+The core RPP and its extensibility framework MUST enable creation of those extensions.</t>
 <t><strong>A.1</strong> <em>Moved to <xref target="appendix_extensions_optional"></xref> as A2.2</em></t>
 <t><strong>A1.1</strong> An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.</t>
 </section>
