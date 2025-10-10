@@ -34,8 +34,9 @@
 <t>RESTful Provisioning Protocol or RPP - The protocol described in this document.</t>
 <t>URL - A Uniform Resource Locator as defined in <xref target="RFC3986"></xref>.</t>
 <t>Resource - An object having a type, data, and possible relationship to other resources, identified by a URL.</t>
-<t>RPP client - An HTTP user agent performing an RPP request</t>
+<t>RPP client - An HTTP user agent performing an RPP request.</t>
 <t>RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.</t>
+<t>Sponsoring Client - The RPP client that currently has sponsorship of the object.</t>
 </section>
 
 <section anchor="conventions-used-in-this-document"><name>Conventions Used in This Document</name>
@@ -87,6 +88,8 @@ RPP MUST support additional information about a successful operation (informatio
 </aside>
 <t><strong>R4.5</strong> The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.</t>
 <t><strong>R4.6</strong> A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”</t>
+<t><strong>R4.7</strong> RPP MUST support linking of objects of the same or different types, with flexible cardinality (one-to-one, one-to-many, many-to-many). The links MUST also support to have attributes of their own (e.g., a link between a domain and a contact object with a different contact role).</t>
+<t><strong>R4.8</strong> RPP MUST allow a client to reference a shared object (e.g., a host or contact) sponsored by a different client, while ensuring the sponsoring client retains full administrative control over the shared object.</t>
 </section>
 
 <section anchor="data-representation"><name>Data Representation</name>
@@ -103,7 +106,9 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R5.7</strong> RPP SHOULD consider mechanisms for supporting data formats outside of core RPP domain. Especially formats, which lose their properties if transformed, like Verifiable Credentials for contacts which are digitally signed.</t>
 <t><strong>R5.8</strong> RPP MUST support partial update of data objects.</t>
 <t><strong>R5.9</strong> RPP MUST support full update of data objects.</t>
-<t><strong>R.5.10</strong> A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.</t>
+<t><strong>R5.10</strong> A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.</t>
+<t><strong>R5.11</strong> RPP MUST support representation of a collections of resources.</t>
+<t><strong>R5.12</strong> The representation of the links (see R4.7) MUST be expressed using the RPP server's internal identifiers. The RPP SHOULD also consider using URIs and/or <xref target="RFC6570"></xref> URI templates for uniform addressing of link targets, both internal and external to the RPP server.</t>
 </section>
 
 <section anchor="operations-and-responses"><name>Operations and responses</name>
@@ -122,9 +127,22 @@ RPP MUST support additional information about a successful operation (informatio
 <li>Responses to PUT/POST/PATCH requests</li>
 </ul>
 <t><strong>R6.3</strong> The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.</t>
+<t><strong>R6.4</strong> RPP MUST support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination.</t>
 
 <aside><t>TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/56">Issue #56</eref></t>
 </aside>
+<t><strong>R6.4</strong> RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC <xref target="RFC5730"></xref>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:</t>
+
+<ul spacing="compact">
+<li>Allowing clients to subscribe to specific types of service messages.</li>
+<li>Allowing clients to receive multiple service messages in a single request.</li>
+<li>Allowing clients to use multiple concurrent readers.</li>
+<li>Support for streaming service messages to clients.</li>
+</ul>
+<t><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
+<t><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
+<t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
+<t><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
 </section>
 
 <section anchor="discoverability"><name>Discoverability</name>
@@ -164,7 +182,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R7.8</strong> <em>Removed</em>
 </t>
 <t><strong>R7.9</strong> An RPP response that includes unique object identifiers, MAY also include URL references for these objects.</t>
-<t><strong>R7.10</strong> Versions used by the RPP protocol and used extensions MUST be discoverable by the client.</t>
+<t><strong>R7.10</strong> Versions used by the RPP and used extensions MUST be discoverable by the client.</t>
 </section>
 
 <section anchor="epp-compatibility"><name>EPP compatibility</name>
@@ -240,6 +258,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R12.2</strong> RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.</t>
 <t><strong>R12.3</strong> <em>Removed</em>
 </t>
+<t><strong>R12.4</strong> The protocol MUST be usable in both high volume and low volume operating environments.</t>
 </section>
 
 <section anchor="internationalisation"><name>Internationalisation</name>
@@ -258,35 +277,78 @@ RPP MUST support additional information about a successful operation (informatio
 
 <section anchor="common"><name>Common</name>
 <t><strong>O1.1</strong> RPP MUST define a single, structured data model for representing DNS resource records. This model MUST be used consistently for all object types that require DNS representation (e.g., Host, Domain). The model MUST support common DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, like TTL. The model SHOULD be designed to be extensible for future, experimental or less common record types.</t>
+
+<section anchor="obj_transfers"><name>Object Transfers</name>
+<t>For the purposes of requirements related to transfers, the following specific terms are used:</t>
+
+<ul spacing="compact">
+<li>Gaining Client: The client seeking to gain sponsorship of the object.</li>
+<li>Initiating Client: The client that starts the transfer request.</li>
+</ul>
+<t><strong>O2.1</strong> The RPP MUST support two types of object transfer operations:</t>
+
+<ul spacing="compact">
+<li>Pull Transfer: Initiated by the Gaining Client.</li>
+<li>Push Transfer: Initiated by the Sponsoring Client, who designates a Gaining Client.</li>
+</ul>
+<t><strong>O2.2</strong> A Gaining Client MUST provide valid authorization information to initiate a Pull Transfer request.</t>
+<t><strong>O2.3</strong> For Pull Transfers, the RPP MUST provide operations for the Sponsoring Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the Sponsoring Client.</t>
+<t><strong>O2.4</strong> For Push Transfers, the RPP MUST provide operations for the Gaining Client to explicitly approve or reject a pending transfer request. The RPP MUST reject any approval or rejection attempts not initiated by the designated Gaining Client.</t>
+<t><strong>O2.5</strong> The RPP MUST provide an operation for the Initiating Client to cancel its own pending transfer request. The RPP MUST reject any cancellation attempts not initiated by the Initiating Client.</t>
+<t><strong>O2.6</strong> The RPP MUST provide an operation to query the status of a pending or recently completed transfer request. This operation MUST be accessible to the Sponsoring Client and the Gaining Client.</t>
+<t><strong>O2.7</strong> The response to a successful object transfer MUST include a representation of the transferred object and a list of any associated objects that were also transferred.</t>
+</section>
 </section>
 
 <section anchor="domain-object-type"><name>Domain Object Type</name>
+<t><strong>D1.1</strong> The RPP domain object data model MUST include, at a minimum, the attributes defined in RFC5731: the fully qualified domain name, repository object identifier, object status, the current sponsoring client identifier, creating registrar client ID, creation timestamp, last update client ID, last update timestamp, expiration timestamp, last transfer timestamp, name servers, subordinate hosts, the registrant, and other associated contacts.</t>
+<t><strong>D1.2</strong> RPP MUST only accept valid domain names, which MUST be valid FQDNs.</t>
+<t><strong>D1.3</strong> RPP MUST support internationalized domain names (IDN) and accept A-labels and U-labels, also know as IDNA2008 and defined in <xref target="RFC5890"></xref>.</t>
+<t><strong>D1.4</strong> RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of <xref target="RFC5890"></xref> when processing domain names in requests and responses by both clients and servers.</t>
+<t><strong>D1.5</strong> The RPP domain object data model MUST allow for the association of zero, one or more objects representing the DNS configuration of the domain including name servers. These may be defined by a reference to separate repository objects (equivalent of EPP host objects) or aggregate object (equivalent of EPP host attribute).</t>
+<t><strong>D1.6</strong> RPP MUST support domains that have linkage to at minimum registrant, administrative, technical, and billing contacts. In thin registries, only identifiers MAY be stored; in thick registries, contact data MAY be included per (privacy) policy. The list of contact link types MUST be extensible.</t>
+<t><strong>D1.7</strong> RPP domain objects MUST support EPP password-based Authorisation Information (authInfo) for transfer operations (see R8.5).</t>
+<t><strong>D1.8</strong> RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes. The protocol MUST define which statuses can be set by the server and which can be set by the sponsoring client.</t>
+<t><strong>D1.9</strong> RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include an attribute with information about linked objects.</t>
 
-<section anchor="internationalisation-1"><name>Internationalisation</name>
-<t><strong>D13.1</strong> RPP MUST support Internationalised Domain Names (IDNs) - both UTF-8 as well as Punycode representation of a domain name MUST be supported, however one of them MAY be chosen as primary for object URL</t>
+<section anchor="operations"><name>Operations</name>
+<t><strong>D2.1</strong> RPP MUST provide operations to check, create, read, update, transfer, renew and delete domain name objects as defined in <xref target="RFC5731"></xref>.</t>
+<t><strong>D2.2</strong> When creating or renewing a domain object, RPP MUST allow a client to specify a registration period. The protocol MUST provide a mechanism for the server to confirm the resulting registration expiration date in the response.</t>
+<t><strong>D2.3</strong> RPP MUST support the Domain Registry Grace Period Mapping as defined by <xref target="RFC3915"></xref>, the restore report MAY be ignored or included in the initial restore request, making this a 1-step process vs the 2-step process in EPP.</t>
+<t><strong>D2.4</strong> RPP MAY support searching and listing domains filtered by name (exact/prefix), and sponsoring client.</t>
+<t><strong>D2.5</strong> Only the sponsoring client (or an authorised server administrator) MAY modify or delete a domain object; servers MUST enforce authorisation.</t>
+<t><strong>D2.6</strong> RPP MUST prevent creation of duplicate domain objects within a registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.</t>
+<t><strong>D2.7</strong> The transfer of a domain object MUST also result in the transfer of any subordinate host objects (ns.foo.example when foo.example is transferred).</t>
+<t><strong>D2.8</strong> The RPP domain transfer operation MUST allow for an implicit renewal. If a transfer results in an extension of the registration period, the response to the successful transfer MUST include the new expiration date of the domain object.</t>
+</section>
+
+<section anchor="data-representation-1"><name>Data Representation</name>
+<t><strong>D3.1</strong> The JSON representation MUST include the canonical domain name and any U‑label/A‑label when IDN is used by the server.</t>
+<t><strong>D3.2</strong> The RPP domain object representation MUST include link relations to related objects, for example: self, hosts and contacts.</t>
+<t><strong>D3.3</strong> The representation MUST adapt to the registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.</t>
 </section>
 </section>
 
 <section anchor="host-object-type"><name>Host Object Type</name>
-<t><strong>H1.1</strong> The RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses, repository object identifier, object status, current sponsoring client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.</t>
-<t><strong>H1.2</strong> RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (R4.7).</t>
+<t><strong>H1.1</strong> The RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), repository object identifier, object status, current sponsoring client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.</t>
+<t><strong>H1.2</strong> RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (O1.1).</t>
 <t><strong>H1.3</strong> Host names MUST be valid FQDNs.</t>
 <t><strong>H1.4</strong> RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in <xref target="RFC5890"></xref>.</t>
 <t><strong>H1.5</strong> RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of <xref target="RFC5890"></xref> when processing host names in requests and responses by both clients and servers.</t>
-<t><strong>H1.6</strong> RPP MUST support both in-bailiwick and out-of-bailiwick hosts. For in-bailiwick hosts, glue IP addresses MAY be required by server policy.</t>
-<t><strong>H1.7</strong> RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., <xref target="RFC1918"></xref>) are server policy.</t>
+<t><strong>H1.6</strong> When used for linking a name server to a domain name, RPP MUST support both in-bailiwick and out-of-bailiwick host objects. For in-bailiwick host objects, glue IP addresses MAY be required by server policy.</t>
+<t><strong>H1.7</strong> RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a name server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., <xref target="RFC1918"></xref>) are server policy.</t>
 <t><strong>H1.9</strong> RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes.</t>
 
-<section anchor="operations"><name>Operations</name>
+<section anchor="operations-1"><name>Operations</name>
 <t><strong>H2.1</strong> RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in <xref target="RFC5732"></xref>, with partial update semantics available to allow for efficient updates. Transfer operation of subordinate host object MUST be implicit with the transfer operation of parent domain name.</t>
 <t><strong>H2.2</strong> RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results.</t>
 <t><strong>H2.3</strong> Only the sponsoring client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.</t>
-<t><strong>H2.4</strong> RPP MUST assure that in-bailiwick host objects are created and managed by the same sponsoting client as the parent domain name.</t>
+<t><strong>H2.4</strong> RPP MUST assure that in-bailiwick host objects are created and managed by the same sponsoring client as the parent domain name.</t>
 <t><strong>H2.5</strong> RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in <xref target="I-D.ietf-regext-epp-delete-bcp"></xref>.</t>
 <t><strong>H2.6</strong> RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.</t>
 </section>
 
-<section anchor="data-representation-1"><name>Data Representation</name>
+<section anchor="data-representation-2"><name>Data Representation</name>
 <t><strong>H3.1</strong> RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.</t>
 <t><strong>H3.2</strong> The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.</t>
 <t><strong>H3.3</strong> The representation SHOULD include link relations to related objects, for example: self, and parent domain for in-bailiwick hosts.</t>
@@ -303,7 +365,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>C1.7</strong> RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.</t>
 <t><strong>C1.8</strong> RPP SHOULD consider renaming the EPP contact object type to &quot;entity&quot; to better align with the RDAP data model, defined in <xref target="RFC9083"></xref>.</t>
 
-<section anchor="operations-1"><name>Operations</name>
+<section anchor="operations-2"><name>Operations</name>
 <t><strong>C2.1</strong> The RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in <xref target="RFC5733"></xref>, such as check, create, read, update, and delete with the possible exception of transfer command, and include support for partial update semantics available to allow for efficient updates.</t>
 <t><strong>C2.2</strong> RPP MAY support the contact transfer command from EPP.</t>
 <t><strong>C2.3</strong> RPP MAY support searching and listing contacts filtered by name (exact/prefix), and sponsoring client, with pagination, the server MAY use a maximum limit on results.</t>
@@ -313,12 +375,12 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>C2.7</strong> The protocol MUST provide an operation to retrieve an appropriate contact representation to non-sponsoring clients. The representation MAY vary depending if the authorisation information is provided - depending on server policy.</t>
 </section>
 
-<section anchor="data-representation-2"><name>Data Representation</name>
+<section anchor="data-representation-3"><name>Data Representation</name>
 <t><strong>C3.1</strong> RPP SHOULD consider using JSContact <xref target="RFC9553"></xref> format for contact representation.</t>
 <t><strong>C3.2</strong> RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in <xref target="RFC5733"></xref>.</t>
 </section>
 
-<section anchor="internationalisation-2"><name>Internationalisation</name>
+<section anchor="internationalisation-1"><name>Internationalisation</name>
 <t><strong>C4.1</strong> RPP MUST support internationalisation (character encoding) for contact objects in the following areas:</t>
 
 <ul spacing="compact">
@@ -358,6 +420,9 @@ RPP MUST support additional information about a successful operation (informatio
 <ul spacing="compact">
 <li>Added requirements for Host Object Type</li>
 <li>Added R10.12 on future ways of delegation</li>
+<li>Added requirements for Domain Object Type</li>
+<li>Added relevant and not yet covered requirements from <xref target="RFC3375"></xref> (R6.5-R6.8, R12.4, <xref target="obj_transfers"></xref>)</li>
+<li>Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.</li>
 <li>Added requirements for the contact object type</li>
 <li>The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.</li>
 <li>Added additional security requirements.</li>
@@ -402,6 +467,7 @@ RPP MUST support additional information about a successful operation (informatio
 </middle>
 
 <back>
+<references><name>References</name>
 <references><name>Normative References</name>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.BCP.56.xml"/>
 <reference anchor="I-D.ietf-regext-epp-delete-bcp" target="https://datatracker.ietf.org/doc/html/draft-ietf-regext-epp-delete-bcp-10">
@@ -440,6 +506,7 @@ RPP MUST support additional information about a successful operation (informatio
 </reference>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.1918.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3915.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5730.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5731.xml"/>
@@ -448,6 +515,7 @@ RPP MUST support additional information about a successful operation (informatio
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5890.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6530.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6570.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7807.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9083.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
@@ -474,6 +542,10 @@ RPP MUST support additional information about a successful operation (informatio
   </front>
 </reference>
 </references>
+<references><name>Informative References</name>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3375.xml"/>
+</references>
+</references>
 
 <section anchor="appendix_extensions"><name>Extensions</name>
 
@@ -482,7 +554,7 @@ RPP MUST support additional information about a successful operation (informatio
 <aside><t>TODO: These lists are far from being complete -&gt; input from Tiger Team on EPP Extensibility will fill these lists</t>
 </aside>
 <t>The following list of extensions is considered essential for the completeness of RPP as provisioning protocol for domain names.
-The core RPP protocol and its extensibility framework MUST enable creation of those extensions.</t>
+The core RPP and its extensibility framework MUST enable creation of those extensions.</t>
 <t><strong>A.1</strong> <em>Moved to <xref target="appendix_extensions_optional"></xref> as A2.2</em></t>
 <t><strong>A1.1</strong> An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.</t>
 </section>
