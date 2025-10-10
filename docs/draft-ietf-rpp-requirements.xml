@@ -131,19 +131,27 @@ RPP MUST support additional information about a successful operation (informatio
 
 <aside><t>TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/56">Issue #56</eref></t>
 </aside>
-<t><strong>R6.4</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
+<t><strong>R6.4</strong> RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC <xref target="RFC5730"></xref>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:</t>
+
+<ul spacing="compact">
+<li>Allowing clients to subscribe to specific types of service messages.</li>
+<li>Allowing clients to receive multiple service messages in a single request.</li>
+<li>Allowing clients to use multiple concurrent readers.</li>
+<li>Support for streaming service messages to clients.</li>
+</ul>
+<t><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
 
 <aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.1 [7]</t>
 </aside>
-<t><strong>R6.5</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
+<t><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
 
 <aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.1 [8]</t>
 </aside>
-<t><strong>R6.6</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
+<t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
 
 <aside><t>NOTE: derived from <xref target="RFC3375"></xref> 7.1 [3]</t>
 </aside>
-<t><strong>R6.7</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
+<t><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
 
 <aside><t>NOTE: derived from <xref target="RFC3375"></xref> 3.3 [1]</t>
 </aside>
@@ -403,6 +411,7 @@ RPP MUST support additional information about a successful operation (informatio
 
 <ul spacing="compact">
 <li>Added relevant and not yet covered requirements from RFC3375 (R6.4-R6.7, R12.4, <xref target="obj_transfers"></xref>)</li>
+<li>Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.</li>
 <li>Added requirements for the contact object type</li>
 <li>The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.</li>
 <li>Added additional security requirements.</li>

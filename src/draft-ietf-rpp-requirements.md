@@ -187,19 +187,26 @@ RPP MUST support the use of server profiles to define required components of the
 
 A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
-**R6.4** RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.
+**R6.4** RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC [@!RFC5730], allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:
+
+- Allowing clients to subscribe to specific types of service messages.
+- Allowing clients to receive multiple service messages in a single request.
+- Allowing clients to use multiple concurrent readers.
+- Support for streaming service messages to clients.
+
+**R6.5** RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.
 
 A> NOTE: derived from [@?RFC3375] 3.1 [7]
 
-**R6.5** RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
+**R6.6** RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
 
 A> NOTE: derived from [@?RFC3375] 3.1 [8]
 
-**R6.6** The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.
+**R6.7** The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.
 
 A> NOTE: derived from [@?RFC3375] 7.1 [3]
 
-**R6.7** For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
+**R6.8** For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
 
 A> NOTE: derived from [@?RFC3375] 3.3 [1]
 
@@ -519,6 +526,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 ## Version -01 to -02
 
 * Added relevant and not yet covered requirements from RFC3375 (R6.4-R6.7, R12.4, (#obj_transfers))
+* Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.
 * Added requirements for the contact object type
 * The security considerations section has been restructured and expanded to provide more detailed guidance on security best practices for RPP implementations.
 * Added additional security requirements.
