@@ -906,7 +906,7 @@ Table of Contents
    on whether host is in-bailiwick or out-of-bailiwick.  This is also
    server policy.
 
-   *H1.9* RPP MUST provide functional equivalents for EPP host status
+   *H1.8* RPP MUST provide functional equivalents for EPP host status
    values (e.g., ok, linked, client/server<command>Prohibited,
    pending<command>) and define their mapping to RPP responses and HTTP
    status codes.
