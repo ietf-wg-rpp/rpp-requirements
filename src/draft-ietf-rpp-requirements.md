@@ -139,7 +139,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.5** The RPP architecture MUST include loose coupling between the server and the client, allowing for non-coordinated introduction of non-breaking version changes on both sides.
 
-**R4.6** A RPP MUST have either a lenient validation mode, where unknown properties are ignored, or a strict validation mode, where unknown properties are treated as an error. The mode is up to client and server policy with mode signalling.”
+**R4.6** RPP MUST enforce the use of strict validation, where unknown properties are treated as an error.
 
 **R4.7** RPP MUST support linking of objects of the same or different types, with flexible cardinality (one-to-one, one-to-many, many-to-many). The links MUST also support to have attributes of their own (e.g., a link between a domain and a contact object with a different contact role).
 
