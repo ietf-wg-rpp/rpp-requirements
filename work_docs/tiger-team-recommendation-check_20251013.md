@@ -1,4 +1,5 @@
 Source: https://docs.google.com/document/d/1WR00oB43XZCDqD0zvRvRajuWAq_9wQ3c0RrFKlGC3So/edit?usp=sharing
+Recommendation state: 20251013
 
 # 4.1.2.2. RPP Extensibility Recommendations
 
