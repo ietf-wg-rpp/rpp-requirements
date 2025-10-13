@@ -36,6 +36,8 @@
 <t>Resource - An object having a type, data, and possible relationship to other resources, identified by a URL.</t>
 <t>RPP client - An HTTP user agent performing an RPP request.</t>
 <t>RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.</t>
+<t>Thin registry - A registry model in which the registry stores and serves only the minimal data necessary for delegation and identification of an object (for example, domain name, registrar identifier, status, and nameserver delegation). Registrant and contact data are maintained by the registrar and are not held by the registry.</t>
+<t>Thick registry - A registry model in which the registry stores and serves the complete data set for an object, including registrant, administrative, and technical contact information, and other relevant attributes required for provisioning.</t>
 <t>Sponsoring Client - The RPP client that currently has sponsorship of the object.</t>
 </section>
 
@@ -48,10 +50,9 @@
 <t><strong>R1.2.</strong> <em>Removed</em></t>
 <t><strong>R1.3.</strong> Wherever applicable RPP SHOULD leverage existing best practices and well adopted standards for building and documenting RESTful APIs. There MUST be a clear justification when deviating from this.</t>
 <t><strong>R1.4.</strong> RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in <xref target="RFC5730"></xref>.</t>
-<t><strong>R1.5.</strong>
-RPP MUST include support for providing detailed information about application status codes, for example as described in <xref target="RFC7807"></xref></t>
-<t><strong>R1.6</strong>
-RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.</t>
+<t><strong>R1.5.</strong> RPP MUST include support for providing detailed information about application status codes, for example as described in <xref target="RFC7807"></xref></t>
+<t><strong>R1.6</strong> RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.</t>
+<t><strong>R1.7</strong> RPP MUST support both Thin and Thick registry models, and MUST allow for flexibility in how much data and what type of data is stored and returned by the server, according to the chosen registry model. The data elements returned is based on what the client is authorized to receive.</t>
 </section>
 
 <section anchor="http"><name>HTTP</name>
@@ -335,8 +336,8 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>H1.3</strong> Host names MUST be valid FQDNs.</t>
 <t><strong>H1.4</strong> RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in <xref target="RFC5890"></xref>.</t>
 <t><strong>H1.5</strong> RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of <xref target="RFC5890"></xref> when processing host names in requests and responses by both clients and servers.</t>
-<t><strong>H1.6</strong> When used for linking a name server to a domain name, RPP MUST support both in-bailiwick and out-of-bailiwick host objects. For in-bailiwick host objects, glue IP addresses MAY be required by server policy.</t>
-<t><strong>H1.7</strong> RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a name server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., <xref target="RFC1918"></xref>) are server policy.</t>
+<t><strong>H1.6</strong> When used for linking a name server to a domain name, RPP MUST support both in-bailiwick and out-of-bailiwick host objects.</t>
+<t><strong>H1.7</strong> RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a name server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. The maximum number of allowed addressess and any disallowed ranges (e.g., <xref target="RFC1918"></xref>) are server policy. The server MAY require, make optional or disallow IP addresses depending on whether host is in-bailiwick or out-of-bailiwick. This is also server policy.</t>
 <t><strong>H1.9</strong> RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes.</t>
 
 <section anchor="operations-1"><name>Operations</name>
@@ -363,6 +364,16 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>C1.5</strong> RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.</t>
 <t><strong>C1.6</strong> RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).</t>
 <t><strong>C1.7</strong> RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.</t>
+</section>
+
+<section anchor="version-01-to-02"><name>Version -01 to -02</name>
+
+<ul spacing="compact">
+<li>Added requirement for support of both thick and thin registry models (R1.7)</li>
+</ul>
+</section>
+
+<section anchor="version-00-to-01"><name>Version -00 to -01</name>
 <t><strong>C1.8</strong> RPP SHOULD consider renaming the EPP contact object type to &quot;entity&quot; to better align with the RDAP data model, defined in <xref target="RFC9083"></xref>.</t>
 
 <section anchor="operations-2"><name>Operations</name>
@@ -415,7 +426,7 @@ RPP MUST support additional information about a successful operation (informatio
 
 <section anchor="changes-history" removeInRFC="true"><name>Changes History</name>
 
-<section anchor="version-01-to-02"><name>Version -01 to -02</name>
+<section anchor="version-01-to-02-1"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
 <li>Added requirements for Host Object Type</li>
@@ -429,10 +440,11 @@ RPP MUST support additional information about a successful operation (informatio
 <li>R1.2 removed</li>
 <li>added essential and optional extensions sections in <xref target="appendix_extensions"></xref></li>
 <li>Added generic IANA considerations</li>
+<li>Added requirement for support of both thick and thin registry models (R1.7)</li>
 </ul>
 </section>
 
-<section anchor="version-00-to-01"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01-1"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Added Privacy Considerations section</li>
@@ -450,7 +462,7 @@ RPP MUST support additional information about a successful operation (informatio
 </ul>
 </section>
 
-<section anchor="version-00-to-01-1"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01-2"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Structurally reorganised the document, renumbering all requirements and adding new sections for Operations, Clients, and Internationalisation.</li>

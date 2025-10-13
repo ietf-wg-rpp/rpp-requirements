@@ -77,9 +77,11 @@ Table of Contents
        18.3.1.  Operations
        18.3.2.  Data Representation
      18.4.  Contact Object Type
-       18.4.1.  Operations
-       18.4.2.  Data Representation
-       18.4.3.  Internationalisation
+     18.5.  Version -01 to -02
+     18.6.  Version -00 to -01
+       18.6.1.  Operations
+       18.6.2.  Data Representation
+       18.6.3.  Internationalisation
    19. IANA Considerations
    20. Security Considerations
    21. Privacy Considerations
@@ -130,6 +132,18 @@ Table of Contents
    RPP server - An HTTP server responsible for processing requests and
    returning results in any supported media type.
 
+   Thin registry - A registry model in which the registry stores and
+   serves only the minimal data necessary for delegation and
+   identification of an object (for example, domain name, registrar
+   identifier, status, and nameserver delegation).  Registrant and
+   contact data are maintained by the registrar and are not held by the
+   registry.
+
+   Thick registry - A registry model in which the registry stores and
+   serves the complete data set for an object, including registrant,
+   administrative, and technical contact information, and other relevant
+   attributes required for provisioning.
+
    Sponsoring Client - The RPP client that currently has sponsorship of
    the object.
 
@@ -161,6 +175,12 @@ Table of Contents
    *R1.6* RPP MUST support additional information about a successful
    operation (information or warning) to convey additional information
    to the client for example about deprecation or partial success.
+
+   *R1.7* RPP MUST support both Thin and Thick registry models, and MUST
+   allow for flexibility in how much data and what type of data is
+   stored and returned by the server, according to the chosen registry
+   model.  The data elements returned is based on what the client is
+   authorized to receive.
 
 5.  HTTP
 
@@ -801,15 +821,16 @@ Table of Contents
    and responses by both clients and servers.
 
    *H1.6* When used for linking a name server to a domain name, RPP MUST
-   support both in-bailiwick and out-of-bailiwick host objects.  For in-
-   bailiwick host objects, glue IP addresses MAY be required by server
-   policy.
+   support both in-bailiwick and out-of-bailiwick host objects.
 
    *H1.7* RPP MUST support zero or more IP addresses (IPv4 or IPv6) for
    host objects, when the host object is used for linking a name server
    to a domain name.  Addresses MUST be syntactically valid, normalised,
-   and unique within the host.  Maximum counts and any disallowed ranges
-   (e.g., [RFC1918]) are server policy.
+   and unique within the host.  The maximum number of allowed addressess
+   and any disallowed ranges (e.g., [RFC1918]) are server policy.  The
+   server MAY require, make optional or disallow IP addresses depending
+   on whether host is in-bailiwick or out-of-bailiwick.  This is also
+   server policy.
 
    *H1.9* RPP MUST provide functional equivalents for EPP host status
    values (e.g., ok, linked, client/server<command>Prohibited,
@@ -892,11 +913,18 @@ Table of Contents
    representation MAY include an attribute with information about linked
    objects.
 
+18.5.  Version -01 to -02
+
+   -  Added requirement for support of both thick and thin registry
+      models (R1.7)
+
+18.6.  Version -00 to -01
+
    *C1.8* RPP SHOULD consider renaming the EPP contact object type to
    "entity" to better align with the RDAP data model, defined in
    [RFC9083].
 
-18.4.1.  Operations
+18.6.1.  Operations
 
    *C2.1* The RPP contact object type is mapped to the EPP equivalent
    and MUST support all operations (commands) defined for the contact
@@ -931,7 +959,7 @@ Table of Contents
    representation MAY vary depending if the authorisation information is
    provided - depending on server policy.
 
-18.4.2.  Data Representation
+18.6.2.  Data Representation
 
    *C3.1* RPP SHOULD consider using JSContact [RFC9553] format for
    contact representation.
@@ -940,7 +968,7 @@ Table of Contents
    field (or field group) and this MUST be mapped to the EPP disclosure
    preferences described in [RFC5733].
 
-18.4.3.  Internationalisation
+18.6.3.  Internationalisation
 
    *C4.1* RPP MUST support internationalisation (character encoding) for
    contact objects in the following areas:
@@ -1035,6 +1063,8 @@ Table of Contents
    -  R1.2 removed
    -  added essential and optional extensions sections in Appendix A
    -  Added generic IANA considerations
+   -  Added requirement for support of both thick and thin registry
+      models (R1.7)
 
 22.2.  Version -00 to -01
 
