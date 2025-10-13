@@ -58,17 +58,37 @@ A> covered in new **R4.10** and adjusted **R10.1**
 ## 4.1.2.3.1 Domain Names
 
 - Lifecycle Management: Allow extensions to define new object statuses and alter lifecycle behavior, such as implementing a scheduled deactivation or custom deletion processes (3.1 RGP, 3.22 .SE EPP Extensions, 3.55 LvDomain extension).
+
+A> sufficiently covered in R10.5, R10.11, R10.13
+
 - Transfer Authorization: Foresee extensions that can define alternative transfer authorization methods beyond a simple password, such as using one-time tokens (3.52 .NO EPP Extensions, 3.22 .SE EPP Extensions).
+
+A> covered in **R9.4**
+
 - Transfer Data: Allow for DNS data (e.g., nameservers, DNSSEC) to be updated as part of a transfer operation - either as extensibility point (Process Parameters) or directly embedded in the protocol core for domains (3.22 .SE EPP Extensions).
+
+A> added explicit in **D2.9** for inclusion in core. Option as extention covered in **R10.11**
+
 - IDN Management: For Internationalized Domain Names (IDNs), the protocol should consider how different language variants are addressed and represented, and provide a means to discover server-side IDN policies and tables (3.8 IDN Language Tag, 3.46 IDN Table Name).
+
+A> added **D1.10**
+
 - Resource Record Provisioning: Provide a generic and extensible interface for provisioning zone resource records (RRs) (3.2 E.164 Number Mapping).
+
+A> Generally covered in **R10.2**, **R10.12**, and **O1.1** 
+
 - Nameserver Representation: Allow extensions to define alternative ways of expressing nameserver information, such as using managed nameserver sets (NSsets) instead of individual host objects (3.57 FRED object extension).
+
+A> covered in **D1.5** and **R10.2** 
+
 Contact types: Allow extensions to define new custom contact types in a fashion reducing duplicate entries (3.50 .BR extension)
 
+A> covered in **D1.6**
 
 ## 4.1.2.3.2 Contacts
 - Custom Properties: The protocol must allow extensions to add new properties and define new types or roles for contact objects (generalized as Adding Properties above).
 
+A> Covered in **R10.2**
 
 ## 4.1.2.3.3 Host Objects
 - None, but see related extensibility with Domain Names

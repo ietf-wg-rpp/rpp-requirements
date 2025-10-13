@@ -450,6 +450,8 @@ For the purposes of requirements related to transfers, the following specific te
 
 **D1.9** RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include an attribute with information about linked objects.
 
+**D1.10** RPP MUST provide a mechanism for clients to discover the server's supported Internationalized Domain Name (IDN) policies. Information such as the identifiers for supported IDN tables, applicable language tags, and variant disposition policies MUST be discoverable via the service discovery document (see R7.2).
+
 ### Operations
 
 **D2.1** RPP MUST provide operations to check, create, read, update, transfer, renew and delete domain name objects as defined in [@!RFC5731].
@@ -468,6 +470,8 @@ For the purposes of requirements related to transfers, the following specific te
 **D2.7** The transfer of a domain object MUST also result in the transfer of any subordinate host objects (ns.foo.example when foo.example is transferred).
 
 **D2.8** The RPP domain transfer operation MUST allow for an implicit renewal. If a transfer results in an extension of the registration period, the response to the successful transfer MUST include the new expiration date of the domain object.
+
+**D2.9** The RPP domain transfer operation SHOULD support optional update of DNSSEC and delegation information directly with the transfer request. This feature, as not standard EPP feature, SHALL be optional to be supported by server policy.
 
 ### Data Representation
 
@@ -505,7 +509,7 @@ For the purposes of requirements related to transfers, the following specific te
 
 **H2.4** RPP MUST assure that in-bailiwick host objects are created and managed by the same sponsoring client as the parent domain name.
 
-**H2.5** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in [@!I-D.ietf-regext-epp-delete-bcp].
+**H2.5** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in [@!RFC9874].
 
 **H2.6** RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.
 
@@ -614,6 +618,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 * added essential and optional extensions sections in (#appendix_extensions)
 * Added generic IANA considerations
 * Added requirement for support of both thick and thin registry models (R1.7)
+* Added requirements relared to extensibility following the recommendation from the Tiger Team [@?TigerTeamRecc]
 
 ## Version -00 to -01
 
@@ -740,22 +745,27 @@ A> TODO: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57)
   </front>
 </reference>
 
-<reference anchor="I-D.ietf-regext-epp-delete-bcp" target="https://datatracker.ietf.org/doc/html/draft-ietf-regext-epp-delete-bcp-10">
+<reference anchor="TigerTeamRecc" target="https://docs.google.com/document/d/1WR00oB43XZCDqD0zvRvRajuWAq_9wQ3c0RrFKlGC3So">
   <front>
-  <title>Best Practices for Deletion of Domain and Host Objects in the Extensible Provisioning Protocol (EPP)</title>
-  <author initials="S." surname="Hollenbeck" fullname="Scott Hollenbeck">
-  <organization>Verisign Labs</organization>
-  </author>
-  <author initials="W." surname="Carroll" fullname="William Carroll">
-  <organization>Verisign</organization>
-  </author>
-  <author initials="G." surname="Akiwate" fullname="Gautam Akiwate">
-  <organization>Stanford University</organization>
-  </author>
-  <date month="March" day="13" year="2025"/>
-  <abstract>
-  <t> The Extensible Provisioning Protocol (EPP) includes commands for clients to delete domain and host objects, both of which are used to publish information in the Domain Name System (DNS). EPP also includes guidance for deletions that is intended to avoid DNS resolution disruptions and maintain data consistency. However, operational relationships between objects can make that guidance difficult to implement. Some EPP clients have developed operational practices to delete those objects that have unintended impacts on DNS resolution and security. This document describes best current practices and proposes new potential practices to delete domain and host objects that reduce the risk of DNS resolution failure and maintain client-server data consistency. </t>
-  </abstract>
+    <title>EPP Extensibility and Extension Analysis</title>
+    <author>
+      <organization>RPP WG</organization>
+    </author>
+    <author initials="J." surname="Gould" fullname="Jim Gould">
+      <organization>Verisign Labs</organization>
+    </author>
+    <author initials="J." surname="Kolker" fullname="Jody Kolker">
+      <organization>GoDaddy</organization>
+    </author>
+    <author initials="P." surname="Kowalik" fullname="Pawel Kowalik">
+      <organization>DENIC</organization>
+    </author>
+    <author initials="E." surname="Skoglund" fullname="Eric Skoglund">
+      <organization>Internet Stiftelsen</organization>
+    </author>
+    <author initials="M." surname="Wullink" fullname="Maarten Wullink">
+      <organization>SIDN Labs</organization>
+    </author>
+    <date year="2025"/>
   </front>
-  <seriesInfo name="Internet-Draft" value="draft-ietf-regext-epp-delete-bcp-10"/>
 </reference>

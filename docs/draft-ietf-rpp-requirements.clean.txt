@@ -784,6 +784,12 @@ Table of Contents
    representation MAY include an attribute with information about linked
    objects.
 
+   *D1.10* RPP MUST provide a mechanism for clients to discover the
+   server's supported Internationalized Domain Name (IDN) policies.
+   Information such as the identifiers for supported IDN tables,
+   applicable language tags, and variant disposition policies MUST be
+   discoverable via the service discovery document (see R7.2).
+
 18.2.1.  Operations
 
    *D2.1* RPP MUST provide operations to check, create, read, update,
@@ -819,6 +825,11 @@ Table of Contents
    renewal.  If a transfer results in an extension of the registration
    period, the response to the successful transfer MUST include the new
    expiration date of the domain object.
+
+   *D2.9* The RPP domain transfer operation SHOULD support optional
+   update of DNSSEC and delegation information directly with the
+   transfer request.  This feature, as not standard EPP feature, SHALL
+   be optional to be supported by server policy.
 
 18.2.2.  Data Representation
 
@@ -896,7 +907,7 @@ Table of Contents
    representation MAY include an attribute with information about linked
    objects.  RPP MUST allow for safe deletion of referenced hosts - with
    grace period, restore and prior removal of references as recommended
-   in [I-D.ietf-regext-epp-delete-bcp].
+   in [RFC9874].
 
    *H2.6* RPP MUST prevent creation of duplicate hosts within a registry
    namespace (TLD) and return a conflict on collision.
@@ -1094,6 +1105,8 @@ Table of Contents
    -  Added generic IANA considerations
    -  Added requirement for support of both thick and thin registry
       models (R1.7)
+   -  Added requirements relared to extensibility following the
+      recommendation from the Tiger Team [TigerTeamRecc]
 
 22.2.  Version -00 to -01
 
@@ -1138,14 +1151,6 @@ Table of Contents
               Nottingham, M., "Building Protocols with HTTP", BCP 56,
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
               <https://www.rfc-editor.org/info/rfc9205>.
-
-   [I-D.ietf-regext-epp-delete-bcp]
-              Hollenbeck, S., Carroll, W., and G. Akiwate, "Best
-              Practices for Deletion of Domain and Host Objects in the
-              Extensible Provisioning Protocol (EPP)", Work in Progress,
-              Internet-Draft, draft-ietf-regext-epp-delete-bcp-10, 13
-              March 2025, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-regext-epp-delete-bcp-10>.
 
    [RAML]     raml.org, "RESTful API Modeling Language", 2025,
               <https://raml.org/>.
@@ -1230,6 +1235,12 @@ Table of Contents
               DOI 10.17487/RFC9553, May 2024,
               <https://www.rfc-editor.org/info/rfc9553>.
 
+   [RFC9874]  Hollenbeck, S., Carroll, W., and G. Akiwate, "Best
+              Practices for Deletion of Domain and Host Objects in the
+              Extensible Provisioning Protocol (EPP)", BCP 244,
+              RFC 9874, DOI 10.17487/RFC9874, September 2025,
+              <https://www.rfc-editor.org/info/rfc9874>.
+
    [RICHARDSON]
               Fowler, M., "Richardson Maturity Model", 2010,
               <https://martinfowler.com/articles/
@@ -1244,6 +1255,12 @@ Table of Contents
    [RFC3375]  Hollenbeck, S., "Generic Registry-Registrar Protocol
               Requirements", RFC 3375, DOI 10.17487/RFC3375, September
               2002, <https://www.rfc-editor.org/info/rfc3375>.
+
+   [TigerTeamRecc]
+              RPP WG, Gould, J., Kolker, J., Kowalik, P., Skoglund, E.,
+              and M. Wullink, "EPP Extensibility and Extension
+              Analysis", 2025, <https://docs.google.com/document/
+              d/1WR00oB43XZCDqD0zvRvRajuWAq_9wQ3c0RrFKlGC3So>.
 
 Appendix A.  Extensions
 

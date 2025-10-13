@@ -317,6 +317,7 @@
 <t><strong>D1.7</strong> RPP domain objects MUST support EPP password-based Authorisation Information (authInfo) for transfer operations (see R8.5).</t>
 <t><strong>D1.8</strong> RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes. The protocol MUST define which statuses can be set by the server and which can be set by the sponsoring client.</t>
 <t><strong>D1.9</strong> RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include an attribute with information about linked objects.</t>
+<t><strong>D1.10</strong> RPP MUST provide a mechanism for clients to discover the server's supported Internationalized Domain Name (IDN) policies. Information such as the identifiers for supported IDN tables, applicable language tags, and variant disposition policies MUST be discoverable via the service discovery document (see R7.2).</t>
 
 <section anchor="operations"><name>Operations</name>
 <t><strong>D2.1</strong> RPP MUST provide operations to check, create, read, update, transfer, renew and delete domain name objects as defined in <xref target="RFC5731"></xref>.</t>
@@ -327,6 +328,7 @@
 <t><strong>D2.6</strong> RPP MUST prevent creation of duplicate domain objects within a registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.</t>
 <t><strong>D2.7</strong> The transfer of a domain object MUST also result in the transfer of any subordinate host objects (ns.foo.example when foo.example is transferred).</t>
 <t><strong>D2.8</strong> The RPP domain transfer operation MUST allow for an implicit renewal. If a transfer results in an extension of the registration period, the response to the successful transfer MUST include the new expiration date of the domain object.</t>
+<t><strong>D2.9</strong> The RPP domain transfer operation SHOULD support optional update of DNSSEC and delegation information directly with the transfer request. This feature, as not standard EPP feature, SHALL be optional to be supported by server policy.</t>
 </section>
 
 <section anchor="data-representation-1"><name>Data Representation</name>
@@ -351,7 +353,7 @@
 <t><strong>H2.2</strong> RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results.</t>
 <t><strong>H2.3</strong> Only the sponsoring client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.</t>
 <t><strong>H2.4</strong> RPP MUST assure that in-bailiwick host objects are created and managed by the same sponsoring client as the parent domain name.</t>
-<t><strong>H2.5</strong> RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in <xref target="I-D.ietf-regext-epp-delete-bcp"></xref>.</t>
+<t><strong>H2.5</strong> RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in <xref target="RFC9874"></xref>.</t>
 <t><strong>H2.6</strong> RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.</t>
 </section>
 
@@ -438,6 +440,7 @@
 <li>added essential and optional extensions sections in <xref target="appendix_extensions"></xref></li>
 <li>Added generic IANA considerations</li>
 <li>Added requirement for support of both thick and thin registry models (R1.7)</li>
+<li>Added requirements relared to extensibility following the recommendation from the Tiger Team <xref target="TigerTeamRecc"></xref></li>
 </ul>
 </section>
 
@@ -479,22 +482,6 @@
 <references><name>References</name>
 <references><name>Normative References</name>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.BCP.56.xml"/>
-<reference anchor="I-D.ietf-regext-epp-delete-bcp" target="https://datatracker.ietf.org/doc/html/draft-ietf-regext-epp-delete-bcp-10">
-  <front>
-    <title>Best Practices for Deletion of Domain and Host Objects in the Extensible Provisioning Protocol (EPP)</title>
-    <author fullname="Scott Hollenbeck" initials="S." surname="Hollenbeck">
-      <organization>Verisign Labs</organization>
-    </author>
-    <author fullname="William Carroll" initials="W." surname="Carroll">
-      <organization>Verisign</organization>
-    </author>
-    <author fullname="Gautam Akiwate" initials="G." surname="Akiwate">
-      <organization>Stanford University</organization>
-    </author>
-    <date year="2025" month="March" day="13"></date>
-  </front>
-  <seriesInfo name="Internet-Draft" value="draft-ietf-regext-epp-delete-bcp-10"></seriesInfo>
-</reference>
 <reference anchor="RAML" target="https://raml.org/">
   <front>
     <title>RESTful API Modeling Language</title>
@@ -529,6 +516,7 @@
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9083.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9553.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9874.xml"/>
 <reference anchor="RICHARDSON" target="https://martinfowler.com/articles/richardsonMaturityModel.html">
   <front>
     <title>Richardson Maturity Model</title>
@@ -553,6 +541,30 @@
 </references>
 <references><name>Informative References</name>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3375.xml"/>
+<reference anchor="TigerTeamRecc" target="https://docs.google.com/document/d/1WR00oB43XZCDqD0zvRvRajuWAq_9wQ3c0RrFKlGC3So">
+  <front>
+    <title>EPP Extensibility and Extension Analysis</title>
+    <author>
+      <organization>RPP WG</organization>
+    </author>
+    <author fullname="Jim Gould" initials="J." surname="Gould">
+      <organization>Verisign Labs</organization>
+    </author>
+    <author fullname="Jody Kolker" initials="J." surname="Kolker">
+      <organization>GoDaddy</organization>
+    </author>
+    <author fullname="Pawel Kowalik" initials="P." surname="Kowalik">
+      <organization>DENIC</organization>
+    </author>
+    <author fullname="Eric Skoglund" initials="E." surname="Skoglund">
+      <organization>Internet Stiftelsen</organization>
+    </author>
+    <author fullname="Maarten Wullink" initials="M." surname="Wullink">
+      <organization>SIDN Labs</organization>
+    </author>
+    <date year="2025"></date>
+  </front>
+</reference>
 </references>
 </references>
 
