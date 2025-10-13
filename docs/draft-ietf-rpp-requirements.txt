@@ -5,8 +5,8 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 1 January 2026                                            DENIC
-                                                            30 June 2025
+Expires: 19 February 2026                                          DENIC
+                                                          18 August 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 January 2026.
+   This Internet-Draft will expire on 19 February 2026.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 1]
+Wullink & Kowalik       Expires 19 February 2026                [Page 1]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
 Table of Contents
@@ -86,39 +86,40 @@ Table of Contents
        18.3.2.  Internationalisation . . . . . . . . . . . . . . . .  13
    19. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  13
    20. Security Considerations . . . . . . . . . . . . . . . . . . .  13
-   21. Changes History . . . . . . . . . . . . . . . . . . . . . . .  13
-     21.1.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  13
-     21.2.  Version -01 to -00 (WG)  . . . . . . . . . . . . . . . .  13
-     21.3.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  14
+   21. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  13
+   22. Changes History . . . . . . . . . . . . . . . . . . . . . . .  14
+     22.1.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  14
+     22.2.  Version -01 to -00 (WG)  . . . . . . . . . . . . . . . .  14
+     22.3.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  14
        Overall Structural Changes  . . . . . . . . . . . . . . . . .  14
-       Major Changes by Section (References as per -01)  . . . . . .  14
-         General . . . . . . . . . . . . . . . . . . . . . . . . . .  14
-         HTTP  . . . . . . . . . . . . . . . . . . . . . . . . . . .  14
-         REST  . . . . . . . . . . . . . . . . . . . . . . . . . . .  14
+       Major Changes by Section (References as per -01)  . . . . . .  15
+         General . . . . . . . . . . . . . . . . . . . . . . . . . .  15
+         HTTP  . . . . . . . . . . . . . . . . . . . . . . . . . . .  15
+         REST  . . . . . . . . . . . . . . . . . . . . . . . . . . .  15
          Data Model  . . . . . . . . . . . . . . . . . . . . . . . .  15
-         Data Representation . . . . . . . . . . . . . . . . . . . .  15
-         Operations and responses  . . . . . . . . . . . . . . . . .  15
+         Data Representation . . . . . . . . . . . . . . . . . . . .  16
+         Operations and responses  . . . . . . . . . . . . . . . . .  16
          Discoverability . . . . . . . . . . . . . . . . . . . . . .  16
-         EPP compatibility . . . . . . . . . . . . . . . . . . . . .  16
-         Security  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+         EPP compatibility . . . . . . . . . . . . . . . . . . . . .  17
+         Security  . . . . . . . . . . . . . . . . . . . . . . . . .  17
          Extensibility . . . . . . . . . . . . . . . . . . . . . . .  17
-         Scalability . . . . . . . . . . . . . . . . . . . . . . . .  17
-         Performance . . . . . . . . . . . . . . . . . . . . . . . .  17
-         Internationalisation  . . . . . . . . . . . . . . . . . . .  17
-         Clients . . . . . . . . . . . . . . . . . . . . . . . . . .  18
+         Scalability . . . . . . . . . . . . . . . . . . . . . . . .  18
+         Performance . . . . . . . . . . . . . . . . . . . . . . . .  18
+         Internationalisation  . . . . . . . . . . . . . . . . . . .  18
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 2]
+Wullink & Kowalik       Expires 19 February 2026                [Page 2]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
+         Clients . . . . . . . . . . . . . . . . . . . . . . . . . .  18
          Requirements for object types . . . . . . . . . . . . . . .  18
-         Appendix A.  Extensions . . . . . . . . . . . . . . . . . .  18
-   22. Normative References  . . . . . . . . . . . . . . . . . . . .  18
-   Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  20
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
+         Appendix A.  Extensions . . . . . . . . . . . . . . . . . .  19
+   23. Normative References  . . . . . . . . . . . . . . . . . . . .  19
+   Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  21
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
 1.  Introduction
 
@@ -164,10 +165,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-
-Wullink & Kowalik        Expires 1 January 2026                 [Page 3]
+Wullink & Kowalik       Expires 19 February 2026                [Page 3]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
 4.  General
@@ -221,9 +221,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 4]
+Wullink & Kowalik       Expires 19 February 2026                [Page 4]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
 6.  REST
@@ -277,9 +277,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 5]
+Wullink & Kowalik       Expires 19 February 2026                [Page 5]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
       |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
@@ -333,9 +333,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 6]
+Wullink & Kowalik       Expires 19 February 2026                [Page 6]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
 9.  Operations and responses
@@ -389,9 +389,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 7]
+Wullink & Kowalik       Expires 19 February 2026                [Page 7]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
    -  Supported profiles
@@ -445,9 +445,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 8]
+Wullink & Kowalik       Expires 19 February 2026                [Page 8]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
       |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
@@ -501,9 +501,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                 [Page 9]
+Wullink & Kowalik       Expires 19 February 2026                [Page 9]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
    *R9.8* RPP MUST allow for multiple user accounts linked to a single
@@ -557,9 +557,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                [Page 10]
+Wullink & Kowalik       Expires 19 February 2026               [Page 10]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
    *R10.9* RPP extensions MUST include support for versioning, the
@@ -613,9 +613,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                [Page 11]
+Wullink & Kowalik       Expires 19 February 2026               [Page 11]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
    *R12.2* RPP MAY allow for common bulk operations, resource listing,
@@ -669,9 +669,9 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-Wullink & Kowalik        Expires 1 January 2026                [Page 12]
+Wullink & Kowalik       Expires 19 February 2026               [Page 12]
 
-Internet-Draft             RPP - Requirements                  June 2025
+Internet-Draft             RPP - Requirements                August 2025
 
 
 18.3.1.  Data Representation
@@ -705,32 +705,61 @@ Internet-Draft             RPP - Requirements                  June 2025
       |  TODO: TBC if anything needed here.  There is a security
       |  section.
 
-21.  Changes History
+21.  Privacy Considerations
+
+   *DP.1* The protocol MUST provide mechanisms to support the
+   implementation of data privacy principles, such as those found in
+   modern data protection frameworks (e.g., GDPR).  These mechanisms
+   MUST support, at a minimum, the principles of data minimisation and
+   purpose limitation.
+
+   *DP.2* To support data minimisation, the protocol MUST allow clients
+   to provide and manage only the data that is strictly necessary for a
+   specific purpose.  The protocol MUST also allow for different
+   representations of an object, so that a client can request a
+   representation containing only the data it is authorised to access
+   (See also R4.3 and R6.1).
+
+
+
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 13]
+
+Internet-Draft             RPP - Requirements                August 2025
+
+
+   *DP.3* The protocol's operations and data models MUST be sufficiently
+   flexible to allow an operator to implement workflows for exercising
+   data subject rights, such as access, rectification, and erasure of
+   personal data, in a manner consistent with the operational and policy
+   constraints of the provisioning environment.
+
+   *DP.4* The protocol MUST provide services to identify data collection
+   policies and privacy practices.  Information about data collection,
+   retention, and privacy policies MUST be included in the service
+   discovery document, enabling clients to understand how personal and
+   sensitive data is handled.
+
+22.  Changes History
 
    This section is to be removed before publishing as an RFC.
 
-21.1.  Version -00 to -01
+22.1.  Version -00 to -01
 
+   -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
    -  R1.6 has been changed to MUST instead of SHOULD.
    -  Updated the entire text to make consistent use of the British
       spelling style.
 
-21.2.  Version -01 to -00 (WG)
+22.2.  Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 13]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
-
-21.3.  Version -00 to -01
+22.3.  Version -00 to -01
 
 Overall Structural Changes
 
@@ -749,6 +778,13 @@ Overall Structural Changes
    -  Section Removed: The old Other section, which contained a list of
       discussion points, was removed and requirements placed in relevant
       sections or appendix.
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 14]
+
+Internet-Draft             RPP - Requirements                August 2025
+
 
 Major Changes by Section (References as per -01)
 
@@ -778,14 +814,6 @@ REST
 
    -  Modified R3.1: Removed the negative recommendation against
       Richardson Maturity Model (RMM) Level 3.
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 14]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
-
    -  New Requirement R3.2: Added requirement: RPP MUST follow Resource-
       Oriented Architecture [ROI].
    -  New Requirement R3.3: Added requirement: RPP MUST strive to
@@ -806,6 +834,14 @@ Data Model
       redaction).
    -  New Requirement R4.5: Added requirement: RPP architecture MUST
       include loose coupling for non-breaking version changes.
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 15]
+
+Internet-Draft             RPP - Requirements                August 2025
+
+
    -  Rewritten R4.6: Replaced old text about server choice on
       validation strictness with R4.6 (MUST default to ignoring unknown
       properties, MUST provide mechanism for client to request strict
@@ -834,14 +870,6 @@ Data Representation
 
 Operations and responses
 
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 15]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
-
    -  New Requirement R6.1: Added requirement: RPP MUST support client
       requests for different data representation depths (minimal, full,
       full+dereferenced).
@@ -861,6 +889,15 @@ Discoverability
       and &.10 (versions MUST be discoverable).
    -  Removed Requirement R7.8: Explicitly removed (linked to Issue
       #21).
+
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 16]
+
+Internet-Draft             RPP - Requirements                August 2025
+
+
    -  New Requirement R7.9: Added requirement: Response with unique
       object IDs MAY include URL references.
 
@@ -890,14 +927,6 @@ Security
       user accounts per registrar, MAY delegate user management.
    -  New Requirement R9.9: Added requirement: RPP MUST support a
       granular authorisation matrix (permissions per user).
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 16]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
-
    -  New Requirement R9.10: Added requirement: RPP MUST allow
       credential updates and enforce password strength/lifetime.
 
@@ -917,6 +946,14 @@ Extensibility
       avoidance mechanisms for extensions (private and coordinated).
    -  Removed Requirement: Removed requirement for JSON namespace
       concept.
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 17]
+
+Internet-Draft             RPP - Requirements                August 2025
+
+
    -  New Requirement R10.9: Added requirement: RPP extensions MUST
       support versioning, discoverable via discovery document.
    -  Removed Requirement R10.10: Requirement for IANA registry of RPP
@@ -945,15 +982,6 @@ Performance
 
 Internationalisation
 
-
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 17]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
-
    -  New Requirement R13.1: Added requirement: RPP MUST support
       internationalisation for core/extension objects and messages.
    -  New Requirement R13.2: Added requirement: RPP MUST support human-
@@ -972,6 +1000,15 @@ Clients
       mobile applications directly.
 
 Requirements for object types
+
+
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 18]
+
+Internet-Draft             RPP - Requirements                August 2025
+
 
    -  New Requirement D13.1 (Domain): Added requirement: RPP MUST
       support IDNs (UTF-8 and Punycode).  (Moved from old Representation
@@ -993,7 +1030,7 @@ Appendix A.  Extensions
    -  New Requirement A.2: Added requirement: An extension allowing DNS
       operators to update DNSSEC key material.
 
-22.  Normative References
+23.  Normative References
 
    [BCP56]    Best Current Practice 56,
               <https://www.rfc-editor.org/info/bcp56>.
@@ -1002,13 +1039,6 @@ Appendix A.  Extensions
               Nottingham, M., "Building Protocols with HTTP", BCP 56,
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
               <https://www.rfc-editor.org/info/rfc9205>.
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 18]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
 
    [RAML]     raml.org, "RESTful API Modeling Language", 2025,
               <https://raml.org/>.
@@ -1027,6 +1057,14 @@ Internet-Draft             RPP - Requirements                  June 2025
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/info/rfc3986>.
+
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 19]
+
+Internet-Draft             RPP - Requirements                August 2025
+
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
@@ -1058,14 +1096,6 @@ Internet-Draft             RPP - Requirements                  June 2025
               APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
               <https://www.rfc-editor.org/info/rfc7807>.
 
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 19]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
-
    [RFC9110]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "HTTP Semantics", STD 97, RFC 9110,
               DOI 10.17487/RFC9110, June 2022,
@@ -1084,6 +1114,13 @@ Internet-Draft             RPP - Requirements                  June 2025
    [ROI]      Richardson, L. and S. Ruby, "RESTful Web Services, Chapter
               4", 2007, <https://www.oreilly.com/library/view/restful-
               web-services/9780596529260/ch04.html>.
+
+
+
+Wullink & Kowalik       Expires 19 February 2026               [Page 20]
+
+Internet-Draft             RPP - Requirements                August 2025
+
 
 Appendix A.  Extensions
 
@@ -1115,13 +1152,6 @@ Authors' Addresses
    URI:   https://sidn.nl/
 
 
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 20]
-
-Internet-Draft             RPP - Requirements                  June 2025
-
-
    Pawel Kowalik
    DENIC
    Email: pawel.kowalik@denic.de
@@ -1143,34 +1173,4 @@ Internet-Draft             RPP - Requirements                  June 2025
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Wullink & Kowalik        Expires 1 January 2026                [Page 21]
+Wullink & Kowalik       Expires 19 February 2026               [Page 21]
