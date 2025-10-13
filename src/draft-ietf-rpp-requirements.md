@@ -533,11 +533,6 @@ For the purposes of requirements related to transfers, the following specific te
 
 **C1.7** RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.
 
-## Version -01 to -02
-
-* Added requirement for support of both thick and thin registry models (R1.7)
-
-## Version -00 to -01
 **C1.8** RPP SHOULD consider renaming the EPP contact object type to "entity" to better align with the RDAP data model, defined in [@!RFC9083].
 
 ### Operations
@@ -603,8 +598,10 @@ RRP core specifications MUST include appropriate Security Considerations section
 {removeInRFC="true"}
 # Changes History
 
+
 ## Version -01 to -02
 
+* Added requirement for support of both thick and thin registry models (R1.7)
 * Added requirements for Host Object Type
 * Added R10.12 on future ways of delegation
 * Added requirements for Domain Object Type

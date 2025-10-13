@@ -370,16 +370,6 @@
 <t><strong>C1.5</strong> RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.</t>
 <t><strong>C1.6</strong> RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).</t>
 <t><strong>C1.7</strong> RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.</t>
-</section>
-
-<section anchor="version-01-to-02"><name>Version -01 to -02</name>
-
-<ul spacing="compact">
-<li>Added requirement for support of both thick and thin registry models (R1.7)</li>
-</ul>
-</section>
-
-<section anchor="version-00-to-01"><name>Version -00 to -01</name>
 <t><strong>C1.8</strong> RPP SHOULD consider renaming the EPP contact object type to &quot;entity&quot; to better align with the RDAP data model, defined in <xref target="RFC9083"></xref>.</t>
 
 <section anchor="operations-2"><name>Operations</name>
@@ -432,9 +422,10 @@
 
 <section anchor="changes-history" removeInRFC="true"><name>Changes History</name>
 
-<section anchor="version-01-to-02-1"><name>Version -01 to -02</name>
+<section anchor="version-01-to-02"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
+<li>Added requirement for support of both thick and thin registry models (R1.7)</li>
 <li>Added requirements for Host Object Type</li>
 <li>Added R10.12 on future ways of delegation</li>
 <li>Added requirements for Domain Object Type</li>
@@ -450,7 +441,7 @@
 </ul>
 </section>
 
-<section anchor="version-00-to-01-1"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Added Privacy Considerations section</li>
@@ -468,7 +459,7 @@
 </ul>
 </section>
 
-<section anchor="version-00-to-01-2"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01-1"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Structurally reorganised the document, renumbering all requirements and adding new sections for Operations, Clients, and Internationalisation.</li>
