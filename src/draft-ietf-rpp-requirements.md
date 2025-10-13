@@ -605,6 +605,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 * added essential and optional extensions sections in (#appendix_extensions)
 * Added generic IANA considerations
 * Added requirement for support of both thick and thin registry models (R1.7)
+* Updated R4.6 to require the use of strict data validation
 
 ## Version -00 to -01
 
