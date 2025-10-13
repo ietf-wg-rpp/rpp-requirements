@@ -239,6 +239,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>R10.10</strong> <em>Removed</em>
 </t>
 <t><strong>R10.11</strong> Extension designers or RPP implementers MAY add new status codes, if a newly created status code is generic enough to be useful for the wider RPP community, then the extension designer SHOULD register the new status code in the RPP IANA registry.</t>
+<t><strong>R10.12</strong> Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).</t>
 </section>
 
 <section anchor="scalability"><name>Scalability</name>
@@ -275,9 +276,7 @@ RPP MUST support additional information about a successful operation (informatio
 <section anchor="requirements-for-object-types"><name>Requirements for object types</name>
 
 <section anchor="common"><name>Common</name>
-
-<aside><t>NOTE: *O1.x Requirements are defined in PR <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/pull/100">#100</eref></t>
-</aside>
+<t><strong>O1.1</strong> RPP MUST define a single, structured data model for representing DNS resource records. This model MUST be used consistently for all object types that require DNS representation (e.g., Host, Domain). The model MUST support common DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, like TTL. The model SHOULD be designed to be extensible for future, experimental or less common record types.</t>
 
 <section anchor="obj_transfers"><name>Object Transfers</name>
 <t>For the purposes of requirements related to transfers, the following specific terms are used:</t>
@@ -331,6 +330,29 @@ RPP MUST support additional information about a successful operation (informatio
 </section>
 
 <section anchor="host-object-type"><name>Host Object Type</name>
+<t><strong>H1.1</strong> The RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), repository object identifier, object status, current sponsoring client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.</t>
+<t><strong>H1.2</strong> RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (O1.1).</t>
+<t><strong>H1.3</strong> Host names MUST be valid FQDNs.</t>
+<t><strong>H1.4</strong> RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in <xref target="RFC5890"></xref>.</t>
+<t><strong>H1.5</strong> RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of <xref target="RFC5890"></xref> when processing host names in requests and responses by both clients and servers.</t>
+<t><strong>H1.6</strong> When used for linking a name server to a domain name, RPP MUST support both in-bailiwick and out-of-bailiwick host objects. For in-bailiwick host objects, glue IP addresses MAY be required by server policy.</t>
+<t><strong>H1.7</strong> RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a name server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., <xref target="RFC1918"></xref>) are server policy.</t>
+<t><strong>H1.9</strong> RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes.</t>
+
+<section anchor="operations-1"><name>Operations</name>
+<t><strong>H2.1</strong> RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in <xref target="RFC5732"></xref>, with partial update semantics available to allow for efficient updates. Transfer operation of subordinate host object MUST be implicit with the transfer operation of parent domain name.</t>
+<t><strong>H2.2</strong> RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results.</t>
+<t><strong>H2.3</strong> Only the sponsoring client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.</t>
+<t><strong>H2.4</strong> RPP MUST assure that in-bailiwick host objects are created and managed by the same sponsoring client as the parent domain name.</t>
+<t><strong>H2.5</strong> RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in <xref target="I-D.ietf-regext-epp-delete-bcp"></xref>.</t>
+<t><strong>H2.6</strong> RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.</t>
+</section>
+
+<section anchor="data-representation-2"><name>Data Representation</name>
+<t><strong>H3.1</strong> RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.</t>
+<t><strong>H3.2</strong> The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.</t>
+<t><strong>H3.3</strong> The representation SHOULD include link relations to related objects, for example: self, and parent domain for in-bailiwick hosts.</t>
+</section>
 </section>
 
 <section anchor="contact-object-type"><name>Contact Object Type</name>
@@ -343,7 +365,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>C1.7</strong> RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.</t>
 <t><strong>C1.8</strong> RPP SHOULD consider renaming the EPP contact object type to &quot;entity&quot; to better align with the RDAP data model, defined in <xref target="RFC9083"></xref>.</t>
 
-<section anchor="operations-1"><name>Operations</name>
+<section anchor="operations-2"><name>Operations</name>
 <t><strong>C2.1</strong> The RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in <xref target="RFC5733"></xref>, such as check, create, read, update, and delete with the possible exception of transfer command, and include support for partial update semantics available to allow for efficient updates.</t>
 <t><strong>C2.2</strong> RPP MAY support the contact transfer command from EPP.</t>
 <t><strong>C2.3</strong> RPP MAY support searching and listing contacts filtered by name (exact/prefix), and sponsoring client, with pagination, the server MAY use a maximum limit on results.</t>
@@ -353,7 +375,7 @@ RPP MUST support additional information about a successful operation (informatio
 <t><strong>C2.7</strong> The protocol MUST provide an operation to retrieve an appropriate contact representation to non-sponsoring clients. The representation MAY vary depending if the authorisation information is provided - depending on server policy.</t>
 </section>
 
-<section anchor="data-representation-2"><name>Data Representation</name>
+<section anchor="data-representation-3"><name>Data Representation</name>
 <t><strong>C3.1</strong> RPP SHOULD consider using JSContact <xref target="RFC9553"></xref> format for contact representation.</t>
 <t><strong>C3.2</strong> RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in <xref target="RFC5733"></xref>.</t>
 </section>
@@ -396,6 +418,8 @@ RPP MUST support additional information about a successful operation (informatio
 <section anchor="version-01-to-02"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
+<li>Added requirements for Host Object Type</li>
+<li>Added R10.12 on future ways of delegation</li>
 <li>Added requirements for Domain Object Type</li>
 <li>Added relevant and not yet covered requirements from <xref target="RFC3375"></xref> (R6.5-R6.8, R12.4, <xref target="obj_transfers"></xref>)</li>
 <li>Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.</li>
@@ -446,6 +470,22 @@ RPP MUST support additional information about a successful operation (informatio
 <references><name>References</name>
 <references><name>Normative References</name>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.BCP.56.xml"/>
+<reference anchor="I-D.ietf-regext-epp-delete-bcp" target="https://datatracker.ietf.org/doc/html/draft-ietf-regext-epp-delete-bcp-10">
+  <front>
+    <title>Best Practices for Deletion of Domain and Host Objects in the Extensible Provisioning Protocol (EPP)</title>
+    <author fullname="Scott Hollenbeck" initials="S." surname="Hollenbeck">
+      <organization>Verisign Labs</organization>
+    </author>
+    <author fullname="William Carroll" initials="W." surname="Carroll">
+      <organization>Verisign</organization>
+    </author>
+    <author fullname="Gautam Akiwate" initials="G." surname="Akiwate">
+      <organization>Stanford University</organization>
+    </author>
+    <date year="2025" month="March" day="13"></date>
+  </front>
+  <seriesInfo name="Internet-Draft" value="draft-ietf-regext-epp-delete-bcp-10"></seriesInfo>
+</reference>
 <reference anchor="RAML" target="https://raml.org/">
   <front>
     <title>RESTful API Modeling Language</title>
@@ -464,6 +504,7 @@ RPP MUST support additional information about a successful operation (informatio
     <date year="2000"></date>
   </front>
 </reference>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.1918.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3915.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>

@@ -336,6 +336,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R10.11** Extension designers or RPP implementers MAY add new status codes, if a newly created status code is generic enough to be useful for the wider RPP community, then the extension designer SHOULD register the new status code in the RPP IANA registry.
 
+**R10.12** Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
+
 # Scalability
 
 **R11.1** RPP MUST be stateless and MUST NOT maintain application state on the server required for processing future RPP requests. Every client request needs to provide all the information required for the server to be able to successfully process the request. The client MAY maintain application session state, for example by using a JWT token.
@@ -384,7 +386,7 @@ A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
 
 ## Common
 
-A> NOTE: *O1.x Requirements are defined in PR [#100](https://github.com/ietf-wg-rpp/rpp-requirements/pull/100)
+**O1.1** RPP MUST define a single, structured data model for representing DNS resource records. This model MUST be used consistently for all object types that require DNS representation (e.g., Host, Domain). The model MUST support common DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, like TTL. The model SHOULD be designed to be extensible for future, experimental or less common record types.
 
 ### Object Transfers {#obj_transfers}
 
@@ -461,7 +463,43 @@ For the purposes of requirements related to transfers, the following specific te
 
 ## Host Object Type
 
-[//]: # (Editor note: use Hx.x for Hosts)
+**H1.1** The RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), repository object identifier, object status, current sponsoring client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.
+
+**H1.2** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (O1.1).
+
+**H1.3** Host names MUST be valid FQDNs.
+
+**H1.4** RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in [@!RFC5890].
+
+**H1.5** RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of [@!RFC5890] when processing host names in requests and responses by both clients and servers.
+
+**H1.6** When used for linking a name server to a domain name, RPP MUST support both in-bailiwick and out-of-bailiwick host objects.
+
+**H1.7** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a name server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. The maximum number of allowed addressess and any disallowed ranges (e.g., [@!RFC1918]) are server policy. The server MAY require, make optional or disallow IP addresses depending on whether host is in-bailiwick or out-of-bailiwick. This is also server policy.
+
+**H1.9** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes.
+
+### Operations
+
+**H2.1** RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in [@!RFC5732], with partial update semantics available to allow for efficient updates. Transfer operation of subordinate host object MUST be implicit with the transfer operation of parent domain name.  
+
+**H2.2** RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and sponsoring client, with pagination, the server MAY use a maximum limit on results.
+
+**H2.3** Only the sponsoring client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.
+
+**H2.4** RPP MUST assure that in-bailiwick host objects are created and managed by the same sponsoring client as the parent domain name.
+
+**H2.5** RPP MUST enforce referential integrity. A host referenced by any domain (linked) MUST NOT be deleted. Servers MUST return a conflict error when deletion is disallowed and the host representation MAY include an attribute with information about linked objects. RPP MUST allow for safe deletion of referenced hosts - with grace period, restore and prior removal of references as recommended in [@!I-D.ietf-regext-epp-delete-bcp].
+
+**H2.6** RPP MUST prevent creation of duplicate hosts within a registry namespace (TLD) and return a conflict on collision.
+
+### Data Representation
+
+**H3.1** RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.
+
+**H3.2** The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.
+
+**H3.3** The representation SHOULD include link relations to related objects, for example: self, and parent domain for in-bailiwick hosts.
 
 ## Contact Object Type
 
@@ -546,6 +584,8 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 ## Version -01 to -02
 
+* Added requirements for Host Object Type
+* Added R10.12 on future ways of delegation
 * Added requirements for Domain Object Type
 * Added relevant and not yet covered requirements from [@?RFC3375] (R6.5-R6.8, R12.4, (#obj_transfers))
 * Added R6.4 RPP MUST include a functional equivalent of the EPP Poll command.
@@ -679,4 +719,24 @@ A> TODO: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57)
     </author>
     <date year="2025"/>
   </front>
+</reference>
+
+<reference anchor="I-D.ietf-regext-epp-delete-bcp" target="https://datatracker.ietf.org/doc/html/draft-ietf-regext-epp-delete-bcp-10">
+  <front>
+  <title>Best Practices for Deletion of Domain and Host Objects in the Extensible Provisioning Protocol (EPP)</title>
+  <author initials="S." surname="Hollenbeck" fullname="Scott Hollenbeck">
+  <organization>Verisign Labs</organization>
+  </author>
+  <author initials="W." surname="Carroll" fullname="William Carroll">
+  <organization>Verisign</organization>
+  </author>
+  <author initials="G." surname="Akiwate" fullname="Gautam Akiwate">
+  <organization>Stanford University</organization>
+  </author>
+  <date month="March" day="13" year="2025"/>
+  <abstract>
+  <t> The Extensible Provisioning Protocol (EPP) includes commands for clients to delete domain and host objects, both of which are used to publish information in the Domain Name System (DNS). EPP also includes guidance for deletions that is intended to avoid DNS resolution disruptions and maintain data consistency. However, operational relationships between objects can make that guidance difficult to implement. Some EPP clients have developed operational practices to delete those objects that have unintended impacts on DNS resolution and security. This document describes best current practices and proposes new potential practices to delete domain and host objects that reduce the risk of DNS resolution failure and maintain client-server data consistency. </t>
+  </abstract>
+  </front>
+  <seriesInfo name="Internet-Draft" value="draft-ietf-regext-epp-delete-bcp-10"/>
 </reference>
