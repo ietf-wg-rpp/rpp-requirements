@@ -473,9 +473,9 @@ For the purposes of requirements related to transfers, the following specific te
 
 **H1.5** RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of [@!RFC5890] when processing host names in requests and responses by both clients and servers.
 
-**H1.6** When used for linking a name server to a domain name, RPP MUST support both in-bailiwick and out-of-bailiwick host objects. For in-bailiwick host objects, glue IP addresses MAY be required by server policy.
+**H1.6** When used for linking a name server to a domain name, RPP MUST support both in-bailiwick and out-of-bailiwick host objects.
 
-**H1.7** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a name server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. Maximum counts and any disallowed ranges (e.g., [@!RFC1918]) are server policy.
+**H1.7** RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a name server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. The maximum number of allowed addressess and any disallowed ranges (e.g., [@!RFC1918]) are server policy. The server MAY require, make optional or disallow IP addresses depending on whether host is in-bailiwick or out-of-bailiwick. This is also server policy.
 
 **H1.9** RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes.
 
