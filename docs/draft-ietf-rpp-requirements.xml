@@ -135,7 +135,12 @@
 
 <aside><t>TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/56">Issue #56</eref></t>
 </aside>
-<t><strong>R6.4</strong> RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC <xref target="RFC5730"></xref>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:</t>
+<t><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
+<t><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
+<t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
+<t><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
+<t><strong>R6.9</strong> RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.</t>
+<t><strong>R6.10</strong> RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC <xref target="RFC5730"></xref>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:</t>
 
 <ul spacing="compact">
 <li>Allowing clients to subscribe to specific types of service messages.</li>
@@ -143,11 +148,7 @@
 <li>Allowing clients to use multiple concurrent readers.</li>
 <li>Support for streaming service messages to clients.</li>
 </ul>
-<t><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
-<t><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
-<t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
-<t><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
-<t><strong>R6.9</strong> RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.</t>
+<t><strong>R6.11</strong> RPP MUST include a functional equivalent of <xref target="RFC9038"></xref> to allow clients retrieve service messages including information it may not understand due to missing extension support.</t>
 </section>
 
 <section anchor="discoverability"><name>Discoverability</name>
@@ -191,15 +192,16 @@
 </section>
 
 <section anchor="epp-compatibility"><name>EPP compatibility</name>
-<t><strong>R8.1</strong> RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, and contact objects as defined in <xref target="RFC5731"></xref>, <xref target="RFC5732"></xref> and <xref target="RFC5733"></xref>.</t>
+<t><strong>R8.1</strong> RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, contact, and organisation objects as defined in <xref target="RFC5731"></xref>, <xref target="RFC5732"></xref>, <xref target="RFC5733"></xref> and <xref target="RFC8543"></xref>.</t>
 <t><strong>R8.2</strong> The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible.</t>
 <t><strong>R8.3</strong> Compatibility definitions for a RPP to EPP mapping MAY be defined in compatibility profiles (see: R4.4).</t>
 
 <aside><t>TODO: <eref target="https://github.com/ietf-wg-rpp/rpp-requirements/issues/15">Issue #15</eref></t>
 </aside>
 <t><strong>R8.4</strong> RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)</t>
-<t><strong>R8.5</strong> EPP password based Authorisation Information defined in <xref target="RFC5731"></xref> and <xref target="RFC5733"></xref> MUST be supported in RPP.</t>
+<t><strong>R8.5</strong> EPP password based Authorisation Information defined in <xref target="RFC5731"></xref> and <xref target="RFC5733"></xref> MUST be supported in RPP. RPP MUST by default support the requirements for Secure Authorization Information for Transfer <xref target="RFC9154"></xref> operational practise.</t>
 <t><strong>R8.6</strong> RPP SHOULD support client_id/password authentication to match EPP client authentication.</t>
+<t><strong>R8.7</strong> Where applicable RPP MUST support longer authorisation information compared to EPP, metainformation about client software and operational environment as well security related information (events) in the responses providing a functional equivalence to Login Security Extension for the Extensible Provisioning Protocol <xref target="RFC8807"></xref>.</t>
 </section>
 
 <section anchor="security"><name>Security</name>
@@ -246,7 +248,7 @@
 <t><strong>R10.11</strong> The protocol MUST foresee mechanisms for extending standard processes, such like delete or create, with additional transient parameters or non-persistent data (e.g. intended premium price or tier).</t>
 <t><strong>R10.12</strong> The protocol MUST foresee mechanisms for extending results of an operation with additional transient, non-persistent information not defined in the RPP core (e.g. information about discount applied to a create request).</t>
 <t><strong>R10.13</strong> The protocol MUST allow extensions to add additional information to object statuses (e.g. due date of a status).</t>
-<t><strong>R10.12</strong> Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).</t>
+<t><strong>R10.14</strong> Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).</t>
 </section>
 
 <section anchor="scalability"><name>Scalability</name>
@@ -336,6 +338,17 @@
 <t><strong>D3.2</strong> The RPP domain object representation MUST include link relations to related objects, for example: self, hosts and contacts.</t>
 <t><strong>D3.3</strong> The representation MUST adapt to the registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.</t>
 </section>
+
+<section anchor="embedding-of-epp-extensions"><name>Embedding of EPP extensions</name>
+<t><strong>D4.1</strong> RPP core protocol MUST incorporate functional equivalent of the following list of widely used and considered essential EPP extensions as recommended in <xref target="TigerTeamRecc"></xref>:</t>
+
+<ul spacing="compact">
+<li>Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol <xref target="RFC5910"></xref></li>
+<li>Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol <xref target="RFC3915"></xref></li>
+<li>Extensible Provisioning Protocol (EPP) mapping for DNS Time-To-Live (TTL) values <xref target="RFC9803"></xref></li>
+<li>Organization Extension for the Extensible Provisioning Protocol <xref target="RFC8544"></xref></li>
+</ul>
+</section>
 </section>
 
 <section anchor="host-object-type"><name>Host Object Type</name>
@@ -398,10 +411,14 @@
 <li>any other contact-related data containing human provided or readable text</li>
 </ul>
 <t><strong>C4.2</strong> RPP MUST support both the localized and internationalised version of the EPP postalInfo element from <xref target="RFC5733"></xref>.</t>
-<t><strong>C4.3</strong> RPP MUST support internationalised Email addresses <xref target="RFC6530"></xref> in Contact objects.</t>
+<t><strong>C4.3</strong> RPP MUST support internationalised Email addresses <xref target="RFC6530"></xref> in Contact objects. Functional equivalent of <xref target="RFC9873"></xref> MUST be assured in EPP compatibility mode, however RPP MAY remove requirement for at least one all-ASCII Email address.</t>
 <t><strong>C4.4</strong> RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.</t>
 <t><strong>C4.5</strong> All future RPP contact object extensions MUST be able to handle internationalisation and localisation requirements.</t>
 </section>
+</section>
+
+<section anchor="organisation-object-type"><name>Organisation Object Type</name>
+<t><strong>G1.1</strong> RPP MUST support data model and operations defined for Organisations - functional equivalent of <xref target="RFC8543"></xref>.</t>
 </section>
 </section>
 
@@ -440,7 +457,8 @@
 <li>added essential and optional extensions sections in <xref target="appendix_extensions"></xref></li>
 <li>Added generic IANA considerations</li>
 <li>Added requirement for support of both thick and thin registry models (R1.7)</li>
-<li>Added requirements relared to extensibility following the recommendation from the Tiger Team <xref target="TigerTeamRecc"></xref></li>
+<li>Added requirements related to extensibility following the recommendation from the Tiger Team <xref target="TigerTeamRecc"></xref></li>
+<li>Added requirements related to embedding of EPP extensions following the recommendation from the Tiger Team <xref target="TigerTeamRecc"></xref></li>
 </ul>
 </section>
 
@@ -510,12 +528,20 @@
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5733.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5890.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5910.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6530.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6570.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7807.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8543.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8544.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8807.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9038.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9083.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9154.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9553.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9803.xml"/>
+<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9873.xml"/>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9874.xml"/>
 <reference anchor="RICHARDSON" target="https://martinfowler.com/articles/richardsonMaturityModel.html">
   <front>

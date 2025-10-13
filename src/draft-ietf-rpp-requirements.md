@@ -201,13 +201,6 @@ RPP MUST support the use of server profiles to define required components of the
 
 A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 
-**R6.4** RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC [@!RFC5730], allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:
-
-- Allowing clients to subscribe to specific types of service messages.
-- Allowing clients to receive multiple service messages in a single request.
-- Allowing clients to use multiple concurrent readers.
-- Support for streaming service messages to clients.
-
 **R6.5** RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.
 
 **R6.6** RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
@@ -217,6 +210,15 @@ A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
 **R6.8** For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
 
 **R6.9** RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.
+
+**R6.10** RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC [@!RFC5730], allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:
+
+- Allowing clients to subscribe to specific types of service messages.
+- Allowing clients to receive multiple service messages in a single request.
+- Allowing clients to use multiple concurrent readers.
+- Support for streaming service messages to clients.
+
+**R6.11** RPP MUST include a functional equivalent of [@!RFC9038] to allow clients retrieve service messages including information it may not understand due to missing extension support.
 
 # Discoverability
 
@@ -266,7 +268,7 @@ Solutions may include:
 
 # EPP compatibility
 
-**R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, and contact objects as defined in [@!RFC5731], [@!RFC5732] and [@!RFC5733].
+**R8.1** RPP MUST provide functional equivalents for core EPP functionalities related to domain name, host, contact, and organisation objects as defined in [@!RFC5731], [@!RFC5732], [@!RFC5733] and [@!RFC8543].
 
 **R8.2** The automatic or mechanical mapping or conversion between EPP and RPP data model MUST be possible.
 
@@ -276,9 +278,11 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.4** RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)
 
-**R8.5** EPP password based Authorisation Information defined in [@!RFC5731] and [@!RFC5733] MUST be supported in RPP.
+**R8.5** EPP password based Authorisation Information defined in [@!RFC5731] and [@!RFC5733] MUST be supported in RPP. RPP MUST by default support the requirements for Secure Authorization Information for Transfer [@!RFC9154] operational practise.
 
 **R8.6** RPP SHOULD support client_id/password authentication to match EPP client authentication.
+
+**R8.7** Where applicable RPP MUST support longer authorisation information compared to EPP, metainformation about client software and operational environment as well security related information (events) in the responses providing a functional equivalence to Login Security Extension for the Extensible Provisioning Protocol [@!RFC8807].
 
 # Security
 
@@ -352,7 +356,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R10.13** The protocol MUST allow extensions to add additional information to object statuses (e.g. due date of a status).
 
-**R10.12** Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
+**R10.14** Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
 
 # Scalability
 
@@ -481,6 +485,15 @@ For the purposes of requirements related to transfers, the following specific te
 
 **D3.3** The representation MUST adapt to the registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.
 
+### Embedding of EPP extensions
+
+**D4.1** RPP core protocol MUST incorporate functional equivalent of the following list of widely used and considered essential EPP extensions as recommended in [@?TigerTeamRecc]:
+
+- Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol [@!RFC5910]
+- Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol [@!RFC3915]
+- Extensible Provisioning Protocol (EPP) mapping for DNS Time-To-Live (TTL) values [@!RFC9803]
+- Organization Extension for the Extensible Provisioning Protocol [@!RFC8544]
+
 ## Host Object Type
 
 **H1.1** The RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), repository object identifier, object status, current sponsoring client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.
@@ -571,11 +584,15 @@ For the purposes of requirements related to transfers, the following specific te
 
 **C4.2** RPP MUST support both the localized and internationalised version of the EPP postalInfo element from [@!RFC5733].
 
-**C4.3** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects.
+**C4.3** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects. Functional equivalent of [@!RFC9873] MUST be assured in EPP compatibility mode, however RPP MAY remove requirement for at least one all-ASCII Email address. 
 
 **C4.4** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.
 
 **C4.5** All future RPP contact object extensions MUST be able to handle internationalisation and localisation requirements.
+
+## Organisation Object Type
+
+**G1.1** RPP MUST support data model and operations defined for Organisations - functional equivalent of [@!RFC8543].
 
 # IANA Considerations
 
@@ -618,7 +635,8 @@ RRP core specifications MUST include appropriate Security Considerations section
 * added essential and optional extensions sections in (#appendix_extensions)
 * Added generic IANA considerations
 * Added requirement for support of both thick and thin registry models (R1.7)
-* Added requirements relared to extensibility following the recommendation from the Tiger Team [@?TigerTeamRecc]
+* Added requirements related to extensibility following the recommendation from the Tiger Team [@?TigerTeamRecc]
+* Added requirements related to embedding of EPP extensions following the recommendation from the Tiger Team [@?TigerTeamRecc]
 
 ## Version -00 to -01
 

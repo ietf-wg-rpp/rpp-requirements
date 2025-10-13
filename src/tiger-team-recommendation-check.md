@@ -98,12 +98,40 @@ A> Covered in **R10.2**
 
 ## Embed - Embed support directly into the standard RPP mappings, such as the RPP domain name mapping, in priority order.  
 
-- Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)
-- Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP) (Enhance)
-- Login Security Extension for the Extensible Provisioning Protocol (EPP)
-- Extensible Provisioning Protocol (EPP) Unhandled Namespaces
-- Extensible Provisioning Protocol (EPP) Secure Authorization Information for Transfer
-- Extensible Provisioning Protocol (EPP) mapping for DNS Time-To-Live (TTL) values
-- Organization Mapping for the Extensible Provisioning Protocol (EPP)
-- Organization Extension for the Extensible Provisioning Protocol (EPP)
-- Use of Internationalized Email Addresses in the Extensible Provisioning Protocol (EPP)
+**RXX.XX** RPP core protocol MUST include the following non-exhaustive list of EPP extensions, these extensions are widely used and considered essential for domain name provisioning, according to an extensive analyses performed by the Tiger Team volunteers.
+
+- Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol [@!RFC5910]
+
+A> covered in D4.1
+
+- Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol [@!RFC3915]
+
+A> covered in D4.1
+
+- Extensible Provisioning Protocol (EPP) mapping for DNS Time-To-Live (TTL) values [@!RFC9803]
+
+A> covered in D4.1
+
+- Login Security Extension for the Extensible Provisioning Protocol [@!RFC8807]
+
+A> Added **R8.7**
+
+- Extensible Provisioning Protocol (EPP) Unhandled Namespaces [@!RFC9038]
+
+A> added **R6.11**
+
+- Extensible Provisioning Protocol (EPP) Secure Authorization Information for Transfer [@!RFC9154]
+
+A> added to **R8.5** 
+
+- Organization Mapping for the Extensible Provisioning Protocol [@!RFC8543]
+
+A> added **G1.1**
+
+- Organization Extension for the Extensible Provisioning Protocol [@!RFC8544]
+
+A> added to **R8.1**
+
+- Use of Internationalized Email Addresses in the Extensible Provisioning Protocol [@!RFC9873]
+
+A> added to **C4.3**
