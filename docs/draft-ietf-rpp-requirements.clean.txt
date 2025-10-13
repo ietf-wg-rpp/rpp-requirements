@@ -5,12 +5,12 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 19 March 2026                                             DENIC
-                                                       15 September 2025
+Expires: 16 April 2026                                             DENIC
+                                                         13 October 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
-                     draft-ietf-rpp-requirements-01
+                     draft-ietf-rpp-requirements-02
 
 Abstract
 
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 March 2026.
+   This Internet-Draft will expire on 16 April 2026.
 
 Copyright Notice
 

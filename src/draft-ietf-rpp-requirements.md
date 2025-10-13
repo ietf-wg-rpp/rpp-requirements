@@ -6,11 +6,11 @@ workgroup = "Network Working Group"
 submissiontype = "IETF"
 keyword = [""]
 TocDepth = 4
-date = 2025-09-15
+date = 2025-10-13
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-rpp-requirements-01"
+value = "draft-ietf-rpp-requirements-02"
 stream = "IETF"
 status = "standard"
 
