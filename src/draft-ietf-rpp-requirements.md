@@ -71,6 +71,10 @@ RPP client - An HTTP user agent performing an RPP request.
 
 RPP server - An HTTP server responsible for processing requests and returning results in any supported media type.
 
+Thin registry - A registry model in which the registry stores and serves only the minimal data necessary for delegation and identification of an object (for example, domain name, registrar identifier, status, and nameserver delegation). Registrant and contact data are maintained by the registrar and are not held by the registry.
+
+Thick registry - A registry model in which the registry stores and serves the complete data set for an object, including registrant, administrative, and technical contact information, and other relevant attributes required for provisioning.
+
 Sponsoring Client - The RPP client that currently has sponsorship of the object.
 
 # Conventions Used in This Document
@@ -87,11 +91,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R1.4.** RPP MUST include support for application level status codes, and MAY reuse the EPP status codes defined in [@!RFC5730].
 
-**R1.5.**
-RPP MUST include support for providing detailed information about application status codes, for example as described in [@!RFC7807]
+**R1.5.** RPP MUST include support for providing detailed information about application status codes, for example as described in [@!RFC7807]
 
-**R1.6**
-RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
+**R1.6** RPP MUST support additional information about a successful operation (information or warning) to convey additional information to the client for example about deprecation or partial success.
+
+**R1.7** RPP MUST support both Thin and Thick registry models, and MUST allow for flexibility in how much data and what type of data is stored and returned by the server, according to the chosen registry model. The data elements returned is based on what the client is authorized to receive.
 
 # HTTP
 
@@ -517,6 +521,11 @@ For the purposes of requirements related to transfers, the following specific te
 
 **C1.7** RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.
 
+## Version -01 to -02
+
+* Added requirement for support of both thick and thin registry models (R1.7)
+
+## Version -00 to -01
 **C1.8** RPP SHOULD consider renaming the EPP contact object type to "entity" to better align with the RDAP data model, defined in [@!RFC9083].
 
 ### Operations
@@ -595,6 +604,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 * R1.2 removed
 * added essential and optional extensions sections in (#appendix_extensions)
 * Added generic IANA considerations
+* Added requirement for support of both thick and thin registry models (R1.7)
 
 ## Version -00 to -01
 
