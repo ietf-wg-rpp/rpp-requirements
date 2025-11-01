@@ -199,7 +199,7 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R6.4** RPP MUST support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination.
 
-A> TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56)
+<!-- A> //TODO: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56) -->
 
 **R6.5** RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.
 
