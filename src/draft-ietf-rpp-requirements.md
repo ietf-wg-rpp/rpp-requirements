@@ -686,7 +686,7 @@ The following list of extensions is considered as possible need for certain depl
 
 **A2.1** An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.
 
-A> TODO: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57)
+<!-- A> //TODO: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57) -->
 
 **A2.2** An extension for a Search API to allow for searching for objects in the registry database. Includes advanced search capabilities for object info request.
 
