@@ -364,7 +364,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R11.2** RPP MUST support cacheability of responses, if applicable to the operation semantics and MUST not include transaction related identifiers and values.
 
-A> TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50)
+<!-- A> //TODO: [Issue #50](https://github.com/ietf-wg-rpp/rpp-requirements/issues/50) -->
 
 **R11.3** RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing HTTP body.
 
