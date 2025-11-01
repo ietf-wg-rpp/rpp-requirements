@@ -159,7 +159,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R5.3** Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.
 
-A> TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36)
+<!-- A> //TODO: [Issue #36](https://github.com/ietf-wg-rpp/rpp-requirements/issues/36) -->
 
 **R5.4** RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.
 
