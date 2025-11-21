@@ -127,8 +127,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R4.2** Commonly used EPP extensions SHOULD be added to the RPP core data model. An example of this is the DNSSEC extension.
 
-**R4.3** The RPP core specification MUST only mandate data fields that are strictly necessary for the technical provisioning and maintenance of an object. All other data fields MUST be optional at the protocol level. A
-server MUST be able to designate any protocol-optional field as mandatory according to its local server policy.
+**R4.3** The RPP core specification MUST only mandate data fields that are strictly necessary for the technical provisioning and maintenance of an object. All other data fields MUST be optional at the protocol level. A server MUST be able to designate any protocol-optional field as mandatory according to its local server policy.
 
 **R4.4** RPP MUST have mechanisms to define profiles to indicate:
 
@@ -621,6 +620,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 {numbered="false" toc="exclude"}
 ## Version -02 to -03
 
+- Updated R4.3 to only mandate data fields that are strictly necessary
 
 {numbered="false" toc="exclude"}
 ## Version -01 to -02
