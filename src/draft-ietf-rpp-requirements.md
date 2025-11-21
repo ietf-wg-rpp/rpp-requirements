@@ -131,11 +131,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 A> TODO: [Issue #34](https://github.com/ietf-wg-rpp/rpp-requirements/issues/34)
 
-**R4.4** RPP MUST have mechanisms to define profiles to indicate:
+**R4.4** RPP MUST have a mechanism for defining profiles using unambiguous identifiers (e.g., unique names or codes) that clearly specify:
 
-- Required parts of the data model
-- Mapping definition
-- Functional subsets for compatibility.
+- The required components of the data model that must be implemented
+- Defined functional subsets that enable compatibility across different implementations.
+- Versions used by the components, data models and extensions support by the server
 
 A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
@@ -624,6 +624,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 ## Version -02 to -03
 
 * Merged R7.9 and R5.10 (Issue #124)
+* Updated R4.4 to better describe profiles (Issue #15)
 
 {numbered="false" toc="exclude"}
 ## Version -01 to -02
