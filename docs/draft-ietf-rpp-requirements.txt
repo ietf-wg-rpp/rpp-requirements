@@ -5,12 +5,12 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 16 April 2026                                             DENIC
-                                                         13 October 2025
+Expires: 25 May 2026                                               DENIC
+                                                        21 November 2025
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
-                     draft-ietf-rpp-requirements-02
+                     draft-ietf-rpp-requirements-03
 
 Abstract
 
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 April 2026.
+   This Internet-Draft will expire on 25 May 2026.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                 [Page 1]
+Wullink & Kowalik          Expires 25 May 2026                  [Page 1]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
 Table of Contents
@@ -96,25 +96,23 @@ Table of Contents
    20. Security Considerations . . . . . . . . . . . . . . . . . . .  24
    21. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  24
    22. Changes History . . . . . . . . . . . . . . . . . . . . . . .  24
-     22.1.  Version -01 to -02 . . . . . . . . . . . . . . . . . . .  24
-     22.2.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  25
-     22.3.  Version -01 to -00 (WG)  . . . . . . . . . . . . . . . .  25
-     22.4.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  25
    23. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
      23.1.  Normative References . . . . . . . . . . . . . . . . . .  26
      23.2.  Informative References . . . . . . . . . . . . . . . . .  29
    Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  29
      A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  29
      A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  30
-
-
-
-Wullink & Kowalik         Expires 16 April 2026                 [Page 2]
-
-Internet-Draft             RPP - Requirements               October 2025
-
-
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  30
+
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 2]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
 1.  Introduction
 
@@ -162,16 +160,15 @@ Internet-Draft             RPP - Requirements               October 2025
    administrative, and technical contact information, and other relevant
    attributes required for provisioning.
 
-
-
-
-Wullink & Kowalik         Expires 16 April 2026                 [Page 3]
-
-Internet-Draft             RPP - Requirements               October 2025
-
-
    Sponsoring Client - The RPP client that currently has sponsorship of
    the object.
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 3]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
 3.  Conventions Used in This Document
 
@@ -217,18 +214,17 @@ Internet-Draft             RPP - Requirements               October 2025
    based applications, described in [BCP56].  There MUST be a clear
    justification when deviating from this.
 
-
-
-
-
-Wullink & Kowalik         Expires 16 April 2026                 [Page 4]
-
-Internet-Draft             RPP - Requirements               October 2025
-
-
    *R2.3* Consistent, predictable and meaningful URL structures MUST be
    used for identifying, accessing object resources and enable request
    routing.
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 4]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    *R2.4* RPP MUST use the existing HTTP status codes and MUST define
    application level status codes and map these to HTTP status codes.
@@ -274,16 +270,17 @@ Internet-Draft             RPP - Requirements               October 2025
    It MUST be possible to map the base data model to multiple data
    formats such as JSON, XML or YAML.
 
-
-
-
-Wullink & Kowalik         Expires 16 April 2026                 [Page 5]
-
-Internet-Draft             RPP - Requirements               October 2025
-
-
    *R4.2* Commonly used EPP extensions SHOULD be added to the RPP core
    data model.  An example of this is the DNSSEC extension.
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 5]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    *R4.3* RPP MUST allow an extension mechanism that allows clients to
    signal data omission or redaction, indicating data collected but not
@@ -333,9 +330,12 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                 [Page 6]
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 6]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
 8.  Data Representation
@@ -389,9 +389,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                 [Page 7]
+Wullink & Kowalik          Expires 25 May 2026                  [Page 7]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
 9.  Operations and responses
@@ -445,9 +445,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                 [Page 8]
+Wullink & Kowalik          Expires 25 May 2026                  [Page 8]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *R6.9* RPP MUST support informational and validation functions that
@@ -501,9 +501,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                 [Page 9]
+Wullink & Kowalik          Expires 25 May 2026                  [Page 9]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *R7.3* Server provided functionality, such as the set of supported
@@ -557,9 +557,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 10]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 10]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
       |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
@@ -613,9 +613,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 11]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 11]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *R9.5* All RPP communications MUST use HTTPS (TLS) to protect data in
@@ -669,9 +669,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 12]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 12]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
 13.  Extensibility
@@ -725,9 +725,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 13]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 13]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *R10.11* The protocol MUST support mechanisms for extending standard
@@ -781,9 +781,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 14]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 14]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
 15.  Performance
@@ -837,9 +837,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 15]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 15]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
 18.1.  Common
@@ -893,9 +893,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 16]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 16]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *O2.7* The response to a successful object transfer MUST include a
@@ -949,9 +949,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 17]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 17]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *D1.9* RPP MUST enforce referential integrity. the parent domain name
@@ -1005,9 +1005,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 18]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 18]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *D2.9* RPP domain transfer operation SHOULD support optional update
@@ -1061,9 +1061,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 19]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 19]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *H1.4* RPP MUST support internationalized domain names (IDN) for host
@@ -1117,9 +1117,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 20]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 20]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    objects.  RPP MUST allow for safe deletion of referenced hosts - with
@@ -1173,9 +1173,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 21]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 21]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *C1.7* RPP MUST enforce referential integrity.  A contact MUST not be
@@ -1229,9 +1229,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 22]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 22]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *C3.2* RPP MUST support contact attribute disclosure preferences per
@@ -1285,9 +1285,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 23]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 23]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
 20.  Security Considerations
@@ -1333,19 +1333,22 @@ Internet-Draft             RPP - Requirements               October 2025
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -01 to -02
+Version -02 to -03
+
+Version -01 to -02
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 24]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    -  Added requirement for support of both thick and thin registry
       models (R1.7)
    -  Added requirements for Host Object Type
-
-
-
-Wullink & Kowalik         Expires 16 April 2026                [Page 24]
-
-Internet-Draft             RPP - Requirements               October 2025
-
-
    -  Added R10.12 on future ways of delegation
    -  Added requirements for Domain Object Type
    -  Added relevant and not yet covered requirements from [RFC3375]
@@ -1368,7 +1371,7 @@ Internet-Draft             RPP - Requirements               October 2025
       following the recommendation from the Tiger Team [TigerTeamRecc]
    -  Updated R4.6 to require the use of strict data validation
 
-22.2.  Version -00 to -01
+Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -1377,12 +1380,12 @@ Internet-Draft             RPP - Requirements               October 2025
       spelling style.
    -  stripped down version history of pre-WG -00 to -01
 
-22.3.  Version -01 to -00 (WG)
+Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.4.  Version -00 to -01
+Version -00 to -01
 
    -  Structurally reorganised the document, renumbering all
       requirements and adding new sections for Operations, Clients, and
@@ -1391,17 +1394,16 @@ Internet-Draft             RPP - Requirements               October 2025
       to leverage RESTful best practices.
    -  Introduced a formal framework for extensions, including versioning
       and discoverability.
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 25]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    -  Significantly expanded the security model to support granular,
       multi-user authorisation.
-
-
-
-
-Wullink & Kowalik         Expires 16 April 2026                [Page 25]
-
-Internet-Draft             RPP - Requirements               October 2025
-
-
    -  Mandated support for partial object updates and asynchronous
       processing for long-running operations.
    -  Detailed the requirements for a machine-readable discovery
@@ -1451,11 +1453,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-
-
-Wullink & Kowalik         Expires 16 April 2026                [Page 26]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 26]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
@@ -1509,9 +1509,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 27]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 27]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    [RFC8543]  Zhou, L., Kong, N., Yao, J., Gould, J., and G. Zhou,
@@ -1565,9 +1565,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 28]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 28]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    [RFC9873]  Belyavsky, D., Gould, J., and S. Hollenbeck, "Additional
@@ -1621,9 +1621,9 @@ A.1.  Essential extensions
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 29]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 29]
 
-Internet-Draft             RPP - Requirements               October 2025
+Internet-Draft             RPP - Requirements              November 2025
 
 
    *A1.1* An extension that allows a DNS operator to update the DNSSEC
@@ -1677,4 +1677,4 @@ Authors' Addresses
 
 
 
-Wullink & Kowalik         Expires 16 April 2026                [Page 30]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 30]

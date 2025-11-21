@@ -6,11 +6,11 @@ workgroup = "Network Working Group"
 submissiontype = "IETF"
 keyword = [""]
 TocDepth = 4
-date = 2025-10-13
+date = 2025-11-21
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-rpp-requirements-02"
+value = "draft-ietf-rpp-requirements-03"
 stream = "IETF"
 status = "standard"
 
@@ -619,7 +619,11 @@ RRP core specifications MUST include appropriate Security Considerations section
 {removeInRFC="true"}
 # Changes History
 
+{numbered="false" toc="exclude"}
+## Version -02 to -03
 
+
+{numbered="false" toc="exclude"}
 ## Version -01 to -02
 
 * Added requirement for support of both thick and thin registry models (R1.7)
@@ -639,6 +643,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 * Added requirements related to embedding of EPP extensions following the recommendation from the Tiger Team [@?TigerTeamRecc]
 * Updated R4.6 to require the use of strict data validation
 
+{numbered="false" toc="exclude"}
 ## Version -00 to -01
 
 * Added Privacy Considerations section
@@ -647,10 +652,12 @@ RRP core specifications MUST include appropriate Security Considerations section
 * Updated the entire text to make consistent use of the British spelling style.
 * stripped down version history of pre-WG -00 to -01
 
+{numbered="false" toc="exclude"}
 ## Version -01 to -00 (WG)
 
 * The document has been adopted by the working group, the version number has been reset from -01 to -00.
 
+{numbered="false" toc="exclude"}
 ## Version -00 to -01
 
 * Structurally reorganised the document, renumbering all requirements and adding new sections for Operations, Clients, and Internationalisation.

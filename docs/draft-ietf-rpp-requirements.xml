@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- name="GENERATOR" content="github.com/mmarkdown/mmark Mmark Markdown Processor - mmark.miek.nl" -->
-<rfc version="3" ipr="trust200902" docName="draft-ietf-rpp-requirements-02" submissionType="IETF" category="std" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" indexInclude="true" tocDepth="4">
+<rfc version="3" ipr="trust200902" docName="draft-ietf-rpp-requirements-03" submissionType="IETF" category="std" xml:lang="en" xmlns:xi="http://www.w3.org/2001/XInclude" indexInclude="true" tocDepth="4">
 
 <front>
-<title abbrev="RPP - Requirements">RESTful Provisioning Protocol (RPP) - Requirements</title><seriesInfo value="draft-ietf-rpp-requirements-02" stream="IETF" status="standard" name="Internet-Draft"></seriesInfo>
+<title abbrev="RPP - Requirements">RESTful Provisioning Protocol (RPP) - Requirements</title><seriesInfo value="draft-ietf-rpp-requirements-03" stream="IETF" status="standard" name="Internet-Draft"></seriesInfo>
 <author initials="M." surname="Wullink" fullname="Maarten Wullink"><organization>SIDN Labs</organization><address><postal><street></street>
 </postal><email>maarten.wullink@sidn.nl</email>
 <uri>https://sidn.nl/</uri>
 </address></author><author initials="P." surname="Kowalik" fullname="Pawel Kowalik"><organization>DENIC</organization><address><postal><street></street>
 </postal><email>pawel.kowalik@denic.de</email>
 <uri>https://denic.de/</uri>
-</address></author><date year="2025" month="October" day="13"></date>
+</address></author><date year="2025" month="November" day="21"></date>
 <area>Internet</area>
 <workgroup>Network Working Group</workgroup>
 
@@ -441,7 +441,10 @@
 
 <section anchor="changes-history" removeInRFC="true"><name>Changes History</name>
 
-<section anchor="version-01-to-02"><name>Version -01 to -02</name>
+<section anchor="version-02-to-03" numbered="false" toc="exclude"><name>Version -02 to -03</name>
+</section>
+
+<section anchor="version-01-to-02" numbered="false" toc="exclude"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
 <li>Added requirement for support of both thick and thin registry models (R1.7)</li>
@@ -463,7 +466,7 @@
 </ul>
 </section>
 
-<section anchor="version-00-to-01"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01" numbered="false" toc="exclude"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Added Privacy Considerations section</li>
@@ -474,14 +477,14 @@
 </ul>
 </section>
 
-<section anchor="version-01-to-00-wg"><name>Version -01 to -00 (WG)</name>
+<section anchor="version-01-to-00-wg" numbered="false" toc="exclude"><name>Version -01 to -00 (WG)</name>
 
 <ul spacing="compact">
 <li>The document has been adopted by the working group, the version number has been reset from -01 to -00.</li>
 </ul>
 </section>
 
-<section anchor="version-00-to-01-1"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01-1" numbered="false" toc="exclude"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Structurally reorganised the document, renumbering all requirements and adding new sections for Operations, Clients, and Internationalisation.</li>
