@@ -127,9 +127,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R4.2** Commonly used EPP extensions SHOULD be added to the RPP core data model. An example of this is the DNSSEC extension.
 
-**R4.3** RPP MUST allow an extension mechanism that allows clients to signal data omission or redaction, indicating data collected but not transmitted to the registry or redacted.
-
-A> TODO: [Issue #34](https://github.com/ietf-wg-rpp/rpp-requirements/issues/34)
+**R4.3** The RPP core specification MUST only mandate data fields that are strictly necessary for the technical provisioning and maintenance of an object. All other data fields MUST be optional at the protocol level. A
+server MUST be able to designate any protocol-optional field as mandatory according to its local server policy.
 
 **R4.4** RPP MUST have mechanisms to define profiles to indicate:
 
