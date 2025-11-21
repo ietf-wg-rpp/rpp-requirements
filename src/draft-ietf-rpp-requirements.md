@@ -181,6 +181,8 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R5.12** The representation of the links (see R4.7) MUST be expressed using the RPP server's internal identifiers. The RPP SHOULD also consider using URIs and/or [@!RFC6570] URI templates for uniform addressing of link targets, both internal and external to the RPP server.
 
+**R5.13** RPP MUST define a structured data model for all object types that require DNS representation (e.g., Host, Domain). The data model MUST support commonly used DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, such as TTL. See R10.14 for extensibility requirements.
+
 # Operations and responses
 
 **R6.1** RPP MUST include support for a client requesting different depth of data representations, depending on the use case:
@@ -357,7 +359,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R10.13** The protocol MUST allow extensions to add additional information to object statuses (e.g. due date of a status).
 
-**R10.14** Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
+**R10.14** The data model MUST be designed to allow extension for future or experimental DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
 
 # Scalability
 
@@ -407,7 +409,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 ## Common
 
-**O1.1** RPP MUST define a single, structured data model for representing DNS resource records. This model MUST be used consistently for all object types that require DNS representation (e.g., Host, Domain). The model MUST support common DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, like TTL. The model SHOULD be designed to be extensible for future, experimental or less common record types.
+**O1.1** *Removed*
 
 ### Object Transfers {#obj_transfers}
 
@@ -624,6 +626,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 ## Version -02 to -03
 
 * Merged R7.9 and R5.10 (Issue #124)
+* Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
 
 {numbered="false" toc="exclude"}
 ## Version -01 to -02
