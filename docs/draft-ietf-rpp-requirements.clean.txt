@@ -295,9 +295,6 @@ Table of Contents
    for both clients and the servers, in order to determine if the
    content is valid and no required attributes are missing.
 
-      |  TODO: Issue #36 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/36)
-
    *R5.4* RPP MUST define a default media type however the protocol
    SHALL be extensible to enable support for other media types.
 
@@ -353,9 +350,6 @@ Table of Contents
    *R6.4* RPP MUST support search for resource collections and SHOULD
    support filtering (e.g., by name prefix, status, registrar) and
    pagination.
-
-      |  TODO: Issue #56 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/56)
 
    *R6.5* RPP operations that modify repository state MUST be atomic.  A
    single request MUST either succeed completely or fail completely,
@@ -634,9 +628,6 @@ Table of Contents
    *R11.2* RPP MUST support cacheability of responses, if applicable to
    the operation semantics and MUST not include transaction related
    identifiers and values.
-
-      |  TODO: Issue #50 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/50)
 
    *R11.3* RPP MUST support load balancing at the level of request
    messages (URL) and load balancing MUST be possible without processing
@@ -1371,9 +1362,6 @@ A.2.  Optional extensions
    object (create, update ...).  The historical time window is
    determined by server policy and ist included in the discovery service
    document.
-
-      |  TODO: Issue #57 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/57)
 
    *A2.2* An extension for a Search API to allow for searching for
    objects in the registry database.  Includes advanced search
