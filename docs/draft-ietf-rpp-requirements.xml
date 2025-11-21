@@ -441,10 +441,10 @@
 
 <section anchor="changes-history" removeInRFC="true"><name>Changes History</name>
 
-<section anchor="version-02-to-03" toc="exclude"><name>Version -02 to -03</name>
+<section anchor="version-02-to-03" numbered="false" toc="exclude"><name>Version -02 to -03</name>
 </section>
 
-<section anchor="version-01-to-02" toc="exclude"><name>Version -01 to -02</name>
+<section anchor="version-01-to-02" numbered="false" toc="exclude"><name>Version -01 to -02</name>
 
 <ul spacing="compact">
 <li>Added requirement for support of both thick and thin registry models (R1.7)</li>
@@ -466,7 +466,7 @@
 </ul>
 </section>
 
-<section anchor="version-00-to-01" toc="exclude"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01" numbered="false" toc="exclude"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Added Privacy Considerations section</li>
@@ -477,14 +477,14 @@
 </ul>
 </section>
 
-<section anchor="version-01-to-00-wg" toc="exclude"><name>Version -01 to -00 (WG)</name>
+<section anchor="version-01-to-00-wg" numbered="false" toc="exclude"><name>Version -01 to -00 (WG)</name>
 
 <ul spacing="compact">
 <li>The document has been adopted by the working group, the version number has been reset from -01 to -00.</li>
 </ul>
 </section>
 
-<section anchor="version-00-to-01-1" toc="exclude"><name>Version -00 to -01</name>
+<section anchor="version-00-to-01-1" numbered="false" toc="exclude"><name>Version -00 to -01</name>
 
 <ul spacing="compact">
 <li>Structurally reorganised the document, renumbering all requirements and adding new sections for Operations, Clients, and Internationalisation.</li>

@@ -1333,9 +1333,9 @@ Internet-Draft             RPP - Requirements               October 2025
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -02 to -03
+Version -02 to -03
 
-22.2.  Version -01 to -02
+Version -01 to -02
 
 
 
@@ -1371,7 +1371,7 @@ Internet-Draft             RPP - Requirements               October 2025
       following the recommendation from the Tiger Team [TigerTeamRecc]
    -  Updated R4.6 to require the use of strict data validation
 
-22.3.  Version -00 to -01
+Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -1380,12 +1380,12 @@ Internet-Draft             RPP - Requirements               October 2025
       spelling style.
    -  stripped down version history of pre-WG -00 to -01
 
-22.4.  Version -01 to -00 (WG)
+Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.5.  Version -00 to -01
+Version -00 to -01
 
    -  Structurally reorganised the document, renumbering all
       requirements and adding new sections for Operations, Clients, and
