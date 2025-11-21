@@ -175,7 +175,7 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R5.9** RPP MUST support full update of data objects.
 
-**R5.10** A generated RPP response representation that includes an object identifier (for example a contact handle) MUST also include a URL reference to the location of the object representation.
+**R5.10** A generated RPP response representation that includes an object identifier (for example a contact handle) MAY also include a URL reference to the location of the object representation.
 
 **R5.11** RPP MUST support representation of a collections of resources.
 
@@ -262,7 +262,8 @@ Solutions may include:
 **R7.8** *Removed*
 <!-- A> //SEE: [Issue #21](https://github.com/ietf-wg-rpp/rpp-requirements/issues/21) -->
 
-**R7.9** An RPP response that includes unique object identifiers, MAY also include URL references for these objects.
+**R7.9** *Merged with R5.10*
+<!-- A> //SEE: [Issue #124](https://github.com/ietf-wg-rpp/rpp-requirements/issues/124) -->
 
 **R7.10** Versions used by the RPP and used extensions MUST be discoverable by the client.
 
@@ -622,6 +623,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 {numbered="false" toc="exclude"}
 ## Version -02 to -03
 
+* Merged R7.9 and R5.10 (Issue #124)
 
 {numbered="false" toc="exclude"}
 ## Version -01 to -02
