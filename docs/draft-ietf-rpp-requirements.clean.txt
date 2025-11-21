@@ -314,7 +314,7 @@ Table of Contents
    *R5.9* RPP MUST support full update of data objects.
 
    *R5.10* A generated RPP response representation that includes an
-   object identifier (for example a contact handle) MUST also include a
+   object identifier (for example a contact handle) MAY also include a
    URL reference to the location of the object representation.
 
    *R5.11* RPP MUST support representation of a collections of
@@ -444,8 +444,7 @@ Table of Contents
 
    *R7.8* _Removed_
 
-   *R7.9* An RPP response that includes unique object identifiers, MAY
-   also include URL references for these objects.
+   *R7.9* _Merged with R5.10_
 
    *R7.10* Versions used by the RPP and used extensions MUST be
    discoverable by the client.
@@ -1107,6 +1106,8 @@ Table of Contents
    This section is to be removed before publishing as an RFC.
 
 Version -02 to -03
+
+   -  Merged R7.9 and R5.10 (Issue #124)
 
 Version -01 to -02
 
