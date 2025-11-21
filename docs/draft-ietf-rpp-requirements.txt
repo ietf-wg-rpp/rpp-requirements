@@ -10,7 +10,7 @@ Expires: 16 April 2026                                             DENIC
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
-                     draft-ietf-rpp-requirements-02
+                     draft-ietf-rpp-requirements-03
 
 Abstract
 
@@ -96,16 +96,16 @@ Table of Contents
    20. Security Considerations . . . . . . . . . . . . . . . . . . .  24
    21. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  24
    22. Changes History . . . . . . . . . . . . . . . . . . . . . . .  24
-     22.1.  Version -01 to -02 . . . . . . . . . . . . . . . . . . .  24
-     22.2.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  25
-     22.3.  Version -01 to -00 (WG)  . . . . . . . . . . . . . . . .  25
-     22.4.  Version -00 to -01 . . . . . . . . . . . . . . . . . . .  25
    23. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
      23.1.  Normative References . . . . . . . . . . . . . . . . . .  26
      23.2.  Informative References . . . . . . . . . . . . . . . . .  29
    Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  29
      A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  29
      A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  30
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  30
+
+
+
 
 
 
@@ -113,8 +113,6 @@ Wullink & Kowalik         Expires 16 April 2026                 [Page 2]
 
 Internet-Draft             RPP - Requirements               October 2025
 
-
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  30
 
 1.  Introduction
 
@@ -162,6 +160,8 @@ Internet-Draft             RPP - Requirements               October 2025
    administrative, and technical contact information, and other relevant
    attributes required for provisioning.
 
+   Sponsoring Client - The RPP client that currently has sponsorship of
+   the object.
 
 
 
@@ -169,9 +169,6 @@ Wullink & Kowalik         Expires 16 April 2026                 [Page 3]
 
 Internet-Draft             RPP - Requirements               October 2025
 
-
-   Sponsoring Client - The RPP client that currently has sponsorship of
-   the object.
 
 3.  Conventions Used in This Document
 
@@ -217,6 +214,9 @@ Internet-Draft             RPP - Requirements               October 2025
    based applications, described in [BCP56].  There MUST be a clear
    justification when deviating from this.
 
+   *R2.3* Consistent, predictable and meaningful URL structures MUST be
+   used for identifying, accessing object resources and enable request
+   routing.
 
 
 
@@ -225,10 +225,6 @@ Wullink & Kowalik         Expires 16 April 2026                 [Page 4]
 
 Internet-Draft             RPP - Requirements               October 2025
 
-
-   *R2.3* Consistent, predictable and meaningful URL structures MUST be
-   used for identifying, accessing object resources and enable request
-   routing.
 
    *R2.4* RPP MUST use the existing HTTP status codes and MUST define
    application level status codes and map these to HTTP status codes.
@@ -274,6 +270,10 @@ Internet-Draft             RPP - Requirements               October 2025
    It MUST be possible to map the base data model to multiple data
    formats such as JSON, XML or YAML.
 
+   *R4.2* Commonly used EPP extensions SHOULD be added to the RPP core
+   data model.  An example of this is the DNSSEC extension.
+
+
 
 
 
@@ -281,9 +281,6 @@ Wullink & Kowalik         Expires 16 April 2026                 [Page 5]
 
 Internet-Draft             RPP - Requirements               October 2025
 
-
-   *R4.2* Commonly used EPP extensions SHOULD be added to the RPP core
-   data model.  An example of this is the DNSSEC extension.
 
    *R4.3* RPP MUST allow an extension mechanism that allows clients to
    signal data omission or redaction, indicating data collected but not
@@ -330,6 +327,9 @@ Internet-Draft             RPP - Requirements               October 2025
    many),that are integral to it.  Such resources MAY be embedded
    directly in the parent resource representation or exposed as sub-
    resources within the parent's URL structure.
+
+
+
 
 
 
@@ -1333,11 +1333,11 @@ Internet-Draft             RPP - Requirements               October 2025
 
    This section is to be removed before publishing as an RFC.
 
-22.1.  Version -01 to -02
+22.1.  Version -02 to -03
 
-   -  Added requirement for support of both thick and thin registry
-      models (R1.7)
-   -  Added requirements for Host Object Type
+22.2.  Version -01 to -02
+
+
 
 
 
@@ -1346,6 +1346,9 @@ Wullink & Kowalik         Expires 16 April 2026                [Page 24]
 Internet-Draft             RPP - Requirements               October 2025
 
 
+   -  Added requirement for support of both thick and thin registry
+      models (R1.7)
+   -  Added requirements for Host Object Type
    -  Added R10.12 on future ways of delegation
    -  Added requirements for Domain Object Type
    -  Added relevant and not yet covered requirements from [RFC3375]
@@ -1368,7 +1371,7 @@ Internet-Draft             RPP - Requirements               October 2025
       following the recommendation from the Tiger Team [TigerTeamRecc]
    -  Updated R4.6 to require the use of strict data validation
 
-22.2.  Version -00 to -01
+22.3.  Version -00 to -01
 
    -  Added Privacy Considerations section
    -  R1.5 has been changed to MUST instead of MAY.
@@ -1377,12 +1380,12 @@ Internet-Draft             RPP - Requirements               October 2025
       spelling style.
    -  stripped down version history of pre-WG -00 to -01
 
-22.3.  Version -01 to -00 (WG)
+22.4.  Version -01 to -00 (WG)
 
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
-22.4.  Version -00 to -01
+22.5.  Version -00 to -01
 
    -  Structurally reorganised the document, renumbering all
       requirements and adding new sections for Operations, Clients, and
@@ -1391,9 +1394,6 @@ Internet-Draft             RPP - Requirements               October 2025
       to leverage RESTful best practices.
    -  Introduced a formal framework for extensions, including versioning
       and discoverability.
-   -  Significantly expanded the security model to support granular,
-      multi-user authorisation.
-
 
 
 
@@ -1402,6 +1402,8 @@ Wullink & Kowalik         Expires 16 April 2026                [Page 25]
 Internet-Draft             RPP - Requirements               October 2025
 
 
+   -  Significantly expanded the security model to support granular,
+      multi-user authorisation.
    -  Mandated support for partial object updates and asynchronous
       processing for long-running operations.
    -  Detailed the requirements for a machine-readable discovery
@@ -1448,8 +1450,6 @@ Internet-Draft             RPP - Requirements               October 2025
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/info/rfc3986>.
-
-
 
 
 
