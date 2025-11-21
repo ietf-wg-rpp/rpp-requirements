@@ -308,7 +308,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.9** RPP MUST support a granular authorisation matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.
 
-**R9.10** RPP MUST allow users to update their credentials and enforce strong passwords and limited lifetime for passwords and other tokens.
+**R9.10** RPP MUST enforce strong passwords and limited lifetime for passwords and other tokens.
 
 **R9.11** RPP must support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.
 
@@ -358,6 +358,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 **R10.13** The protocol MUST allow extensions to add additional information to object statuses (e.g. due date of a status).
 
 **R10.14** Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
+
+**R10.15** RPP MUST support adding extension(s) for the clients to update their authentication credentials.
 
 # Scalability
 
@@ -624,6 +626,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 ## Version -02 to -03
 
 * Merged R7.9 and R5.10 (Issue #124)
+* Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.15 and an essential extension in A1.2 (Issue #70)
 
 {numbered="false" toc="exclude"}
 ## Version -01 to -02
@@ -688,6 +691,8 @@ The core RPP and its extensibility framework MUST enable creation of those exten
 **A.1** *Moved to (#appendix_extensions_optional) as A2.2*
 
 **A1.1** An extension that allows a DNS operator to update the DNSSEC key material for a domain object. This extension MAY be used by the DNS operator to update the DNSSEC key material for a domain object, without the need for the registrar to be involved in this process.
+
+**A1.2** An extension for the clients to update their EPP compatible (client_id/password) authentication credential.
 
 ## Optional extensions {#appendix_extensions_optional}
 
