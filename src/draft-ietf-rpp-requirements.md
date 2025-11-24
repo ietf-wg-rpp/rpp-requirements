@@ -312,7 +312,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.9** RPP MUST support a granular authorisation matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.
 
-**R9.10** RPP MUST enforce strong passwords and limited lifetime for passwords and other tokens.
+**R9.10** RPP MUST include considerations regarding best practices in secure handling of credentials, such as usage of strong passwords and limited lifetime for passwords and other tokens.
 
 **R9.11** RPP must support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.
 
@@ -365,7 +365,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R10.15** RPP design MUST promote cohesive extension patterns by defining a preferred "standard way" for common functionalities. Where multiple approaches to solve the same problem may exist, the protocol specification SHOULD provide clear guidance on the recommended approach to prevent ecosystem fragmentation and ensure consistent implementations across different deployments.
 
-**R10.15** RPP MUST support adding extension(s) for the clients to update their authentication credentials.
+**R10.16** RPP MUST support extension(s) for the clients to update their authentication credentials.
 
 # Scalability
 
@@ -632,7 +632,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 ## Version -02 to -03
 
 * Merged R7.9 and R5.10 (Issue #124)
-* Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.15 and an essential extension in A1.2 (Issue #70)
+* Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)
 * Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
 * Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations [@?TigerTeamRecc]
 
