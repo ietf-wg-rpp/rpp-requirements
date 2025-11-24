@@ -131,7 +131,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 A> TODO: [Issue #34](https://github.com/ietf-wg-rpp/rpp-requirements/issues/34)
 
-**R4.4** RPP MUST have a mechanism for defining profiles using unambiguous identifiers (e.g., unique names or codes) that clearly specify:
+**R4.4** RPP MUST have a mechanism for defining and signaling profiles that enable compatibility across different implementations. Profiles MUST have unambiguous identifiers (e.g., unique names or codes) and clearly describe:
 
 - The required components of the data model that must be implemented
 - Defined functional subsets that enable compatibility across different implementations.
