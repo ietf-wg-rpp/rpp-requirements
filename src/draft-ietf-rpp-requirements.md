@@ -107,6 +107,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R2.4** RPP MUST use the existing HTTP status codes and MUST define application level status codes and map these to HTTP status codes. RPP MUST NOT redefine existing HTTP status code semantics and when overloading (generic) HTTP status codes with multiple RPP status codes, the provided RPP status code MUST be used by the client to determine the exact nature of the problem.
 
+**R2.5** RPP MUST support deployment architectures where intermediary proxies route client requests to multiple backend servers (e.g., different TLD registries). The protocol MUST enable routing decisions based on URL patterns and HTTP headers, maintaining statelessness and allowing proxies to operate without parsing request bodies.
+
 # REST
 
 **R3.1** RPP architecture MUST use the principles of the [@!REST] architectural style. A RPP server MUST conform to at least level 2 of the [@!RICHARDSON] Maturity Model (RMM).
@@ -180,6 +182,8 @@ RPP MUST support the use of server profiles to define required components of the
 **R5.11** RPP MUST support representation of a collections of resources.
 
 **R5.12** The representation of the links (see R4.7) MUST be expressed using the RPP server's internal identifiers. The RPP SHOULD also consider using URIs and/or [@!RFC6570] URI templates for uniform addressing of link targets, both internal and external to the RPP server.
+
+**R5.13** RPP MUST define a structured data model for all object types that require DNS representation (e.g., Host, Domain). The data model MUST support commonly used DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, such as TTL. See R10.14 for extensibility requirements.
 
 # Operations and responses
 
@@ -326,7 +330,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R10.2** RPP MUST support the extension of the data model by enabling the definition and provisioning of entirely new object types, and by providing a standardised mechanism for adding new persistent properties to any existing object type.
 
-**R10.3** RPP SHOULD promote standardisation of commonly used extension attributes.
+**R10.3** RPP MUST define extensibility methods which promote transparency and reusability of extension objects, data elements or operations in order to minimise multiple concurrent extensions realising the same function.
 
 **R10.4** Extensions for new operations on existing resources MUST be supported.
 
@@ -357,7 +361,9 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R10.13** The protocol MUST allow extensions to add additional information to object statuses (e.g. due date of a status).
 
-**R10.14** Data model for DNS (see R4.7) MUST be extensible to future DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
+**R10.14** The data model MUST be designed to allow extension for future or experimental DNS record types as well as future ways of delegation over DNS (e.g. DELEG).
+
+**R10.15** RPP design MUST promote cohesive extension patterns by defining a preferred "standard way" for common functionalities. Where multiple approaches to solve the same problem may exist, the protocol specification SHOULD provide clear guidance on the recommended approach to prevent ecosystem fragmentation and ensure consistent implementations across different deployments.
 
 **R10.15** RPP MUST support adding extension(s) for the clients to update their authentication credentials.
 
@@ -409,7 +415,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 ## Common
 
-**O1.1** RPP MUST define a single, structured data model for representing DNS resource records. This model MUST be used consistently for all object types that require DNS representation (e.g., Host, Domain). The model MUST support common DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, like TTL. The model SHOULD be designed to be extensible for future, experimental or less common record types.
+**O1.1** *Removed*
 
 ### Object Transfers {#obj_transfers}
 
@@ -627,6 +633,9 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 * Merged R7.9 and R5.10 (Issue #124)
 * Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.15 and an essential extension in A1.2 (Issue #70)
+* Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
+* Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations [@?TigerTeamRecc]
+
 
 {numbered="false" toc="exclude"}
 ## Version -01 to -02
@@ -778,7 +787,7 @@ The following list of extensions is considered as possible need for certain depl
   </front>
 </reference>
 
-<reference anchor="TigerTeamRecc" target="https://docs.google.com/document/d/1WR00oB43XZCDqD0zvRvRajuWAq_9wQ3c0RrFKlGC3So">
+<reference anchor="TigerTeamRecc" target="https://mailarchive.ietf.org/arch/msg/rpp/rXMZqMrTmaxiNTlLNSM8_gGB_tQ/">
   <front>
     <title>EPP Extensibility and Extension Analysis</title>
     <author>
