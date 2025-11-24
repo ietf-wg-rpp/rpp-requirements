@@ -324,6 +324,8 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.15** RPP must support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.
 
+**R9.16**: RPP MUST support authorisation of registry operator power client or user, being able to either impersonate any of the clients of the registry, or act on behalf of registry with elevated access to provisioning objects of all registry clients as well as operations beyond of what is available to regular clients.
+
 # Extensibility
 
 **R10.1** The protocol MUST be extensible to accommodate new functionalities, data elements, read-only resources, operations, informational and validation functions, alternative addressing of resources,  resource linking, and resource composition beyond the initial definitions in RPP core.
@@ -629,6 +631,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 {numbered="false" toc="exclude"}
 ## Version -02 to -03
 
+* Add R9.16 to support registry operator use-case on authorization
 * Merged R7.9 and R5.10 (Issue #124)
 * Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
 * Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations [@?TigerTeamRecc]
