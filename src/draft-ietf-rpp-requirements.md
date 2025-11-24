@@ -135,7 +135,7 @@ A> TODO: [Issue #34](https://github.com/ietf-wg-rpp/rpp-requirements/issues/34)
 
 - The required components of the data model that must be implemented
 - Defined functional subsets that enable compatibility across different implementations.
-- Versions used by the components, data models and extensions support by the server
+- Versions used by the components, data models and extensions support by the client and the server
 
 A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
