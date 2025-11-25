@@ -543,8 +543,9 @@ Table of Contents
    only allowed to fetch data about existing objects, and power users
    allowed to create and modify objects.
 
-   *R9.10* RPP MUST allow users to update their credentials and enforce
-   strong passwords and limited lifetime for passwords and other tokens.
+   *R9.10* RPP MUST include considerations regarding best practices in
+   secure handling of credentials, such as usage of strong passwords and
+   limited lifetime for passwords and other tokens.
 
    *R9.11* RPP must support the Least Privilege Principle, to allow
    server operators to ensure that clients have only the permissions
@@ -636,6 +637,9 @@ Table of Contents
    protocol specification SHOULD provide clear guidance on the
    recommended approach to prevent ecosystem fragmentation and ensure
    consistent implementations across different deployments.
+
+   *R10.16* RPP MUST support extension(s) for the clients to update
+   their authentication credentials.
 
 14.  Scalability
 
@@ -1124,6 +1128,9 @@ Table of Contents
 Version -02 to -03
 
    -  Merged R7.9 and R5.10 (Issue #124)
+   -  Removed mandatory password change facility in R9.10.  Added
+      extensibility requirement in R10.16 and an essential extension in
+      A1.2 (Issue #70)
    -  Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
    -  Added requirements R2.5, R10.15 and R10.3 (changed) related to
       Generic Protocol Design Recommendations from the Tiger Team
@@ -1370,6 +1377,9 @@ A.1.  Essential extensions
    key material for a domain object.  This extension MAY be used by the
    DNS operator to update the DNSSEC key material for a domain object,
    without the need for the registrar to be involved in this process.
+
+   *A1.2* An extension for the clients to update their EPP compatible
+   (client_id/password) authentication credential.
 
 A.2.  Optional extensions
 
