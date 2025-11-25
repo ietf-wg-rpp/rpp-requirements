@@ -198,6 +198,13 @@ Table of Contents
    codes, the provided RPP status code MUST be used by the client to
    determine the exact nature of the problem.
 
+   *R2.5* RPP MUST support deployment architectures where intermediary
+   proxies route client requests to multiple backend servers (e.g.,
+   different TLD registries).  The protocol MUST enable routing
+   decisions based on URL patterns and HTTP headers, maintaining
+   statelessness and allowing proxies to operate without parsing request
+   bodies.
+
 6.  REST
 
    *R3.1* RPP architecture MUST use the principles of the [REST]
@@ -295,9 +302,6 @@ Table of Contents
    for both clients and the servers, in order to determine if the
    content is valid and no required attributes are missing.
 
-      |  TODO: Issue #36 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/36)
-
    *R5.4* RPP MUST define a default media type however the protocol
    SHALL be extensible to enable support for other media types.
 
@@ -317,7 +321,7 @@ Table of Contents
    *R5.9* RPP MUST support full update of data objects.
 
    *R5.10* A generated RPP response representation that includes an
-   object identifier (for example a contact handle) MUST also include a
+   object identifier (for example a contact handle) MAY also include a
    URL reference to the location of the object representation.
 
    *R5.11* RPP MUST support representation of a collections of
@@ -328,6 +332,12 @@ Table of Contents
    consider using URIs and/or [RFC6570] URI templates for uniform
    addressing of link targets, both internal and external to the RPP
    server.
+
+   *R5.13* RPP MUST define a structured data model for all object types
+   that require DNS representation (e.g., Host, Domain).  The data model
+   MUST support commonly used DNS record types (such as A, AAAA, CNAME,
+   MX, NS, DS, TXT) and their standard attributes, such as TTL.  See
+   R10.14 for extensibility requirements.
 
 9.  Operations and responses
 
@@ -353,9 +363,6 @@ Table of Contents
    *R6.4* RPP MUST support search for resource collections and SHOULD
    support filtering (e.g., by name prefix, status, registrar) and
    pagination.
-
-      |  TODO: Issue #56 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/56)
 
    *R6.5* RPP operations that modify repository state MUST be atomic.  A
    single request MUST either succeed completely or fail completely,
@@ -450,8 +457,7 @@ Table of Contents
 
    *R7.8* _Removed_
 
-   *R7.9* An RPP response that includes unique object identifiers, MAY
-   also include URL references for these objects.
+   *R7.9* _Merged with R5.10_
 
    *R7.10* Versions used by the RPP and used extensions MUST be
    discoverable by the client.
@@ -537,8 +543,9 @@ Table of Contents
    only allowed to fetch data about existing objects, and power users
    allowed to create and modify objects.
 
-   *R9.10* RPP MUST allow users to update their credentials and enforce
-   strong passwords and limited lifetime for passwords and other tokens.
+   *R9.10* RPP MUST include considerations regarding best practices in
+   secure handling of credentials, such as usage of strong passwords and
+   limited lifetime for passwords and other tokens.
 
    *R9.11* RPP must support the Least Privilege Principle, to allow
    server operators to ensure that clients have only the permissions
@@ -572,8 +579,10 @@ Table of Contents
    providing a standardised mechanism for adding new persistent
    properties to any existing object type.
 
-   *R10.3* RPP SHOULD promote standardisation of commonly used extension
-   attributes.
+   *R10.3* RPP MUST define extensibility methods which promote
+   transparency and reusability of extension objects, data elements or
+   operations in order to minimise multiple concurrent extensions
+   realising the same function.
 
    *R10.4* Extensions for new operations on existing resources MUST be
    supported.
@@ -618,9 +627,19 @@ Table of Contents
    *R10.13* The protocol MUST allow extensions to add additional
    information to object statuses (e.g. due date of a status).
 
-   *R10.14* Data model for DNS (see R4.7) MUST be extensible to future
-   DNS record types as well as future ways of delegation over DNS (e.g.
-   DELEG).
+   *R10.14* The data model MUST be designed to allow extension for
+   future or experimental DNS record types as well as future ways of
+   delegation over DNS (e.g. DELEG).
+
+   *R10.15* RPP design MUST promote cohesive extension patterns by
+   defining a preferred "standard way" for common functionalities.
+   Where multiple approaches to solve the same problem may exist, the
+   protocol specification SHOULD provide clear guidance on the
+   recommended approach to prevent ecosystem fragmentation and ensure
+   consistent implementations across different deployments.
+
+   *R10.16* RPP MUST support extension(s) for the clients to update
+   their authentication credentials.
 
 14.  Scalability
 
@@ -634,9 +653,6 @@ Table of Contents
    *R11.2* RPP MUST support cacheability of responses, if applicable to
    the operation semantics and MUST not include transaction related
    identifiers and values.
-
-      |  TODO: Issue #50 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/50)
 
    *R11.3* RPP MUST support load balancing at the level of request
    messages (URL) and load balancing MUST be possible without processing
@@ -697,13 +713,7 @@ Table of Contents
 
 18.1.  Common
 
-   *O1.1* RPP MUST define a single, structured data model for
-   representing DNS resource records.  This model MUST be used
-   consistently for all object types that require DNS representation
-   (e.g., Host, Domain).  The model MUST support common DNS record types
-   (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard
-   attributes, like TTL.  The model SHOULD be designed to be extensible
-   for future, experimental or less common record types.
+   *O1.1* _Removed_
 
 18.1.1.  Object Transfers
 
@@ -1117,6 +1127,15 @@ Table of Contents
 
 Version -02 to -03
 
+   -  Merged R7.9 and R5.10 (Issue #124)
+   -  Removed mandatory password change facility in R9.10.  Added
+      extensibility requirement in R10.16 and an essential extension in
+      A1.2 (Issue #70)
+   -  Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
+   -  Added requirements R2.5, R10.15 and R10.3 (changed) related to
+      Generic Protocol Design Recommendations from the Tiger Team
+      recommendations [TigerTeamRecc]
+
 Version -01 to -02
 
    -  Added requirement for support of both thick and thin registry
@@ -1336,8 +1355,9 @@ Version -00 to -01
    [TigerTeamRecc]
               RPP WG, Gould, J., Kolker, J., Kowalik, P., Skoglund, E.,
               and M. Wullink, "EPP Extensibility and Extension
-              Analysis", 2025, <https://docs.google.com/document/
-              d/1WR00oB43XZCDqD0zvRvRajuWAq_9wQ3c0RrFKlGC3So>.
+              Analysis", 2025,
+              <https://mailarchive.ietf.org/arch/msg/rpp/
+              rXMZqMrTmaxiNTlLNSM8_gGB_tQ/>.
 
 Appendix A.  Extensions
 
@@ -1358,6 +1378,9 @@ A.1.  Essential extensions
    DNS operator to update the DNSSEC key material for a domain object,
    without the need for the registrar to be involved in this process.
 
+   *A1.2* An extension for the clients to update their EPP compatible
+   (client_id/password) authentication credential.
+
 A.2.  Optional extensions
 
    The following list of extensions is considered as possible need for
@@ -1371,9 +1394,6 @@ A.2.  Optional extensions
    object (create, update ...).  The historical time window is
    determined by server policy and ist included in the discovery service
    document.
-
-      |  TODO: Issue #57 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/57)
 
    *A2.2* An extension for a Search API to allow for searching for
    objects in the registry database.  Includes advanced search
