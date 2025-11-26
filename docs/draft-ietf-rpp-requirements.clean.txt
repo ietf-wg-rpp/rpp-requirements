@@ -245,18 +245,22 @@ Table of Contents
    *R4.2* Commonly used EPP extensions SHOULD be added to the RPP core
    data model.  An example of this is the DNSSEC extension.
 
-   *R4.3* RPP MUST allow an extension mechanism that allows clients to
-   signal data omission or redaction, indicating data collected but not
-   transmitted to the registry or redacted.
+   *R4.3* The RPP core specification MUST only mandate data fields that
+   are strictly necessary for the technical provisioning and maintenance
+   of an object.  All other data fields MUST be optional at the protocol
+   level.  A server MUST be able to designate any protocol-optional
+   field as mandatory according to its local server policy.
 
-      |  TODO: Issue #34 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/34)
+   *R4.4* RPP MUST have a mechanism for defining and signaling profiles
+   that enable compatibility across different implementations.  Profiles
+   MUST have unambiguous identifiers (e.g., unique names or codes) and
+   clearly describe:
 
-   *R4.4* RPP MUST have mechanisms to define profiles to indicate:
-
-   -  Required parts of the data model
-   -  Mapping definition
-   -  Functional subsets for compatibility.
+   -  The required components of the data model that must be implemented
+   -  Defined functional subsets that enable compatibility across
+      different implementations.
+   -  Versions used by the components, data models and extensions
+      support by the client and the server
 
       |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/15)
@@ -1127,7 +1131,10 @@ Table of Contents
 
 Version -02 to -03
 
+   -  Updated R4.3 to only mandate data fields that are strictly
+      necessary
    -  Merged R7.9 and R5.10 (Issue #124)
+   -  Updated R4.4 to better describe profiles (Issue #15)
    -  Removed mandatory password change facility in R9.10.  Added
       extensibility requirement in R10.16 and an essential extension in
       A1.2 (Issue #70)
