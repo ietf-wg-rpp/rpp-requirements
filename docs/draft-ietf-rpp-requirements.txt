@@ -62,48 +62,48 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  Conventions Used in This Document . . . . . . . . . . . . . .   4
-   4.  General . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   5.  HTTP  . . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   6.  REST  . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   7.  Data Model  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   8.  Data Representation . . . . . . . . . . . . . . . . . . . . .   7
-   9.  Operations and responses  . . . . . . . . . . . . . . . . . .   8
-   10. Discoverability . . . . . . . . . . . . . . . . . . . . . . .   9
-   11. EPP compatibility . . . . . . . . . . . . . . . . . . . . . .  10
-   12. Security  . . . . . . . . . . . . . . . . . . . . . . . . . .  11
-   13. Extensibility . . . . . . . . . . . . . . . . . . . . . . . .  13
-   14. Scalability . . . . . . . . . . . . . . . . . . . . . . . . .  14
-   15. Performance . . . . . . . . . . . . . . . . . . . . . . . . .  15
-   16. Internationalisation  . . . . . . . . . . . . . . . . . . . .  15
-   17. Clients . . . . . . . . . . . . . . . . . . . . . . . . . . .  15
-   18. Requirements for object types . . . . . . . . . . . . . . . .  15
-     18.1.  Common . . . . . . . . . . . . . . . . . . . . . . . . .  16
-       18.1.1.  Object Transfers . . . . . . . . . . . . . . . . . .  16
+     2.1.  DNS Terms . . . . . . . . . . . . . . . . . . . . . . . .   4
+   3.  Conventions Used in This Document . . . . . . . . . . . . . .   5
+   4.  General . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   5.  HTTP  . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   6.  REST  . . . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   7.  Data Model  . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   8.  Data Representation . . . . . . . . . . . . . . . . . . . . .   8
+   9.  Operations and responses  . . . . . . . . . . . . . . . . . .   9
+   10. Discoverability . . . . . . . . . . . . . . . . . . . . . . .  10
+   11. EPP compatibility . . . . . . . . . . . . . . . . . . . . . .  11
+   12. Security  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
+   13. Extensibility . . . . . . . . . . . . . . . . . . . . . . . .  14
+   14. Scalability . . . . . . . . . . . . . . . . . . . . . . . . .  15
+   15. Performance . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   16. Internationalisation  . . . . . . . . . . . . . . . . . . . .  16
+   17. Clients . . . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   18. Requirements for object types . . . . . . . . . . . . . . . .  17
+     18.1.  Common . . . . . . . . . . . . . . . . . . . . . . . . .  17
+       18.1.1.  Object Transfers . . . . . . . . . . . . . . . . . .  17
      18.2.  Domain Object Type . . . . . . . . . . . . . . . . . . .  17
-       18.2.1.  Operations . . . . . . . . . . . . . . . . . . . . .  18
+       18.2.1.  Operations . . . . . . . . . . . . . . . . . . . . .  19
        18.2.2.  Data Representation  . . . . . . . . . . . . . . . .  19
-       18.2.3.  Embedding of EPP extensions  . . . . . . . . . . . .  19
-     18.3.  Host Object Type . . . . . . . . . . . . . . . . . . . .  19
-       18.3.1.  Operations . . . . . . . . . . . . . . . . . . . . .  20
+       18.2.3.  Embedding of EPP extensions  . . . . . . . . . . . .  20
+     18.3.  Host Object Type . . . . . . . . . . . . . . . . . . . .  20
+       18.3.1.  Operations . . . . . . . . . . . . . . . . . . . . .  21
        18.3.2.  Data Representation  . . . . . . . . . . . . . . . .  21
-     18.4.  Contact Object Type  . . . . . . . . . . . . . . . . . .  21
-       18.4.1.  Operations . . . . . . . . . . . . . . . . . . . . .  22
-       18.4.2.  Data Representation  . . . . . . . . . . . . . . . .  22
+     18.4.  Contact Object Type  . . . . . . . . . . . . . . . . . .  22
+       18.4.1.  Operations . . . . . . . . . . . . . . . . . . . . .  23
+       18.4.2.  Data Representation  . . . . . . . . . . . . . . . .  23
        18.4.3.  Internationalisation . . . . . . . . . . . . . . . .  23
-     18.5.  Organisation Object Type . . . . . . . . . . . . . . . .  23
-   19. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  23
+     18.5.  Organisation Object Type . . . . . . . . . . . . . . . .  24
+   19. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  24
    20. Security Considerations . . . . . . . . . . . . . . . . . . .  24
-   21. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  24
-   22. Changes History . . . . . . . . . . . . . . . . . . . . . . .  24
-   23. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
-     23.1.  Normative References . . . . . . . . . . . . . . . . . .  26
-     23.2.  Informative References . . . . . . . . . . . . . . . . .  29
-   Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  29
-     A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  29
-     A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  30
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  30
-
+   21. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  25
+   22. Changes History . . . . . . . . . . . . . . . . . . . . . . .  25
+   23. References  . . . . . . . . . . . . . . . . . . . . . . . . .  27
+     23.1.  Normative References . . . . . . . . . . . . . . . . . .  27
+     23.2.  Informative References . . . . . . . . . . . . . . . . .  30
+   Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  30
+     A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  30
+     A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  31
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  31
 
 
 
@@ -124,7 +124,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
 2.  Terminology
 
-   In this document the following terminology is used.
+   In this document the following terminology is used:
 
    REST - Representational State Transfer ([REST]).  An architectural
    style.
@@ -132,36 +132,36 @@ Internet-Draft             RPP - Requirements              November 2025
    RESTful - A RESTful web service is a web service or API implemented
    using HTTP and the principles of [REST].
 
-   EPP RFCs - This is a reference to the EPP version 1.0 specifications
-   [RFC5730], [RFC5731], [RFC5732] and [RFC5733].
+   RESTful Provisioning Protocol or RPP - The protocol which
+   requirements are described in this document.
 
-   RESTful Provisioning Protocol or RPP - The protocol described in this
-   document.
+   RPP Core - The collection of RFCs describing the RPP architecture,
+   data model, HTTP based protocol elements such as URLs and headers.
+   This also includes a description of allowed extension points.
 
    URL - A Uniform Resource Locator as defined in [RFC3986].
 
    Resource - An object having a type, data, and possible relationship
    to other resources, identified by a URL.
 
-   RPP client - An HTTP user agent performing an RPP request.
+   Extension - A specification that adds functionality to RPP Core,
+   within the extensibility framework defined herein.  Extensions MAY
+   provide additional features beyond those defined in RPP Core.
 
-   RPP server - An HTTP server responsible for processing requests and
+   EPP RFCs - This is a reference to the EPP version 1.0 specifications
+   [RFC5730], [RFC5731], [RFC5732] and [RFC5733].
+
+   RPP Client - An HTTP user agent performing an RPP request.
+
+   RPP Server - An HTTP server responsible for processing requests and
    returning results in any supported media type.
 
-   Thin registry - A registry model in which the registry stores and
-   serves only the minimal data necessary for delegation and
-   identification of an object (for example, domain name, registrar
-   identifier, status, and nameserver delegation).  Registrant and
-   contact data are maintained by the registrar and are not held by the
-   registry.
+   Repository Object Identifier (ROID) - A unique, persistent identifier
+   assigned by the repository (Registry) to each object upon creation,
+   remaining constant throughout the object's lifetime.
 
-   Thick registry - A registry model in which the registry stores and
-   serves the complete data set for an object, including registrant,
-   administrative, and technical contact information, and other relevant
-   attributes required for provisioning.
-
-   Sponsoring Client - The RPP client that currently has sponsorship of
-   the object.
+   Object Transfer / Transfer Operation - is an Registry operation used
+   to manage changes in client sponsorship of an existing object.
 
 
 
@@ -169,6 +169,71 @@ Wullink & Kowalik          Expires 25 May 2026                  [Page 3]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   EPP AuthInfo - EPP password based Authorisation Information defined
+   in [RFC5731] and [RFC5733].
+
+   Registry - An administrative authority responsible for maintaining
+   and operating an authoritative repository of provisioned objects
+   within a defined namespace or domain.  For the DNS Top-Level Domain
+   (TLD) use case, "Registry" specifically denotes the administrative
+   operation of a zone that allows registration of names within that
+   zone (see also definition in [RFC8499]).
+
+   Registrar - An entity that acts as an intermediary between
+   registrants and the Registry, providing registration services and
+   maintaining the Sponsoring Client relationship for registered
+   objects.
+
+   Registrant - An individual or organization on whose behalf a domain
+   name or other object is registered in the Registry.
+
+   Registry Operator - An entity performing technical operation of one
+   or more Registries.
+
+   Thin Registry - A Registry model in which the Registry stores and
+   serves only the minimal data necessary for Delegation and
+   identification of an object (for example, domain name, registrar
+   identifier, status, and Name Server Delegation).  Registrant and
+   contact data are maintained by the registrar and are not held by the
+   Registry.
+
+   Thick Registry - A Registry model in which the Registry stores and
+   serves the complete data set for an object, including registrant,
+   administrative, and technical contact information, and other relevant
+   attributes required for provisioning.
+
+   Sponsoring Client - The RPP Client that currently has sponsorship of
+   the object.
+
+   Initiating Client - In the Transfer Operation - the client that
+   starts the transfer request.
+
+   Gaining Client - In the Transfer Operation - the client seeking to
+   gain sponsorship of the object.
+
+2.1.  DNS Terms
+
+   Where DNS-specific terminology is used in this document, the
+   definitions from [RFC8499] apply unless otherwise specified.  Key DNS
+   terms used in this specification include:
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 4]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
+   -  Fully Qualified Domain Name (FQDN)
+   -  A-label and U-label (see also [RFC5890])
+   -  Name Server
+   -  Zone and Delegation
+   -  In-bailiwick and Out-of-bailiwick
+   -  Top-Level Domain (TLD)
+   -  Subordinate Host (as used in EPP)
+   -  DNS Operator
 
 3.  Conventions Used in This Document
 
@@ -199,9 +264,9 @@ Internet-Draft             RPP - Requirements              November 2025
    operation (information or warning) to convey additional information
    to the client for example about deprecation or partial success.
 
-   *R1.7* RPP MUST support both Thin and Thick registry models, and MUST
+   *R1.7* RPP MUST support both Thin and Thick Registry models, and MUST
    allow for flexibility in how much data and what type of data is
-   stored and returned by the server, according to the chosen registry
+   stored and returned by the server, according to the chosen Registry
    model.  The data elements returned is based on what the client is
    authorized to receive.
 
@@ -209,6 +274,13 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R2.1* The Hypertext Transfer Protocol (HTTP) [RFC9110] MUST be used
    as the transport mechanism for RPP.
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 5]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    *R2.2* RPP SHOULD use the best common practices for designing HTTP
    based applications, described in [BCP56].  There MUST be a clear
@@ -218,14 +290,6 @@ Internet-Draft             RPP - Requirements              November 2025
    used for identifying, accessing object resources and enable request
    routing.
 
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                  [Page 4]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
    *R2.4* RPP MUST use the existing HTTP status codes and MUST define
    application level status codes and map these to HTTP status codes.
    RPP MUST NOT redefine existing HTTP status code semantics and when
@@ -233,10 +297,17 @@ Internet-Draft             RPP - Requirements              November 2025
    codes, the provided RPP status code MUST be used by the client to
    determine the exact nature of the problem.
 
+   *R2.5* RPP MUST support deployment architectures where intermediary
+   proxies route client requests to multiple backend servers (e.g.,
+   different TLD Registries).  The protocol MUST enable routing
+   decisions based on URL patterns and HTTP headers, maintaining
+   statelessness and allowing proxies to operate without parsing request
+   bodies.
+
 6.  REST
 
    *R3.1* RPP architecture MUST use the principles of the [REST]
-   architectural style.  A RPP server MUST conform to at least level 2
+   architectural style.  A RPP Server MUST conform to at least level 2
    of the [RICHARDSON] Maturity Model (RMM).
 
    *R3.2* RPP architecture MUST follow Resource-Oriented Architecture
@@ -254,9 +325,18 @@ Internet-Draft             RPP - Requirements              November 2025
    well-established API specification, such as [!@OpenAPI] or [RAML].
    This will facilitate documentation, testing, code generation, and
    user-friendly extension descriptions.  RPP MUST NOT require what API
-   specification technology is to be used.  The RPP core documents and
-   extension documents may also choose different API specification
+   specification technology is to be used.  The RPP Core documents and
+   Extension documents may also choose different API specification
    solutions, this choice is left to the document authors.
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 6]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    *R3.6* RPP architecture MUST define a common pattern to allow a
    single resource to be addressable via multiple, alternative
@@ -270,30 +350,25 @@ Internet-Draft             RPP - Requirements              November 2025
    It MUST be possible to map the base data model to multiple data
    formats such as JSON, XML or YAML.
 
-   *R4.2* Commonly used EPP extensions SHOULD be added to the RPP core
+   *R4.2* Commonly used EPP extensions SHOULD be added to the RPP Core
    data model.  An example of this is the DNSSEC extension.
 
+   *R4.3* The RPP Core specification MUST only mandate data fields that
+   are strictly necessary for the technical provisioning and maintenance
+   of an object.  All other data fields MUST be optional at the protocol
+   level.  A server MUST be able to designate any protocol-optional
+   field as mandatory according to its local server policy.
 
+   *R4.4* RPP MUST have a mechanism for defining and signaling profiles
+   that enable compatibility across different implementations.  Profiles
+   MUST have unambiguous identifiers (e.g., unique names or codes) and
+   clearly describe:
 
-
-
-Wullink & Kowalik          Expires 25 May 2026                  [Page 5]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
-   *R4.3* RPP MUST allow an extension mechanism that allows clients to
-   signal data omission or redaction, indicating data collected but not
-   transmitted to the registry or redacted.
-
-      |  TODO: Issue #34 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/34)
-
-   *R4.4* RPP MUST have mechanisms to define profiles to indicate:
-
-   -  Required parts of the data model
-   -  Mapping definition
-   -  Functional subsets for compatibility.
+   -  The required components of the data model that must be implemented
+   -  Defined functional subsets that enable compatibility across
+      different implementations.
+   -  Versions used by the components, data models and extensions
+      support by the client and the server
 
       |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/15)
@@ -312,9 +387,16 @@ Internet-Draft             RPP - Requirements              November 2025
    (e.g., a link between a domain and a contact object with a different
    contact role).
 
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 7]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    *R4.8* RPP MUST allow a client to reference a shared object (e.g., a
    host or contact) sponsored by a different client, while ensuring the
-   sponsoring client retains full administrative control over the shared
+   Sponsoring Client retains full administrative control over the shared
    object.
 
    *R4.9* RPP MUST support the definition of first-class, read-only
@@ -328,16 +410,6 @@ Internet-Draft             RPP - Requirements              November 2025
    directly in the parent resource representation or exposed as sub-
    resources within the parent's URL structure.
 
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                  [Page 6]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
 8.  Data Representation
 
    *R5.1* RPP MUST use JSON as the default data format.
@@ -348,9 +420,6 @@ Internet-Draft             RPP - Requirements              November 2025
    *R5.3* Validation of request and response message MUST be supported
    for both clients and the servers, in order to determine if the
    content is valid and no required attributes are missing.
-
-      |  TODO: Issue #36 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/36)
 
    *R5.4* RPP MUST define a default media type however the protocol
    SHALL be extensible to enable support for other media types.
@@ -371,28 +440,30 @@ Internet-Draft             RPP - Requirements              November 2025
    *R5.9* RPP MUST support full update of data objects.
 
    *R5.10* A generated RPP response representation that includes an
-   object identifier (for example a contact handle) MUST also include a
+   object identifier (for example a contact handle) MAY also include a
    URL reference to the location of the object representation.
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 8]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    *R5.11* RPP MUST support representation of a collections of
    resources.
 
    *R5.12* The representation of the links (see R4.7) MUST be expressed
-   using the RPP server's internal identifiers.  The RPP SHOULD also
+   using the RPP Server's internal identifiers.  The RPP SHOULD also
    consider using URIs and/or [RFC6570] URI templates for uniform
    addressing of link targets, both internal and external to the RPP
-   server.
+   Server.
 
-
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                  [Page 7]
-
-Internet-Draft             RPP - Requirements              November 2025
-
+   *R5.13* RPP MUST define a structured data model for all object types
+   that require DNS representation (e.g., Host, Domain).  The data model
+   MUST support commonly used DNS record types (such as A, AAAA, CNAME,
+   MX, NS, DS, TXT) and their standard attributes, such as TTL.  See
+   R10.14 for extensibility requirements.
 
 9.  Operations and responses
 
@@ -419,9 +490,6 @@ Internet-Draft             RPP - Requirements              November 2025
    support filtering (e.g., by name prefix, status, registrar) and
    pagination.
 
-      |  TODO: Issue #56 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/56)
-
    *R6.5* RPP operations that modify repository state MUST be atomic.  A
    single request MUST either succeed completely or fail completely,
    leaving the repository in its original state.
@@ -431,6 +499,13 @@ Internet-Draft             RPP - Requirements              November 2025
    has been terminated or timed out before complete response has been
    received by the client (idempotency).
 
+
+
+Wullink & Kowalik          Expires 25 May 2026                  [Page 9]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    *R6.7* The protocol specification MUST define the expected server
    state for a request that times or terminates out before a response is
    fully sent out the the client.
@@ -438,17 +513,6 @@ Internet-Draft             RPP - Requirements              November 2025
    *R6.8* For every request the server MUST generate a permanent,
    server-unique transaction identifier.  This identifier MUST be
    returned to the client in the response.
-
-
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                  [Page 8]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    *R6.9* RPP MUST support informational and validation functions that
    are not directly tied to a persistent, provisioned object.  These
@@ -470,13 +534,13 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R6.11* RPP MUST include a functional equivalent of [RFC9038] to
    allow clients retrieve service messages including information it may
-   not understand due to missing extension support.
+   not understand due to missing Extension support.
 
 10.  Discoverability
 
    *R7.1* RPP MAY include a bootstrap mechanism designed to allow
    clients to locate the network identifier for the RPP service of a
-   registry operator, e.g. rpp.sidn.nl for the registry operator for the
+   Registry Operator, e.g. rpp.sidn.nl for the Registry Operator for the
    .nl ccTLD.
 
    Solutions may include:
@@ -484,11 +548,19 @@ Internet-Draft             RPP - Requirements              November 2025
    -  IANA bootstrap Service Registry
    -  DNS TXT records
 
-   *R7.2* An RPP server MUST publish a service discovery document in the
+   *R7.2* An RPP Server MUST publish a service discovery document in the
    well-known directory, described in [RFC5785].  This document contains
    structured machine-readable information that is required or useful
    for the client to be able to generate valid RPP requests.  The
    information may contain, but is not limited to:
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 10]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    -  Available services,
    -  Used Extensions
@@ -497,14 +569,6 @@ Internet-Draft             RPP - Requirements              November 2025
    -  Server datetime
    -  Maintenance notices
    -  Supported profiles
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                  [Page 9]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    *R7.3* Server provided functionality, such as the set of supported
    profiles, languages or extensions, MUST discoverable using the
@@ -534,8 +598,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R7.8* _Removed_
 
-   *R7.9* An RPP response that includes unique object identifiers, MAY
-   also include URL references for these objects.
+   *R7.9* _Merged with R5.10_
 
    *R7.10* Versions used by the RPP and used extensions MUST be
    discoverable by the client.
@@ -547,20 +610,19 @@ Internet-Draft             RPP - Requirements              November 2025
    organisation objects as defined in [RFC5731], [RFC5732], [RFC5733]
    and [RFC8543].
 
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 11]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    *R8.2* The automatic or mechanical mapping or conversion between EPP
    and RPP data model MUST be possible.
 
    *R8.3* Compatibility definitions for a RPP to EPP mapping MAY be
    defined in compatibility profiles (see: R4.4).
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 10]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
       |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/15)
@@ -569,10 +631,9 @@ Internet-Draft             RPP - Requirements              November 2025
    equivalents of most commonly used EPP extensions, which are not a
    part of core protocol (see: R4.2)
 
-   *R8.5* EPP password based Authorisation Information defined in
-   [RFC5731] and [RFC5733] MUST be supported in RPP.  RPP MUST by
-   default support the requirements for Secure Authorization Information
-   for Transfer [RFC9154] operational practise.
+   *R8.5* EPP AuthInfo MUST be supported in RPP.  RPP MUST by default
+   support the requirements for Secure Authorization Information for
+   Transfer [RFC9154] operational practise.
 
    *R8.6* RPP SHOULD support client_id/password authentication to match
    EPP client authentication.
@@ -599,24 +660,23 @@ Internet-Draft             RPP - Requirements              November 2025
    obtained interactively by the registrant during the transfer process.
 
    *R9.4* RPP MUST include an authorisation model/framework that goes
-   beyond the current EPP password based Authorisation Information
-   (AuthInfo) used for object transfers.  The following use cases MAY be
-   supported:
+   beyond the EPP AuthInfo used for object transfers.  The following use
+   cases MAY be supported:
 
-   -  Object transfers without using an EPP password based Authorisation
-      Information
-   -  Registrants using OpenID Connect can interactively allow DNS
-      operator to update their NS records, directly in the registry
-      database or indirectly using a registrar.
+   -  Object transfers without using an EPP AuthInfo
 
 
 
 
 
-Wullink & Kowalik          Expires 25 May 2026                 [Page 11]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 12]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   -  Registrants using OpenID Connect can interactively allow DNS
+      Operator to update their NS records, directly in the Registry
+      database or indirectly using a registrar.
 
    *R9.5* All RPP communications MUST use HTTPS (TLS) to protect data in
    transit from eavesdropping and man-in-the-middle attacks.
@@ -639,8 +699,9 @@ Internet-Draft             RPP - Requirements              November 2025
    only allowed to fetch data about existing objects, and power users
    allowed to create and modify objects.
 
-   *R9.10* RPP MUST allow users to update their credentials and enforce
-   strong passwords and limited lifetime for passwords and other tokens.
+   *R9.10* RPP MUST include considerations regarding best practices in
+   secure handling of credentials, such as usage of strong passwords and
+   limited lifetime for passwords and other tokens.
 
    *R9.11* RPP must support the Least Privilege Principle, to allow
    server operators to ensure that clients have only the permissions
@@ -664,12 +725,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
 
 
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 12]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 13]
 
 Internet-Draft             RPP - Requirements              November 2025
 
@@ -680,15 +736,17 @@ Internet-Draft             RPP - Requirements              November 2025
    functionalities, data elements, read-only resources, operations,
    informational and validation functions, alternative addressing of
    resources, resource linking, and resource composition beyond the
-   initial definitions in RPP core.
+   initial definitions in RPP Core.
 
-   *R10.2* RPP MUST support the extension of the data model by enabling
+   *R10.2* RPP MUST support the Extension of the data model by enabling
    the definition and provisioning of entirely new object types, and by
    providing a standardised mechanism for adding new persistent
    properties to any existing object type.
 
-   *R10.3* RPP SHOULD promote standardisation of commonly used extension
-   attributes.
+   *R10.3* RPP MUST define extensibility methods which promote
+   transparency and reusability of extension objects, data elements or
+   operations in order to minimise multiple concurrent extensions
+   realising the same function.
 
    *R10.4* Extensions for new operations on existing resources MUST be
    supported.
@@ -700,7 +758,7 @@ Internet-Draft             RPP - Requirements              November 2025
    already defined in the core RPP RFCs.  Extension designers MAY add
    new status codes.  If a newly created status code is generic enough
    to be useful for the wider RPP community, the designer SHOULD
-   register it in the appropriate IANA registry.
+   register it in the appropriate IANA Registry.
 
    *R10.6* RPP MUST support extensions adding new HTTP headers.
 
@@ -711,7 +769,7 @@ Internet-Draft             RPP - Requirements              November 2025
    in private/vendor discretion as well as a coordinated process for
    core, generic or shared elements.
 
-   *R10.8* When a public registry for RPP extensions is required, then
+   *R10.8* When a public Registry for RPP extensions is required, then
    IANA MUST be used for this function.
 
    *R10.9* RPP extensions MUST include support for versioning, the
@@ -723,9 +781,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
 
 
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 13]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 14]
 
 Internet-Draft             RPP - Requirements              November 2025
 
@@ -737,15 +793,25 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R10.12* The protocol MUST support mechanisms for extending results
    of an operation with additional transient, non-persistent information
-   not defined in the RPP core (e.g. information about discount applied
+   not defined in the RPP Core (e.g. information about discount applied
    to a create request).
 
    *R10.13* The protocol MUST allow extensions to add additional
    information to object statuses (e.g. due date of a status).
 
-   *R10.14* Data model for DNS (see R4.7) MUST be extensible to future
-   DNS record types as well as future ways of delegation over DNS (e.g.
-   DELEG).
+   *R10.14* The data model MUST be designed to allow Extension for
+   future or experimental DNS record types as well as future ways of
+   Delegation over DNS (e.g. DELEG).
+
+   *R10.15* RPP design MUST promote cohesive Extension patterns by
+   defining a preferred "standard way" for common functionalities.
+   Where multiple approaches to solve the same problem may exist, the
+   protocol specification SHOULD provide clear guidance on the
+   recommended approach to prevent ecosystem fragmentation and ensure
+   consistent implementations across different deployments.
+
+   *R10.16* RPP MUST support Extension(s) for the clients to update
+   their authentication credentials.
 
 14.  Scalability
 
@@ -760,9 +826,6 @@ Internet-Draft             RPP - Requirements              November 2025
    the operation semantics and MUST not include transaction related
    identifiers and values.
 
-      |  TODO: Issue #50 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/50)
-
    *R11.3* RPP MUST support load balancing at the level of request
    messages (URL) and load balancing MUST be possible without processing
    HTTP body.
@@ -771,20 +834,19 @@ Internet-Draft             RPP - Requirements              November 2025
    for the server to operate on, with the exception of operations that
    are explicitly defined as a bulk operation.
 
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 15]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    *R11.5* RPP MUST support asynchronous processing for operations on
    multiple objects, otherwise resource intensive or involving manual
    steps.  The client request results in a confirmation of receipt and a
    means for retrieving the final completed processing result at a later
    time.
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 14]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
 15.  Performance
 
@@ -813,7 +875,7 @@ Internet-Draft             RPP - Requirements              November 2025
 17.  Clients
 
    *R14.1* RPP MUST support server applications as clients.  This will
-   be a primary use-case of registry/registrar integration.
+   be a primary use-case of Registry/registrar integration.
 
    *R14.2* RPP MUST support interaction from command-line tools or
    desktop applications capable of sending HTTP requests.  These can be
@@ -822,44 +884,27 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R14.3* RPP SHOULD support web browsers as clients, such as SPA
    (single page applications) without any proxy backend between web
-   browser and the RPP server.
+   browser and the RPP Server.
 
    *R14.4* RPP SHOULD support mobile applications as clients, also here
    through direct integration without any proxy backend.
 
-18.  Requirements for object types
 
 
 
 
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 15]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 16]
 
 Internet-Draft             RPP - Requirements              November 2025
 
 
+18.  Requirements for object types
+
 18.1.  Common
 
-   *O1.1* RPP MUST define a single, structured data model for
-   representing DNS resource records.  This model MUST be used
-   consistently for all object types that require DNS representation
-   (e.g., Host, Domain).  The model MUST support common DNS record types
-   (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard
-   attributes, like TTL.  The model SHOULD be designed to be extensible
-   for future, experimental or less common record types.
+   *O1.1* _Removed_
 
 18.1.1.  Object Transfers
-
-   For the purposes of requirements related to transfers, the following
-   specific terms are used:
-
-   -  Gaining Client: The client seeking to gain sponsorship of the
-      object.
-   -  Initiating Client: The client that starts the transfer request.
 
    *O2.1* RPP MUST support two types of object transfer operations:
 
@@ -888,16 +933,6 @@ Internet-Draft             RPP - Requirements              November 2025
    or recently completed transfer request.  This operation MUST be
    accessible to the Sponsoring Client and the Gaining Client.
 
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 16]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
    *O2.7* The response to a successful object transfer MUST include a
    representation of the transferred object and a list of any associated
    objects that were also transferred.
@@ -906,11 +941,18 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *D1.1* RPP domain object data model MUST include, at a minimum, the
    attributes defined in RFC5731: the fully qualified domain name,
-   repository object identifier, object status, the current sponsoring
-   client identifier, creating registrar client ID, creation timestamp,
+   Repository Object Identifier, object status, the current Sponsoring
+   Client identifier, creating registrar client ID, creation timestamp,
    last update client ID, last update timestamp, expiration timestamp,
-   last transfer timestamp, name servers, subordinate hosts, the
+   last transfer timestamp, Nameservers, subordinate hosts, the
    registrant, and other associated contacts.
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 17]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    *D1.2* RPP MUST only accept valid domain names, which MUST be valid
    FQDNs.
@@ -925,34 +967,24 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *D1.5* RPP domain object data model MUST allow for the association of
    zero, one or more objects representing the DNS configuration of the
-   domain including name servers.  These may be defined by a reference
-   to separate repository objects (equivalent of EPP host objects) or
+   domain including Nameservers.  These may be defined by a reference to
+   separate repository objects (equivalent of EPP host objects) or
    aggregate object (equivalent of EPP host attribute).
 
    *D1.6* RPP MUST support domains that have linkage to at minimum
    registrant, administrative, technical, and billing contacts.  In thin
-   registries, only identifiers MAY be stored; in thick registries,
+   Registries, only identifiers MAY be stored; in thick Registries,
    contact data MAY be included per (privacy) policy.  The list of
    contact link types MUST be extensible.
 
-   *D1.7* RPP domain objects MUST support EPP password-based
-   Authorisation Information (authInfo) for transfer operations (see
-   R8.5).
+   *D1.7* RPP domain objects MUST support EPP AuthInfo for transfer
+   operations (see R8.5).
 
    *D1.8* RPP MUST provide functional equivalents for EPP domain status
    values (e.g., ok, inactive, client/server<command>Prohibited,
    pending<command>) and define their mapping to RPP responses and HTTP
    status codes.  The protocol MUST define which statuses can be set by
-   the server and which can be set by the sponsoring client.
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 17]
-
-Internet-Draft             RPP - Requirements              November 2025
-
+   the server and which can be set by the Sponsoring Client.
 
    *D1.9* RPP MUST enforce referential integrity. the parent domain name
    for a subordinate host object MUST not be deleted.  RPP MUST return a
@@ -965,6 +997,18 @@ Internet-Draft             RPP - Requirements              November 2025
    Information such as the identifiers for supported IDN tables,
    applicable language tags, and variant disposition policies MUST be
    discoverable via the service discovery document (see R7.2).
+
+
+
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 18]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
 18.2.1.  Operations
 
@@ -983,35 +1027,27 @@ Internet-Draft             RPP - Requirements              November 2025
    2-step process in EPP.
 
    *D2.4* RPP MAY support searching and listing domains filtered by name
-   (exact/prefix), and sponsoring client.
+   (exact/prefix), and Sponsoring Client.
 
-   *D2.5* Only the sponsoring client (or an authorised server
+   *D2.5* Only the Sponsoring Client (or an authorised server
    administrator) MAY modify or delete a domain object; servers MUST
    enforce authorisation.
 
    *D2.6* RPP MUST prevent creation of duplicate domain objects within a
-   registry namespace (TLD) and return a HTTP 409 (Conflict) status on
+   Registry namespace (TLD) and return a HTTP 409 (Conflict) status on
    collision.
 
    *D2.7* The transfer of a domain object MUST also result in the
    transfer of any subordinate host objects (ns.foo.example when
    foo.example is transferred).
 
-   *D2.8* RPP domain transfer operation MUST allow for an implicit
+   *D2.8* RPP domain Transfer Operation MUST allow for an implicit
    renewal.  If a transfer results in an extension of the registration
    period, the response to the successful transfer MUST include the new
    expiration date of the domain object.
 
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 18]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
-   *D2.9* RPP domain transfer operation SHOULD support optional update
-   of DNSSEC and delegation information directly with the transfer
+   *D2.9* RPP domain Transfer Operation SHOULD support optional update
+   of DNSSEC and Delegation information directly with the transfer
    request.  This feature, as not standard EPP feature, SHALL be
    optional to be supported by server policy.
 
@@ -1023,13 +1059,20 @@ Internet-Draft             RPP - Requirements              November 2025
    *D3.2* RPP domain object representation MUST include link relations
    to related objects, for example: self, hosts and contacts.
 
-   *D3.3* The representation MUST adapt to the registry model.  In thin
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 19]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
+   *D3.3* The representation MUST adapt to the Registry model.  In thin
    mode, only identifiers (e.g., contact IDs) MUST be returned; in thick
    mode, full contact data MUST be returned.
 
 18.2.3.  Embedding of EPP extensions
 
-   *D4.1* RPP core protocol MUST incorporate functional equivalent of
+   *D4.1* RPP Core protocol MUST incorporate functional equivalent of
    the following list of widely used and considered essential EPP
    extensions as recommended in [TigerTeamRecc]:
 
@@ -1046,8 +1089,8 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *H1.1* RPP host object data model MUST include, at a minimum: fully
    qualified host name, all associated IP addresses (see O1.1),
-   repository object identifier, object status, current sponsoring
-   client identifier, creating client identifier, creation timestamp,
+   Repository Object Identifier, object status, current Sponsoring
+   Client identifier, creating client identifier, creation timestamp,
    last updating client identifier, last update timestamp, the last
    transfer timestamp.
 
@@ -1055,16 +1098,6 @@ Internet-Draft             RPP - Requirements              November 2025
    DNS model defined by RPP (O1.1).
 
    *H1.3* Host names MUST be valid FQDNs.
-
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 19]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    *H1.4* RPP MUST support internationalized domain names (IDN) for host
    names and accept A-labels and U-labels, also know as IDNA2008 and
@@ -1074,16 +1107,24 @@ Internet-Draft             RPP - Requirements              November 2025
    Section 2.3.2.4 of [RFC5890] when processing host names in requests
    and responses by both clients and servers.
 
-   *H1.6* When used for linking a name server to a domain name, RPP MUST
-   support both in-bailiwick and out-of-bailiwick host objects.
+   *H1.6* When used for linking a Name Server to a domain name, RPP MUST
+   support both In-bailiwick and Out-of-bailiwick host objects.
 
    *H1.7* RPP MUST support zero or more IP addresses (IPv4 or IPv6) for
-   host objects, when the host object is used for linking a name server
+   host objects, when the host object is used for linking a Name Server
    to a domain name.  Addresses MUST be syntactically valid, normalised,
    and unique within the host.  The maximum number of allowed addressess
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 20]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    and any disallowed ranges (e.g., [RFC1918]) are server policy.  The
    server MAY require, make optional or disallow IP addresses depending
-   on whether host is in-bailiwick or out-of-bailiwick.  This is also
+   on whether host is In-bailiwick or Out-of-bailiwick.  This is also
    server policy.
 
    *H1.8* RPP MUST provide functional equivalents for EPP host status
@@ -1096,37 +1137,29 @@ Internet-Draft             RPP - Requirements              November 2025
    *H2.1* RPP MUST RPP MUST provide operations to check, create, read,
    update and delete host objects as defined in [RFC5732], with partial
    update semantics available to allow for efficient updates.  Transfer
-   operation of subordinate host object MUST be implicit with the
-   transfer operation of parent domain name.
+   Operation of subordinate host object MUST be implicit with the
+   Transfer Operation of parent domain name.
 
    *H2.2* RPP SHOULD support searching and listing hosts filtered by
-   name (exact/prefix), IP address, and sponsoring client, with
+   name (exact/prefix), IP address, and Sponsoring Client, with
    pagination, the server MAY use a maximum limit on results.
 
-   *H2.3* Only the sponsoring client (or an authorised server
+   *H2.3* Only the Sponsoring Client (or an authorised server
    administrator) MAY modify or delete a host; servers MUST enforce
    authorisation.
 
-   *H2.4* RPP MUST assure that in-bailiwick host objects are created and
-   managed by the same sponsoring client as the parent domain name.
+   *H2.4* RPP MUST assure that In-bailiwick host objects are created and
+   managed by the same Sponsoring Client as the parent domain name.
 
    *H2.5* RPP MUST enforce referential integrity.  A host referenced by
    any domain (linked) MUST NOT be deleted.  Servers MUST return a
    conflict error when deletion is disallowed and the host
    representation MAY include an attribute with information about linked
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 20]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
    objects.  RPP MUST allow for safe deletion of referenced hosts - with
    grace period, restore and prior removal of references as recommended
    in [RFC9874].
 
-   *H2.6* RPP MUST prevent creation of duplicate hosts within a registry
+   *H2.6* RPP MUST prevent creation of duplicate hosts within a Registry
    namespace (TLD) and return a conflict on collision.
 
 18.3.2.  Data Representation
@@ -1137,15 +1170,23 @@ Internet-Draft             RPP - Requirements              November 2025
    *H3.2* The JSON representation MUST include the canonical host name
    and any U-label/A-label when IDN is used.
 
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 21]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    *H3.3* The representation SHOULD include link relations to related
-   objects, for example: self, and parent domain for in-bailiwick hosts.
+   objects, for example: self, and parent domain for In-bailiwick hosts.
 
 18.4.  Contact Object Type
 
    *C1.1* RPP contact object data model MUST include, at a minimum an
    equivalent of RFC5733 contact data model: a unique identifier,
    repository object ID, current status, name, organisation, full postal
-   address, voice and fax numbers, email addresses,the sponsoring client
+   address, voice and fax numbers, email addresses,the Sponsoring Client
    identifier, the creating client identifier, creation timestamp, the
    last updating client identifier, last update timestamp, last transfer
    timestamp, and authorisation information.
@@ -1156,8 +1197,8 @@ Internet-Draft             RPP - Requirements              November 2025
    *C1.3* RPP SHOULD support an explicit indication of entity type
    (person or organisation) in the contact model.
 
-   *C1.4* When RPP is used with thick registries, full contact data MAY
-   be returned, for thin registries only the contact identifier MUST be
+   *C1.4* When RPP is used with thick Registries, full contact data MAY
+   be returned, for thin Registries only the contact identifier MUST be
    returned.
 
    *C1.5* RPP MUST support disclosure and privacy preferences equivalent
@@ -1165,18 +1206,9 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *C1.6* RPP MUST support contact object to refer to external identity
    provider (e.g. when digital identity schemes are used), where the
-   personal data would not be persisted within RPP server.  RPP SHOULD
+   personal data would not be persisted within RPP Server.  RPP SHOULD
    allow to only store a stable identifier, reference or credential for
    future verification (see Privacy Considerations).
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 21]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    *C1.7* RPP MUST enforce referential integrity.  A contact MUST not be
    deleted when it is referenced by other objects.  RPP MUST return a
@@ -1187,6 +1219,20 @@ Internet-Draft             RPP - Requirements              November 2025
    *C1.8* RPP SHOULD consider renaming the EPP contact object type to
    "entity" to better align with the RDAP data model, defined in
    [RFC9083].
+
+
+
+
+
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 22]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
 18.4.1.  Operations
 
@@ -1199,26 +1245,26 @@ Internet-Draft             RPP - Requirements              November 2025
    *C2.2* RPP MAY support the contact transfer command from EPP.
 
    *C2.3* RPP MAY support searching and listing contacts filtered by
-   name (exact/prefix), and sponsoring client, with pagination, the
+   name (exact/prefix), and Sponsoring Client, with pagination, the
    server MAY use a maximum limit on results.
 
    *C2.4* Functional equivalents for EPP contact statuses (e.g., ok,
    linked, client/serverUpdateProhibited, client/serverDeleteProhibited,
    pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP
    responses.  The protocol MUST define which statuses can be set by the
-   server and which can be set by the sponsoring client.
+   server and which can be set by the Sponsoring Client.
 
    *C2.5* RPP MUST prevent creation of contacts with duplicate ids
-   within registry namespace (TLD) and return a HTTP 409 (Conflict)
+   within Registry namespace (TLD) and return a HTTP 409 (Conflict)
    status on collision.
 
    *C2.6* The protocol MUST provide an operation to retrieve full
    contact representation.  An authorisation mechanism MUST ensure that
    sensitive data, such as authorisation information, is only returned
-   to the current sponsoring client.
+   to the current Sponsoring Client.
 
    *C2.7* The protocol MUST provide an operation to retrieve an
-   appropriate contact representation to non-sponsoring clients.  The
+   appropriate contact representation to non-Sponsoring Clients.  The
    representation MAY vary depending if the authorisation information is
    provided - depending on server policy.
 
@@ -1226,13 +1272,6 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *C3.1* RPP SHOULD consider using JSContact [RFC9553] format for
    contact representation.
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 22]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    *C3.2* RPP MUST support contact attribute disclosure preferences per
    field (or field group) and this MUST be mapped to the EPP disclosure
@@ -1242,6 +1281,14 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *C4.1* RPP MUST support internationalisation (character encoding) for
    contact objects in the following areas:
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 23]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
    -  name
    -  address data
@@ -1273,22 +1320,12 @@ Internet-Draft             RPP - Requirements              November 2025
    This document has several requirements for the RESTful Provisioning
    Protocol (RPP) that create considerations for IANA.  Future
    architecture and design documents may identify additional needs for
-   IANA registries.
+   IANA Registries.
 
    Therefore, the core RPP specifications MUST include "IANA
    Considerations" sections that formally request the creation of any
-   necessary IANA registries.  These sections MUST also provide the
+   necessary IANA Registries.  These sections MUST also provide the
    initial registration of values defined within those core documents.
-
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 23]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
 20.  Security Considerations
 
@@ -1300,6 +1337,14 @@ Internet-Draft             RPP - Requirements              November 2025
    RRP core specifications MUST include appropriate Security
    Considerations sections, specifying implementation and operational
    security requirements for both RPP clients and servers.
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 24]
+
+Internet-Draft             RPP - Requirements              November 2025
+
 
 21.  Privacy Considerations
 
@@ -1335,21 +1380,34 @@ Internet-Draft             RPP - Requirements              November 2025
 
 Version -02 to -03
 
-Version -01 to -02
+   -  Revised and added necessary teminology (Issue #26)
+   -  Updated R4.3 to only mandate data fields that are strictly
+      necessary
+   -  Merged R7.9 and R5.10 (Issue #124)
+   -  Updated R4.4 to better describe profiles (Issue #15)
+   -  Removed mandatory password change facility in R9.10.  Added
+      extensibility requirement in R10.16 and an essential extension in
+      A1.2 (Issue #70)
+   -  Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
+   -  Added requirements R2.5, R10.15 and R10.3 (changed) related to
+      Generic Protocol Design Recommendations from the Tiger Team
+      recommendations [TigerTeamRecc]
 
 
 
 
 
-Wullink & Kowalik          Expires 25 May 2026                 [Page 24]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 25]
 
 Internet-Draft             RPP - Requirements              November 2025
 
 
-   -  Added requirement for support of both thick and thin registry
+Version -01 to -02
+
+   -  Added requirement for support of both thick and Thin Registry
       models (R1.7)
    -  Added requirements for Host Object Type
-   -  Added R10.12 on future ways of delegation
+   -  Added R10.12 on future ways of Delegation
    -  Added requirements for Domain Object Type
    -  Added relevant and not yet covered requirements from [RFC3375]
       (R6.5-R6.8, R12.4, Section 18.1.1)
@@ -1363,7 +1421,7 @@ Internet-Draft             RPP - Requirements              November 2025
    -  R1.2 removed
    -  added essential and optional extensions sections in Appendix A
    -  Added generic IANA considerations
-   -  Added requirement for support of both thick and thin registry
+   -  Added requirement for support of both thick and Thin Registry
       models (R1.7)
    -  Added requirements related to extensibility following the
       recommendation from the Tiger Team [TigerTeamRecc]
@@ -1392,16 +1450,16 @@ Version -00 to -01
       Internationalisation.
    -  Replaced specific technology mandates with a general requirement
       to leverage RESTful best practices.
-   -  Introduced a formal framework for extensions, including versioning
-      and discoverability.
 
 
 
-Wullink & Kowalik          Expires 25 May 2026                 [Page 25]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 26]
 
 Internet-Draft             RPP - Requirements              November 2025
 
 
+   -  Introduced a formal framework for extensions, including versioning
+      and discoverability.
    -  Significantly expanded the security model to support granular,
       multi-user authorisation.
    -  Mandated support for partial object updates and asynchronous
@@ -1446,17 +1504,20 @@ Internet-Draft             RPP - Requirements              November 2025
               DOI 10.17487/RFC3915, September 2004,
               <https://www.rfc-editor.org/info/rfc3915>.
 
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 27]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/info/rfc3986>.
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 26]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
@@ -1500,19 +1561,22 @@ Internet-Draft             RPP - Requirements              November 2025
               DOI 10.17487/RFC6570, March 2012,
               <https://www.rfc-editor.org/info/rfc6570>.
 
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 28]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
               APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
               <https://www.rfc-editor.org/info/rfc7807>.
 
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 27]
-
-Internet-Draft             RPP - Requirements              November 2025
-
+   [RFC8499]  Hoffman, P., Sullivan, A., and K. Fujiwara, "DNS
+              Terminology", RFC 8499, DOI 10.17487/RFC8499, January
+              2019, <https://www.rfc-editor.org/info/rfc8499>.
 
    [RFC8543]  Zhou, L., Kong, N., Yao, J., Gould, J., and G. Zhou,
               "Extensible Provisioning Protocol (EPP) Organization
@@ -1554,21 +1618,18 @@ Internet-Draft             RPP - Requirements              November 2025
               DOI 10.17487/RFC9553, May 2024,
               <https://www.rfc-editor.org/info/rfc9553>.
 
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 29]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC9803]  Brown, G., "Extensible Provisioning Protocol (EPP) Mapping
               for DNS Time-to-Live (TTL) Values", RFC 9803,
               DOI 10.17487/RFC9803, June 2025,
               <https://www.rfc-editor.org/info/rfc9803>.
-
-
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 28]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    [RFC9873]  Belyavsky, D., Gould, J., and S. Hollenbeck, "Additional
               Email Address Extension for the Extensible Provisioning
@@ -1599,8 +1660,9 @@ Internet-Draft             RPP - Requirements              November 2025
    [TigerTeamRecc]
               RPP WG, Gould, J., Kolker, J., Kowalik, P., Skoglund, E.,
               and M. Wullink, "EPP Extensibility and Extension
-              Analysis", 2025, <https://docs.google.com/document/
-              d/1WR00oB43XZCDqD0zvRvRajuWAq_9wQ3c0RrFKlGC3So>.
+              Analysis", 2025,
+              <https://mailarchive.ietf.org/arch/msg/rpp/
+              rXMZqMrTmaxiNTlLNSM8_gGB_tQ/>.
 
 Appendix A.  Extensions
 
@@ -1609,6 +1671,17 @@ A.1.  Essential extensions
       |  TODO: These lists are far from being complete -> input from
       |  Tiger Team on EPP Extensibility will fill these lists
 
+
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 30]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    The following list of extensions is considered essential for the
    completeness of RPP as provisioning protocol for domain names.  The
    core RPP and its extensibility framework MUST enable creation of
@@ -1616,20 +1689,13 @@ A.1.  Essential extensions
 
    *A.1* _Moved to Appendix A.2 as A2.2_
 
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 29]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
-   *A1.1* An extension that allows a DNS operator to update the DNSSEC
+   *A1.1* An extension that allows a DNS Operator to update the DNSSEC
    key material for a domain object.  This extension MAY be used by the
-   DNS operator to update the DNSSEC key material for a domain object,
+   DNS Operator to update the DNSSEC key material for a domain object,
    without the need for the registrar to be involved in this process.
+
+   *A1.2* An extension for the clients to update their EPP compatible
+   (client_id/password) authentication credential.
 
 A.2.  Optional extensions
 
@@ -1645,11 +1711,8 @@ A.2.  Optional extensions
    determined by server policy and ist included in the discovery service
    document.
 
-      |  TODO: Issue #57 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/57)
-
    *A2.2* An extension for a Search API to allow for searching for
-   objects in the registry database.  Includes advanced search
+   objects in the Registry database.  Includes advanced search
    capabilities for object info request.
 
 Authors' Addresses
@@ -1670,11 +1733,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 30]
+Wullink & Kowalik          Expires 25 May 2026                 [Page 31]
