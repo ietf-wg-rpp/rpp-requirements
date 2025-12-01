@@ -242,7 +242,7 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R6.3** *Moved to  (#data_representation) as R5.16*
 
-**R6.4** RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement may be relaxed when adding the decribed fucntionality results in a negative impact on performance, statbility and/or security.
+**R6.4** RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement MAY be relaxed when adding the described functionality results in a negative impact on performance, stability and/or security.
 
 <!-- A> //SEE: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56) -->
 
