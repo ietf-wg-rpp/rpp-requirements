@@ -14,7 +14,7 @@ Expires: 25 May 2026                                               DENIC
 
 Abstract
 
-   This document describes the requirement for the development of the
+   This document describes the requirements for the development of the
    RESTful Provisioning Protocol (RPP).
 
 Status of This Memo
@@ -291,7 +291,7 @@ Table of Contents
    *R3.4* _Merged with R12.1_
 
    *R3.5* RPP specifications SHOULD incorporate a machine-readable and
-   well-established API specification, such as [!@OpenAPI] or [RAML].
+   well-established API specification, such as [OpenAPI] or [RAML].
    This will facilitate documentation, testing, code generation, and
    user-friendly extension descriptions.  RPP MUST NOT require what API
    specification technology is to be used.  The RPP Core documents and
@@ -373,7 +373,7 @@ Table of Contents
 
    *R5.1* RPP MUST use JSON as the default data format.
 
-   *R5.2* It MUST be possible to extended RPP to include support other
+   *R5.2* It MUST be possible to extend RPP to include support other
    data formats (e.g. XML, YAML).
 
    *R5.3* Validation of request and response message MUST be supported
@@ -461,7 +461,7 @@ Table of Contents
 
    *R6.7* The protocol specification MUST define the expected server
    state for a request that times or terminates out before a response is
-   fully sent out the the client.
+   fully sent out to the client.
 
    *R6.8* For every request the server MUST generate a permanent,
    server-unique transaction identifier.  This identifier MUST be
@@ -1005,9 +1005,9 @@ Table of Contents
 
 18.3.2.  Operations
 
-   *H2.1* RPP MUST RPP MUST provide operations to check, create, read,
-   update and delete host objects as defined in [RFC5732], with partial
-   update semantics available to allow for efficient updates.  Transfer
+   *H2.1* RPP MUST provide operations to check, create, read, update and
+   delete host objects as defined in [RFC5732], with partial update
+   semantics available to allow for efficient updates.  Transfer
    Operation of subordinate host object MUST be implicit with the
    Transfer Operation of parent domain name.
 
@@ -1324,6 +1324,9 @@ Version -00 to -01
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
               <https://www.rfc-editor.org/info/rfc9205>.
 
+   [OpenAPI]  openapis.org, "OpenAPI Specification", 2025,
+              <https://www.openapis.org/>.
+
    [RAML]     raml.org, "RESTful API Modeling Language", 2025,
               <https://raml.org/>.
 
@@ -1513,7 +1516,7 @@ A.2.  Optional extensions
    *A2.1* An extension that allows generating a representation of a
    historical overview for an object, e.g. show all events linked to the
    object (create, update ...).  The historical time window is
-   determined by server policy and ist included in the discovery service
+   determined by server policy and is included in the discovery service
    document.
 
    *A2.2* An extension for a Search API to allow for searching for

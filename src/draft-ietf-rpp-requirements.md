@@ -43,7 +43,7 @@ organization = "DENIC"
  the design of RPP is completed. Allowing for a more agile development process and easier updating of the requirements when needed.
 -->
 
-This document describes the requirement for the development of the RESTful Provisioning Protocol (RPP).
+This document describes the requirements for the development of the RESTful Provisioning Protocol (RPP).
 
 {mainmatter}
 
@@ -81,7 +81,7 @@ Object Transfer / Transfer Operation - is an Registry operation used to manage c
 
 EPP AuthInfo - EPP password based Authorisation Information defined in [@!RFC5731] and [@!RFC5733].
 
-Registry - An administrative authority responsible for maintaining and operating an authoritative repository of provisioned objects within a defined namespace or domain. For the DNS Top‑Level Domain (TLD) use case, "Registry" specifically denotes the administrative operation of a zone that allows registration of names within that zone (see also definition in  [@!RFC8499]).
+Registry - An administrative authority responsible for maintaining and operating an authoritative repository of provisioned objects within a defined namespace or domain. For the DNS Top-Level Domain (TLD) use case, "Registry" specifically denotes the administrative operation of a zone that allows registration of names within that zone (see also definition in  [@!RFC8499]).
 
 Registrar - An entity that acts as an intermediary between registrants and the Registry, providing registration services and maintaining the Sponsoring Client relationship for registered objects.
 
@@ -156,7 +156,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R3.4** *Merged with R12.1*
 
-**R3.5** RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as [!@OpenAPI] or [@!RAML]. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. RPP MUST NOT require what API specification technology is to be used. The RPP Core documents and Extension documents may also choose different API specification solutions, this choice is left to the document authors.
+**R3.5** RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as [@!OpenAPI] or [@!RAML]. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. RPP MUST NOT require what API specification technology is to be used. The RPP Core documents and Extension documents may also choose different API specification solutions, this choice is left to the document authors.
 
 **R3.6** RPP architecture MUST define a common pattern to allow a single resource to be addressable via multiple, alternative identifiers in its URL. The protocol MUST specify that one address is canonical, and any alternative addresses for the same resource MUST be treated as aliases resolving to the canonical resource.
 
@@ -198,7 +198,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R5.1** RPP MUST use JSON as the default data format.
 
-**R5.2** It MUST be possible to extended RPP to include support other data formats (e.g. XML, YAML).
+**R5.2** It MUST be possible to extend RPP to include support other data formats (e.g. XML, YAML).
 
 **R5.3** Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.
 
@@ -256,7 +256,7 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R6.6** RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).
 
-**R6.7** The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.
+**R6.7** The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out to the client.
 
 **R6.8** For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.
 
@@ -539,7 +539,7 @@ This section contains requirements commonly applicable to more or all object typ
 
 ### Data Representation
 
-**D3.1** The JSON representation MUST include the canonical domain name and any U‑label/A‑label when IDN is used by the server.
+**D3.1** The JSON representation MUST include the canonical domain name and any U-label/A-label when IDN is used by the server.
 
 **D3.2** RPP domain object representation MUST include link relations to related objects, for example: self, hosts and contacts.
 
@@ -578,7 +578,7 @@ This section contains requirements commonly applicable to more or all object typ
 
 ### Operations
 
-**H2.1** RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in [@!RFC5732], with partial update semantics available to allow for efficient updates. Transfer Operation of subordinate host object MUST be implicit with the Transfer Operation of parent domain name.  
+**H2.1** RPP MUST provide operations to check, create, read, update and delete host objects as defined in [@!RFC5732], with partial update semantics available to allow for efficient updates. Transfer Operation of subordinate host object MUST be implicit with the Transfer Operation of parent domain name.  
 
 **H2.2** RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and Sponsoring Client, with pagination, the server MAY use a maximum limit on results.
 
@@ -594,7 +594,7 @@ This section contains requirements commonly applicable to more or all object typ
 
 **H3.1** RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.
 
-**H3.2** The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.
+**H3.2** The JSON representation MUST include the canonical host name and any U-label/A-label when IDN is used.
 
 **H3.3** The representation SHOULD include link relations to related objects, for example: self, and parent domain for In-bailiwick hosts.
 
@@ -604,7 +604,7 @@ This section contains requirements commonly applicable to more or all object typ
 
 **C1.1** RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the Sponsoring Client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.
 
-**C1.2** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
+**C1.2** RPP MUST support server-generated opaque IDs, support for client-supplied IDs is OPTIONAL.
 
 **C1.3** RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.
 
@@ -783,7 +783,7 @@ The core RPP and its extensibility framework MUST enable creation of those exten
 
 The following list of extensions is considered as possible need for certain deployments of RPP, however other solutions outside of RPP would be possible. Therefore RPP and its extensibility framework MAY enable creation of those extensions, however it is not a MUST criteria.
 
-**A2.1** An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.
+**A2.1** An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and is included in the discovery service document.
 
 <!-- A> //SEE: [Issue #57](https://github.com/ietf-wg-rpp/rpp-requirements/issues/57) -->
 
