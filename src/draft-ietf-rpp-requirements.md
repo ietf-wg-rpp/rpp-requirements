@@ -236,11 +236,11 @@ RPP MUST support the use of server profiles to define required components of the
 
 # Operations and responses
 
-**R6.1** *Moved to R5.14*
+**R6.1** *Moved to (#data_representation) as R5.14*
 
-**R6.2** *Moved to R5.15*
+**R6.2** *Moved to  (#data_representation) as R5.15*
 
-**R6.3** *Moved to R5.16*
+**R6.3** *Moved to  (#data_representation) as R5.16*
 
 **R6.4** RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement may be relaxed when adding the decribed fucntionality results in a negative impact on performance, statbility and/or security.
 
