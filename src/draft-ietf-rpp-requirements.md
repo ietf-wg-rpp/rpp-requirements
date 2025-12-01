@@ -310,7 +310,7 @@ Solutions may include:
 **R7.9** *Merged with R5.10*
 <!-- A> //SEE: [Issue #124](https://github.com/ietf-wg-rpp/rpp-requirements/issues/124) -->
 
-**R7.10** *Removed*
+**R7.10** *Removed*. Included in R7.3. 
 
 # EPP compatibility
 
