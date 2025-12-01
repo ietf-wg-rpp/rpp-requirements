@@ -76,7 +76,7 @@ Table of Contents
    13. Extensibility . . . . . . . . . . . . . . . . . . . . . . . .  14
    14. Scalability . . . . . . . . . . . . . . . . . . . . . . . . .  16
    15. Performance . . . . . . . . . . . . . . . . . . . . . . . . .  16
-   16. Internationalisation  . . . . . . . . . . . . . . . . . . . .  16
+   16. Internationalisation  . . . . . . . . . . . . . . . . . . . .  17
    17. Clients . . . . . . . . . . . . . . . . . . . . . . . . . . .  17
    18. Requirements for object types . . . . . . . . . . . . . . . .  17
      18.1.  Common requirements  . . . . . . . . . . . . . . . . . .  17
@@ -115,7 +115,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
 
    Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  31
-     A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  31
+     A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  32
      A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  32
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  32
 
@@ -226,6 +226,10 @@ Wullink & Kowalik          Expires 25 May 2026                  [Page 4]
 Internet-Draft             RPP - Requirements              November 2025
 
 
+   Functional Equivalent - A feature or capability in RPP that provides
+   the same functionality as a corresponding EPP feature, though the
+   implementation mechanism may differ.
+
 2.1.  DNS Terms
 
    Where DNS-specific terminology is used in this document, the
@@ -269,10 +273,6 @@ Internet-Draft             RPP - Requirements              November 2025
    *R1.6* RPP MUST support additional information about a successful
    operation (information or warning) to convey additional information
    to the client for example about deprecation or partial success.
-
-
-
-
 
 
 
@@ -356,6 +356,9 @@ Internet-Draft             RPP - Requirements              November 2025
 
 7.  Data Model
 
+   Section 7 defines the requirements to data and relationships to be
+   modeled in RPP.
+
    *R4.1* The base data model structures MUST be data format agnostic.
    It MUST be possible to map the base data model to multiple data
    formats such as JSON, XML or YAML.
@@ -383,9 +386,6 @@ Internet-Draft             RPP - Requirements              November 2025
       |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
       |  requirements/issues/15)
 
-   *R4.5* RPP architecture MUST include loose coupling between the
-   server and the client, allowing for non-coordinated introduction of
-   non-breaking version changes on both sides.
 
 
 
@@ -393,6 +393,10 @@ Wullink & Kowalik          Expires 25 May 2026                  [Page 7]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *R4.5* RPP architecture MUST include loose coupling between the
+   server and the client, allowing for non-coordinated introduction of
+   non-breaking version changes on both sides.
 
    *R4.6* RPP MUST enforce the use of strict validation, where unknown
    properties, query parameters, url segments and RPP specific headers
@@ -422,6 +426,9 @@ Internet-Draft             RPP - Requirements              November 2025
 
 8.  Data Representation
 
+   Section 8 defines requirements to wire format of the data defined in
+   Section 7.
+
    *R5.1* RPP MUST use JSON as the default data format.
 
    *R5.2* It MUST be possible to extended RPP to include support other
@@ -434,13 +441,6 @@ Internet-Draft             RPP - Requirements              November 2025
    *R5.4* RPP MUST define a default media type however the protocol
    SHALL be extensible to enable support for other media types.
 
-   *R5.5* A client MUST be able to signal to the server what media type
-   the server should expect for the request content and to use for the
-   response content.
-
-   *R5.6* _Removed_
-
-
 
 
 
@@ -449,6 +449,12 @@ Wullink & Kowalik          Expires 25 May 2026                  [Page 8]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *R5.5* A client MUST be able to signal to the server what media type
+   the server should expect for the request content and to use for the
+   response content.
+
+   *R5.6* _Removed_
 
    *R5.7* RPP SHOULD consider mechanisms for supporting data formats
    outside of core RPP domain.  Especially formats, which lose their
@@ -492,12 +498,6 @@ Internet-Draft             RPP - Requirements              November 2025
    different contexts:
 
    -  GET request to the resource itself
-   -  GET request to get a collection of objects
-   -  Responses to PUT/POST/PATCH requests
-
-   *R6.3* The data representation in a RPP response MUST only contain
-   data related to the object, transactional information MUST be
-   represented as one or more separate HTTP headers.
 
 
 
@@ -505,6 +505,13 @@ Wullink & Kowalik          Expires 25 May 2026                  [Page 9]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   -  GET request to get a collection of objects
+   -  Responses to PUT/POST/PATCH requests
+
+   *R6.3* The data representation in a RPP response MUST only contain
+   data related to the object, transactional information MUST be
+   represented as one or more separate HTTP headers.
 
    *R6.4* RPP MUST support search for resource collections and SHOULD
    support filtering (e.g., by name prefix, status, registrar) and
@@ -532,7 +539,7 @@ Internet-Draft             RPP - Requirements              November 2025
    operations SHOULD be exposed as read-only resources that represent
    the result of a query or check.
 
-   *R6.10* RPP MUST support a functional equivalent of the EPP Poll
+   *R6.10* RPP MUST support a Functional Equivalent of the EPP Poll
    command described in EPP RFC [RFC5730], allowing for clients
    discovering and retrieving service messages available on the server.
    The RPP equivalent MAY contain additional options or features for
@@ -545,13 +552,6 @@ Internet-Draft             RPP - Requirements              November 2025
    -  Allowing clients to use multiple concurrent readers.
    -  Support for streaming service messages to clients.
 
-   *R6.11* RPP MUST include a functional equivalent of [RFC9038] to
-   allow clients retrieve service messages including information it may
-   not understand due to missing Extension support.
-
-
-
-
 
 
 
@@ -561,6 +561,10 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 10]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *R6.11* RPP MUST include a Functional Equivalent of [RFC9038] to
+   allow clients retrieve service messages including information it may
+   not understand due to missing Extension support.
 
 10.  Discoverability
 
@@ -607,16 +611,16 @@ Internet-Draft             RPP - Requirements              November 2025
    the scheme used for HTTP where minor version changes do not break
    compatibility.
 
-   *R7.6* Notices related to scheduled server maintenance timeslots MAY
-   be included in the discovery document, this could be a human-
-   readable, non machine parsable character string.
-
 
 
 Wullink & Kowalik          Expires 25 May 2026                 [Page 11]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *R7.6* Notices related to scheduled server maintenance timeslots MAY
+   be included in the discovery document, this could be a human-
+   readable, non machine parsable character string.
 
    *R7.7* RPP MAY only support a subset of EPP functionality, the
    supported functionality MUST be discoverable by the client
@@ -661,10 +665,6 @@ Internet-Draft             RPP - Requirements              November 2025
    (events) in the responses providing a functional equivalence to Login
    Security Extension for the Extensible Provisioning Protocol
    [RFC8807].
-
-
-
-
 
 
 
@@ -859,9 +859,7 @@ Internet-Draft             RPP - Requirements              November 2025
    messages (URL) and load balancing MUST be possible without processing
    HTTP body.
 
-   *R11.4* Every request message MUST at most contain a single object
-   for the server to operate on, with the exception of operations that
-   are explicitly defined as a bulk operation.
+   *R11.4* _Moved to Section 15 as R12.5_
 
    *R11.5* RPP MUST support asynchronous processing for operations on
    multiple objects, otherwise resource intensive or involving manual
@@ -886,10 +884,12 @@ Internet-Draft             RPP - Requirements              November 2025
    *R12.4* The protocol MUST be usable in both high volume and low
    volume operating environments.
 
-16.  Internationalisation
+   *R12.5* RPP MUST support cacheability of responses, if applicable to
+   the operation semantics and MUST not include transaction related
+   identifiers and values.
 
-   *R13.1* RPP MUST support internationalisation, for object types and
-   messages defined in the core protocol and extensions
+
+
 
 
 
@@ -897,6 +897,11 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 16]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+16.  Internationalisation
+
+   *R13.1* RPP MUST support internationalisation, for object types and
+   messages defined in the core protocol and extensions
 
    *R13.2* RPP MUST support human-readable localised response messages.
 
@@ -939,11 +944,6 @@ Internet-Draft             RPP - Requirements              November 2025
    *O2.2* A Gaining Client MUST provide valid authorisation information
    to initiate a Pull Transfer request.
 
-   *O2.3* For Pull Transfers, the RPP MUST provide operations for the
-   Sponsoring Client to explicitly approve or reject a pending transfer
-   request.  The RPP MUST reject any approval or rejection attempts not
-   initiated by the Sponsoring Client.
-
 
 
 
@@ -953,6 +953,11 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 17]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *O2.3* For Pull Transfers, the RPP MUST provide operations for the
+   Sponsoring Client to explicitly approve or reject a pending transfer
+   request.  The RPP MUST reject any approval or rejection attempts not
+   initiated by the Sponsoring Client.
 
    *O2.4* For Push Transfers, the RPP MUST provide operations for the
    Gaining Client to explicitly approve or reject a pending transfer
@@ -994,11 +999,6 @@ Internet-Draft             RPP - Requirements              November 2025
    Section 2.3.2.4 of [RFC5890] when processing domain names in requests
    and responses by both clients and servers.
 
-   *D1.5* RPP domain object data model MUST allow for the association of
-   zero, one or more objects representing the DNS configuration of the
-   domain including Nameservers.  These may be defined by a reference to
-   separate repository objects (equivalent of EPP host objects) or
-   aggregate object (equivalent of EPP host attribute).
 
 
 
@@ -1009,6 +1009,12 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 18]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *D1.5* RPP domain object data model MUST allow for the association of
+   zero, one or more objects representing the DNS configuration of the
+   domain including Nameservers.  These may be defined by a reference to
+   separate repository objects (equivalent of EPP host objects) or
+   aggregate object (equivalent of EPP host attribute).
 
    *D1.6* RPP MUST support domains that have linkage to at minimum
    registrant, administrative, technical, and billing contacts.  In thin
@@ -1053,18 +1059,15 @@ Internet-Draft             RPP - Requirements              November 2025
    in the initial restore request, making this a 1-step process vs the
    2-step process in EPP.
 
-   *D2.4* RPP MAY support searching and listing domains filtered by name
-   (exact/prefix), and Sponsoring Client.
-
-
-
-
 
 
 Wullink & Kowalik          Expires 25 May 2026                 [Page 19]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *D2.4* RPP MAY support searching and listing domains filtered by name
+   (exact/prefix), and Sponsoring Client.
 
    *D2.5* Only the Sponsoring Client (or an authorised server
    administrator) MAY modify or delete a domain object; servers MUST
@@ -1104,16 +1107,13 @@ Internet-Draft             RPP - Requirements              November 2025
 
 18.2.4.1.  Embedding of EPP extensions
 
-   *D4.1* RPP Core protocol MUST incorporate functional equivalent of
+   *D4.1* RPP Core protocol MUST incorporate Functional Equivalent of
    the following list of widely used and considered essential EPP
    extensions as recommended in [TigerTeamRecc]:
 
    -  Domain Name System (DNS) Security Extensions Mapping for the
       Extensible Provisioning Protocol [RFC5910]
-   -  Domain Registry Grace Period Mapping for the Extensible
-      Provisioning Protocol [RFC3915]
-   -  Extensible Provisioning Protocol (EPP) mapping for DNS Time-To-
-      Live (TTL) values [RFC9803]
+
 
 
 
@@ -1122,6 +1122,10 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 20]
 Internet-Draft             RPP - Requirements              November 2025
 
 
+   -  Domain Registry Grace Period Mapping for the Extensible
+      Provisioning Protocol [RFC3915]
+   -  Extensible Provisioning Protocol (EPP) mapping for DNS Time-To-
+      Live (TTL) values [RFC9803]
    -  Organization Extension for the Extensible Provisioning Protocol
       [RFC8544]
 
@@ -1165,10 +1169,6 @@ Internet-Draft             RPP - Requirements              November 2025
    values (e.g., ok, linked, client/server<command>Prohibited,
    pending<command>) and define their mapping to RPP responses and HTTP
    status codes.
-
-
-
-
 
 
 
@@ -1347,7 +1347,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
 
    *C4.3* RPP MUST support internationalised Email addresses [RFC6530]
-   in Contact objects.  Functional equivalent of [RFC9873] MUST be
+   in Contact objects.  Functional Equivalent of [RFC9873] MUST be
    assured in EPP compatibility mode, however RPP MAY remove requirement
    for at least one all-ASCII Email address.
 
@@ -1361,7 +1361,7 @@ Internet-Draft             RPP - Requirements              November 2025
 18.5.  Organisation Object Type
 
    *G1.1* RPP MUST support data model and operations defined for
-   Organisations - functional equivalent of [RFC8543].
+   Organisations - Functional Equivalent of [RFC8543].
 
 19.  IANA Considerations
 
@@ -1388,7 +1388,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
 21.  Privacy Considerations
 
-   *DP.1* The protocol MUST provide mechanisms to support the
+   *DP1.1* The protocol MUST provide mechanisms to support the
    implementation of data privacy principles, such as those found in
    modern data protection frameworks (e.g., GDPR).  These mechanisms
    MUST support, at a minimum, the principles of data minimisation and
@@ -1402,7 +1402,7 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 25]
 Internet-Draft             RPP - Requirements              November 2025
 
 
-   *DP.2* To support data minimisation, the protocol MUST allow clients
+   *DP1.2* To support data minimisation, the protocol MUST allow clients
    to provide and manage only the data that is strictly necessary for a
    specific purpose.  The protocol MUST also allow for different
    representations of an object, so that a client can request a
@@ -1410,17 +1410,21 @@ Internet-Draft             RPP - Requirements              November 2025
    return the data a client is authorised to access (See also R4.3 and
    R6.1).
 
-   *DP.3* The protocol's operations and data models MUST be sufficiently
-   flexible to allow an operator to implement workflows for exercising
-   data subject rights, such as access, rectification, and erasure of
-   personal data, in a manner consistent with the operational and policy
-   constraints of the provisioning environment.
+   *DP1.3* The protocol's operations and data models MUST be
+   sufficiently flexible to allow an operator to implement workflows for
+   exercising data subject rights, such as access, rectification, and
+   erasure of personal data, in a manner consistent with the operational
+   and policy constraints of the provisioning environment.
 
-   *DP.4* The protocol MUST provide services to identify data collection
-   policies and privacy practices.  Information about data collection,
-   retention, and privacy policies MUST be included in the service
-   discovery document, enabling clients to understand how personal and
-   sensitive data is handled.
+   *DP1.4* The protocol MUST provide services to identify data
+   collection policies and privacy practices.  Information about data
+   collection, retention, and privacy policies MUST be included in the
+   service discovery document, enabling clients to understand how
+   personal and sensitive data is handled.
+
+   *DP1.5* Object type specification MAY define additional requirements
+   related to data privacy (See: C1.5, C2.6 and C2.7 for contact object
+   type).
 
 22.  Changes History
 
@@ -1429,14 +1433,31 @@ Internet-Draft             RPP - Requirements              November 2025
 Version -02 to -03
 
    -  Renamed section "Operations and responses" to "Operations and
-      request handling"
+      request handling" (Issue #140)
    -  "Common" section of "Requirements for object types" clearly
-      structured.
+      structured (Issue #140)
+   -  Corrected numbering in "Privacy Considerations" section.  DP1.5
+      added with a clear reference to other privacy-related requirements
+      (Issue #140)
+   -  Added introduction to "Data Model" and "Data Representation"
+      sections for clarity (Issue #140)
+   -  Moved R11.4 from "Scalability" to "Performance" as R12.5 for
+      better section fit (Issue #140)
+   -  Functional Equivalent defined as term (Issue #140)
    -  Revised and added necessary teminology (Issue #26)
    -  Updated R4.3 to only mandate data fields that are strictly
       necessary
    -  Merged R7.9 and R5.10 (Issue #124)
    -  Updated R4.4 to better describe profiles (Issue #15)
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 26]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    -  Removed mandatory password change facility in R9.10.  Added
       extensibility requirement in R10.16 and an essential extension in
       A1.2 (Issue #70)
@@ -1450,14 +1471,6 @@ Version -01 to -02
    -  Added requirement for support of both thick and Thin Registry
       models (R1.7)
    -  Added requirements for Host Object Type
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 26]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
    -  Added R10.12 on future ways of Delegation
    -  Added requirements for Domain Object Type
    -  Added relevant and not yet covered requirements from [RFC3375]
@@ -1494,6 +1507,13 @@ Version -01 to -00 (WG)
    -  The document has been adopted by the working group, the version
       number has been reset from -01 to -00.
 
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 27]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
 Version -00 to -01
 
    -  Structurally reorganised the document, renumbering all
@@ -1505,15 +1525,6 @@ Version -00 to -01
       and discoverability.
    -  Significantly expanded the security model to support granular,
       multi-user authorisation.
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 27]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
    -  Mandated support for partial object updates and asynchronous
       processing for long-running operations.
    -  Detailed the requirements for a machine-readable discovery
@@ -1551,6 +1562,14 @@ Internet-Draft             RPP - Requirements              November 2025
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 28]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
               the Extensible Provisioning Protocol (EPP)", RFC 3915,
               DOI 10.17487/RFC3915, September 2004,
@@ -1560,15 +1579,6 @@ Internet-Draft             RPP - Requirements              November 2025
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/info/rfc3986>.
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 28]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
@@ -1607,16 +1617,6 @@ Internet-Draft             RPP - Requirements              November 2025
               Internationalized Email", RFC 6530, DOI 10.17487/RFC6530,
               February 2012, <https://www.rfc-editor.org/info/rfc6530>.
 
-   [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
-              and D. Orchard, "URI Template", RFC 6570,
-              DOI 10.17487/RFC6570, March 2012,
-              <https://www.rfc-editor.org/info/rfc6570>.
-
-   [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
-              APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
-              <https://www.rfc-editor.org/info/rfc7807>.
-
-
 
 
 
@@ -1625,6 +1625,15 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 29]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
+              and D. Orchard, "URI Template", RFC 6570,
+              DOI 10.17487/RFC6570, March 2012,
+              <https://www.rfc-editor.org/info/rfc6570>.
+
+   [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
+              APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
+              <https://www.rfc-editor.org/info/rfc7807>.
 
    [RFC8499]  Hoffman, P., Sullivan, A., and K. Fujiwara, "DNS
               Terminology", RFC 8499, DOI 10.17487/RFC8499, January
@@ -1665,6 +1674,14 @@ Internet-Draft             RPP - Requirements              November 2025
               Transfer", RFC 9154, DOI 10.17487/RFC9154, December 2021,
               <https://www.rfc-editor.org/info/rfc9154>.
 
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 30]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC9553]  Stepanek, R. and M. Loffredo, "JSContact: A JSON
               Representation of Contact Data", RFC 9553,
               DOI 10.17487/RFC9553, May 2024,
@@ -1674,13 +1691,6 @@ Internet-Draft             RPP - Requirements              November 2025
               for DNS Time-to-Live (TTL) Values", RFC 9803,
               DOI 10.17487/RFC9803, June 2025,
               <https://www.rfc-editor.org/info/rfc9803>.
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 30]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    [RFC9873]  Belyavsky, D., Gould, J., and S. Hollenbeck, "Additional
               Email Address Extension for the Extensible Provisioning
@@ -1717,6 +1727,17 @@ Internet-Draft             RPP - Requirements              November 2025
 
 Appendix A.  Extensions
 
+
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 31]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
 A.1.  Essential extensions
 
       |  TODO: These lists are far from being complete -> input from
@@ -1728,15 +1749,6 @@ A.1.  Essential extensions
    those extensions.
 
    *A.1* _Moved to Appendix A.2 as A2.2_
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 31]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    *A1.1* An extension that allows a DNS Operator to update the DNSSEC
    key material for a domain object.  This extension MAY be used by the
@@ -1774,6 +1786,14 @@ Authors' Addresses
 
    Pawel Kowalik
    DENIC
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 32]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    Email: pawel.kowalik@denic.de
    URI:   https://denic.de/
 
@@ -1789,4 +1809,40 @@ Authors' Addresses
 
 
 
-Wullink & Kowalik          Expires 25 May 2026                 [Page 32]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 33]

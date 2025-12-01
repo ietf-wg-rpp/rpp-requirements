@@ -192,6 +192,10 @@ Table of Contents
    Gaining Client - In the Transfer Operation - the client seeking to
    gain sponsorship of the object.
 
+   Functional Equivalent - A feature or capability in RPP that provides
+   the same functionality as a corresponding EPP feature, though the
+   implementation mechanism may differ.
+
 2.1.  DNS Terms
 
    Where DNS-specific terminology is used in this document, the
@@ -302,6 +306,9 @@ Table of Contents
 
 7.  Data Model
 
+   Section 7 defines the requirements to data and relationships to be
+   modeled in RPP.
+
    *R4.1* The base data model structures MUST be data format agnostic.
    It MUST be possible to map the base data model to multiple data
    formats such as JSON, XML or YAML.
@@ -360,6 +367,9 @@ Table of Contents
    resources within the parent's URL structure.
 
 8.  Data Representation
+
+   Section 8 defines requirements to wire format of the data defined in
+   Section 7.
 
    *R5.1* RPP MUST use JSON as the default data format.
 
@@ -454,7 +464,7 @@ Table of Contents
    operations SHOULD be exposed as read-only resources that represent
    the result of a query or check.
 
-   *R6.10* RPP MUST support a functional equivalent of the EPP Poll
+   *R6.10* RPP MUST support a Functional Equivalent of the EPP Poll
    command described in EPP RFC [RFC5730], allowing for clients
    discovering and retrieving service messages available on the server.
    The RPP equivalent MAY contain additional options or features for
@@ -467,7 +477,7 @@ Table of Contents
    -  Allowing clients to use multiple concurrent readers.
    -  Support for streaming service messages to clients.
 
-   *R6.11* RPP MUST include a functional equivalent of [RFC9038] to
+   *R6.11* RPP MUST include a Functional Equivalent of [RFC9038] to
    allow clients retrieve service messages including information it may
    not understand due to missing Extension support.
 
@@ -723,9 +733,7 @@ Table of Contents
    messages (URL) and load balancing MUST be possible without processing
    HTTP body.
 
-   *R11.4* Every request message MUST at most contain a single object
-   for the server to operate on, with the exception of operations that
-   are explicitly defined as a bulk operation.
+   *R11.4* _Moved to Section 15 as R12.5_
 
    *R11.5* RPP MUST support asynchronous processing for operations on
    multiple objects, otherwise resource intensive or involving manual
@@ -749,6 +757,10 @@ Table of Contents
 
    *R12.4* The protocol MUST be usable in both high volume and low
    volume operating environments.
+
+   *R12.5* RPP MUST support cacheability of responses, if applicable to
+   the operation semantics and MUST not include transaction related
+   identifiers and values.
 
 16.  Internationalisation
 
@@ -931,7 +943,7 @@ Table of Contents
 
 18.2.4.1.  Embedding of EPP extensions
 
-   *D4.1* RPP Core protocol MUST incorporate functional equivalent of
+   *D4.1* RPP Core protocol MUST incorporate Functional Equivalent of
    the following list of widely used and considered essential EPP
    extensions as recommended in [TigerTeamRecc]:
 
@@ -1126,7 +1138,7 @@ Table of Contents
    version of the EPP postalInfo element from [RFC5733].
 
    *C4.3* RPP MUST support internationalised Email addresses [RFC6530]
-   in Contact objects.  Functional equivalent of [RFC9873] MUST be
+   in Contact objects.  Functional Equivalent of [RFC9873] MUST be
    assured in EPP compatibility mode, however RPP MAY remove requirement
    for at least one all-ASCII Email address.
 
@@ -1140,7 +1152,7 @@ Table of Contents
 18.5.  Organisation Object Type
 
    *G1.1* RPP MUST support data model and operations defined for
-   Organisations - functional equivalent of [RFC8543].
+   Organisations - Functional Equivalent of [RFC8543].
 
 19.  IANA Considerations
 
@@ -1167,13 +1179,13 @@ Table of Contents
 
 21.  Privacy Considerations
 
-   *DP.1* The protocol MUST provide mechanisms to support the
+   *DP1.1* The protocol MUST provide mechanisms to support the
    implementation of data privacy principles, such as those found in
    modern data protection frameworks (e.g., GDPR).  These mechanisms
    MUST support, at a minimum, the principles of data minimisation and
    purpose limitation.
 
-   *DP.2* To support data minimisation, the protocol MUST allow clients
+   *DP1.2* To support data minimisation, the protocol MUST allow clients
    to provide and manage only the data that is strictly necessary for a
    specific purpose.  The protocol MUST also allow for different
    representations of an object, so that a client can request a
@@ -1181,17 +1193,21 @@ Table of Contents
    return the data a client is authorised to access (See also R4.3 and
    R6.1).
 
-   *DP.3* The protocol's operations and data models MUST be sufficiently
-   flexible to allow an operator to implement workflows for exercising
-   data subject rights, such as access, rectification, and erasure of
-   personal data, in a manner consistent with the operational and policy
-   constraints of the provisioning environment.
+   *DP1.3* The protocol's operations and data models MUST be
+   sufficiently flexible to allow an operator to implement workflows for
+   exercising data subject rights, such as access, rectification, and
+   erasure of personal data, in a manner consistent with the operational
+   and policy constraints of the provisioning environment.
 
-   *DP.4* The protocol MUST provide services to identify data collection
-   policies and privacy practices.  Information about data collection,
-   retention, and privacy policies MUST be included in the service
-   discovery document, enabling clients to understand how personal and
-   sensitive data is handled.
+   *DP1.4* The protocol MUST provide services to identify data
+   collection policies and privacy practices.  Information about data
+   collection, retention, and privacy policies MUST be included in the
+   service discovery document, enabling clients to understand how
+   personal and sensitive data is handled.
+
+   *DP1.5* Object type specification MAY define additional requirements
+   related to data privacy (See: C1.5, C2.6 and C2.7 for contact object
+   type).
 
 22.  Changes History
 
@@ -1200,9 +1216,17 @@ Table of Contents
 Version -02 to -03
 
    -  Renamed section "Operations and responses" to "Operations and
-      request handling"
+      request handling" (Issue #140)
    -  "Common" section of "Requirements for object types" clearly
-      structured.
+      structured (Issue #140)
+   -  Corrected numbering in "Privacy Considerations" section.  DP1.5
+      added with a clear reference to other privacy-related requirements
+      (Issue #140)
+   -  Added introduction to "Data Model" and "Data Representation"
+      sections for clarity (Issue #140)
+   -  Moved R11.4 from "Scalability" to "Performance" as R12.5 for
+      better section fit (Issue #140)
+   -  Functional Equivalent defined as term (Issue #140)
    -  Revised and added necessary teminology (Issue #26)
    -  Updated R4.3 to only mandate data fields that are strictly
       necessary
