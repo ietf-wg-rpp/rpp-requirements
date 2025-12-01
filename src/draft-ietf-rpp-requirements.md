@@ -667,6 +667,12 @@ RRP core specifications MUST include appropriate Security Considerations section
 {numbered="false" toc="exclude"}
 ## Version -02 to -03
 
+* Changed R12.2, D2.4 and C2.3 from MAY to SHOULD (Issue #139)
+* Changed R8.6 from SHOULD to MUST (Issue #139)
+* Removed R7.10 and D1.7 (Issue #139)
+* Changed R6.4 from MUST to SHOULD (Issue #139)
+* Fixed Typos and references (Issue #139)
+* Moved R6.1, R6.2 and R6.3 to R5.14, R5.15 and R5.16 respectively (Issue #139)
 * Revised and added necessary teminology (Issue #26)
 * Updated R4.3 to only mandate data fields that are strictly necessary
 * Merged R7.9 and R5.10 (Issue #124)
