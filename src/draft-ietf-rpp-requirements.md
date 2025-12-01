@@ -493,7 +493,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **D1.6** RPP MUST support domains that have linkage to at minimum registrant, administrative, technical, and billing contacts. In thin Registries, only identifiers MAY be stored; in thick Registries, contact data MAY be included per (privacy) policy. The list of contact link types MUST be extensible.
 
-**D1.7** *Removed*
+**D1.7** *Removed*. Included in R8.5.
 
 **D1.8** RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes. The protocol MUST define which statuses can be set by the server and which can be set by the Sponsoring Client.
 
