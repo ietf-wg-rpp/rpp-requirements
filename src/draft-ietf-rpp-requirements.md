@@ -220,23 +220,29 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R5.13** RPP MUST define a structured data model for all object types that require DNS representation (e.g., Host, Domain). The data model MUST support commonly used DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, such as TTL. See R10.14 for extensibility requirements.
 
-# Operations and responses
-
-**R6.1** RPP MUST include support for a client requesting different depth of data representations, depending on the use case:
+**R5.14** RPP MUST include support for a client requesting different depth of data representations, depending on the use case:
 
 - Minimal representation (ID, or ID+name)
 - Full representation (all data of the object)
 - Full representation + dereferenced referrals (for example domain with contact and host details)
 
-**R6.2** RPP MAY return different representations of the same object in different contexts:
+**R5.15** RPP MAY return different representations of the same object in different contexts:
 
 - GET request to the resource itself
 - GET request to get a collection of objects
 - Responses to PUT/POST/PATCH requests
 
-**R6.3** The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.
+**R5.16** The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.
 
-**R6.4** RPP MUST support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination.
+# Operations and responses
+
+**R6.1** *Moved to R5.14*
+
+**R6.2** *Moved to R5.15*
+
+**R6.3** *Moved to R5.16*
+
+**R6.4** RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement may be relaxed when adding the decribed fucntionality results in a negative impact on performance, statbility and/or security.
 
 <!-- A> //SEE: [Issue #56](https://github.com/ietf-wg-rpp/rpp-requirements/issues/56) -->
 
@@ -280,7 +286,7 @@ Solutions may include:
 
 <!-- A> //SEE: [Issue #8](https://github.com/ietf-wg-rpp/rpp-requirements/issues/8) -->
 
-**R7.3** Server provided functionality, such as the set of supported profiles, languages or extensions, MUST discoverable using the discovery document.
+**R7.3** Server provided functionality, such as the set of supported profiles, languages or extensions, MUST be discoverable using the discovery document.
 
 **R7.4** RPP MUST support versioning of:
 
@@ -304,7 +310,7 @@ Solutions may include:
 **R7.9** *Merged with R5.10*
 <!-- A> //SEE: [Issue #124](https://github.com/ietf-wg-rpp/rpp-requirements/issues/124) -->
 
-**R7.10** Versions used by the RPP and used extensions MUST be discoverable by the client.
+**R7.10** *Removed*
 
 # EPP compatibility
 
@@ -320,7 +326,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R8.5** EPP AuthInfo MUST be supported in RPP. RPP MUST by default support the requirements for Secure Authorization Information for Transfer [@!RFC9154] operational practise.
 
-**R8.6** RPP SHOULD support client_id/password authentication to match EPP client authentication.
+**R8.6** RPP MUST support client_id/password authentication to match EPP client authentication.
 
 **R8.7** Where applicable RPP MUST support longer authorisation information compared to EPP, metainformation about client software and operational environment as well security related information (events) in the responses providing a functional equivalence to Login Security Extension for the Extensible Provisioning Protocol [@!RFC8807].
 
@@ -349,7 +355,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.10** RPP MUST include considerations regarding best practices in secure handling of credentials, such as usage of strong passwords and limited lifetime for passwords and other tokens.
 
-**R9.11** RPP must support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.
+**R9.11** RPP MUST support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.
 
 **R9.12** RPP MUST support secure credentials management, ensuring that credentials are protected against replay and theft, and have limited lifetimes.
 
@@ -357,7 +363,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.14** There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.
 
-**R9.15** RPP must support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.
+**R9.15** RPP MUST support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.
 
 # Extensibility
 
@@ -412,7 +418,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R11.3** RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing HTTP body.
 
-**R11.4** Every request message MUST at most contain a single object for the server to operate on, with the exception of operations that are explicitly defined as a bulk operation.
+**R11.4** Every request message MUST at most contain a single object for the server to operate on, with the exception of operations that are explicitly defined as a bulk operation (see: R12.2).
 
 **R11.5** RPP MUST support asynchronous processing for operations on multiple objects, otherwise resource intensive or involving manual steps. The client request results in a confirmation of receipt and a means for retrieving the final completed processing result at a later time.
 
@@ -420,7 +426,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R12.1** In order to minimise message sizes and needed processing RPP SHOULD be designed not to include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.
 
-**R12.2** RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
+**R12.2** RPP SHOULD allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.
 
 **R12.3** *Removed*
 <!--
@@ -487,7 +493,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **D1.6** RPP MUST support domains that have linkage to at minimum registrant, administrative, technical, and billing contacts. In thin Registries, only identifiers MAY be stored; in thick Registries, contact data MAY be included per (privacy) policy. The list of contact link types MUST be extensible.
 
-**D1.7** RPP domain objects MUST support EPP AuthInfo for transfer operations (see R8.5).
+**D1.7** *Removed*
 
 **D1.8** RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server<command>Prohibited, pending<command>) and define their mapping to RPP responses and HTTP status codes. The protocol MUST define which statuses can be set by the server and which can be set by the Sponsoring Client.
 
@@ -504,7 +510,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 <!-- already adding RGP here although we need to confirm this with Tiger team !-->
 **D2.3** RPP MUST support the Domain Registry Grace Period Mapping as defined by [@!RFC3915], the restore report MAY be ignored or included in the initial restore request, making this a 1-step process vs the 2-step process in EPP.
 
-**D2.4** RPP MAY support searching and listing domains filtered by name (exact/prefix), and Sponsoring Client.
+**D2.4** RPP SHOULD support searching and listing domains filtered by name (exact/prefix), and Sponsoring Client.
 
 **D2.5** Only the Sponsoring Client (or an authorised server administrator) MAY modify or delete a domain object; servers MUST enforce authorisation.
 
@@ -535,9 +541,9 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 ## Host Object Type
 
-**H1.1** RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), Repository Object Identifier, object status, current Sponsoring Client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.
+**H1.1** RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see: R5.13), Repository Object Identifier, object status, current Sponsoring Client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.
 
-**H1.2** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (O1.1).
+**H1.2** RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (see: R5.13).
 
 **H1.3** Host names MUST be valid FQDNs.
 
@@ -597,7 +603,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **C2.2** RPP MAY support the contact transfer command from EPP.
 
-**C2.3** RPP MAY support searching and listing contacts filtered by name (exact/prefix), and Sponsoring Client, with pagination, the server MAY use a maximum limit on results.
+**C2.3** RPP SHOULD support searching and listing contacts filtered by name (exact/prefix), and Sponsoring Client, with pagination, the server MAY use a maximum limit on results.
 
 **C2.4** Functional equivalents for EPP contact statuses (e.g., ok, linked, client/serverUpdateProhibited, client/serverDeleteProhibited, pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP responses. The protocol MUST define which statuses can be set by the server and which can be set by the Sponsoring Client.
 
@@ -649,7 +655,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 **DP.1** The protocol MUST provide mechanisms to support the implementation of data privacy principles, such as those found in modern data protection frameworks (e.g., GDPR). These mechanisms MUST support, at a minimum, the principles of data minimisation and purpose limitation.
 
-**DP.2** To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it needs and server can return the data a client is authorised to access (See also R4.3 and R6.1).
+**DP.2** To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it needs and server can return the data a client is authorised to access (See also R4.3 and R5.14).
 
 **DP.3** The protocol's operations and data models MUST be sufficiently flexible to allow an operator to implement workflows for exercising data subject rights, such as access, rectification, and erasure of personal data, in a manner consistent with the operational and policy constraints of the provisioning environment.
 
