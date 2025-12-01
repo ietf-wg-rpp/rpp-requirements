@@ -99,6 +99,8 @@ Initiating Client - In the Transfer Operation - the client that starts the trans
 
 Gaining Client - In the Transfer Operation - the client seeking to gain sponsorship of the object.
 
+Functional Equivalent - A feature or capability in RPP that provides the same functionality as a corresponding EPP feature, though the implementation mechanism may differ.
+
 ## DNS Terms
 
 Where DNS-specific terminology is used in this document, the definitions from [@!RFC8499] apply unless otherwise specified. Key DNS terms used in this specification include:
@@ -158,7 +160,9 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT","SHOULD", "SH
 
 **R3.6** RPP architecture MUST define a common pattern to allow a single resource to be addressable via multiple, alternative identifiers in its URL. The protocol MUST specify that one address is canonical, and any alternative addresses for the same resource MUST be treated as aliases resolving to the canonical resource.
 
-# Data Model
+# Data Model {#data_model}
+
+(#data_model) defines the requirements to data and relationships to be modeled in RPP.
 
 **R4.1** The base data model structures MUST be data format agnostic. It MUST be possible to map the base data model to multiple data formats such as JSON, XML or YAML.
 
@@ -188,7 +192,9 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R4.10** RPP data model MUST support composition by defining a pattern where a resource can contain child resources of same or different type, with flexible cardinality (one-to-one, one-to-many, many-to-many),that are integral to it. Such resources MAY be embedded directly in the parent resource representation or exposed as sub-resources within the parent's URL structure.
 
-# Data Representation
+# Data Representation {#data_representation}
+
+(#data_representation) defines requirements to wire format of the data defined in (#data_model).
 
 **R5.1** RPP MUST use JSON as the default data format.
 
@@ -234,13 +240,13 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R5.16** The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.
 
-# Operations and responses
+# Operations and request handling
 
 **R6.1** *Moved to (#data_representation) as R5.14*
 
-**R6.2** *Moved to  (#data_representation) as R5.15*
+**R6.2** *Moved to (#data_representation) as R5.15*
 
-**R6.3** *Moved to  (#data_representation) as R5.16*
+**R6.3** *Moved to (#data_representation) as R5.16*
 
 **R6.4** RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement MAY be relaxed when adding the described functionality results in a negative impact on performance, stability and/or security.
 
@@ -256,14 +262,14 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R6.9** RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.
 
-**R6.10** RPP MUST support a functional equivalent of the EPP Poll command described in EPP RFC [@!RFC5730], allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:
+**R6.10** RPP MUST support a Functional Equivalent of the EPP Poll command described in EPP RFC [@!RFC5730], allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:
 
 - Allowing clients to subscribe to specific types of service messages.
 - Allowing clients to receive multiple service messages in a single request.
 - Allowing clients to use multiple concurrent readers.
 - Support for streaming service messages to clients.
 
-**R6.11** RPP MUST include a functional equivalent of [@!RFC9038] to allow clients retrieve service messages including information it may not understand due to missing Extension support.
+**R6.11** RPP MUST include a Functional Equivalent of [@!RFC9038] to allow clients retrieve service messages including information it may not understand due to missing Extension support.
 
 # Discoverability
 
@@ -408,7 +414,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R10.16** RPP MUST support Extension(s) for the clients to update their authentication credentials.
 
-# Scalability
+# Scalability {#scalability}
 
 **R11.1** RPP MUST be stateless and MUST NOT maintain application state on the server required for processing future RPP requests. Every client request needs to provide all the information required for the server to be able to successfully process the request. The client MAY maintain application session state, for example by using a JWT token.
 
@@ -418,11 +424,11 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R11.3** RPP MUST support load balancing at the level of request messages (URL) and load balancing MUST be possible without processing HTTP body.
 
-**R11.4** Every request message MUST at most contain a single object for the server to operate on, with the exception of operations that are explicitly defined as a bulk operation (see: R12.2).
+**R11.4** *Moved to (#performance) as R12.5*
 
 **R11.5** RPP MUST support asynchronous processing for operations on multiple objects, otherwise resource intensive or involving manual steps. The client request results in a confirmation of receipt and a means for retrieving the final completed processing result at a later time.
 
-# Performance
+# Performance {#performance}
 
 **R12.1** In order to minimise message sizes and needed processing RPP SHOULD be designed not to include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.
 
@@ -435,6 +441,9 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
  -->
 
  **R12.4** The protocol MUST be usable in both high volume and low volume operating environments.
+
+<!-- Moved from R11.4 -->
+ **R12.5** RPP MUST support cacheability of responses, if applicable to the operation semantics and MUST not include transaction related identifiers and values.
 
 # Internationalisation
 
@@ -452,9 +461,13 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **R14.4** RPP SHOULD support mobile applications as clients, also here through direct integration without any proxy backend.
 
-# Requirements for object types
+# Requirements for object types {#req_for_object_type}
 
-## Common
+## Common requirements
+
+This section contains requirements commonly applicable to more or all object types.
+
+### Generic requirements
 
 **O1.1** *Removed*
 
@@ -480,6 +493,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 ## Domain Object Type
 
 [//]: # (Editor note: use Dx.x for Domains)
+
+### Data Model
 
 **D1.1** RPP domain object data model MUST include, at a minimum, the attributes defined in RFC5731: the fully qualified domain name, Repository Object Identifier, object status, the current Sponsoring Client identifier, creating registrar client ID, creation timestamp, last update client ID, last update timestamp, expiration timestamp, last transfer timestamp, Nameservers, subordinate hosts, the registrant, and other associated contacts.
 
@@ -530,9 +545,11 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **D3.3** The representation MUST adapt to the Registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.
 
-### Embedding of EPP extensions
+### Specific Considerations
 
-**D4.1** RPP Core protocol MUST incorporate functional equivalent of the following list of widely used and considered essential EPP extensions as recommended in [@?TigerTeamRecc]:
+#### Embedding of EPP extensions
+
+**D4.1** RPP Core protocol MUST incorporate Functional Equivalent of the following list of widely used and considered essential EPP extensions as recommended in [@?TigerTeamRecc]:
 
 - Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol [@!RFC5910]
 - Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol [@!RFC3915]
@@ -540,6 +557,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 - Organization Extension for the Extensible Provisioning Protocol [@!RFC8544]
 
 ## Host Object Type
+
+### Data Model
 
 **H1.1** RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see: R5.13), Repository Object Identifier, object status, current Sponsoring Client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.
 
@@ -581,6 +600,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 ## Contact Object Type
 
+### Data Model
+
 **C1.1** RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the Sponsoring Client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.
 
 **C1.2** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
@@ -619,7 +640,9 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **C3.2** RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in [@!RFC5733].
 
-### Internationalisation
+### Specific Considerations
+
+#### Internationalisation
 
 **C4.1** RPP MUST support internationalisation (character encoding) for contact objects in the following areas:
 
@@ -629,7 +652,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **C4.2** RPP MUST support both the localized and internationalised version of the EPP postalInfo element from [@!RFC5733].
 
-**C4.3** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects. Functional equivalent of [@!RFC9873] MUST be assured in EPP compatibility mode, however RPP MAY remove requirement for at least one all-ASCII Email address. 
+**C4.3** RPP MUST support internationalised Email addresses [@!RFC6530] in Contact objects. Functional Equivalent of [@!RFC9873] MUST be assured in EPP compatibility mode, however RPP MAY remove requirement for at least one all-ASCII Email address. 
 
 **C4.4** RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.
 
@@ -637,7 +660,7 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 ## Organisation Object Type
 
-**G1.1** RPP MUST support data model and operations defined for Organisations - functional equivalent of [@!RFC8543].
+**G1.1** RPP MUST support data model and operations defined for Organisations - Functional Equivalent of [@!RFC8543].
 
 # IANA Considerations
 
@@ -651,15 +674,17 @@ The security section of this document defines the security related requirements 
 
 RRP core specifications MUST include appropriate Security Considerations sections, specifying implementation and operational security requirements for both RPP clients and servers.
 
-# Privacy Considerations
+# Privacy Considerations {#privacy_considerations}
 
-**DP.1** The protocol MUST provide mechanisms to support the implementation of data privacy principles, such as those found in modern data protection frameworks (e.g., GDPR). These mechanisms MUST support, at a minimum, the principles of data minimisation and purpose limitation.
+**DP1.1** The protocol MUST provide mechanisms to support the implementation of data privacy principles, such as those found in modern data protection frameworks (e.g., GDPR). These mechanisms MUST support, at a minimum, the principles of data minimisation and purpose limitation.
 
 **DP.2** To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it needs and server can return the data a client is authorised to access (See also R4.3 and R5.14).
 
-**DP.3** The protocol's operations and data models MUST be sufficiently flexible to allow an operator to implement workflows for exercising data subject rights, such as access, rectification, and erasure of personal data, in a manner consistent with the operational and policy constraints of the provisioning environment.
+**DP1.3** The protocol's operations and data models MUST be sufficiently flexible to allow an operator to implement workflows for exercising data subject rights, such as access, rectification, and erasure of personal data, in a manner consistent with the operational and policy constraints of the provisioning environment.
 
-**DP.4** The protocol MUST provide services to identify data collection policies and privacy practices. Information about data collection, retention, and privacy policies MUST be included in the service discovery document, enabling clients to understand how personal and sensitive data is handled.
+**DP1.4** The protocol MUST provide services to identify data collection policies and privacy practices. Information about data collection, retention, and privacy policies MUST be included in the service discovery document, enabling clients to understand how personal and sensitive data is handled.
+
+**DP1.5** Object type specification MAY define additional requirements related to data privacy (See: C1.5, C2.6 and C2.7 for contact object type).
 
 {removeInRFC="true"}
 # Changes History
@@ -667,6 +692,12 @@ RRP core specifications MUST include appropriate Security Considerations section
 {numbered="false" toc="exclude"}
 ## Version -02 to -03
 
+* Renamed section "Operations and responses" to "Operations and request handling" (Issue #140)
+* "Common" section of "(#req_for_object_type, use title)" clearly structured (Issue #140)
+* Corrected numbering in "(#privacy_considerations, use title)" section. DP1.5 added with a clear reference to other privacy-related requirements (Issue #140)
+* Added introduction to "(#data_model, use title)" and "(#data_representation, use title)" sections for clarity (Issue #140)
+* Moved R11.4 from "(#scalability, use title)" to "(#performance, use title)" as R12.5 for better section fit (Issue #140)
+* Functional Equivalent defined as term (Issue #140)
 * Changed R12.2, D2.4 and C2.3 from MAY to SHOULD (Issue #139)
 * Changed R8.6 from SHOULD to MUST (Issue #139)
 * Removed R7.10 and D1.7 (Issue #139)
