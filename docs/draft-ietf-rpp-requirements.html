@@ -1640,6 +1640,25 @@ li > p:last-of-type:only-child {
 <p id="section-8-12"><strong>R5.11</strong> RPP MUST support representation of a collections of resources.<a href="#section-8-12" class="pilcrow">¶</a></p>
 <p id="section-8-13"><strong>R5.12</strong> The representation of the links (see R4.7) MUST be expressed using the RPP Server's internal identifiers. The RPP SHOULD also consider using URIs and/or <span>[<a href="#RFC6570" class="cite xref">RFC6570</a>]</span> URI templates for uniform addressing of link targets, both internal and external to the RPP Server.<a href="#section-8-13" class="pilcrow">¶</a></p>
 <p id="section-8-14"><strong>R5.13</strong> RPP MUST define a structured data model for all object types that require DNS representation (e.g., Host, Domain). The data model MUST support commonly used DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, such as TTL. See R10.14 for extensibility requirements.<a href="#section-8-14" class="pilcrow">¶</a></p>
+<p id="section-8-15"><strong>R5.14</strong> RPP MUST include support for a client requesting different depth of data representations, depending on the use case:<a href="#section-8-15" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-8-16.1">Minimal representation (ID, or ID+name)<a href="#section-8-16.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-8-16.2">Full representation (all data of the object)<a href="#section-8-16.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-8-16.3">Full representation + dereferenced referrals (for example domain with contact and host details)<a href="#section-8-16.3" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-8-17"><strong>R5.15</strong> RPP MAY return different representations of the same object in different contexts:<a href="#section-8-17" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-8-18.1">GET request to the resource itself<a href="#section-8-18.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-8-18.2">GET request to get a collection of objects<a href="#section-8-18.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-8-18.3">Responses to PUT/POST/PATCH requests<a href="#section-8-18.3" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-8-19"><strong>R5.16</strong> The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.<a href="#section-8-19" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="operations-and-request-handling">
@@ -1647,43 +1666,27 @@ li > p:last-of-type:only-child {
       <h2 id="name-operations-and-request-hand">
 <a href="#section-9" class="section-number selfRef">9. </a><a href="#name-operations-and-request-hand" class="section-name selfRef">Operations and request handling</a>
       </h2>
-<p id="section-9-1"><strong>R6.1</strong> RPP MUST include support for a client requesting different depth of data representations, depending on the use case:<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-9-1"><strong>R6.1</strong> <em>Moved to <a href="#data_representation" class="auto internal xref">Section 8</a> as R5.14</em><a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-9-2"><strong>R6.2</strong> <em>Moved to <a href="#data_representation" class="auto internal xref">Section 8</a> as R5.15</em><a href="#section-9-2" class="pilcrow">¶</a></p>
+<p id="section-9-3"><strong>R6.3</strong> <em>Moved to <a href="#data_representation" class="auto internal xref">Section 8</a> as R5.16</em><a href="#section-9-3" class="pilcrow">¶</a></p>
+<p id="section-9-4"><strong>R6.4</strong> RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement MAY be relaxed when adding the described functionality results in a negative impact on performance, stability and/or security.<a href="#section-9-4" class="pilcrow">¶</a></p>
+<p id="section-9-5"><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.<a href="#section-9-5" class="pilcrow">¶</a></p>
+<p id="section-9-6"><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).<a href="#section-9-6" class="pilcrow">¶</a></p>
+<p id="section-9-7"><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.<a href="#section-9-7" class="pilcrow">¶</a></p>
+<p id="section-9-8"><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.<a href="#section-9-8" class="pilcrow">¶</a></p>
+<p id="section-9-9"><strong>R6.9</strong> RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.<a href="#section-9-9" class="pilcrow">¶</a></p>
+<p id="section-9-10"><strong>R6.10</strong> RPP MUST support a Functional Equivalent of the EPP Poll command described in EPP RFC <span>[<a href="#RFC5730" class="cite xref">RFC5730</a>]</span>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:<a href="#section-9-10" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-9-2.1">Minimal representation (ID, or ID+name)<a href="#section-9-2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-9-11.1">Allowing clients to subscribe to specific types of service messages.<a href="#section-9-11.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="section-9-2.2">Full representation (all data of the object)<a href="#section-9-2.2" class="pilcrow">¶</a>
+        <li class="compact" id="section-9-11.2">Allowing clients to receive multiple service messages in a single request.<a href="#section-9-11.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="section-9-2.3">Full representation + dereferenced referrals (for example domain with contact and host details)<a href="#section-9-2.3" class="pilcrow">¶</a>
+        <li class="compact" id="section-9-11.3">Allowing clients to use multiple concurrent readers.<a href="#section-9-11.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-9-11.4">Support for streaming service messages to clients.<a href="#section-9-11.4" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-9-3"><strong>R6.2</strong> RPP MAY return different representations of the same object in different contexts:<a href="#section-9-3" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-9-4.1">GET request to the resource itself<a href="#section-9-4.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-9-4.2">GET request to get a collection of objects<a href="#section-9-4.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-9-4.3">Responses to PUT/POST/PATCH requests<a href="#section-9-4.3" class="pilcrow">¶</a>
-</li>
-      </ul>
-<p id="section-9-5"><strong>R6.3</strong> The data representation in a RPP response MUST only contain data related to the object, transactional information MUST be represented as one or more separate HTTP headers.<a href="#section-9-5" class="pilcrow">¶</a></p>
-<p id="section-9-6"><strong>R6.4</strong> RPP MUST support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination.<a href="#section-9-6" class="pilcrow">¶</a></p>
-<p id="section-9-7"><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.<a href="#section-9-7" class="pilcrow">¶</a></p>
-<p id="section-9-8"><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).<a href="#section-9-8" class="pilcrow">¶</a></p>
-<p id="section-9-9"><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.<a href="#section-9-9" class="pilcrow">¶</a></p>
-<p id="section-9-10"><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.<a href="#section-9-10" class="pilcrow">¶</a></p>
-<p id="section-9-11"><strong>R6.9</strong> RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.<a href="#section-9-11" class="pilcrow">¶</a></p>
-<p id="section-9-12"><strong>R6.10</strong> RPP MUST support a Functional Equivalent of the EPP Poll command described in EPP RFC <span>[<a href="#RFC5730" class="cite xref">RFC5730</a>]</span>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:<a href="#section-9-12" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-9-13.1">Allowing clients to subscribe to specific types of service messages.<a href="#section-9-13.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-9-13.2">Allowing clients to receive multiple service messages in a single request.<a href="#section-9-13.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-9-13.3">Allowing clients to use multiple concurrent readers.<a href="#section-9-13.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-9-13.4">Support for streaming service messages to clients.<a href="#section-9-13.4" class="pilcrow">¶</a>
-</li>
-      </ul>
-<p id="section-9-14"><strong>R6.11</strong> RPP MUST include a Functional Equivalent of <span>[<a href="#RFC9038" class="cite xref">RFC9038</a>]</span> to allow clients retrieve service messages including information it may not understand due to missing Extension support.<a href="#section-9-14" class="pilcrow">¶</a></p>
+<p id="section-9-12"><strong>R6.11</strong> RPP MUST include a Functional Equivalent of <span>[<a href="#RFC9038" class="cite xref">RFC9038</a>]</span> to allow clients retrieve service messages including information it may not understand due to missing Extension support.<a href="#section-9-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="discoverability">
@@ -1716,7 +1719,7 @@ li > p:last-of-type:only-child {
         <li class="compact" id="section-10-5.7">Supported profiles<a href="#section-10-5.7" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-10-6"><strong>R7.3</strong> Server provided functionality, such as the set of supported profiles, languages or extensions, MUST discoverable using the discovery document.<a href="#section-10-6" class="pilcrow">¶</a></p>
+<p id="section-10-6"><strong>R7.3</strong> Server provided functionality, such as the set of supported profiles, languages or extensions, MUST be discoverable using the discovery document.<a href="#section-10-6" class="pilcrow">¶</a></p>
 <p id="section-10-7"><strong>R7.4</strong> RPP MUST support versioning of:<a href="#section-10-7" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-10-8.1">The protocol itself<a href="#section-10-8.1" class="pilcrow">¶</a>
@@ -1737,7 +1740,7 @@ li > p:last-of-type:only-child {
 <p id="section-10-11"><strong>R7.7</strong> RPP MAY only support a subset of EPP functionality, the supported functionality MUST be discoverable by the client<a href="#section-10-11" class="pilcrow">¶</a></p>
 <p id="section-10-12"><strong>R7.8</strong> <em>Removed</em><a href="#section-10-12" class="pilcrow">¶</a></p>
 <p id="section-10-13"><strong>R7.9</strong> <em>Merged with R5.10</em><a href="#section-10-13" class="pilcrow">¶</a></p>
-<p id="section-10-14"><strong>R7.10</strong> Versions used by the RPP and used extensions MUST be discoverable by the client.<a href="#section-10-14" class="pilcrow">¶</a></p>
+<p id="section-10-14"><strong>R7.10</strong> <em>Removed</em>. Included in R7.3.<a href="#section-10-14" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="epp-compatibility">
@@ -1753,7 +1756,7 @@ li > p:last-of-type:only-child {
 </aside>
 <p id="section-11-5"><strong>R8.4</strong> RPP MUST include an extension framework able to define equivalents of most commonly used EPP extensions, which are not a part of core protocol (see: R4.2)<a href="#section-11-5" class="pilcrow">¶</a></p>
 <p id="section-11-6"><strong>R8.5</strong> EPP AuthInfo MUST be supported in RPP. RPP MUST by default support the requirements for Secure Authorization Information for Transfer <span>[<a href="#RFC9154" class="cite xref">RFC9154</a>]</span> operational practise.<a href="#section-11-6" class="pilcrow">¶</a></p>
-<p id="section-11-7"><strong>R8.6</strong> RPP SHOULD support client_id/password authentication to match EPP client authentication.<a href="#section-11-7" class="pilcrow">¶</a></p>
+<p id="section-11-7"><strong>R8.6</strong> RPP MUST support client_id/password authentication to match EPP client authentication.<a href="#section-11-7" class="pilcrow">¶</a></p>
 <p id="section-11-8"><strong>R8.7</strong> Where applicable RPP MUST support longer authorisation information compared to EPP, metainformation about client software and operational environment as well security related information (events) in the responses providing a functional equivalence to Login Security Extension for the Extensible Provisioning Protocol <span>[<a href="#RFC8807" class="cite xref">RFC8807</a>]</span>.<a href="#section-11-8" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1778,11 +1781,11 @@ li > p:last-of-type:only-child {
 <p id="section-12-9"><strong>R9.8</strong> RPP MUST allow for multiple user accounts linked to a single registrar, registrar user management MAY be delegated to an administrator account linked to a registrar, allowing for self service account management by the registrar.<a href="#section-12-9" class="pilcrow">¶</a></p>
 <p id="section-12-10"><strong>R9.9</strong> RPP MUST support a granular authorisation matrix, where one or more permissions are coupled to a user account. Allowing for the creation of different types of user accounts, such a readonly users only allowed to fetch data about existing objects, and power users allowed to create and modify objects.<a href="#section-12-10" class="pilcrow">¶</a></p>
 <p id="section-12-11"><strong>R9.10</strong> RPP MUST include considerations regarding best practices in secure handling of credentials, such as usage of strong passwords and limited lifetime for passwords and other tokens.<a href="#section-12-11" class="pilcrow">¶</a></p>
-<p id="section-12-12"><strong>R9.11</strong> RPP must support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.<a href="#section-12-12" class="pilcrow">¶</a></p>
+<p id="section-12-12"><strong>R9.11</strong> RPP MUST support the Least Privilege Principle, to allow server operators to ensure that clients have only the permissions necessary.<a href="#section-12-12" class="pilcrow">¶</a></p>
 <p id="section-12-13"><strong>R9.12</strong> RPP MUST support secure credentials management, ensuring that credentials are protected against replay and theft, and have limited lifetimes.<a href="#section-12-13" class="pilcrow">¶</a></p>
 <p id="section-12-14"><strong>R9.13</strong> Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.<a href="#section-12-14" class="pilcrow">¶</a></p>
 <p id="section-12-15"><strong>R9.14</strong> There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.<a href="#section-12-15" class="pilcrow">¶</a></p>
-<p id="section-12-16"><strong>R9.15</strong> RPP must support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.<a href="#section-12-16" class="pilcrow">¶</a></p>
+<p id="section-12-16"><strong>R9.15</strong> RPP MUST support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.<a href="#section-12-16" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="extensibility">
@@ -1829,7 +1832,7 @@ li > p:last-of-type:only-child {
 <a href="#section-15" class="section-number selfRef">15. </a><a href="#name-performance" class="section-name selfRef">Performance</a>
       </h2>
 <p id="section-15-1"><strong>R12.1</strong> In order to minimise message sizes and needed processing RPP SHOULD be designed not to include a HTTP message body in the request or response when this is not necessary, for example when the required data can be transmitted using the URL and/or HTTP headers.<a href="#section-15-1" class="pilcrow">¶</a></p>
-<p id="section-15-2"><strong>R12.2</strong> RPP MAY allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.<a href="#section-15-2" class="pilcrow">¶</a></p>
+<p id="section-15-2"><strong>R12.2</strong> RPP SHOULD allow for common bulk operations, resource listing, and filtering capabilities. RPP MUST NOT mandate such functionalities where this may impact scalability or performance negatively.<a href="#section-15-2" class="pilcrow">¶</a></p>
 <p id="section-15-3"><strong>R12.3</strong> <em>Removed</em><a href="#section-15-3" class="pilcrow">¶</a></p>
 <p id="section-15-4"><strong>R12.4</strong> The protocol MUST be usable in both high volume and low volume operating environments.<a href="#section-15-4" class="pilcrow">¶</a></p>
 <p id="section-15-5"><strong>R12.5</strong> RPP MUST support cacheability of responses, if applicable to the operation semantics and MUST not include transaction related identifiers and values.<a href="#section-15-5" class="pilcrow">¶</a></p>
@@ -1912,7 +1915,7 @@ li > p:last-of-type:only-child {
 <p id="section-18.2.1-4"><strong>D1.4</strong> RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of <span>[<a href="#RFC5890" class="cite xref">RFC5890</a>]</span> when processing domain names in requests and responses by both clients and servers.<a href="#section-18.2.1-4" class="pilcrow">¶</a></p>
 <p id="section-18.2.1-5"><strong>D1.5</strong> RPP domain object data model MUST allow for the association of zero, one or more objects representing the DNS configuration of the domain including Nameservers. These may be defined by a reference to separate repository objects (equivalent of EPP host objects) or aggregate object (equivalent of EPP host attribute).<a href="#section-18.2.1-5" class="pilcrow">¶</a></p>
 <p id="section-18.2.1-6"><strong>D1.6</strong> RPP MUST support domains that have linkage to at minimum registrant, administrative, technical, and billing contacts. In thin Registries, only identifiers MAY be stored; in thick Registries, contact data MAY be included per (privacy) policy. The list of contact link types MUST be extensible.<a href="#section-18.2.1-6" class="pilcrow">¶</a></p>
-<p id="section-18.2.1-7"><strong>D1.7</strong> RPP domain objects MUST support EPP AuthInfo for transfer operations (see R8.5).<a href="#section-18.2.1-7" class="pilcrow">¶</a></p>
+<p id="section-18.2.1-7"><strong>D1.7</strong> <em>Removed</em>. Included in R8.5.<a href="#section-18.2.1-7" class="pilcrow">¶</a></p>
 <p id="section-18.2.1-8"><strong>D1.8</strong> RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes. The protocol MUST define which statuses can be set by the server and which can be set by the Sponsoring Client.<a href="#section-18.2.1-8" class="pilcrow">¶</a></p>
 <p id="section-18.2.1-9"><strong>D1.9</strong> RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include an attribute with information about linked objects.<a href="#section-18.2.1-9" class="pilcrow">¶</a></p>
 <p id="section-18.2.1-10"><strong>D1.10</strong> RPP MUST provide a mechanism for clients to discover the server's supported Internationalized Domain Name (IDN) policies. Information such as the identifiers for supported IDN tables, applicable language tags, and variant disposition policies MUST be discoverable via the service discovery document (see R7.2).<a href="#section-18.2.1-10" class="pilcrow">¶</a></p>
@@ -1926,7 +1929,7 @@ li > p:last-of-type:only-child {
 <p id="section-18.2.2-1"><strong>D2.1</strong> RPP MUST provide operations to check, create, read, update, transfer, renew and delete domain name objects as defined in <span>[<a href="#RFC5731" class="cite xref">RFC5731</a>]</span>.<a href="#section-18.2.2-1" class="pilcrow">¶</a></p>
 <p id="section-18.2.2-2"><strong>D2.2</strong> When creating or renewing a domain object, RPP MUST allow a client to specify a registration period. The protocol MUST provide a mechanism for the server to confirm the resulting registration expiration date in the response.<a href="#section-18.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-18.2.2-3"><strong>D2.3</strong> RPP MUST support the Domain Registry Grace Period Mapping as defined by <span>[<a href="#RFC3915" class="cite xref">RFC3915</a>]</span>, the restore report MAY be ignored or included in the initial restore request, making this a 1-step process vs the 2-step process in EPP.<a href="#section-18.2.2-3" class="pilcrow">¶</a></p>
-<p id="section-18.2.2-4"><strong>D2.4</strong> RPP MAY support searching and listing domains filtered by name (exact/prefix), and Sponsoring Client.<a href="#section-18.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-18.2.2-4"><strong>D2.4</strong> RPP SHOULD support searching and listing domains filtered by name (exact/prefix), and Sponsoring Client.<a href="#section-18.2.2-4" class="pilcrow">¶</a></p>
 <p id="section-18.2.2-5"><strong>D2.5</strong> Only the Sponsoring Client (or an authorised server administrator) MAY modify or delete a domain object; servers MUST enforce authorisation.<a href="#section-18.2.2-5" class="pilcrow">¶</a></p>
 <p id="section-18.2.2-6"><strong>D2.6</strong> RPP MUST prevent creation of duplicate domain objects within a Registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.<a href="#section-18.2.2-6" class="pilcrow">¶</a></p>
 <p id="section-18.2.2-7"><strong>D2.7</strong> The transfer of a domain object MUST also result in the transfer of any subordinate host objects (ns.foo.example when foo.example is transferred).<a href="#section-18.2.2-7" class="pilcrow">¶</a></p>
@@ -1981,8 +1984,8 @@ li > p:last-of-type:only-child {
           <h4 id="name-data-model-3">
 <a href="#section-18.3.1" class="section-number selfRef">18.3.1. </a><a href="#name-data-model-3" class="section-name selfRef">Data Model</a>
           </h4>
-<p id="section-18.3.1-1"><strong>H1.1</strong> RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), Repository Object Identifier, object status, current Sponsoring Client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.<a href="#section-18.3.1-1" class="pilcrow">¶</a></p>
-<p id="section-18.3.1-2"><strong>H1.2</strong> RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (O1.1).<a href="#section-18.3.1-2" class="pilcrow">¶</a></p>
+<p id="section-18.3.1-1"><strong>H1.1</strong> RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see: R5.13), Repository Object Identifier, object status, current Sponsoring Client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.<a href="#section-18.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-18.3.1-2"><strong>H1.2</strong> RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (see: R5.13).<a href="#section-18.3.1-2" class="pilcrow">¶</a></p>
 <p id="section-18.3.1-3"><strong>H1.3</strong> Host names MUST be valid FQDNs.<a href="#section-18.3.1-3" class="pilcrow">¶</a></p>
 <p id="section-18.3.1-4"><strong>H1.4</strong> RPP MUST support internationalized domain names (IDN) for host names and accept A-labels and U-labels, also know as IDNA2008 and defined in <span>[<a href="#RFC5890" class="cite xref">RFC5890</a>]</span>.<a href="#section-18.3.1-4" class="pilcrow">¶</a></p>
 <p id="section-18.3.1-5"><strong>H1.5</strong> RPP MUST apply the rules of Label Equivalence as defined in Section 2.3.2.4 of <span>[<a href="#RFC5890" class="cite xref">RFC5890</a>]</span> when processing host names in requests and responses by both clients and servers.<a href="#section-18.3.1-5" class="pilcrow">¶</a></p>
@@ -2043,7 +2046,7 @@ li > p:last-of-type:only-child {
           </h4>
 <p id="section-18.4.2-1"><strong>C2.1</strong> RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in <span>[<a href="#RFC5733" class="cite xref">RFC5733</a>]</span>, such as check, create, read, update, and delete with the possible exception of transfer command, and include support for partial update semantics available to allow for efficient updates.<a href="#section-18.4.2-1" class="pilcrow">¶</a></p>
 <p id="section-18.4.2-2"><strong>C2.2</strong> RPP MAY support the contact transfer command from EPP.<a href="#section-18.4.2-2" class="pilcrow">¶</a></p>
-<p id="section-18.4.2-3"><strong>C2.3</strong> RPP MAY support searching and listing contacts filtered by name (exact/prefix), and Sponsoring Client, with pagination, the server MAY use a maximum limit on results.<a href="#section-18.4.2-3" class="pilcrow">¶</a></p>
+<p id="section-18.4.2-3"><strong>C2.3</strong> RPP SHOULD support searching and listing contacts filtered by name (exact/prefix), and Sponsoring Client, with pagination, the server MAY use a maximum limit on results.<a href="#section-18.4.2-3" class="pilcrow">¶</a></p>
 <p id="section-18.4.2-4"><strong>C2.4</strong> Functional equivalents for EPP contact statuses (e.g., ok, linked, client/serverUpdateProhibited, client/serverDeleteProhibited, pendingTransfer) MUST be supported, with clear mapping to HTTP/RPP responses. The protocol MUST define which statuses can be set by the server and which can be set by the Sponsoring Client.<a href="#section-18.4.2-4" class="pilcrow">¶</a></p>
 <p id="section-18.4.2-5"><strong>C2.5</strong> RPP MUST prevent creation of contacts with duplicate ids within Registry namespace (TLD) and return a HTTP 409 (Conflict) status on collision.<a href="#section-18.4.2-5" class="pilcrow">¶</a></p>
 <p id="section-18.4.2-6"><strong>C2.6</strong> The protocol MUST provide an operation to retrieve full contact representation. An authorisation mechanism MUST ensure that sensitive data, such as authorisation information, is only returned to the current Sponsoring Client.<a href="#section-18.4.2-6" class="pilcrow">¶</a></p>
@@ -2122,7 +2125,7 @@ li > p:last-of-type:only-child {
 <a href="#section-21" class="section-number selfRef">21. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
 <p id="section-21-1"><strong>DP1.1</strong> The protocol MUST provide mechanisms to support the implementation of data privacy principles, such as those found in modern data protection frameworks (e.g., GDPR). These mechanisms MUST support, at a minimum, the principles of data minimisation and purpose limitation.<a href="#section-21-1" class="pilcrow">¶</a></p>
-<p id="section-21-2"><strong>DP1.2</strong> To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it needs and server can return the data a client is authorised to access (See also R4.3 and R6.1).<a href="#section-21-2" class="pilcrow">¶</a></p>
+<p id="section-21-2"><strong>DP.2</strong> To support data minimisation, the protocol MUST allow clients to provide and manage only the data that is strictly necessary for a specific purpose. The protocol MUST also allow for different representations of an object, so that a client can request a representation containing only the data it needs and server can return the data a client is authorised to access (See also R4.3 and R5.14).<a href="#section-21-2" class="pilcrow">¶</a></p>
 <p id="section-21-3"><strong>DP1.3</strong> The protocol's operations and data models MUST be sufficiently flexible to allow an operator to implement workflows for exercising data subject rights, such as access, rectification, and erasure of personal data, in a manner consistent with the operational and policy constraints of the provisioning environment.<a href="#section-21-3" class="pilcrow">¶</a></p>
 <p id="section-21-4"><strong>DP1.4</strong> The protocol MUST provide services to identify data collection policies and privacy practices. Information about data collection, retention, and privacy policies MUST be included in the service discovery document, enabling clients to understand how personal and sensitive data is handled.<a href="#section-21-4" class="pilcrow">¶</a></p>
 <p id="section-21-5"><strong>DP1.5</strong> Object type specification MAY define additional requirements related to data privacy (See: C1.5, C2.6 and C2.7 for contact object type).<a href="#section-21-5" class="pilcrow">¶</a></p>
@@ -2152,19 +2155,31 @@ li > p:last-of-type:only-child {
 </li>
           <li class="compact" id="section-22.1-1.6">Functional Equivalent defined as term (Issue #140)<a href="#section-22.1-1.6" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.7">Revised and added necessary teminology (Issue #26)<a href="#section-22.1-1.7" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.7">Changed R12.2, D2.4 and C2.3 from MAY to SHOULD (Issue #139)<a href="#section-22.1-1.7" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.8">Updated R4.3 to only mandate data fields that are strictly necessary<a href="#section-22.1-1.8" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.8">Changed R8.6 from SHOULD to MUST (Issue #139)<a href="#section-22.1-1.8" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.9">Merged R7.9 and R5.10 (Issue #124)<a href="#section-22.1-1.9" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.9">Removed R7.10 and D1.7 (Issue #139)<a href="#section-22.1-1.9" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.10">Updated R4.4 to better describe profiles (Issue #15)<a href="#section-22.1-1.10" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.10">Changed R6.4 from MUST to SHOULD (Issue #139)<a href="#section-22.1-1.10" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.11">Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)<a href="#section-22.1-1.11" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.11">Fixed Typos and references (Issue #139)<a href="#section-22.1-1.11" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.12">Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)<a href="#section-22.1-1.12" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.12">Moved R6.1, R6.2 and R6.3 to R5.14, R5.15 and R5.16 respectively (Issue #139)<a href="#section-22.1-1.12" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.13">Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <span>[<a href="#TigerTeamRecc" class="cite xref">TigerTeamRecc</a>]</span><a href="#section-22.1-1.13" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.13">Revised and added necessary teminology (Issue #26)<a href="#section-22.1-1.13" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.14">Updated R4.3 to only mandate data fields that are strictly necessary<a href="#section-22.1-1.14" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.15">Merged R7.9 and R5.10 (Issue #124)<a href="#section-22.1-1.15" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.16">Updated R4.4 to better describe profiles (Issue #15)<a href="#section-22.1-1.16" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.17">Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)<a href="#section-22.1-1.17" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.18">Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)<a href="#section-22.1-1.18" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.19">Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <span>[<a href="#TigerTeamRecc" class="cite xref">TigerTeamRecc</a>]</span><a href="#section-22.1-1.19" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
