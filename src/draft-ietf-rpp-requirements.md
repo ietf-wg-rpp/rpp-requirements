@@ -220,7 +220,7 @@ RPP MUST support the use of server profiles to define required components of the
 
 **R5.13** RPP MUST define a structured data model for all object types that require DNS representation (e.g., Host, Domain). The data model MUST support commonly used DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, such as TTL. See R10.14 for extensibility requirements.
 
-# Operations and responses
+# Operations and request handling
 
 **R6.1** RPP MUST include support for a client requesting different depth of data representations, depending on the use case:
 
@@ -448,7 +448,11 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 # Requirements for object types
 
-## Common
+## Common requirements
+
+This section contains requirements commonly applicable to more or all object types.
+
+### Generic requirements
 
 **O1.1** *Removed*
 
@@ -474,6 +478,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 ## Domain Object Type
 
 [//]: # (Editor note: use Dx.x for Domains)
+
+### Data Model
 
 **D1.1** RPP domain object data model MUST include, at a minimum, the attributes defined in RFC5731: the fully qualified domain name, Repository Object Identifier, object status, the current Sponsoring Client identifier, creating registrar client ID, creation timestamp, last update client ID, last update timestamp, expiration timestamp, last transfer timestamp, Nameservers, subordinate hosts, the registrant, and other associated contacts.
 
@@ -524,7 +530,9 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **D3.3** The representation MUST adapt to the Registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.
 
-### Embedding of EPP extensions
+### Specific Considerations
+
+#### Embedding of EPP extensions
 
 **D4.1** RPP Core protocol MUST incorporate functional equivalent of the following list of widely used and considered essential EPP extensions as recommended in [@?TigerTeamRecc]:
 
@@ -534,6 +542,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 - Organization Extension for the Extensible Provisioning Protocol [@!RFC8544]
 
 ## Host Object Type
+
+### Data Model
 
 **H1.1** RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), Repository Object Identifier, object status, current Sponsoring Client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.
 
@@ -575,6 +585,8 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 ## Contact Object Type
 
+### Data Model
+
 **C1.1** RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the Sponsoring Client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.
 
 **C1.2** RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.
@@ -613,7 +625,9 @@ A> TODO: [Issue #47](https://github.com/ietf-wg-rpp/rpp-requirements/issues/47)
 
 **C3.2** RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in [@!RFC5733].
 
-### Internationalisation
+### Specific Considerations
+
+#### Internationalisation
 
 **C4.1** RPP MUST support internationalisation (character encoding) for contact objects in the following areas:
 
@@ -661,6 +675,8 @@ RRP core specifications MUST include appropriate Security Considerations section
 {numbered="false" toc="exclude"}
 ## Version -02 to -03
 
+* Renamed section "Operations and responses" to "Operations and request handling"
+* "Common" section of "Requirements for object types" clearly structured.
 * Revised and added necessary teminology (Issue #26)
 * Updated R4.3 to only mandate data fields that are strictly necessary
 * Merged R7.9 and R5.10 (Issue #124)

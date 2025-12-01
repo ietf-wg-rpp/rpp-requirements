@@ -59,7 +59,7 @@ Table of Contents
    6.  REST
    7.  Data Model
    8.  Data Representation
-   9.  Operations and responses
+   9.  Operations and request handling
    10. Discoverability
    11. EPP compatibility
    12. Security
@@ -69,19 +69,25 @@ Table of Contents
    16. Internationalisation
    17. Clients
    18. Requirements for object types
-     18.1.  Common
-       18.1.1.  Object Transfers
+     18.1.  Common requirements
+       18.1.1.  Generic requirements
+       18.1.2.  Object Transfers
      18.2.  Domain Object Type
-       18.2.1.  Operations
-       18.2.2.  Data Representation
-       18.2.3.  Embedding of EPP extensions
+       18.2.1.  Data Model
+       18.2.2.  Operations
+       18.2.3.  Data Representation
+       18.2.4.  Specific Considerations
+         18.2.4.1.  Embedding of EPP extensions
      18.3.  Host Object Type
-       18.3.1.  Operations
-       18.3.2.  Data Representation
+       18.3.1.  Data Model
+       18.3.2.  Operations
+       18.3.3.  Data Representation
      18.4.  Contact Object Type
-       18.4.1.  Operations
-       18.4.2.  Data Representation
-       18.4.3.  Internationalisation
+       18.4.1.  Data Model
+       18.4.2.  Operations
+       18.4.3.  Data Representation
+       18.4.4.  Specific Considerations
+         18.4.4.1.  Internationalisation
      18.5.  Organisation Object Type
    19. IANA Considerations
    20. Security Considerations
@@ -401,7 +407,7 @@ Table of Contents
    MX, NS, DS, TXT) and their standard attributes, such as TTL.  See
    R10.14 for extensibility requirements.
 
-9.  Operations and responses
+9.  Operations and request handling
 
    *R6.1* RPP MUST include support for a client requesting different
    depth of data representations, depending on the use case:
@@ -770,11 +776,16 @@ Table of Contents
 
 18.  Requirements for object types
 
-18.1.  Common
+18.1.  Common requirements
+
+   This section contains requirements commonly applicable to more or all
+   object types.
+
+18.1.1.  Generic requirements
 
    *O1.1* _Removed_
 
-18.1.1.  Object Transfers
+18.1.2.  Object Transfers
 
    *O2.1* RPP MUST support two types of object transfer operations:
 
@@ -808,6 +819,8 @@ Table of Contents
    objects that were also transferred.
 
 18.2.  Domain Object Type
+
+18.2.1.  Data Model
 
    *D1.1* RPP domain object data model MUST include, at a minimum, the
    attributes defined in RFC5731: the fully qualified domain name,
@@ -861,7 +874,7 @@ Table of Contents
    applicable language tags, and variant disposition policies MUST be
    discoverable via the service discovery document (see R7.2).
 
-18.2.1.  Operations
+18.2.2.  Operations
 
    *D2.1* RPP MUST provide operations to check, create, read, update,
    transfer, renew and delete domain name objects as defined in
@@ -902,7 +915,7 @@ Table of Contents
    request.  This feature, as not standard EPP feature, SHALL be
    optional to be supported by server policy.
 
-18.2.2.  Data Representation
+18.2.3.  Data Representation
 
    *D3.1* The JSON representation MUST include the canonical domain name
    and any U-label/A-label when IDN is used by the server.
@@ -914,7 +927,9 @@ Table of Contents
    mode, only identifiers (e.g., contact IDs) MUST be returned; in thick
    mode, full contact data MUST be returned.
 
-18.2.3.  Embedding of EPP extensions
+18.2.4.  Specific Considerations
+
+18.2.4.1.  Embedding of EPP extensions
 
    *D4.1* RPP Core protocol MUST incorporate functional equivalent of
    the following list of widely used and considered essential EPP
@@ -930,6 +945,8 @@ Table of Contents
       [RFC8544]
 
 18.3.  Host Object Type
+
+18.3.1.  Data Model
 
    *H1.1* RPP host object data model MUST include, at a minimum: fully
    qualified host name, all associated IP addresses (see O1.1),
@@ -968,7 +985,7 @@ Table of Contents
    pending<command>) and define their mapping to RPP responses and HTTP
    status codes.
 
-18.3.1.  Operations
+18.3.2.  Operations
 
    *H2.1* RPP MUST RPP MUST provide operations to check, create, read,
    update and delete host objects as defined in [RFC5732], with partial
@@ -998,7 +1015,7 @@ Table of Contents
    *H2.6* RPP MUST prevent creation of duplicate hosts within a Registry
    namespace (TLD) and return a conflict on collision.
 
-18.3.2.  Data Representation
+18.3.3.  Data Representation
 
    *H3.1* RPP MUST support a JSON representation for both Host objects
    and for Host attributes as defined in the EPP RFCs.
@@ -1010,6 +1027,8 @@ Table of Contents
    objects, for example: self, and parent domain for In-bailiwick hosts.
 
 18.4.  Contact Object Type
+
+18.4.1.  Data Model
 
    *C1.1* RPP contact object data model MUST include, at a minimum an
    equivalent of RFC5733 contact data model: a unique identifier,
@@ -1048,7 +1067,7 @@ Table of Contents
    "entity" to better align with the RDAP data model, defined in
    [RFC9083].
 
-18.4.1.  Operations
+18.4.2.  Operations
 
    *C2.1* RPP contact object type is mapped to the EPP equivalent and
    MUST support all operations (commands) defined for the contact object
@@ -1082,7 +1101,7 @@ Table of Contents
    representation MAY vary depending if the authorisation information is
    provided - depending on server policy.
 
-18.4.2.  Data Representation
+18.4.3.  Data Representation
 
    *C3.1* RPP SHOULD consider using JSContact [RFC9553] format for
    contact representation.
@@ -1091,7 +1110,9 @@ Table of Contents
    field (or field group) and this MUST be mapped to the EPP disclosure
    preferences described in [RFC5733].
 
-18.4.3.  Internationalisation
+18.4.4.  Specific Considerations
+
+18.4.4.1.  Internationalisation
 
    *C4.1* RPP MUST support internationalisation (character encoding) for
    contact objects in the following areas:
@@ -1178,6 +1199,10 @@ Table of Contents
 
 Version -02 to -03
 
+   -  Renamed section "Operations and responses" to "Operations and
+      request handling"
+   -  "Common" section of "Requirements for object types" clearly
+      structured.
    -  Revised and added necessary teminology (Issue #26)
    -  Updated R4.3 to only mandate data fields that are strictly
       necessary
@@ -1199,7 +1224,7 @@ Version -01 to -02
    -  Added R10.12 on future ways of Delegation
    -  Added requirements for Domain Object Type
    -  Added relevant and not yet covered requirements from [RFC3375]
-      (R6.5-R6.8, R12.4, Section 18.1.1)
+      (R6.5-R6.8, R12.4, Section 18.1.2)
    -  Added R6.4 RPP MUST include a functional equivalent of the EPP
       Poll command.
    -  Added requirements for the contact object type

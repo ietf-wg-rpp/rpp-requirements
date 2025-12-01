@@ -137,7 +137,7 @@
 <t><strong>R5.13</strong> RPP MUST define a structured data model for all object types that require DNS representation (e.g., Host, Domain). The data model MUST support commonly used DNS record types (such as A, AAAA, CNAME, MX, NS, DS, TXT) and their standard attributes, such as TTL. See R10.14 for extensibility requirements.</t>
 </section>
 
-<section anchor="operations-and-responses"><name>Operations and responses</name>
+<section anchor="operations-and-request-handling"><name>Operations and request handling</name>
 <t><strong>R6.1</strong> RPP MUST include support for a client requesting different depth of data representations, depending on the use case:</t>
 
 <ul spacing="compact">
@@ -303,8 +303,12 @@
 
 <section anchor="requirements-for-object-types"><name>Requirements for object types</name>
 
-<section anchor="common"><name>Common</name>
+<section anchor="common-requirements"><name>Common requirements</name>
+<t>This section contains requirements commonly applicable to more or all object types.</t>
+
+<section anchor="generic-requirements"><name>Generic requirements</name>
 <t><strong>O1.1</strong> <em>Removed</em></t>
+</section>
 
 <section anchor="obj_transfers"><name>Object Transfers</name>
 <t><strong>O2.1</strong> RPP MUST support two types of object transfer operations:</t>
@@ -323,6 +327,8 @@
 </section>
 
 <section anchor="domain-object-type"><name>Domain Object Type</name>
+
+<section anchor="data-model-1"><name>Data Model</name>
 <t><strong>D1.1</strong> RPP domain object data model MUST include, at a minimum, the attributes defined in RFC5731: the fully qualified domain name, Repository Object Identifier, object status, the current Sponsoring Client identifier, creating registrar client ID, creation timestamp, last update client ID, last update timestamp, expiration timestamp, last transfer timestamp, Nameservers, subordinate hosts, the registrant, and other associated contacts.</t>
 <t><strong>D1.2</strong> RPP MUST only accept valid domain names, which MUST be valid FQDNs.</t>
 <t><strong>D1.3</strong> RPP MUST support internationalised domain names (IDN) and accept A-labels and U-labels, also know as IDNA2008 and defined in <xref target="RFC5890"></xref>.</t>
@@ -333,6 +339,7 @@
 <t><strong>D1.8</strong> RPP MUST provide functional equivalents for EPP domain status values (e.g., ok, inactive, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes. The protocol MUST define which statuses can be set by the server and which can be set by the Sponsoring Client.</t>
 <t><strong>D1.9</strong> RPP MUST enforce referential integrity. the parent domain name for a subordinate host object MUST not be deleted. RPP MUST return a conflict error when deletion is disallowed and the domain representation MAY include an attribute with information about linked objects.</t>
 <t><strong>D1.10</strong> RPP MUST provide a mechanism for clients to discover the server's supported Internationalized Domain Name (IDN) policies. Information such as the identifiers for supported IDN tables, applicable language tags, and variant disposition policies MUST be discoverable via the service discovery document (see R7.2).</t>
+</section>
 
 <section anchor="operations"><name>Operations</name>
 <t><strong>D2.1</strong> RPP MUST provide operations to check, create, read, update, transfer, renew and delete domain name objects as defined in <xref target="RFC5731"></xref>.</t>
@@ -352,6 +359,8 @@
 <t><strong>D3.3</strong> The representation MUST adapt to the Registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.</t>
 </section>
 
+<section anchor="specific-considerations"><name>Specific Considerations</name>
+
 <section anchor="embedding-of-epp-extensions"><name>Embedding of EPP extensions</name>
 <t><strong>D4.1</strong> RPP Core protocol MUST incorporate functional equivalent of the following list of widely used and considered essential EPP extensions as recommended in <xref target="TigerTeamRecc"></xref>:</t>
 
@@ -363,8 +372,11 @@
 </ul>
 </section>
 </section>
+</section>
 
 <section anchor="host-object-type"><name>Host Object Type</name>
+
+<section anchor="data-model-2"><name>Data Model</name>
 <t><strong>H1.1</strong> RPP host object data model MUST include, at a minimum: fully qualified host name, all associated IP addresses (see O1.1), Repository Object Identifier, object status, current Sponsoring Client identifier, creating client identifier, creation timestamp, last updating client identifier, last update timestamp, the last transfer timestamp.</t>
 <t><strong>H1.2</strong> RPP MUST map the EPP host attribute model to the generic JSON DNS model defined by RPP (O1.1).</t>
 <t><strong>H1.3</strong> Host names MUST be valid FQDNs.</t>
@@ -373,6 +385,7 @@
 <t><strong>H1.6</strong> When used for linking a Name Server to a domain name, RPP MUST support both In-bailiwick and Out-of-bailiwick host objects.</t>
 <t><strong>H1.7</strong> RPP MUST support zero or more IP addresses (IPv4 or IPv6) for host objects, when the host object is used for linking a Name Server to a domain name. Addresses MUST be syntactically valid, normalised, and unique within the host. The maximum number of allowed addressess and any disallowed ranges (e.g., <xref target="RFC1918"></xref>) are server policy. The server MAY require, make optional or disallow IP addresses depending on whether host is In-bailiwick or Out-of-bailiwick. This is also server policy.</t>
 <t><strong>H1.8</strong> RPP MUST provide functional equivalents for EPP host status values (e.g., ok, linked, client/server&lt;command&gt;Prohibited, pending&lt;command&gt;) and define their mapping to RPP responses and HTTP status codes.</t>
+</section>
 
 <section anchor="operations-1"><name>Operations</name>
 <t><strong>H2.1</strong> RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in <xref target="RFC5732"></xref>, with partial update semantics available to allow for efficient updates. Transfer Operation of subordinate host object MUST be implicit with the Transfer Operation of parent domain name.</t>
@@ -391,6 +404,8 @@
 </section>
 
 <section anchor="contact-object-type"><name>Contact Object Type</name>
+
+<section anchor="data-model-3"><name>Data Model</name>
 <t><strong>C1.1</strong> RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the Sponsoring Client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.</t>
 <t><strong>C1.2</strong> RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.</t>
 <t><strong>C1.3</strong> RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.</t>
@@ -399,6 +414,7 @@
 <t><strong>C1.6</strong> RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP Server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).</t>
 <t><strong>C1.7</strong> RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.</t>
 <t><strong>C1.8</strong> RPP SHOULD consider renaming the EPP contact object type to &quot;entity&quot; to better align with the RDAP data model, defined in <xref target="RFC9083"></xref>.</t>
+</section>
 
 <section anchor="operations-2"><name>Operations</name>
 <t><strong>C2.1</strong> RPP contact object type is mapped to the EPP equivalent and MUST support all operations (commands) defined for the contact object in <xref target="RFC5733"></xref>, such as check, create, read, update, and delete with the possible exception of transfer command, and include support for partial update semantics available to allow for efficient updates.</t>
@@ -415,6 +431,8 @@
 <t><strong>C3.2</strong> RPP MUST support contact attribute disclosure preferences per field (or field group) and this MUST be mapped to the EPP disclosure preferences described in <xref target="RFC5733"></xref>.</t>
 </section>
 
+<section anchor="specific-considerations-1"><name>Specific Considerations</name>
+
 <section anchor="internationalisation-1"><name>Internationalisation</name>
 <t><strong>C4.1</strong> RPP MUST support internationalisation (character encoding) for contact objects in the following areas:</t>
 
@@ -427,6 +445,7 @@
 <t><strong>C4.3</strong> RPP MUST support internationalised Email addresses <xref target="RFC6530"></xref> in Contact objects. Functional equivalent of <xref target="RFC9873"></xref> MUST be assured in EPP compatibility mode, however RPP MAY remove requirement for at least one all-ASCII Email address.</t>
 <t><strong>C4.4</strong> RPP MUST support multiple localised expressions of the same data, e.g. fields mentioned in C4.1 having both international and localised variants.</t>
 <t><strong>C4.5</strong> All future RPP contact object extensions MUST be able to handle internationalisation and localisation requirements.</t>
+</section>
 </section>
 </section>
 
@@ -457,6 +476,8 @@
 <section anchor="version-02-to-03" numbered="false" toc="exclude"><name>Version -02 to -03</name>
 
 <ul spacing="compact">
+<li>Renamed section &quot;Operations and responses&quot; to &quot;Operations and request handling&quot;</li>
+<li>&quot;Common&quot; section of &quot;Requirements for object types&quot; clearly structured.</li>
 <li>Revised and added necessary teminology (Issue #26)</li>
 <li>Updated R4.3 to only mandate data fields that are strictly necessary</li>
 <li>Merged R7.9 and R5.10 (Issue #124)</li>
