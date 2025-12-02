@@ -93,9 +93,10 @@ Table of Contents
    20. Security Considerations
    21. Privacy Considerations
    22. Changes History
-   23. References
-     23.1.  Normative References
-     23.2.  Informative References
+   23. Acknowledgements
+   24. References
+     24.1.  Normative References
+     24.2.  Informative References
    Appendix A.  Extensions
      A.1.  Essential extensions
      A.2.  Optional extensions
@@ -374,7 +375,7 @@ Table of Contents
    *R5.1* RPP MUST use JSON as the default data format.
 
    *R5.2* It MUST be possible to extend RPP to include support other
-   data formats (e.g. XML, YAML).
+   data formats (e.g.  XML, YAML).
 
    *R5.3* Validation of request and response message MUST be supported
    for both clients and the servers, in order to determine if the
@@ -711,7 +712,7 @@ Table of Contents
 
    *R10.14* The data model MUST be designed to allow Extension for
    future or experimental DNS record types as well as future ways of
-   Delegation over DNS (e.g. DELEG).
+   Delegation over DNS (e.g.  DELEG).
 
    *R10.15* RPP design MUST promote cohesive Extension patterns by
    defining a preferred "standard way" for common functionalities.
@@ -1252,6 +1253,7 @@ Version -02 to -03
    -  Added requirements R2.5, R10.15 and R10.3 (changed) related to
       Generic Protocol Design Recommendations from the Tiger Team
       recommendations [TigerTeamRecc]
+   -  Added Acknowledgements section
 
 Version -01 to -02
 
@@ -1312,17 +1314,25 @@ Version -00 to -01
    -  Added mandatory support for internationalisation (i18n) and
       specified considering JSContact for contact objects.
 
-23.  References
+23.  Acknowledgements
 
-23.1.  Normative References
+   The authors wish to thank the following individuals for providing
+   detailed comments and suggestions that improved the clarity and
+   accuracy of the requirements.
 
-   [BCP56]    Best Current Practice 56,
-              <https://www.rfc-editor.org/info/bcp56>.
-              At the time of writing, this BCP comprises the following:
+   -  Andy Newton
+   -  James Gould
+   -  Marco Davids
+   -  Ruth Trevor-Allen
 
-              Nottingham, M., "Building Protocols with HTTP", BCP 56,
-              RFC 9205, DOI 10.17487/RFC9205, June 2022,
-              <https://www.rfc-editor.org/info/rfc9205>.
+24.  References
+
+24.1.  Normative References
+
+   [BCP56]    Nottingham, M., "Building Protocols with HTTP", BCP 56,
+              RFC 9205, June 2022.
+
+              <https://www.rfc-editor.org/info/bcp56>
 
    [OpenAPI]  openapis.org, "OpenAPI Specification", 2025,
               <https://www.openapis.org/>.
@@ -1470,7 +1480,7 @@ Version -00 to -01
               4", 2007, <https://www.oreilly.com/library/view/restful-
               web-services/9780596529260/ch04.html>.
 
-23.2.  Informative References
+24.2.  Informative References
 
    [RFC3375]  Hollenbeck, S., "Generic Registry-Registrar Protocol
               Requirements", RFC 3375, DOI 10.17487/RFC3375, September

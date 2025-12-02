@@ -10,25 +10,26 @@
 <meta content="
        This document describes the requirements for the development of the RESTful Provisioning Protocol (RPP). 
     " name="description">
-<meta content="xml2rfc 3.30.0" name="generator">
+<meta content="xml2rfc 3.18.2" name="generator">
 <meta content="draft-ietf-rpp-requirements-03" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.0
-    Python 3.10.12
-    ConfigArgParse 1.7.1
-    google-i18n-address 3.1.1
+  xml2rfc 3.18.2
+    Python 3.11.12
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.6
-    lxml 6.0.0
-    platformdirs 4.3.8
-    pycountry 24.6.1
-    PyYAML 6.0.2
-    requests 2.32.4
-    setuptools 80.9.0
-    wcwidth 0.2.13
-    weasyprint 65.0
+    jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.0.0
+    pycountry 22.3.5
+    PyYAML 6.0.1
+    requests 2.31.0
+    setuptools 78.1.0
+    six 1.16.0
+    wcwidth 0.2.9
+    weasyprint 55.0
 -->
-<link href="draft-ietf-rpp-requirements.xml" rel="alternate" type="application/rfc+xml">
+<link href="../docs/draft-ietf-rpp-requirements.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -160,12 +161,6 @@ div {
 svg {
   display: block;
 }
-@media print {
-  svg {
-    max-height: 850px;
-    max-width: 660px;
-  }
-}
 svg[font-family~="serif" i], svg [font-family~="serif" i] {
   font-family: var(--font-serif);
 }
@@ -258,7 +253,8 @@ a[href]:hover {
   background-color: #f2f2f2;
 }
 figcaption a[href],
-a[href].selfRef {
+a[href].selfRef,
+.iref + a[href].internal {
   color: #222;
 }
 /* XXX probably not this:
@@ -317,9 +313,6 @@ cite {
   display: block;
   text-align: right;
   font-style: italic;
-}
-.xref {
-  overflow-wrap: normal;
 }
 
 /* tables */
@@ -409,7 +402,7 @@ hr {
 /* Fix PDF info block run off issue */
 @media print {
   #identifiers dd {
-    max-width: 100%;
+    float: none;
   }
 }
 #identifiers .authors .author {
@@ -462,10 +455,6 @@ nav.toc li {
 }
 
 .refInstance {
-  margin-bottom: 1.25em;
-}
-
-.refSubseries {
   margin-bottom: 1.25em;
 }
 
@@ -1085,7 +1074,7 @@ table {
 ol.type-a { list-style-type: lower-alpha; }
 ol.type-A { list-style-type: upper-alpha; }
 ol.type-i { list-style-type: lower-roman; }
-ol.type-I { list-style-type: upper-roman; }
+ol.type-I { list-style-type: lower-roman; }
 /* Apply the print table and row borders in general, on request from the RPC,
 and increase the contrast between border and odd row background slightly */
 table {
@@ -1165,7 +1154,7 @@ section .olCompact {
 tt, code {
   background-color: transparent;
 }
-p tt, p code, li tt, li code, dt tt, dt code {
+p tt, p code, li tt, li code {
   background-color: #f8f8f8;
 }
 /* Tweak the pre margin -- 0px doesn't come out well */
@@ -1188,7 +1177,6 @@ dl > dd > dl {
 /* This should match the element list in writer.text.TextWriter.render_dl() */
 dd > div.artwork:first-child,
 dd > aside:first-child,
-dd > blockquote:first-child,
 dd > figure:first-child,
 dd > ol:first-child,
 dd > div.sourcecode:first-child,
@@ -1452,29 +1440,32 @@ li > p:last-of-type:only-child {
             <p id="section-toc.1-1.22.1"><a href="#section-22" class="auto internal xref">22</a>. <a href="#name-changes-history" class="internal xref">Changes History</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23">
-            <p id="section-toc.1-1.23.1"><a href="#section-23" class="auto internal xref">23</a>. <a href="#name-references" class="internal xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23.2.1">
-                <p id="section-toc.1-1.23.2.1.1"><a href="#section-23.1" class="auto internal xref">23.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23.2.2">
-                <p id="section-toc.1-1.23.2.2.1"><a href="#section-23.2" class="auto internal xref">23.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.23.1"><a href="#section-23" class="auto internal xref">23</a>. <a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24">
-            <p id="section-toc.1-1.24.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-extensions" class="internal xref">Extensions</a></p>
+            <p id="section-toc.1-1.24.1"><a href="#section-24" class="auto internal xref">24</a>. <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24.2.1">
-                <p id="section-toc.1-1.24.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-essential-extensions" class="internal xref">Essential extensions</a></p>
+                <p id="section-toc.1-1.24.2.1.1"><a href="#section-24.1" class="auto internal xref">24.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24.2.2">
-                <p id="section-toc.1-1.24.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-optional-extensions" class="internal xref">Optional extensions</a></p>
+                <p id="section-toc.1-1.24.2.2.1"><a href="#section-24.2" class="auto internal xref">24.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25">
-            <p id="section-toc.1-1.25.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.25.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-extensions" class="internal xref">Extensions</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25.2.1">
+                <p id="section-toc.1-1.25.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-essential-extensions" class="internal xref">Essential extensions</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25.2.2">
+                <p id="section-toc.1-1.25.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-optional-extensions" class="internal xref">Optional extensions</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26">
+            <p id="section-toc.1-1.26.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -2181,6 +2172,8 @@ li > p:last-of-type:only-child {
 </li>
           <li class="compact" id="section-22.1-1.19">Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <span>[<a href="#TigerTeamRecc" class="cite xref">TigerTeamRecc</a>]</span><a href="#section-22.1-1.19" class="pilcrow">¶</a>
 </li>
+          <li class="compact" id="section-22.1-1.20">Added Acknowledgements section<a href="#section-22.1-1.20" class="pilcrow">¶</a>
+</li>
         </ul>
 </section>
 </div>
@@ -2280,21 +2273,38 @@ li > p:last-of-type:only-child {
 </div>
 </section>
 </div>
+<div id="acknowledgements">
 <section id="section-23">
-      <h2 id="name-references">
-<a href="#section-23" class="section-number selfRef">23. </a><a href="#name-references" class="section-name selfRef">References</a>
+      <h2 id="name-acknowledgements">
+<a href="#section-23" class="section-number selfRef">23. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<section id="section-23.1">
+<p id="section-23-1">The authors wish to thank the following individuals for providing detailed comments and suggestions that improved the clarity and accuracy of the requirements.<a href="#section-23-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-23-2.1">Andy Newton<a href="#section-23-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-23-2.2">James Gould<a href="#section-23-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-23-2.3">Marco Davids<a href="#section-23-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-23-2.4">Ruth Trevor-Allen<a href="#section-23-2.4" class="pilcrow">¶</a>
+</li>
+      </ul>
+</section>
+</div>
+<section id="section-24">
+      <h2 id="name-references">
+<a href="#section-24" class="section-number selfRef">24. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<section id="section-24.1">
         <h3 id="name-normative-references">
-<a href="#section-23.1" class="section-number selfRef">23.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-24.1" class="section-number selfRef">24.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="BCP56">[BCP56]</dt>
         <dd>
-<div class="refInstance">Best Current Practice 56, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp56">https://www.rfc-editor.org/info/bcp56</a>&gt;</span>.<br><span>At the time of writing, this BCP comprises the following:</span>
-</div>
 <div class="refInstance" id="RFC9205">
-            <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Building Protocols with HTTP"</span>, <span class="seriesInfo">BCP 56</span>, <span class="seriesInfo">RFC 9205</span>, <span class="seriesInfo">DOI 10.17487/RFC9205</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9205">https://www.rfc-editor.org/info/rfc9205</a>&gt;</span>. </div>
+            <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Building Protocols with HTTP"</span>, <span class="seriesInfo">BCP 56</span>, <span class="seriesInfo">RFC 9205</span>, <time datetime="2022-06" class="refDate">June 2022</time>. </div>
+<span>&lt;<a href="https://www.rfc-editor.org/info/bcp56">https://www.rfc-editor.org/info/bcp56</a>&gt;</span>
 </dd>
 <dd class="break"></dd>
 <dt id="OpenAPI">[OpenAPI]</dt>
@@ -2423,9 +2433,9 @@ li > p:last-of-type:only-child {
 <dd class="break"></dd>
 </dl>
 </section>
-<section id="section-23.2">
+<section id="section-24.2">
         <h3 id="name-informative-references">
-<a href="#section-23.2" class="section-number selfRef">23.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-24.2" class="section-number selfRef">24.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC3375">[RFC3375]</dt>
