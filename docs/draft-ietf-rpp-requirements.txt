@@ -103,9 +103,9 @@ Table of Contents
    20. Security Considerations . . . . . . . . . . . . . . . . . . .  25
    21. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  26
    22. Changes History . . . . . . . . . . . . . . . . . . . . . . .  26
-   23. References  . . . . . . . . . . . . . . . . . . . . . . . . .  28
-     23.1.  Normative References . . . . . . . . . . . . . . . . . .  28
-     23.2.  Informative References . . . . . . . . . . . . . . . . .  32
+   23. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  28
+   24. References  . . . . . . . . . . . . . . . . . . . . . . . . .  29
+     24.1.  Normative References . . . . . . . . . . . . . . . . . .  29
 
 
 
@@ -114,6 +114,7 @@ Wullink & Kowalik          Expires 25 May 2026                  [Page 2]
 Internet-Draft             RPP - Requirements              November 2025
 
 
+     24.2.  Informative References . . . . . . . . . . . . . . . . .  32
    Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  32
      A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  32
      A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  33
@@ -160,7 +161,6 @@ Internet-Draft             RPP - Requirements              November 2025
 
    RPP Server - An HTTP server responsible for processing requests and
    returning results in any supported media type.
-
 
 
 
@@ -432,7 +432,7 @@ Internet-Draft             RPP - Requirements              November 2025
    *R5.1* RPP MUST use JSON as the default data format.
 
    *R5.2* It MUST be possible to extend RPP to include support other
-   data formats (e.g. XML, YAML).
+   data formats (e.g.  XML, YAML).
 
    *R5.3* Validation of request and response message MUST be supported
    for both clients and the servers, in order to determine if the
@@ -831,7 +831,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R10.14* The data model MUST be designed to allow Extension for
    future or experimental DNS record types as well as future ways of
-   Delegation over DNS (e.g. DELEG).
+   Delegation over DNS (e.g.  DELEG).
 
 
 
@@ -1485,6 +1485,7 @@ Internet-Draft             RPP - Requirements              November 2025
    -  Added requirements R2.5, R10.15 and R10.3 (changed) related to
       Generic Protocol Design Recommendations from the Tiger Team
       recommendations [TigerTeamRecc]
+   -  Added Acknowledgements section
 
 Version -01 to -02
 
@@ -1505,7 +1506,6 @@ Version -01 to -02
    -  R1.2 removed
    -  added essential and optional extensions sections in Appendix A
    -  Added generic IANA considerations
-
 
 
 
@@ -1554,14 +1554,14 @@ Version -00 to -01
    -  Added mandatory support for internationalisation (i18n) and
       specified considering JSContact for contact objects.
 
-23.  References
+23.  Acknowledgements
 
-23.1.  Normative References
+   The authors wish to thank the following individuals for providing
+   detailed comments and suggestions that improved the clarity and
+   accuracy of the requirements.
 
-   [BCP56]    Best Current Practice 56,
-              <https://www.rfc-editor.org/info/bcp56>.
-              At the time of writing, this BCP comprises the following:
-
+   -  Andy Newton
+   -  James Gould
 
 
 
@@ -1570,9 +1570,17 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 28]
 Internet-Draft             RPP - Requirements              November 2025
 
 
-              Nottingham, M., "Building Protocols with HTTP", BCP 56,
-              RFC 9205, DOI 10.17487/RFC9205, June 2022,
-              <https://www.rfc-editor.org/info/rfc9205>.
+   -  Marco Davids
+   -  Ruth Trevor-Allen
+
+24.  References
+
+24.1.  Normative References
+
+   [BCP56]    Nottingham, M., "Building Protocols with HTTP", BCP 56,
+              RFC 9205, June 2022.
+
+              <https://www.rfc-editor.org/info/bcp56>
 
    [OpenAPI]  openapis.org, "OpenAPI Specification", 2025,
               <https://www.openapis.org/>.
@@ -1609,14 +1617,6 @@ Internet-Draft             RPP - Requirements              November 2025
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
               <https://www.rfc-editor.org/info/rfc5730>.
 
-   [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
-              Domain Name Mapping", STD 69, RFC 5731,
-              DOI 10.17487/RFC5731, August 2009,
-              <https://www.rfc-editor.org/info/rfc5731>.
-
-   [RFC5732]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
-              Host Mapping", STD 69, RFC 5732, DOI 10.17487/RFC5732,
-              August 2009, <https://www.rfc-editor.org/info/rfc5732>.
 
 
 
@@ -1625,6 +1625,15 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 29]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, RFC 5731,
+              DOI 10.17487/RFC5731, August 2009,
+              <https://www.rfc-editor.org/info/rfc5731>.
+
+   [RFC5732]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Host Mapping", STD 69, RFC 5732, DOI 10.17487/RFC5732,
+              August 2009, <https://www.rfc-editor.org/info/rfc5732>.
 
    [RFC5733]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
               Contact Mapping", STD 69, RFC 5733, DOI 10.17487/RFC5733,
@@ -1663,15 +1672,6 @@ Internet-Draft             RPP - Requirements              November 2025
               Terminology", RFC 8499, DOI 10.17487/RFC8499, January
               2019, <https://www.rfc-editor.org/info/rfc8499>.
 
-   [RFC8543]  Zhou, L., Kong, N., Yao, J., Gould, J., and G. Zhou,
-              "Extensible Provisioning Protocol (EPP) Organization
-              Mapping", RFC 8543, DOI 10.17487/RFC8543, March 2019,
-              <https://www.rfc-editor.org/info/rfc8543>.
-
-   [RFC8544]  Zhou, L., Kong, N., Wei, J., Yao, J., and J. Gould,
-              "Organization Extension for the Extensible Provisioning
-              Protocol (EPP)", RFC 8544, DOI 10.17487/RFC8544, April
-              2019, <https://www.rfc-editor.org/info/rfc8544>.
 
 
 
@@ -1681,6 +1681,16 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 30]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   [RFC8543]  Zhou, L., Kong, N., Yao, J., Gould, J., and G. Zhou,
+              "Extensible Provisioning Protocol (EPP) Organization
+              Mapping", RFC 8543, DOI 10.17487/RFC8543, March 2019,
+              <https://www.rfc-editor.org/info/rfc8543>.
+
+   [RFC8544]  Zhou, L., Kong, N., Wei, J., Yao, J., and J. Gould,
+              "Organization Extension for the Extensible Provisioning
+              Protocol (EPP)", RFC 8544, DOI 10.17487/RFC8544, April
+              2019, <https://www.rfc-editor.org/info/rfc8544>.
 
    [RFC8807]  Gould, J. and M. Pozun, "Login Security Extension for the
               Extensible Provisioning Protocol (EPP)", RFC 8807,
@@ -1717,16 +1727,6 @@ Internet-Draft             RPP - Requirements              November 2025
               DOI 10.17487/RFC9803, June 2025,
               <https://www.rfc-editor.org/info/rfc9803>.
 
-   [RFC9873]  Belyavsky, D., Gould, J., and S. Hollenbeck, "Additional
-              Email Address Extension for the Extensible Provisioning
-              Protocol (EPP)", RFC 9873, DOI 10.17487/RFC9873, October
-              2025, <https://www.rfc-editor.org/info/rfc9873>.
-
-   [RFC9874]  Hollenbeck, S., Carroll, W., and G. Akiwate, "Best
-              Practices for Deletion of Domain and Host Objects in the
-              Extensible Provisioning Protocol (EPP)", BCP 244,
-              RFC 9874, DOI 10.17487/RFC9874, September 2025,
-              <https://www.rfc-editor.org/info/rfc9874>.
 
 
 
@@ -1738,6 +1738,17 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 31]
 Internet-Draft             RPP - Requirements              November 2025
 
 
+   [RFC9873]  Belyavsky, D., Gould, J., and S. Hollenbeck, "Additional
+              Email Address Extension for the Extensible Provisioning
+              Protocol (EPP)", RFC 9873, DOI 10.17487/RFC9873, October
+              2025, <https://www.rfc-editor.org/info/rfc9873>.
+
+   [RFC9874]  Hollenbeck, S., Carroll, W., and G. Akiwate, "Best
+              Practices for Deletion of Domain and Host Objects in the
+              Extensible Provisioning Protocol (EPP)", BCP 244,
+              RFC 9874, DOI 10.17487/RFC9874, September 2025,
+              <https://www.rfc-editor.org/info/rfc9874>.
+
    [RICHARDSON]
               Fowler, M., "Richardson Maturity Model", 2010,
               <https://martinfowler.com/articles/
@@ -1747,7 +1758,7 @@ Internet-Draft             RPP - Requirements              November 2025
               4", 2007, <https://www.oreilly.com/library/view/restful-
               web-services/9780596529260/ch04.html>.
 
-23.2.  Informative References
+24.2.  Informative References
 
    [RFC3375]  Hollenbeck, S., "Generic Registry-Registrar Protocol
               Requirements", RFC 3375, DOI 10.17487/RFC3375, September
@@ -1774,17 +1785,6 @@ A.1.  Essential extensions
 
    *A.1* _Moved to Appendix A.2 as A2.2_
 
-   *A1.1* An extension that allows a DNS Operator to update the DNSSEC
-   key material for a domain object.  This extension MAY be used by the
-   DNS Operator to update the DNSSEC key material for a domain object,
-   without the need for the registrar to be involved in this process.
-
-   *A1.2* An extension for the clients to update their EPP compatible
-   (client_id/password) authentication credential.
-
-
-
-
 
 
 
@@ -1793,6 +1793,14 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 32]
 
 Internet-Draft             RPP - Requirements              November 2025
 
+
+   *A1.1* An extension that allows a DNS Operator to update the DNSSEC
+   key material for a domain object.  This extension MAY be used by the
+   DNS Operator to update the DNSSEC key material for a domain object,
+   without the need for the registrar to be involved in this process.
+
+   *A1.2* An extension for the clients to update their EPP compatible
+   (client_id/password) authentication credential.
 
 A.2.  Optional extensions
 
@@ -1824,14 +1832,6 @@ Authors' Addresses
    DENIC
    Email: pawel.kowalik@denic.de
    URI:   https://denic.de/
-
-
-
-
-
-
-
-
 
 
 

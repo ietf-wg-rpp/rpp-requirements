@@ -503,6 +503,7 @@
 <li>Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)</li>
 <li>Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)</li>
 <li>Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <xref target="TigerTeamRecc"></xref></li>
+<li>Added Acknowledgements section</li>
 </ul>
 </section>
 
@@ -558,6 +559,17 @@
 <li>Added mandatory support for internationalisation (i18n) and specified considering JSContact for contact objects.</li>
 </ul>
 </section>
+</section>
+
+<section anchor="acknowledgements"><name>Acknowledgements</name>
+<t>The authors wish to thank the following individuals for providing detailed comments and suggestions that improved the clarity and accuracy of the requirements.</t>
+
+<ul spacing="compact">
+<li>Andy Newton</li>
+<li>James Gould</li>
+<li>Marco Davids</li>
+<li>Ruth Trevor-Allen</li>
+</ul>
 </section>
 
 </middle>

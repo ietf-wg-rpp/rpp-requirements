@@ -711,6 +711,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 * Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)
 * Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)
 * Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations [@?TigerTeamRecc]
+* Added Acknowledgements section
 
 
 {numbered="false" toc="exclude"}
@@ -757,6 +758,15 @@ RRP core specifications MUST include appropriate Security Considerations section
 * Mandated support for partial object updates and asynchronous processing for long-running operations.
 * Detailed the requirements for a machine-readable discovery document (/.well-known).
 * Added mandatory support for internationalisation (i18n) and specified considering JSContact for contact objects.
+
+# Acknowledgements
+
+The authors wish to thank the following individuals for providing detailed comments and suggestions that improved the clarity and accuracy of the requirements.
+
+- Andy Newton
+- James Gould
+- Marco Davids
+- Ruth Trevor-Allen
 
 {backmatter}
 
