@@ -371,7 +371,7 @@ A> TODO: [Issue #15](https://github.com/ietf-wg-rpp/rpp-requirements/issues/15)
 
 **R9.15** RPP MUST support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.
 
-**R9.16**: RPP MUST support authorisation of registry operator power client or user, being able to either impersonate any of the clients of the registry, or act on behalf of registry with elevated access to provisioning objects of all registry clients as well as operations beyond of what is available to regular clients.
+**R9.16**: RPP MUST support the registry operator to impersonate or to act on behalf of, any of the registry system accounts. This includes having elevated access for provisioning objects, performing normal operations and as well as operations not available to regular clients.
 
 # Extensibility
 
