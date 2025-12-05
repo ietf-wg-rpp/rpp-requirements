@@ -375,7 +375,7 @@ Table of Contents
    *R5.1* RPP MUST use JSON as the default data format.
 
    *R5.2* It MUST be possible to extend RPP to include support other
-   data formats (e.g.  XML, YAML).
+   data formats (e.g. XML, YAML).
 
    *R5.3* Validation of request and response message MUST be supported
    for both clients and the servers, in order to determine if the
@@ -649,6 +649,12 @@ Table of Contents
    mechanisms can include rate limiting and throttling of requests with
    related protocol signalling.
 
+   *R9.16*: RPP MUST support the registry operator to impersonate or to
+   act on behalf of, any of the registry system accounts.  This includes
+   having elevated access for provisioning objects, performing normal
+   operations and as well as operations not available to regular
+   clients.
+
 13.  Extensibility
 
    *R10.1* The protocol MUST be extensible to accommodate new
@@ -712,7 +718,7 @@ Table of Contents
 
    *R10.14* The data model MUST be designed to allow Extension for
    future or experimental DNS record types as well as future ways of
-   Delegation over DNS (e.g.  DELEG).
+   Delegation over DNS (e.g. DELEG).
 
    *R10.15* RPP design MUST promote cohesive Extension patterns by
    defining a preferred "standard way" for common functionalities.
@@ -1222,6 +1228,7 @@ Table of Contents
 
 Version -02 to -03
 
+   -  Add R9.16 to support registry operator use-case on authorization
    -  Renamed section "Operations and responses" to "Operations and
       request handling" (Issue #140)
    -  "Common" section of "Requirements for object types" clearly
@@ -1329,10 +1336,13 @@ Version -00 to -01
 
 24.1.  Normative References
 
-   [BCP56]    Nottingham, M., "Building Protocols with HTTP", BCP 56,
-              RFC 9205, June 2022.
+   [BCP56]    Best Current Practice 56,
+              <https://www.rfc-editor.org/info/bcp56>.
+              At the time of writing, this BCP comprises the following:
 
-              <https://www.rfc-editor.org/info/bcp56>
+              Nottingham, M., "Building Protocols with HTTP", BCP 56,
+              RFC 9205, DOI 10.17487/RFC9205, June 2022,
+              <https://www.rfc-editor.org/info/rfc9205>.
 
    [OpenAPI]  openapis.org, "OpenAPI Specification", 2025,
               <https://www.openapis.org/>.

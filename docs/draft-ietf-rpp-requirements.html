@@ -10,26 +10,25 @@
 <meta content="
        This document describes the requirements for the development of the RESTful Provisioning Protocol (RPP). 
     " name="description">
-<meta content="xml2rfc 3.18.2" name="generator">
+<meta content="xml2rfc 3.30.0" name="generator">
 <meta content="draft-ietf-rpp-requirements-03" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.2
-    Python 3.11.12
-    ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+  xml2rfc 3.30.0
+    Python 3.10.12
+    ConfigArgParse 1.7.1
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
-    jinja2 3.1.6
-    lxml 5.3.1
-    platformdirs 4.0.0
-    pycountry 22.3.5
-    PyYAML 6.0.1
-    requests 2.31.0
-    setuptools 78.1.0
-    six 1.16.0
-    wcwidth 0.2.9
-    weasyprint 55.0
+    Jinja2 3.1.6
+    lxml 6.0.0
+    platformdirs 4.3.8
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.4
+    setuptools 80.9.0
+    wcwidth 0.2.13
+    weasyprint 65.0
 -->
-<link href="../docs/draft-ietf-rpp-requirements.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-ietf-rpp-requirements.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -161,6 +160,12 @@ div {
 svg {
   display: block;
 }
+@media print {
+  svg {
+    max-height: 850px;
+    max-width: 660px;
+  }
+}
 svg[font-family~="serif" i], svg [font-family~="serif" i] {
   font-family: var(--font-serif);
 }
@@ -253,8 +258,7 @@ a[href]:hover {
   background-color: #f2f2f2;
 }
 figcaption a[href],
-a[href].selfRef,
-.iref + a[href].internal {
+a[href].selfRef {
   color: #222;
 }
 /* XXX probably not this:
@@ -313,6 +317,9 @@ cite {
   display: block;
   text-align: right;
   font-style: italic;
+}
+.xref {
+  overflow-wrap: normal;
 }
 
 /* tables */
@@ -402,7 +409,7 @@ hr {
 /* Fix PDF info block run off issue */
 @media print {
   #identifiers dd {
-    float: none;
+    max-width: 100%;
   }
 }
 #identifiers .authors .author {
@@ -455,6 +462,10 @@ nav.toc li {
 }
 
 .refInstance {
+  margin-bottom: 1.25em;
+}
+
+.refSubseries {
   margin-bottom: 1.25em;
 }
 
@@ -1074,7 +1085,7 @@ table {
 ol.type-a { list-style-type: lower-alpha; }
 ol.type-A { list-style-type: upper-alpha; }
 ol.type-i { list-style-type: lower-roman; }
-ol.type-I { list-style-type: lower-roman; }
+ol.type-I { list-style-type: upper-roman; }
 /* Apply the print table and row borders in general, on request from the RPC,
 and increase the contrast between border and odd row background slightly */
 table {
@@ -1154,7 +1165,7 @@ section .olCompact {
 tt, code {
   background-color: transparent;
 }
-p tt, p code, li tt, li code {
+p tt, p code, li tt, li code, dt tt, dt code {
   background-color: #f8f8f8;
 }
 /* Tweak the pre margin -- 0px doesn't come out well */
@@ -1177,6 +1188,7 @@ dl > dd > dl {
 /* This should match the element list in writer.text.TextWriter.render_dl() */
 dd > div.artwork:first-child,
 dd > aside:first-child,
+dd > blockquote:first-child,
 dd > figure:first-child,
 dd > ol:first-child,
 dd > div.sourcecode:first-child,
@@ -1777,6 +1789,7 @@ li > p:last-of-type:only-child {
 <p id="section-12-14"><strong>R9.13</strong> Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.<a href="#section-12-14" class="pilcrow">¶</a></p>
 <p id="section-12-15"><strong>R9.14</strong> There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.<a href="#section-12-15" class="pilcrow">¶</a></p>
 <p id="section-12-16"><strong>R9.15</strong> RPP MUST support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.<a href="#section-12-16" class="pilcrow">¶</a></p>
+<p id="section-12-17"><strong>R9.16</strong>: RPP MUST support the registry operator to impersonate or to act on behalf of, any of the registry system accounts. This includes having elevated access for provisioning objects, performing normal operations and as well as operations not available to regular clients.<a href="#section-12-17" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="extensibility">
@@ -2134,45 +2147,47 @@ li > p:last-of-type:only-child {
 <a href="#name-version-02-to-03" class="section-name selfRef">Version -02 to -03</a>
         </h3>
 <ul class="compact">
-<li class="compact" id="section-22.1-1.1">Renamed section "Operations and responses" to "Operations and request handling" (Issue #140)<a href="#section-22.1-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-22.1-1.1">Add R9.16 to support registry operator use-case on authorization<a href="#section-22.1-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.2">"Common" section of "<a href="#req_for_object_type" class="internal xref">Requirements for object types</a>" clearly structured (Issue #140)<a href="#section-22.1-1.2" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.2">Renamed section "Operations and responses" to "Operations and request handling" (Issue #140)<a href="#section-22.1-1.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.3">Corrected numbering in "<a href="#privacy_considerations" class="internal xref">Privacy Considerations</a>" section. DP1.5 added with a clear reference to other privacy-related requirements (Issue #140)<a href="#section-22.1-1.3" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.3">"Common" section of "<a href="#req_for_object_type" class="internal xref">Requirements for object types</a>" clearly structured (Issue #140)<a href="#section-22.1-1.3" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.4">Added introduction to "<a href="#data_model" class="internal xref">Data Model</a>" and "<a href="#data_representation" class="internal xref">Data Representation</a>" sections for clarity (Issue #140)<a href="#section-22.1-1.4" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.4">Corrected numbering in "<a href="#privacy_considerations" class="internal xref">Privacy Considerations</a>" section. DP1.5 added with a clear reference to other privacy-related requirements (Issue #140)<a href="#section-22.1-1.4" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.5">Moved R11.4 from "<a href="#scalability" class="internal xref">Scalability</a>" to "<a href="#performance" class="internal xref">Performance</a>" as R12.5 for better section fit (Issue #140)<a href="#section-22.1-1.5" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.5">Added introduction to "<a href="#data_model" class="internal xref">Data Model</a>" and "<a href="#data_representation" class="internal xref">Data Representation</a>" sections for clarity (Issue #140)<a href="#section-22.1-1.5" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.6">Functional Equivalent defined as term (Issue #140)<a href="#section-22.1-1.6" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.6">Moved R11.4 from "<a href="#scalability" class="internal xref">Scalability</a>" to "<a href="#performance" class="internal xref">Performance</a>" as R12.5 for better section fit (Issue #140)<a href="#section-22.1-1.6" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.7">Changed R12.2, D2.4 and C2.3 from MAY to SHOULD (Issue #139)<a href="#section-22.1-1.7" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.7">Functional Equivalent defined as term (Issue #140)<a href="#section-22.1-1.7" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.8">Changed R8.6 from SHOULD to MUST (Issue #139)<a href="#section-22.1-1.8" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.8">Changed R12.2, D2.4 and C2.3 from MAY to SHOULD (Issue #139)<a href="#section-22.1-1.8" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.9">Removed R7.10 and D1.7 (Issue #139)<a href="#section-22.1-1.9" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.9">Changed R8.6 from SHOULD to MUST (Issue #139)<a href="#section-22.1-1.9" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.10">Changed R6.4 from MUST to SHOULD (Issue #139)<a href="#section-22.1-1.10" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.10">Removed R7.10 and D1.7 (Issue #139)<a href="#section-22.1-1.10" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.11">Fixed Typos and references (Issue #139)<a href="#section-22.1-1.11" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.11">Changed R6.4 from MUST to SHOULD (Issue #139)<a href="#section-22.1-1.11" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.12">Moved R6.1, R6.2 and R6.3 to R5.14, R5.15 and R5.16 respectively (Issue #139)<a href="#section-22.1-1.12" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.12">Fixed Typos and references (Issue #139)<a href="#section-22.1-1.12" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.13">Revised and added necessary teminology (Issue #26)<a href="#section-22.1-1.13" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.13">Moved R6.1, R6.2 and R6.3 to R5.14, R5.15 and R5.16 respectively (Issue #139)<a href="#section-22.1-1.13" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.14">Updated R4.3 to only mandate data fields that are strictly necessary<a href="#section-22.1-1.14" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.14">Revised and added necessary teminology (Issue #26)<a href="#section-22.1-1.14" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.15">Merged R7.9 and R5.10 (Issue #124)<a href="#section-22.1-1.15" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.15">Updated R4.3 to only mandate data fields that are strictly necessary<a href="#section-22.1-1.15" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.16">Updated R4.4 to better describe profiles (Issue #15)<a href="#section-22.1-1.16" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.16">Merged R7.9 and R5.10 (Issue #124)<a href="#section-22.1-1.16" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.17">Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)<a href="#section-22.1-1.17" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.17">Updated R4.4 to better describe profiles (Issue #15)<a href="#section-22.1-1.17" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.18">Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)<a href="#section-22.1-1.18" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.18">Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)<a href="#section-22.1-1.18" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.19">Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <span>[<a href="#TigerTeamRecc" class="cite xref">TigerTeamRecc</a>]</span><a href="#section-22.1-1.19" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.19">Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)<a href="#section-22.1-1.19" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-22.1-1.20">Added Acknowledgements section<a href="#section-22.1-1.20" class="pilcrow">¶</a>
+          <li class="compact" id="section-22.1-1.20">Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <span>[<a href="#TigerTeamRecc" class="cite xref">TigerTeamRecc</a>]</span><a href="#section-22.1-1.20" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-22.1-1.21">Added Acknowledgements section<a href="#section-22.1-1.21" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -2302,9 +2317,10 @@ li > p:last-of-type:only-child {
 <dl class="references">
 <dt id="BCP56">[BCP56]</dt>
         <dd>
+<div class="refInstance">Best Current Practice 56, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp56">https://www.rfc-editor.org/info/bcp56</a>&gt;</span>.<br><span>At the time of writing, this BCP comprises the following:</span>
+</div>
 <div class="refInstance" id="RFC9205">
-            <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Building Protocols with HTTP"</span>, <span class="seriesInfo">BCP 56</span>, <span class="seriesInfo">RFC 9205</span>, <time datetime="2022-06" class="refDate">June 2022</time>. </div>
-<span>&lt;<a href="https://www.rfc-editor.org/info/bcp56">https://www.rfc-editor.org/info/bcp56</a>&gt;</span>
+            <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Building Protocols with HTTP"</span>, <span class="seriesInfo">BCP 56</span>, <span class="seriesInfo">RFC 9205</span>, <span class="seriesInfo">DOI 10.17487/RFC9205</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9205">https://www.rfc-editor.org/info/rfc9205</a>&gt;</span>. </div>
 </dd>
 <dd class="break"></dd>
 <dt id="OpenAPI">[OpenAPI]</dt>

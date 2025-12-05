@@ -251,6 +251,7 @@
 <t><strong>R9.13</strong> Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.</t>
 <t><strong>R9.14</strong> There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.</t>
 <t><strong>R9.15</strong> RPP MUST support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.</t>
+<t><strong>R9.16</strong>: RPP MUST support the registry operator to impersonate or to act on behalf of, any of the registry system accounts. This includes having elevated access for provisioning objects, performing normal operations and as well as operations not available to regular clients.</t>
 </section>
 
 <section anchor="extensibility"><name>Extensibility</name>
@@ -484,6 +485,7 @@
 <section anchor="version-02-to-03" numbered="false" toc="exclude"><name>Version -02 to -03</name>
 
 <ul spacing="compact">
+<li>Add R9.16 to support registry operator use-case on authorization</li>
 <li>Renamed section &quot;Operations and responses&quot; to &quot;Operations and request handling&quot; (Issue #140)</li>
 <li>&quot;Common&quot; section of &quot;<xref target="req_for_object_type" format="title"></xref>&quot; clearly structured (Issue #140)</li>
 <li>Corrected numbering in &quot;<xref target="privacy_considerations" format="title"></xref>&quot; section. DP1.5 added with a clear reference to other privacy-related requirements (Issue #140)</li>
