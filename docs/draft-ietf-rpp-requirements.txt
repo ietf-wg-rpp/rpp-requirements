@@ -14,7 +14,7 @@ Expires: 25 May 2026                                               DENIC
 
 Abstract
 
-   This document describes the requirement for the development of the
+   This document describes the requirements for the development of the
    RESTful Provisioning Protocol (RPP).
 
 Status of This Memo
@@ -103,9 +103,9 @@ Table of Contents
    20. Security Considerations . . . . . . . . . . . . . . . . . . .  25
    21. Privacy Considerations  . . . . . . . . . . . . . . . . . . .  26
    22. Changes History . . . . . . . . . . . . . . . . . . . . . . .  26
-   23. References  . . . . . . . . . . . . . . . . . . . . . . . . .  28
-     23.1.  Normative References . . . . . . . . . . . . . . . . . .  28
-     23.2.  Informative References . . . . . . . . . . . . . . . . .  32
+   23. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  28
+   24. References  . . . . . . . . . . . . . . . . . . . . . . . . .  29
+     24.1.  Normative References . . . . . . . . . . . . . . . . . .  29
 
 
 
@@ -114,9 +114,10 @@ Wullink & Kowalik          Expires 25 May 2026                  [Page 2]
 Internet-Draft             RPP - Requirements              November 2025
 
 
+     24.2.  Informative References . . . . . . . . . . . . . . . . .  32
    Appendix A.  Extensions . . . . . . . . . . . . . . . . . . . . .  32
      A.1.  Essential extensions  . . . . . . . . . . . . . . . . . .  32
-     A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  32
+     A.2.  Optional extensions . . . . . . . . . . . . . . . . . . .  33
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  33
 
 1.  Introduction
@@ -160,7 +161,6 @@ Internet-Draft             RPP - Requirements              November 2025
 
    RPP Server - An HTTP server responsible for processing requests and
    returning results in any supported media type.
-
 
 
 
@@ -341,7 +341,7 @@ Internet-Draft             RPP - Requirements              November 2025
    *R3.4* _Merged with R12.1_
 
    *R3.5* RPP specifications SHOULD incorporate a machine-readable and
-   well-established API specification, such as [!@OpenAPI] or [RAML].
+   well-established API specification, such as [OpenAPI] or [RAML].
    This will facilitate documentation, testing, code generation, and
    user-friendly extension descriptions.  RPP MUST NOT require what API
    specification technology is to be used.  The RPP Core documents and
@@ -431,7 +431,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R5.1* RPP MUST use JSON as the default data format.
 
-   *R5.2* It MUST be possible to extended RPP to include support other
+   *R5.2* It MUST be possible to extend RPP to include support other
    data formats (e.g. XML, YAML).
 
    *R5.3* Validation of request and response message MUST be supported
@@ -535,7 +535,7 @@ Internet-Draft             RPP - Requirements              November 2025
 
    *R6.7* The protocol specification MUST define the expected server
    state for a request that times or terminates out before a response is
-   fully sent out the the client.
+   fully sent out to the client.
 
    *R6.8* For every request the server MUST generate a permanent,
    server-unique transaction identifier.  This identifier MUST be
@@ -759,11 +759,11 @@ Internet-Draft             RPP - Requirements              November 2025
    mechanisms can include rate limiting and throttling of requests with
    related protocol signalling.
 
-   *R9.16*: RPP MUST support authorisation of registry operator power
-   client or user, being able to either impersonate any of the clients
-   of the registry, or act on behalf of registry with elevated access to
-   provisioning objects of all registry clients as well as operations
-   beyond of what is available to regular clients.
+   *R9.16*: RPP MUST support the registry operator to impersonate or to
+   act on behalf of, any of the registry system accounts.  This includes
+   having elevated access for provisioning objects, performing normal
+   operations and as well as operations not available to regular
+   clients.
 
 13.  Extensibility
 
@@ -1190,9 +1190,9 @@ Internet-Draft             RPP - Requirements              November 2025
 
 18.3.2.  Operations
 
-   *H2.1* RPP MUST RPP MUST provide operations to check, create, read,
-   update and delete host objects as defined in [RFC5732], with partial
-   update semantics available to allow for efficient updates.  Transfer
+   *H2.1* RPP MUST provide operations to check, create, read, update and
+   delete host objects as defined in [RFC5732], with partial update
+   semantics available to allow for efficient updates.  Transfer
    Operation of subordinate host object MUST be implicit with the
    Transfer Operation of parent domain name.
 
@@ -1485,6 +1485,7 @@ Internet-Draft             RPP - Requirements              November 2025
    -  Added requirements R2.5, R10.15 and R10.3 (changed) related to
       Generic Protocol Design Recommendations from the Tiger Team
       recommendations [TigerTeamRecc]
+   -  Added Acknowledgements section
 
 Version -01 to -02
 
@@ -1505,7 +1506,6 @@ Version -01 to -02
    -  R1.2 removed
    -  added essential and optional extensions sections in Appendix A
    -  Added generic IANA considerations
-
 
 
 
@@ -1554,14 +1554,14 @@ Version -00 to -01
    -  Added mandatory support for internationalisation (i18n) and
       specified considering JSContact for contact objects.
 
-23.  References
+23.  Acknowledgements
 
-23.1.  Normative References
+   The authors wish to thank the following individuals for providing
+   detailed comments and suggestions that improved the clarity and
+   accuracy of the requirements.
 
-   [BCP56]    Best Current Practice 56,
-              <https://www.rfc-editor.org/info/bcp56>.
-              At the time of writing, this BCP comprises the following:
-
+   -  Andy Newton
+   -  James Gould
 
 
 
@@ -1570,9 +1570,23 @@ Wullink & Kowalik          Expires 25 May 2026                 [Page 28]
 Internet-Draft             RPP - Requirements              November 2025
 
 
+   -  Marco Davids
+   -  Ruth Trevor-Allen
+
+24.  References
+
+24.1.  Normative References
+
+   [BCP56]    Best Current Practice 56,
+              <https://www.rfc-editor.org/info/bcp56>.
+              At the time of writing, this BCP comprises the following:
+
               Nottingham, M., "Building Protocols with HTTP", BCP 56,
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
               <https://www.rfc-editor.org/info/rfc9205>.
+
+   [OpenAPI]  openapis.org, "OpenAPI Specification", 2025,
+              <https://www.openapis.org/>.
 
    [RAML]     raml.org, "RESTful API Modeling Language", 2025,
               <https://raml.org/>.
@@ -1602,6 +1616,16 @@ Internet-Draft             RPP - Requirements              November 2025
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/info/rfc3986>.
 
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 29]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
               <https://www.rfc-editor.org/info/rfc5730>.
@@ -1618,13 +1642,6 @@ Internet-Draft             RPP - Requirements              November 2025
    [RFC5733]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
               Contact Mapping", STD 69, RFC 5733, DOI 10.17487/RFC5733,
               August 2009, <https://www.rfc-editor.org/info/rfc5733>.
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 29]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
               Uniform Resource Identifiers (URIs)", RFC 5785,
@@ -1655,6 +1672,16 @@ Internet-Draft             RPP - Requirements              November 2025
               APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
               <https://www.rfc-editor.org/info/rfc7807>.
 
+
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 30]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC8499]  Hoffman, P., Sullivan, A., and K. Fujiwara, "DNS
               Terminology", RFC 8499, DOI 10.17487/RFC8499, January
               2019, <https://www.rfc-editor.org/info/rfc8499>.
@@ -1673,14 +1700,6 @@ Internet-Draft             RPP - Requirements              November 2025
               Extensible Provisioning Protocol (EPP)", RFC 8807,
               DOI 10.17487/RFC8807, August 2020,
               <https://www.rfc-editor.org/info/rfc8807>.
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 30]
-
-Internet-Draft             RPP - Requirements              November 2025
-
 
    [RFC9038]  Gould, J. and M. Casanova, "Extensible Provisioning
               Protocol (EPP) Unhandled Namespaces", RFC 9038,
@@ -1712,6 +1731,13 @@ Internet-Draft             RPP - Requirements              November 2025
               DOI 10.17487/RFC9803, June 2025,
               <https://www.rfc-editor.org/info/rfc9803>.
 
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 31]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    [RFC9873]  Belyavsky, D., Gould, J., and S. Hollenbeck, "Additional
               Email Address Extension for the Extensible Provisioning
               Protocol (EPP)", RFC 9873, DOI 10.17487/RFC9873, October
@@ -1728,21 +1754,11 @@ Internet-Draft             RPP - Requirements              November 2025
               <https://martinfowler.com/articles/
               richardsonMaturityModel.html>.
 
-
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 31]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
    [ROI]      Richardson, L. and S. Ruby, "RESTful Web Services, Chapter
               4", 2007, <https://www.oreilly.com/library/view/restful-
               web-services/9780596529260/ch04.html>.
 
-23.2.  Informative References
+24.2.  Informative References
 
    [RFC3375]  Hollenbeck, S., "Generic Registry-Registrar Protocol
               Requirements", RFC 3375, DOI 10.17487/RFC3375, September
@@ -1769,6 +1785,15 @@ A.1.  Essential extensions
 
    *A.1* _Moved to Appendix A.2 as A2.2_
 
+
+
+
+
+Wullink & Kowalik          Expires 25 May 2026                 [Page 32]
+
+Internet-Draft             RPP - Requirements              November 2025
+
+
    *A1.1* An extension that allows a DNS Operator to update the DNSSEC
    key material for a domain object.  This extension MAY be used by the
    DNS Operator to update the DNSSEC key material for a domain object,
@@ -1785,19 +1810,10 @@ A.2.  Optional extensions
    enable creation of those extensions, however it is not a MUST
    criteria.
 
-
-
-
-
-Wullink & Kowalik          Expires 25 May 2026                 [Page 32]
-
-Internet-Draft             RPP - Requirements              November 2025
-
-
    *A2.1* An extension that allows generating a representation of a
    historical overview for an object, e.g. show all events linked to the
    object (create, update ...).  The historical time window is
-   determined by server policy and ist included in the discovery service
+   determined by server policy and is included in the discovery service
    document.
 
    *A2.2* An extension for a Search API to allow for searching for
@@ -1816,22 +1832,6 @@ Authors' Addresses
    DENIC
    Email: pawel.kowalik@denic.de
    URI:   https://denic.de/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

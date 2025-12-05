@@ -15,7 +15,7 @@
 <workgroup>Network Working Group</workgroup>
 
 <abstract>
-<t>This document describes the requirement for the development of the RESTful Provisioning Protocol (RPP).</t>
+<t>This document describes the requirements for the development of the RESTful Provisioning Protocol (RPP).</t>
 </abstract>
 
 </front>
@@ -41,7 +41,7 @@
 <t>Repository Object Identifier (ROID) - A unique, persistent identifier assigned by the repository (Registry) to each object upon creation, remaining constant throughout the object's lifetime.</t>
 <t>Object Transfer / Transfer Operation - is an Registry operation used to manage changes in client sponsorship of an existing object.</t>
 <t>EPP AuthInfo - EPP password based Authorisation Information defined in <xref target="RFC5731"></xref> and <xref target="RFC5733"></xref>.</t>
-<t>Registry - An administrative authority responsible for maintaining and operating an authoritative repository of provisioned objects within a defined namespace or domain. For the DNS Top‑Level Domain (TLD) use case, &quot;Registry&quot; specifically denotes the administrative operation of a zone that allows registration of names within that zone (see also definition in  <xref target="RFC8499"></xref>).</t>
+<t>Registry - An administrative authority responsible for maintaining and operating an authoritative repository of provisioned objects within a defined namespace or domain. For the DNS Top-Level Domain (TLD) use case, &quot;Registry&quot; specifically denotes the administrative operation of a zone that allows registration of names within that zone (see also definition in  <xref target="RFC8499"></xref>).</t>
 <t>Registrar - An entity that acts as an intermediary between registrants and the Registry, providing registration services and maintaining the Sponsoring Client relationship for registered objects.</t>
 <t>Registrant - An individual or organization on whose behalf a domain name or other object is registered in the Registry.</t>
 <t>Registry Operator - An entity performing technical operation of one or more Registries.</t>
@@ -95,7 +95,7 @@
 <t><strong>R3.2</strong> RPP architecture MUST follow Resource-Oriented Architecture <xref target="ROI"></xref>.</t>
 <t><strong>R3.3</strong> RPP specification MUST strive to minimise round trips between client and server. Approaches, where client would need to make multiple requests each time to discover resource URL or server capabilities in order to perform operation SHOULD be used sparingly and be always well justified.</t>
 <t><strong>R3.4</strong> <em>Merged with R12.1</em></t>
-<t><strong>R3.5</strong> RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as [!@OpenAPI] or <xref target="RAML"></xref>. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. RPP MUST NOT require what API specification technology is to be used. The RPP Core documents and Extension documents may also choose different API specification solutions, this choice is left to the document authors.</t>
+<t><strong>R3.5</strong> RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as <xref target="OpenAPI"></xref> or <xref target="RAML"></xref>. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. RPP MUST NOT require what API specification technology is to be used. The RPP Core documents and Extension documents may also choose different API specification solutions, this choice is left to the document authors.</t>
 <t><strong>R3.6</strong> RPP architecture MUST define a common pattern to allow a single resource to be addressable via multiple, alternative identifiers in its URL. The protocol MUST specify that one address is canonical, and any alternative addresses for the same resource MUST be treated as aliases resolving to the canonical resource.</t>
 </section>
 
@@ -125,7 +125,7 @@
 <section anchor="data_representation"><name>Data Representation</name>
 <t><xref target="data_representation"></xref> defines requirements to wire format of the data defined in <xref target="data_model"></xref>.</t>
 <t><strong>R5.1</strong> RPP MUST use JSON as the default data format.</t>
-<t><strong>R5.2</strong> It MUST be possible to extended RPP to include support other data formats (e.g. XML, YAML).</t>
+<t><strong>R5.2</strong> It MUST be possible to extend RPP to include support other data formats (e.g. XML, YAML).</t>
 <t><strong>R5.3</strong> Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.</t>
 <t><strong>R5.4</strong> RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.</t>
 <t><strong>R5.5</strong> A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.</t>
@@ -162,7 +162,7 @@
 <t><strong>R6.4</strong> RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement MAY be relaxed when adding the described functionality results in a negative impact on performance, stability and/or security.</t>
 <t><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.</t>
 <t><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).</t>
-<t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.</t>
+<t><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out to the client.</t>
 <t><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.</t>
 <t><strong>R6.9</strong> RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.</t>
 <t><strong>R6.10</strong> RPP MUST support a Functional Equivalent of the EPP Poll command described in EPP RFC <xref target="RFC5730"></xref>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:</t>
@@ -251,7 +251,7 @@
 <t><strong>R9.13</strong> Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.</t>
 <t><strong>R9.14</strong> There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.</t>
 <t><strong>R9.15</strong> RPP MUST support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.</t>
-<t><strong>R9.16</strong>: RPP MUST support authorisation of registry operator power client or user, being able to either impersonate any of the clients of the registry, or act on behalf of registry with elevated access to provisioning objects of all registry clients as well as operations beyond of what is available to regular clients.</t>
+<t><strong>R9.16</strong>: RPP MUST support the registry operator to impersonate or to act on behalf of, any of the registry system accounts. This includes having elevated access for provisioning objects, performing normal operations and as well as operations not available to regular clients.</t>
 </section>
 
 <section anchor="extensibility"><name>Extensibility</name>
@@ -362,7 +362,7 @@
 </section>
 
 <section anchor="data-representation"><name>Data Representation</name>
-<t><strong>D3.1</strong> The JSON representation MUST include the canonical domain name and any U‑label/A‑label when IDN is used by the server.</t>
+<t><strong>D3.1</strong> The JSON representation MUST include the canonical domain name and any U-label/A-label when IDN is used by the server.</t>
 <t><strong>D3.2</strong> RPP domain object representation MUST include link relations to related objects, for example: self, hosts and contacts.</t>
 <t><strong>D3.3</strong> The representation MUST adapt to the Registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.</t>
 </section>
@@ -396,7 +396,7 @@
 </section>
 
 <section anchor="operations-1"><name>Operations</name>
-<t><strong>H2.1</strong> RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in <xref target="RFC5732"></xref>, with partial update semantics available to allow for efficient updates. Transfer Operation of subordinate host object MUST be implicit with the Transfer Operation of parent domain name.</t>
+<t><strong>H2.1</strong> RPP MUST provide operations to check, create, read, update and delete host objects as defined in <xref target="RFC5732"></xref>, with partial update semantics available to allow for efficient updates. Transfer Operation of subordinate host object MUST be implicit with the Transfer Operation of parent domain name.</t>
 <t><strong>H2.2</strong> RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and Sponsoring Client, with pagination, the server MAY use a maximum limit on results.</t>
 <t><strong>H2.3</strong> Only the Sponsoring Client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.</t>
 <t><strong>H2.4</strong> RPP MUST assure that In-bailiwick host objects are created and managed by the same Sponsoring Client as the parent domain name.</t>
@@ -406,7 +406,7 @@
 
 <section anchor="data-representation-1"><name>Data Representation</name>
 <t><strong>H3.1</strong> RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.</t>
-<t><strong>H3.2</strong> The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.</t>
+<t><strong>H3.2</strong> The JSON representation MUST include the canonical host name and any U-label/A-label when IDN is used.</t>
 <t><strong>H3.3</strong> The representation SHOULD include link relations to related objects, for example: self, and parent domain for In-bailiwick hosts.</t>
 </section>
 </section>
@@ -415,7 +415,7 @@
 
 <section anchor="data-model-2"><name>Data Model</name>
 <t><strong>C1.1</strong> RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the Sponsoring Client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.</t>
-<t><strong>C1.2</strong> RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.</t>
+<t><strong>C1.2</strong> RPP MUST support server-generated opaque IDs, support for client-supplied IDs is OPTIONAL.</t>
 <t><strong>C1.3</strong> RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.</t>
 <t><strong>C1.4</strong> When RPP is used with thick Registries, full contact data MAY be returned, for thin Registries only the contact identifier MUST be returned.</t>
 <t><strong>C1.5</strong> RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.</t>
@@ -505,6 +505,7 @@
 <li>Removed mandatory password change facility in R9.10. Added extensibility requirement in R10.16 and an essential extension in A1.2 (Issue #70)</li>
 <li>Replaced O1.1 with R5.13 and updated R10.14 (Issue #125)</li>
 <li>Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <xref target="TigerTeamRecc"></xref></li>
+<li>Added Acknowledgements section</li>
 </ul>
 </section>
 
@@ -562,12 +563,32 @@
 </section>
 </section>
 
+<section anchor="acknowledgements"><name>Acknowledgements</name>
+<t>The authors wish to thank the following individuals for providing detailed comments and suggestions that improved the clarity and accuracy of the requirements.</t>
+
+<ul spacing="compact">
+<li>Andy Newton</li>
+<li>James Gould</li>
+<li>Marco Davids</li>
+<li>Ruth Trevor-Allen</li>
+</ul>
+</section>
+
 </middle>
 
 <back>
 <references><name>References</name>
 <references><name>Normative References</name>
 <xi:include href="https://bib.ietf.org/public/rfc/bibxml9/reference.BCP.56.xml"/>
+<reference anchor="OpenAPI" target="https://www.openapis.org/">
+  <front>
+    <title>OpenAPI Specification</title>
+    <author>
+      <organization>openapis.org</organization>
+    </author>
+    <date year="2025"></date>
+  </front>
+</reference>
 <reference anchor="RAML" target="https://raml.org/">
   <front>
     <title>RESTful API Modeling Language</title>
@@ -678,7 +699,7 @@ The core RPP and its extensibility framework MUST enable creation of those exten
 
 <section anchor="appendix_extensions_optional"><name>Optional extensions</name>
 <t>The following list of extensions is considered as possible need for certain deployments of RPP, however other solutions outside of RPP would be possible. Therefore RPP and its extensibility framework MAY enable creation of those extensions, however it is not a MUST criteria.</t>
-<t><strong>A2.1</strong> An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.</t>
+<t><strong>A2.1</strong> An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and is included in the discovery service document.</t>
 <t><strong>A2.2</strong> An extension for a Search API to allow for searching for objects in the Registry database. Includes advanced search capabilities for object info request.</t>
 </section>
 </section>

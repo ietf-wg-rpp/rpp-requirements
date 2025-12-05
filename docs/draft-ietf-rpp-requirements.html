@@ -8,7 +8,7 @@
 <meta content="Maarten Wullink" name="author">
 <meta content="Pawel Kowalik" name="author">
 <meta content="
-       This document describes the requirement for the development of the RESTful Provisioning Protocol (RPP). 
+       This document describes the requirements for the development of the RESTful Provisioning Protocol (RPP). 
     " name="description">
 <meta content="xml2rfc 3.30.0" name="generator">
 <meta content="draft-ietf-rpp-requirements-03" name="ietf.draft">
@@ -1256,7 +1256,7 @@ li > p:last-of-type:only-child {
 <h1 id="title">RESTful Provisioning Protocol (RPP) - Requirements</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document describes the requirement for the development of the RESTful Provisioning Protocol (RPP).<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document describes the requirements for the development of the RESTful Provisioning Protocol (RPP).<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1452,29 +1452,32 @@ li > p:last-of-type:only-child {
             <p id="section-toc.1-1.22.1"><a href="#section-22" class="auto internal xref">22</a>. <a href="#name-changes-history" class="internal xref">Changes History</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23">
-            <p id="section-toc.1-1.23.1"><a href="#section-23" class="auto internal xref">23</a>. <a href="#name-references" class="internal xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23.2.1">
-                <p id="section-toc.1-1.23.2.1.1"><a href="#section-23.1" class="auto internal xref">23.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.23.2.2">
-                <p id="section-toc.1-1.23.2.2.1"><a href="#section-23.2" class="auto internal xref">23.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.23.1"><a href="#section-23" class="auto internal xref">23</a>. <a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24">
-            <p id="section-toc.1-1.24.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-extensions" class="internal xref">Extensions</a></p>
+            <p id="section-toc.1-1.24.1"><a href="#section-24" class="auto internal xref">24</a>. <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24.2.1">
-                <p id="section-toc.1-1.24.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-essential-extensions" class="internal xref">Essential extensions</a></p>
+                <p id="section-toc.1-1.24.2.1.1"><a href="#section-24.1" class="auto internal xref">24.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.24.2.2">
-                <p id="section-toc.1-1.24.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-optional-extensions" class="internal xref">Optional extensions</a></p>
+                <p id="section-toc.1-1.24.2.2.1"><a href="#section-24.2" class="auto internal xref">24.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25">
-            <p id="section-toc.1-1.25.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.25.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-extensions" class="internal xref">Extensions</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25.2.1">
+                <p id="section-toc.1-1.25.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-essential-extensions" class="internal xref">Essential extensions</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.25.2.2">
+                <p id="section-toc.1-1.25.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-optional-extensions" class="internal xref">Optional extensions</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.26">
+            <p id="section-toc.1-1.26.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1507,7 +1510,7 @@ li > p:last-of-type:only-child {
 <p id="section-2-12">Repository Object Identifier (ROID) - A unique, persistent identifier assigned by the repository (Registry) to each object upon creation, remaining constant throughout the object's lifetime.<a href="#section-2-12" class="pilcrow">¶</a></p>
 <p id="section-2-13">Object Transfer / Transfer Operation - is an Registry operation used to manage changes in client sponsorship of an existing object.<a href="#section-2-13" class="pilcrow">¶</a></p>
 <p id="section-2-14">EPP AuthInfo - EPP password based Authorisation Information defined in <span>[<a href="#RFC5731" class="cite xref">RFC5731</a>]</span> and <span>[<a href="#RFC5733" class="cite xref">RFC5733</a>]</span>.<a href="#section-2-14" class="pilcrow">¶</a></p>
-<p id="section-2-15">Registry - An administrative authority responsible for maintaining and operating an authoritative repository of provisioned objects within a defined namespace or domain. For the DNS Top‑Level Domain (TLD) use case, "Registry" specifically denotes the administrative operation of a zone that allows registration of names within that zone (see also definition in  <span>[<a href="#RFC8499" class="cite xref">RFC8499</a>]</span>).<a href="#section-2-15" class="pilcrow">¶</a></p>
+<p id="section-2-15">Registry - An administrative authority responsible for maintaining and operating an authoritative repository of provisioned objects within a defined namespace or domain. For the DNS Top-Level Domain (TLD) use case, "Registry" specifically denotes the administrative operation of a zone that allows registration of names within that zone (see also definition in  <span>[<a href="#RFC8499" class="cite xref">RFC8499</a>]</span>).<a href="#section-2-15" class="pilcrow">¶</a></p>
 <p id="section-2-16">Registrar - An entity that acts as an intermediary between registrants and the Registry, providing registration services and maintaining the Sponsoring Client relationship for registered objects.<a href="#section-2-16" class="pilcrow">¶</a></p>
 <p id="section-2-17">Registrant - An individual or organization on whose behalf a domain name or other object is registered in the Registry.<a href="#section-2-17" class="pilcrow">¶</a></p>
 <p id="section-2-18">Registry Operator - An entity performing technical operation of one or more Registries.<a href="#section-2-18" class="pilcrow">¶</a></p>
@@ -1588,7 +1591,7 @@ li > p:last-of-type:only-child {
 <p id="section-6-2"><strong>R3.2</strong> RPP architecture MUST follow Resource-Oriented Architecture <span>[<a href="#ROI" class="cite xref">ROI</a>]</span>.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <p id="section-6-3"><strong>R3.3</strong> RPP specification MUST strive to minimise round trips between client and server. Approaches, where client would need to make multiple requests each time to discover resource URL or server capabilities in order to perform operation SHOULD be used sparingly and be always well justified.<a href="#section-6-3" class="pilcrow">¶</a></p>
 <p id="section-6-4"><strong>R3.4</strong> <em>Merged with R12.1</em><a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5"><strong>R3.5</strong> RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as [!@OpenAPI] or <span>[<a href="#RAML" class="cite xref">RAML</a>]</span>. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. RPP MUST NOT require what API specification technology is to be used. The RPP Core documents and Extension documents may also choose different API specification solutions, this choice is left to the document authors.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-5"><strong>R3.5</strong> RPP specifications SHOULD incorporate a machine-readable and well-established API specification, such as <span>[<a href="#OpenAPI" class="cite xref">OpenAPI</a>]</span> or <span>[<a href="#RAML" class="cite xref">RAML</a>]</span>. This will facilitate documentation, testing, code generation, and user-friendly extension descriptions. RPP MUST NOT require what API specification technology is to be used. The RPP Core documents and Extension documents may also choose different API specification solutions, this choice is left to the document authors.<a href="#section-6-5" class="pilcrow">¶</a></p>
 <p id="section-6-6"><strong>R3.6</strong> RPP architecture MUST define a common pattern to allow a single resource to be addressable via multiple, alternative identifiers in its URL. The protocol MUST specify that one address is canonical, and any alternative addresses for the same resource MUST be treated as aliases resolving to the canonical resource.<a href="#section-6-6" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1628,7 +1631,7 @@ li > p:last-of-type:only-child {
       </h2>
 <p id="section-8-1"><a href="#data_representation" class="auto internal xref">Section 8</a> defines requirements to wire format of the data defined in <a href="#data_model" class="auto internal xref">Section 7</a>.<a href="#section-8-1" class="pilcrow">¶</a></p>
 <p id="section-8-2"><strong>R5.1</strong> RPP MUST use JSON as the default data format.<a href="#section-8-2" class="pilcrow">¶</a></p>
-<p id="section-8-3"><strong>R5.2</strong> It MUST be possible to extended RPP to include support other data formats (e.g. XML, YAML).<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-3"><strong>R5.2</strong> It MUST be possible to extend RPP to include support other data formats (e.g. XML, YAML).<a href="#section-8-3" class="pilcrow">¶</a></p>
 <p id="section-8-4"><strong>R5.3</strong> Validation of request and response message MUST be supported for both clients and the servers, in order to determine if the content is valid and no required attributes are missing.<a href="#section-8-4" class="pilcrow">¶</a></p>
 <p id="section-8-5"><strong>R5.4</strong> RPP MUST define a default media type however the protocol SHALL be extensible to enable support for other media types.<a href="#section-8-5" class="pilcrow">¶</a></p>
 <p id="section-8-6"><strong>R5.5</strong> A client MUST be able to signal to the server what media type the server should expect for the request content and to use for the response content.<a href="#section-8-6" class="pilcrow">¶</a></p>
@@ -1672,7 +1675,7 @@ li > p:last-of-type:only-child {
 <p id="section-9-4"><strong>R6.4</strong> RPP SHOULD support search for resource collections and SHOULD support filtering (e.g., by name prefix, status, registrar) and pagination. This requirement MAY be relaxed when adding the described functionality results in a negative impact on performance, stability and/or security.<a href="#section-9-4" class="pilcrow">¶</a></p>
 <p id="section-9-5"><strong>R6.5</strong> RPP operations that modify repository state MUST be atomic. A single request MUST either succeed completely or fail completely, leaving the repository in its original state.<a href="#section-9-5" class="pilcrow">¶</a></p>
 <p id="section-9-6"><strong>R6.6</strong> RPP MUST provide services for the client to assure a re-tried operation changing resource state is executed only once if a request has been terminated or timed out before complete response has been received by the client (idempotency).<a href="#section-9-6" class="pilcrow">¶</a></p>
-<p id="section-9-7"><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out the the client.<a href="#section-9-7" class="pilcrow">¶</a></p>
+<p id="section-9-7"><strong>R6.7</strong> The protocol specification MUST define the expected server state for a request that times or terminates out before a response is fully sent out to the client.<a href="#section-9-7" class="pilcrow">¶</a></p>
 <p id="section-9-8"><strong>R6.8</strong> For every request the server MUST generate a permanent, server-unique transaction identifier. This identifier MUST be returned to the client in the response.<a href="#section-9-8" class="pilcrow">¶</a></p>
 <p id="section-9-9"><strong>R6.9</strong> RPP MUST support informational and validation functions that are not directly tied to a persistent, provisioned object. These operations SHOULD be exposed as read-only resources that represent the result of a query or check.<a href="#section-9-9" class="pilcrow">¶</a></p>
 <p id="section-9-10"><strong>R6.10</strong> RPP MUST support a Functional Equivalent of the EPP Poll command described in EPP RFC <span>[<a href="#RFC5730" class="cite xref">RFC5730</a>]</span>, allowing for clients discovering and retrieving service messages available on the server. The RPP equivalent MAY contain additional options or features for discovering and retrieving service messages, such as:<a href="#section-9-10" class="pilcrow">¶</a></p>
@@ -1786,7 +1789,7 @@ li > p:last-of-type:only-child {
 <p id="section-12-14"><strong>R9.13</strong> Any protocol extensions MUST be subject to the same security review and requirements as the core protocol.<a href="#section-12-14" class="pilcrow">¶</a></p>
 <p id="section-12-15"><strong>R9.14</strong> There MUST be mechanisms to revoke or deprecate credentials, tokens, or permissions when no longer needed or if compromised.<a href="#section-12-15" class="pilcrow">¶</a></p>
 <p id="section-12-16"><strong>R9.15</strong> RPP MUST support mechanisms to prevent Denial-of-Service attacks, whether from malicious actors or misbehaving clients. These mechanisms can include rate limiting and throttling of requests with related protocol signalling.<a href="#section-12-16" class="pilcrow">¶</a></p>
-<p id="section-12-17"><strong>R9.16</strong>: RPP MUST support authorisation of registry operator power client or user, being able to either impersonate any of the clients of the registry, or act on behalf of registry with elevated access to provisioning objects of all registry clients as well as operations beyond of what is available to regular clients.<a href="#section-12-17" class="pilcrow">¶</a></p>
+<p id="section-12-17"><strong>R9.16</strong>: RPP MUST support the registry operator to impersonate or to act on behalf of, any of the registry system accounts. This includes having elevated access for provisioning objects, performing normal operations and as well as operations not available to regular clients.<a href="#section-12-17" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="extensibility">
@@ -1943,7 +1946,7 @@ li > p:last-of-type:only-child {
           <h4 id="name-data-representation-2">
 <a href="#section-18.2.3" class="section-number selfRef">18.2.3. </a><a href="#name-data-representation-2" class="section-name selfRef">Data Representation</a>
           </h4>
-<p id="section-18.2.3-1"><strong>D3.1</strong> The JSON representation MUST include the canonical domain name and any U‑label/A‑label when IDN is used by the server.<a href="#section-18.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-18.2.3-1"><strong>D3.1</strong> The JSON representation MUST include the canonical domain name and any U-label/A-label when IDN is used by the server.<a href="#section-18.2.3-1" class="pilcrow">¶</a></p>
 <p id="section-18.2.3-2"><strong>D3.2</strong> RPP domain object representation MUST include link relations to related objects, for example: self, hosts and contacts.<a href="#section-18.2.3-2" class="pilcrow">¶</a></p>
 <p id="section-18.2.3-3"><strong>D3.3</strong> The representation MUST adapt to the Registry model. In thin mode, only identifiers (e.g., contact IDs) MUST be returned; in thick mode, full contact data MUST be returned.<a href="#section-18.2.3-3" class="pilcrow">¶</a></p>
 </section>
@@ -2000,7 +2003,7 @@ li > p:last-of-type:only-child {
           <h4 id="name-operations-2">
 <a href="#section-18.3.2" class="section-number selfRef">18.3.2. </a><a href="#name-operations-2" class="section-name selfRef">Operations</a>
           </h4>
-<p id="section-18.3.2-1"><strong>H2.1</strong> RPP MUST RPP MUST provide operations to check, create, read, update and delete host objects as defined in <span>[<a href="#RFC5732" class="cite xref">RFC5732</a>]</span>, with partial update semantics available to allow for efficient updates. Transfer Operation of subordinate host object MUST be implicit with the Transfer Operation of parent domain name.<a href="#section-18.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-18.3.2-1"><strong>H2.1</strong> RPP MUST provide operations to check, create, read, update and delete host objects as defined in <span>[<a href="#RFC5732" class="cite xref">RFC5732</a>]</span>, with partial update semantics available to allow for efficient updates. Transfer Operation of subordinate host object MUST be implicit with the Transfer Operation of parent domain name.<a href="#section-18.3.2-1" class="pilcrow">¶</a></p>
 <p id="section-18.3.2-2"><strong>H2.2</strong> RPP SHOULD support searching and listing hosts filtered by name (exact/prefix), IP address, and Sponsoring Client, with pagination, the server MAY use a maximum limit on results.<a href="#section-18.3.2-2" class="pilcrow">¶</a></p>
 <p id="section-18.3.2-3"><strong>H2.3</strong> Only the Sponsoring Client (or an authorised server administrator) MAY modify or delete a host; servers MUST enforce authorisation.<a href="#section-18.3.2-3" class="pilcrow">¶</a></p>
 <p id="section-18.3.2-4"><strong>H2.4</strong> RPP MUST assure that In-bailiwick host objects are created and managed by the same Sponsoring Client as the parent domain name.<a href="#section-18.3.2-4" class="pilcrow">¶</a></p>
@@ -2014,7 +2017,7 @@ li > p:last-of-type:only-child {
 <a href="#section-18.3.3" class="section-number selfRef">18.3.3. </a><a href="#name-data-representation-3" class="section-name selfRef">Data Representation</a>
           </h4>
 <p id="section-18.3.3-1"><strong>H3.1</strong> RPP MUST support a JSON representation for both Host objects and for Host attributes as defined in the EPP RFCs.<a href="#section-18.3.3-1" class="pilcrow">¶</a></p>
-<p id="section-18.3.3-2"><strong>H3.2</strong> The JSON representation MUST include the canonical host name and any U‑label/A‑label when IDN is used.<a href="#section-18.3.3-2" class="pilcrow">¶</a></p>
+<p id="section-18.3.3-2"><strong>H3.2</strong> The JSON representation MUST include the canonical host name and any U-label/A-label when IDN is used.<a href="#section-18.3.3-2" class="pilcrow">¶</a></p>
 <p id="section-18.3.3-3"><strong>H3.3</strong> The representation SHOULD include link relations to related objects, for example: self, and parent domain for In-bailiwick hosts.<a href="#section-18.3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2031,7 +2034,7 @@ li > p:last-of-type:only-child {
 <a href="#section-18.4.1" class="section-number selfRef">18.4.1. </a><a href="#name-data-model-4" class="section-name selfRef">Data Model</a>
           </h4>
 <p id="section-18.4.1-1"><strong>C1.1</strong> RPP contact object data model MUST include, at a minimum an equivalent of RFC5733 contact data model: a unique identifier, repository object ID, current status, name, organisation, full postal address, voice and fax numbers, email addresses,the Sponsoring Client identifier, the creating client identifier, creation timestamp, the last updating client identifier, last update timestamp, last transfer timestamp, and authorisation information.<a href="#section-18.4.1-1" class="pilcrow">¶</a></p>
-<p id="section-18.4.1-2"><strong>C1.2</strong> RPP MUST support server‑generated opaque IDs, support for client‑supplied IDs is OPTIONAL.<a href="#section-18.4.1-2" class="pilcrow">¶</a></p>
+<p id="section-18.4.1-2"><strong>C1.2</strong> RPP MUST support server-generated opaque IDs, support for client-supplied IDs is OPTIONAL.<a href="#section-18.4.1-2" class="pilcrow">¶</a></p>
 <p id="section-18.4.1-3"><strong>C1.3</strong> RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.<a href="#section-18.4.1-3" class="pilcrow">¶</a></p>
 <p id="section-18.4.1-4"><strong>C1.4</strong> When RPP is used with thick Registries, full contact data MAY be returned, for thin Registries only the contact identifier MUST be returned.<a href="#section-18.4.1-4" class="pilcrow">¶</a></p>
 <p id="section-18.4.1-5"><strong>C1.5</strong> RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.<a href="#section-18.4.1-5" class="pilcrow">¶</a></p>
@@ -2184,6 +2187,8 @@ li > p:last-of-type:only-child {
 </li>
           <li class="compact" id="section-22.1-1.20">Added requirements R2.5, R10.15 and R10.3 (changed) related to Generic Protocol Design Recommendations from the Tiger Team recommendations <span>[<a href="#TigerTeamRecc" class="cite xref">TigerTeamRecc</a>]</span><a href="#section-22.1-1.20" class="pilcrow">¶</a>
 </li>
+          <li class="compact" id="section-22.1-1.21">Added Acknowledgements section<a href="#section-22.1-1.21" class="pilcrow">¶</a>
+</li>
         </ul>
 </section>
 </div>
@@ -2283,13 +2288,31 @@ li > p:last-of-type:only-child {
 </div>
 </section>
 </div>
+<div id="acknowledgements">
 <section id="section-23">
-      <h2 id="name-references">
-<a href="#section-23" class="section-number selfRef">23. </a><a href="#name-references" class="section-name selfRef">References</a>
+      <h2 id="name-acknowledgements">
+<a href="#section-23" class="section-number selfRef">23. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<section id="section-23.1">
+<p id="section-23-1">The authors wish to thank the following individuals for providing detailed comments and suggestions that improved the clarity and accuracy of the requirements.<a href="#section-23-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-23-2.1">Andy Newton<a href="#section-23-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-23-2.2">James Gould<a href="#section-23-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-23-2.3">Marco Davids<a href="#section-23-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-23-2.4">Ruth Trevor-Allen<a href="#section-23-2.4" class="pilcrow">¶</a>
+</li>
+      </ul>
+</section>
+</div>
+<section id="section-24">
+      <h2 id="name-references">
+<a href="#section-24" class="section-number selfRef">24. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<section id="section-24.1">
         <h3 id="name-normative-references">
-<a href="#section-23.1" class="section-number selfRef">23.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-24.1" class="section-number selfRef">24.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="BCP56">[BCP56]</dt>
@@ -2299,6 +2322,10 @@ li > p:last-of-type:only-child {
 <div class="refInstance" id="RFC9205">
             <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Building Protocols with HTTP"</span>, <span class="seriesInfo">BCP 56</span>, <span class="seriesInfo">RFC 9205</span>, <span class="seriesInfo">DOI 10.17487/RFC9205</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9205">https://www.rfc-editor.org/info/rfc9205</a>&gt;</span>. </div>
 </dd>
+<dd class="break"></dd>
+<dt id="OpenAPI">[OpenAPI]</dt>
+        <dd>
+<span class="refAuthor">openapis.org</span>, <span class="refTitle">"OpenAPI Specification"</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://www.openapis.org/">https://www.openapis.org/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RAML">[RAML]</dt>
         <dd>
@@ -2422,9 +2449,9 @@ li > p:last-of-type:only-child {
 <dd class="break"></dd>
 </dl>
 </section>
-<section id="section-23.2">
+<section id="section-24.2">
         <h3 id="name-informative-references">
-<a href="#section-23.2" class="section-number selfRef">23.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-24.2" class="section-number selfRef">24.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC3375">[RFC3375]</dt>
@@ -2464,7 +2491,7 @@ The core RPP and its extensibility framework MUST enable creation of those exten
 <a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-optional-extensions" class="section-name selfRef">Optional extensions</a>
         </h3>
 <p id="appendix-A.2-1">The following list of extensions is considered as possible need for certain deployments of RPP, however other solutions outside of RPP would be possible. Therefore RPP and its extensibility framework MAY enable creation of those extensions, however it is not a MUST criteria.<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
-<p id="appendix-A.2-2"><strong>A2.1</strong> An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and ist included in the discovery service document.<a href="#appendix-A.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-2"><strong>A2.1</strong> An extension that allows generating a representation of a historical overview for an object, e.g. show all events linked to the object (create, update ...). The historical time window is determined by server policy and is included in the discovery service document.<a href="#appendix-A.2-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-3"><strong>A2.2</strong> An extension for a Search API to allow for searching for objects in the Registry database. Includes advanced search capabilities for object info request.<a href="#appendix-A.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
