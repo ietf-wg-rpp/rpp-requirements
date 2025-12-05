@@ -403,7 +403,7 @@
 <t><strong>C1.2</strong> RPP MUST support server-generated opaque IDs, support for client-supplied IDs is OPTIONAL.</t>
 <t><strong>C1.3</strong> RPP SHOULD support an explicit indication of entity type (person or organisation) in the contact model.</t>
 <t><strong>C1.4</strong> When RPP is used with thick Registries, full contact data MAY be returned, for thin Registries only the contact identifier MUST be returned.</t>
-<t><strong>C1.5</strong> RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.</t>
+<t><strong>C1.5</strong> RPP MUST support disclosure and privacy preferences equivalent to EPP &quot;disclose&quot;.</t>
 <t><strong>C1.6</strong> RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP Server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).</t>
 <t><strong>C1.7</strong> RPP MUST enforce referential integrity. A contact MUST not be deleted when it is referenced by other objects. RPP MUST return a conflict error when deletion is disallowed and the contact representation MAY include an attribute with information about linked objects.</t>
 <t><strong>C1.8</strong> RPP SHOULD consider renaming the EPP contact object type to &quot;entity&quot; to better align with the RDAP data model, defined in <xref target="RFC9083"></xref>.</t>

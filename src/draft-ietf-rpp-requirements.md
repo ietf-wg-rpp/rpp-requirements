@@ -587,7 +587,7 @@ This section contains requirements commonly applicable to more or all object typ
 
 **C1.4** When RPP is used with thick Registries, full contact data MAY be returned, for thin Registries only the contact identifier MUST be returned.
 
-**C1.5** RPP MUST support disclosure and privacy preferences equivalent to EPP “disclose”.
+**C1.5** RPP MUST support disclosure and privacy preferences equivalent to EPP "disclose".
 
 **C1.6** RPP MUST support contact object to refer to external identity provider (e.g. when digital identity schemes are used), where the personal data would not be persisted within RPP Server. RPP SHOULD allow to only store a stable identifier, reference or credential for future verification (see Privacy Considerations).
 
