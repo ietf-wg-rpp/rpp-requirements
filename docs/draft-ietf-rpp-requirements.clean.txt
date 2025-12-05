@@ -1065,7 +1065,7 @@ Table of Contents
    returned.
 
    *C1.5* RPP MUST support disclosure and privacy preferences equivalent
-   to EPP “disclose”.
+   to EPP "disclose".
 
    *C1.6* RPP MUST support contact object to refer to external identity
    provider (e.g. when digital identity schemes are used), where the
