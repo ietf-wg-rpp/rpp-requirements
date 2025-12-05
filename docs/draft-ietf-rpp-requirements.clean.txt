@@ -334,9 +334,6 @@ Table of Contents
    -  Versions used by the components, data models and extensions
       support by the client and the server
 
-      |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/15)
-
    *R4.5* RPP architecture MUST include loose coupling between the
    server and the client, allowing for non-coordinated introduction of
    non-breaking version changes on both sides.
@@ -561,9 +558,6 @@ Table of Contents
    *R8.3* Compatibility definitions for a RPP to EPP mapping MAY be
    defined in compatibility profiles (see: R4.4).
 
-      |  TODO: Issue #15 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/15)
-
    *R8.4* RPP MUST include an extension framework able to define
    equivalents of most commonly used EPP extensions, which are not a
    part of core protocol (see: R4.2)
@@ -675,9 +669,6 @@ Table of Contents
 
    *R10.4* Extensions for new operations on existing resources MUST be
    supported.
-
-      |  TODO: Issue #47 (https://github.com/ietf-wg-rpp/rpp-
-      |  requirements/issues/47)
 
    *R10.5* RPP MUST support extensions that define new status codes not
    already defined in the core RPP RFCs.  Extension designers MAY add
@@ -1228,6 +1219,7 @@ Table of Contents
 
 Version -02 to -03
 
+   -  Added reference to tiger team extension lists to A1.3 and A2.3
    -  Add R9.16 to support registry operator use-case on authorization
    -  Renamed section "Operations and responses" to "Operations and
       request handling" (Issue #140)
@@ -1507,9 +1499,6 @@ Appendix A.  Extensions
 
 A.1.  Essential extensions
 
-      |  TODO: These lists are far from being complete -> input from
-      |  Tiger Team on EPP Extensibility will fill these lists
-
    The following list of extensions is considered essential for the
    completeness of RPP as provisioning protocol for domain names.  The
    core RPP and its extensibility framework MUST enable creation of
@@ -1524,6 +1513,9 @@ A.1.  Essential extensions
 
    *A1.2* An extension for the clients to update their EPP compatible
    (client_id/password) authentication credential.
+
+   *A1.3* Extensions listed in [TigerTeamRecc] Section 4.2.3 EPP
+   Extension Recommendations 2.  Extension.
 
 A.2.  Optional extensions
 
@@ -1542,6 +1534,9 @@ A.2.  Optional extensions
    *A2.2* An extension for a Search API to allow for searching for
    objects in the Registry database.  Includes advanced search
    capabilities for object info request.
+
+   *A2.3* Extensions listed in [TigerTeamRecc] Section 4.2.3 EPP
+   Extension Recommendations 3.  Design.
 
 Authors' Addresses
 
