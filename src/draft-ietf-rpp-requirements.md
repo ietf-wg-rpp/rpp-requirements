@@ -6,11 +6,11 @@ workgroup = "Network Working Group"
 submissiontype = "IETF"
 keyword = [""]
 TocDepth = 4
-date = 2025-12-05
+date = 2026-06-07
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-ietf-rpp-requirements-03"
+value = "draft-ietf-rpp-requirements-04"
 stream = "IETF"
 status = "standard"
 
@@ -665,6 +665,10 @@ RRP core specifications MUST include appropriate Security Considerations section
 
 {removeInRFC="true"}
 # Changes History
+
+{numbered="false" toc="exclude"}
+## Version -02 to -04
+* No update. Just keep the document alive.
 
 {numbered="false" toc="exclude"}
 ## Version -02 to -03
