@@ -5,12 +5,12 @@
 Network Working Group                                         M. Wullink
 Internet-Draft                                                 SIDN Labs
 Intended status: Standards Track                              P. Kowalik
-Expires: 8 June 2026                                               DENIC
-                                                         5 December 2025
+Expires: 9 December 2026                                           DENIC
+                                                             7 June 2026
 
 
            RESTful Provisioning Protocol (RPP) - Requirements
-                     draft-ietf-rpp-requirements-03
+                     draft-ietf-rpp-requirements-04
 
 Abstract
 
@@ -32,11 +32,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 June 2026.
+   This Internet-Draft will expire on 9 December 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1217,6 +1217,10 @@ Table of Contents
 
    This section is to be removed before publishing as an RFC.
 
+Version -02 to -04
+
+   -  No update.  Just keep the document alive.
+
 Version -02 to -03
 
    -  Added reference to tiger team extension lists to A1.3 and A2.3
@@ -1359,7 +1363,7 @@ Version -00 to -01
 
    [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
               the Extensible Provisioning Protocol (EPP)", RFC 3915,
-              DOI 10.17487/RFC3915, September 2004,
+              DOI 10.17487/RFC3915, October 2004,
               <https://www.rfc-editor.org/info/rfc3915>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
