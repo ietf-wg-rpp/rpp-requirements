@@ -667,7 +667,7 @@ RRP core specifications MUST include appropriate Security Considerations section
 # Changes History
 
 {numbered="false" toc="exclude"}
-## Version -02 to -04
+## Version -03 to -04
 * No update. Just keep the document alive.
 
 {numbered="false" toc="exclude"}
