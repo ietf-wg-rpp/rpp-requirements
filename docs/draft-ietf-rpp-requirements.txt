@@ -1430,7 +1430,7 @@ Internet-Draft             RPP - Requirements                  June 2026
 
    This section is to be removed before publishing as an RFC.
 
-Version -02 to -04
+Version -03 to -04
 
    -  No update.  Just keep the document alive.
 
